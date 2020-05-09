@@ -56,7 +56,7 @@ function dt_streams() {
      */
     return DT_Streams::get_instance();
 }
-add_action( 'after_setup_theme', 'dt_streams', 50 );
+add_action( 'after_setup_theme', 'dt_streams', 99 );
 
 /**
  * Singleton class for setting up the plugin.

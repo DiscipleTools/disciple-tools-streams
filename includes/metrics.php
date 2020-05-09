@@ -18,6 +18,9 @@ class DT_Streams_Metrics
     } // End instance()
 
     public function __construct() {
+        if ( ! DT_Mapbox_API::get_key() ) {
+            return;
+        }
         add_action( 'rest_api_init', [ $this, 'add_api_routes' ] );
 
         $url_path = dt_get_url_path();
@@ -29,7 +32,7 @@ class DT_Streams_Metrics
         if ( 'metrics' === substr( $url_path, '0', 7 ) ) {
 
             add_filter( 'dt_templates_for_urls', [ $this, 'add_url' ] ); // add custom URL
-            add_filter( 'dt_metrics_menu', [ $this, 'add_menu' ], 50 );
+            add_filter( 'dt_metrics_menu', [ $this, 'add_menu' ], 99 );
 
             if ( 'metrics/streams' === $url_path ) {
                 add_action( 'wp_enqueue_scripts', [ $this, 'scripts' ], 99 );

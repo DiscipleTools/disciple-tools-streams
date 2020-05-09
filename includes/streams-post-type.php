@@ -8,11 +8,17 @@ class DT_Streams_Post_Type {
         }
         return self::$_instance;
     } // End instance()
+    public $trainings = false;
 
     public function __construct() {
+        if ( class_exists( 'DT_Training' ) ) {
+            $this->trainings = true;
+        }
+
         add_action( 'after_setup_theme', [ $this, 'after_setup_theme' ], 100 );
         add_action( 'p2p_init', [ $this, 'p2p_init' ] );
         add_action( 'dt_details_additional_section', [ $this, 'dt_details_additional_section' ], 10, 2 );
+        add_action( 'dt_modal_help_text', [ $this, 'modal_help_text'], 10 );
 
         add_filter( 'dt_custom_fields_settings', [ $this, 'dt_custom_fields_settings' ], 10, 2 );
         add_filter( 'dt_details_additional_section_ids', [ $this, 'dt_details_additional_section_ids' ], 10, 2 );
@@ -20,31 +26,39 @@ class DT_Streams_Post_Type {
         add_action( "post_connection_added", [ $this, "post_connection_added" ], 10, 4 );
         add_filter( "dt_user_list_filters", [ $this, "dt_user_list_filters" ], 10, 2 );
         add_filter( "dt_get_post_fields_filter", [ $this, "dt_get_post_fields_filter" ], 10, 2 );
+
+
     }
 
     public function after_setup_theme(){
         if ( class_exists( 'Disciple_Tools_Post_Type_Template' )) {
-            new Disciple_Tools_Post_Type_Template( "streams", 'Streams', 'Streamss' );
+            new Disciple_Tools_Post_Type_Template( "streams", 'Stream', 'Streams' );
         }
     }
 
     public function dt_custom_fields_settings( $fields, $post_type ){
         if ( $post_type === 'streams' ){
             $fields['leader_count'] = [
-                'name' => "Leaders #",
-                'type' => 'text',
+                'name' => "Leaders",
+                'type' => 'number',
                 'default' => '0',
                 'show_in_table' => true
             ];
-            $fields['contact_count'] = [
-                'name' => "Participants #",
-                'type' => 'text',
+            $fields['disciple_count'] = [
+                'name' => "Disciples",
+                'type' => 'number',
                 'default' => '0',
                 'show_in_table' => true
             ];
             $fields['group_count'] = [
-                'name' => "Groups #",
-                'type' => 'text',
+                'name' => "Groups",
+                'type' => 'number',
+                'default' => '0',
+                'show_in_table' => false
+            ];
+            $fields['church_count'] = [
+                'name' => "Churches",
+                'type' => 'number',
                 'default' => '0',
                 'show_in_table' => false
             ];
@@ -62,43 +76,28 @@ class DT_Streams_Post_Type {
                 'silent' => true,
             ];
             $fields["status"] = [
-                'name' => "Status",
+                'name' => "Phase",
                 'type' => 'key_select',
                 'default' => [
-                    'new'   => [
-                        "label" => _x( 'New', 'Streams Status label', 'disciple_tools' ),
-                        "description" => _x( "New streams added to the system", "Streams Status field description", 'disciple_tools' ),
+                    'model'   => [
+                        "label" => _x( 'Model', 'Streams Status label', 'disciple_tools' ),
+                        "description" => _x( "This stream is in the model phase.", "Streams Status field description", 'disciple_tools' ),
                         "color" => "#F43636",
                     ],
-                    'proposed'   => [
-                        "label" => _x( 'Proposed', 'Streams Status label', 'disciple_tools' ),
-                        "description" => _x( "This streams has been proposed and is in initial conversations", "Streams Status field description", 'disciple_tools' ),
+                    'assist'   => [
+                        "label" => _x( 'Assist', 'Streams Status label', 'disciple_tools' ),
+                        "description" => _x( "This stream is in the assist phase.", "Streams Status field description", 'disciple_tools' ),
                         "color" => "#F43636",
                     ],
-                    'scheduled' => [
-                        "label" => _x( 'Scheduled', 'Streams Status label', 'disciple_tools' ),
-                        "description" => _x( "This streams is confirmed, on the calendar.", "Streams Status field description", 'disciple_tools' ),
+                    'watch' => [
+                        "label" => _x( 'Watch', 'Streams Status label', 'disciple_tools' ),
+                        "description" => _x( "This stream is in the watch phase.", "Streams Status field description", 'disciple_tools' ),
                         "color" => "#FF9800",
                     ],
-                    'in_progress' => [
-                        "label" => _x( 'In Progress', 'Streams Status label', 'disciple_tools' ),
-                        "description" => _x( "This streams is confirmed, on the calendar, or currently active.", "Streams Status field description", 'disciple_tools' ),
+                    'leave' => [
+                        "label" => _x( 'Leave', 'Streams Status label', 'disciple_tools' ),
+                        "description" => _x( "This stream is in the leave stage. It is self-sustaining.", "Streams Status field description", 'disciple_tools' ),
                         "color" => "#FF9800",
-                    ],
-                    'complete'     => [
-                        "label" => _x( "Complete", 'Streams Status label', 'disciple_tools' ),
-                        "description" => _x( "This streams has successfully completed", "Streams Status field description", 'disciple_tools' ),
-                        "color" => "#FF9800",
-                    ],
-                    'paused'       => [
-                        "label" => _x( 'Paused', 'Streams Status label', 'disciple_tools' ),
-                        "description" => _x( "This contact is currently on hold. It has potential of getting scheduled in the future.", "Streams Status field description", 'disciple_tools' ),
-                        "color" => "#FF9800",
-                    ],
-                    'closed'       => [
-                        "label" => _x( 'Closed', 'Streams Status label', 'disciple_tools' ),
-                        "description" => _x( "This streams is no longer going to happen.", "Streams Status field description", 'disciple_tools' ),
-                        "color" => "#F43636",
                     ],
                 ],
                 'show_in_table' => true
@@ -109,6 +108,20 @@ class DT_Streams_Post_Type {
                 'default' => '',
                 'show_in_table' => true
             ];
+            $fields['parents'] = [
+                'name' => "Parent Streams",
+                'type' => 'connection',
+                "post_type" => 'streams',
+                "p2p_direction" => "from",
+                "p2p_key" => "streams_to_streams",
+            ];
+            $fields['children'] = [
+                'name' => "Child Streams",
+                'type' => 'connection',
+                "post_type" => 'streams',
+                "p2p_direction" => "to",
+                "p2p_key" => "streams_to_streams",
+            ];
             $fields['leaders'] = [
                 'name' => "Leaders",
                 'type' => 'connection',
@@ -117,7 +130,7 @@ class DT_Streams_Post_Type {
                 "p2p_key" => "streams_to_leaders",
             ];
             $fields['contacts'] = [
-                'name' => "Participants",
+                'name' => "Key Disciples",
                 'type' => 'connection',
                 "post_type" => 'contacts',
                 "p2p_direction" => "from",
@@ -130,11 +143,41 @@ class DT_Streams_Post_Type {
                 "p2p_direction" => "from",
                 "p2p_key" => "streams_to_groups",
             ];
-
+            $fields["people_groups"] = [
+                "name" => __( 'People Groups', 'disciple_tools' ),
+                'description' => _x( 'The people groups represented by this group.', 'Optional Documentation', 'disciple_tools' ),
+                "type" => "connection",
+                "post_type" => "peoplegroups",
+                "p2p_direction" => "from",
+                "p2p_key" => "streams_to_peoplegroups"
+            ];
+            $fields["coaches"] = [
+                "name" => __( 'Coach / Church Planter', 'disciple_tools' ),
+                'description' => _x( 'The person who planted and/or is coaching this stream. Multiple people can be coaches / church planters of this group.', 'Optional Documentation', 'disciple_tools' ),
+                "type" => "connection",
+                "post_type" => "contacts",
+                "p2p_direction" => "from",
+                "p2p_key" => "streams_to_coaches"
+            ];
+            if ( $this->trainings ) {
+                $fields['training_count'] = [
+                    'name' => "Trainings",
+                    'type' => 'number',
+                    'default' => '0',
+                    'show_in_table' => false
+                ];
+                $fields['trainings'] = [
+                    'name' => "Trainings",
+                    'type' => 'connection',
+                    "post_type" => 'trainings',
+                    "p2p_direction" => "from",
+                    "p2p_key" => "streams_to_groups",
+                ];
+            }
         }
         if ( $post_type === 'groups' ){
             $fields['streams'] = [
-                'name' => "Streamss",
+                'name' => "Streams",
                 'type' => 'connection',
                 "post_type" => 'streams',
                 "p2p_direction" => "to",
@@ -149,12 +192,21 @@ class DT_Streams_Post_Type {
                 "p2p_direction" => "to",
                 "p2p_key" => "streams_to_leaders",
             ];
-            $fields['streams_participant'] = [
-                'name' => "Participant",
+            $fields['streams_contact'] = [
+                'name' => "Key Disciple",
                 'type' => 'connection',
                 "post_type" => 'streams',
                 "p2p_direction" => "to",
                 "p2p_key" => "streams_to_contacts",
+            ];
+        }
+        if ( $post_type === 'trainings' ){
+            $fields['streams'] = [
+                'name' => "Streams",
+                'type' => 'connection',
+                "post_type" => 'streams',
+                "p2p_direction" => "to",
+                "p2p_key" => "streams_to_trainings",
             ];
         }
         return $fields;
@@ -176,23 +228,47 @@ class DT_Streams_Post_Type {
             'from' => 'streams',
             'to' => 'contacts'
         ]);
+        p2p_register_connection_type([
+            'name' => 'streams_to_streams',
+            'from' => 'streams',
+            'to' => 'streams'
+        ]);
+        p2p_register_connection_type([
+            'name' => 'streams_to_peoplegroups',
+            'from' => 'streams',
+            'to' => 'peoplegroups'
+        ]);
+        p2p_register_connection_type([
+            'name' => 'streams_to_coaches',
+            'from' => 'streams',
+            'to' => 'contacts'
+        ]);
+        if ( $this->trainings ) {
+            p2p_register_connection_type([
+                'name' => 'streams_to_trainings',
+                'from' => 'streams',
+                'to' => 'trainings'
+            ]);
+        }
 
     }
 
     public function dt_details_additional_section_ids( $sections, $post_type = "" ){
         if ( $post_type === "streams"){
             $sections[] = 'connections';
-            $sections[] = 'location';
-//            $sections[] = 'meta';
+            $sections[] = 'totals';
         }
         if ( $post_type === 'contacts' || $post_type === 'groups' ){
+            $sections[] = 'streams';
+        }
+        if ( $post_type === 'trainings' ){
             $sections[] = 'streams';
         }
         return $sections;
     }
 
     public function dt_details_additional_section( $section, $post_type ){
-        // top tile on streams details page // @todo remove unncessary header or add editing capability
+
         if ( $section === "details" && $post_type === "streams" ){
             $post_settings = apply_filters( "dt_get_post_type_settings", [], $post_type );
             $dt_post = DT_Posts::get_post( $post_type, get_the_ID() );
@@ -202,106 +278,122 @@ class DT_Streams_Post_Type {
                     <?php render_field_for_display( 'status', $post_settings["fields"], $dt_post ); ?>
                 </div>
                 <div class="cell medium-6">
-                    <?php render_field_for_display( 'start_date', $post_settings["fields"], $dt_post ); ?>
+                    <?php render_field_for_display( 'coaches', $post_settings["fields"], $dt_post ); ?>
                 </div>
+                <div class="cell medium-6">
+                    <?php /* If Mapbox Upgrade */ if ( DT_Mapbox_API::get_key() ) : ?>
+                         <a class="button clear" id="new-mapbox-search"><?php esc_html_e( "add", 'zume' ) ?></a>
+
+                        <div id="mapbox-wrapper"></div>
+
+                        <?php if ( isset( $dt_post['location_grid_meta'] ) ) : ?>
+
+                            <!-- reveal -->
+                            <div class="reveal" id="map-reveal" data-reveal>
+                                <div id="map-reveal-content"><!-- load content here --><div class="loader">Loading...</div></div>
+                                <button class="close-button" data-close aria-label="Close modal" type="button">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php endif; ?>
+
+                    <?php /* No Mapbox Upgrade */ else : ?>
+
+                        <?php render_field_for_display( 'location_grid', $post_settings["fields"], $dt_post ); ?>
+
+                    <?php endif; ?>
+                </div>
+                <div class="cell medium-6">
+
+                    <?php render_field_for_display( 'start_date', $post_settings["fields"], $dt_post ); ?>
+
+                </div>
+
             </div>
             <?php
         }
 
-        if ($section === "location" && $post_type === "streams"){
-            $post_type = get_post_type();
-            $post_settings = apply_filters( "dt_get_post_type_settings", [], $post_type );
-            $dt_post = DT_Posts::get_post( $post_type, get_the_ID() );
-
-            ?>
-
-            <label class="section-header">
-                <?php esc_html_e( 'Location', 'disciple_tools' )?> <a class="button clear" id="new-mapbox-search"><?php esc_html_e( "add", 'zume' ) ?></a>
-            </label>
-
-            <?php /* If Mapbox Upgrade */ if ( DT_Mapbox_API::get_key() ) : ?>
-
-                <div id="mapbox-wrapper"></div>
-
-                <?php if ( isset( $dt_post['location_grid_meta'] ) ) : ?>
-
-                    <!-- reveal -->
-                    <div class="reveal" id="map-reveal" data-reveal>
-                        <div id="map-reveal-content"><!-- load content here --><div class="loader">Loading...</div></div>
-                        <button class="close-button" data-close aria-label="Close modal" type="button">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                <?php endif; ?>
-
-            <?php /* No Mapbox Upgrade */ else : ?>
-
-                <?php render_field_for_display( 'location_grid', $post_settings["fields"], $dt_post ); ?>
-
-            <?php endif; ?>
-
-
-        <?php }
-
-        // Connections tile on Streamss details page
+        // Connections tile on Streams details page
         if ($section === "connections" && $post_type === "streams"){
             $post_type = get_post_type();
             $post_settings = apply_filters( "dt_get_post_type_settings", [], $post_type );
             $dt_post = DT_Posts::get_post( $post_type, get_the_ID() );
             ?>
 
-            <label class="section-header">
+            <h3 class="section-header">
                 <?php esc_html_e( 'Connections', 'disciple_tools' )?>
-            </label>
+                <button class="help-button float-right" data-section="connections-help-text">
+                    <img class="help-icon" src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/help.svg' ) ?>"/>
+                </button>
+                <button class="section-chevron chevron_down">
+                    <img src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/chevron_down.svg' ) ?>"/>
+                </button>
+                <button class="section-chevron chevron_up">
+                    <img src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/chevron_up.svg' ) ?>"/>
+                </button>
+            </h3>
+            <div class="section-body">
+                <?php render_field_for_display( 'leaders', $post_settings["fields"], $dt_post ) ?>
 
-            <?php render_field_for_display( 'leaders', $post_settings["fields"], $dt_post ) ?>
+                <?php render_field_for_display( 'contacts', $post_settings["fields"], $dt_post ) ?>
 
-            <?php render_field_for_display( 'leader_count', $post_settings["fields"], $dt_post ) ?>
+                <?php render_field_for_display( 'groups', $post_settings["fields"], $dt_post ) ?>
 
-            <?php render_field_for_display( 'contacts', $post_settings["fields"], $dt_post ) ?>
+                <?php render_field_for_display( 'people_groups', $post_settings["fields"], $dt_post ) ?>
 
-            <?php render_field_for_display( 'contact_count', $post_settings["fields"], $dt_post ) ?>
+                <?php if ( $this->trainings ) : ?>
 
-            <?php render_field_for_display( 'groups', $post_settings["fields"], $dt_post ) ?>
+                    <?php render_field_for_display( 'trainings', $post_settings["fields"], $dt_post ) ?>
 
+                <?php endif; ?>
+
+                <?php render_field_for_display( 'parents', $post_settings["fields"], $dt_post ) ?>
+
+                <?php render_field_for_display( 'children', $post_settings["fields"], $dt_post ) ?>
+            </div>
         <?php }
 
-        // Connections tile on Streamss details page
-        /*
-        if ($section === "meta" && $post_type === "streams"){
+        // Connections tile on Streams details page
+        if ($section === "totals" && $post_type === "streams"){
             $post_type = get_post_type();
             $post_settings = apply_filters( "dt_get_post_type_settings", [], $post_type );
             $dt_post = DT_Posts::get_post( $post_type, get_the_ID() );
             ?>
 
             <label class="section-header">
-                <?php esc_html_e( 'Details', 'disciple_tools' )?>
+                <?php esc_html_e( 'Stream Totals', 'disciple_tools' )?>
+                <button class="help-button float-right" data-section="reports-help-text">
+                    <img class="help-icon" src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/help.svg' ) ?>"/>
+                </button>
+                <button class="section-chevron chevron_down">
+                    <img src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/chevron_down.svg' ) ?>"/>
+                </button>
+                <button class="section-chevron chevron_up">
+                    <img src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/chevron_up.svg' ) ?>"/>
+                </button>
             </label>
+            <div class="section-body">
 
+                <?php render_field_for_display( 'leader_count', $post_settings["fields"], $dt_post ) ?>
 
-            <!-- @todo make live date adding -->
-            <div class="section-subheader">More dates</div>
-            <div id="streams-dates"></div>
+                <?php render_field_for_display( 'disciple_count', $post_settings["fields"], $dt_post ) ?>
 
-            <a class="button small primary-button" onclick="add_new_date()">add</a>
+                <?php render_field_for_display( 'group_count', $post_settings["fields"], $dt_post ) ?>
 
-            <script>
-               function add_new_date() {
-                   let masonGrid = $('.grid')
+                <?php render_field_for_display( 'church_count', $post_settings["fields"], $dt_post ) ?>
 
-                   jQuery('#streams-dates').append(`<input type='text' class='date-picker dt_date_picker hasDatepicker' id='start_date' autocomplete='off' value='February 16, 2020'>`)
+                <?php if ( $this->trainings ) : ?>
 
-                   masonGrid.masonry({
-                       itemSelector: '.grid-item',
-                       percentPosition: true
-                   });
-               }
-            </script>
+                    <?php render_field_for_display( 'training_count', $post_settings["fields"], $dt_post ) ?>
+
+                <?php endif; ?>
+
+            </div>
+
         <?php }
-        */
 
 
-        // Streamss tile on contacts details page
+        // Streams tile on contacts details page
         if ($section == "streams" && $post_type === "contacts"){
             $post_type = get_post_type();
             $post_settings = apply_filters( "dt_get_post_type_settings", [], $post_type );
@@ -309,16 +401,27 @@ class DT_Streams_Post_Type {
             ?>
 
             <label class="section-header">
-                <?php esc_html_e( 'Streamss', 'disciple_tools' )?>
+                <?php esc_html_e( 'Streams', 'disciple_tools' )?>
+                <button class="help-button float-right" data-section="streams-help-text">
+                    <img class="help-icon" src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/help.svg' ) ?>"/>
+                </button>
+                <button class="section-chevron chevron_down">
+                    <img src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/chevron_down.svg' ) ?>"/>
+                </button>
+                <button class="section-chevron chevron_up">
+                    <img src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/chevron_up.svg' ) ?>"/>
+                </button>
             </label>
+            <div class="section-body">
+                <?php render_field_for_display( 'streams_leader', $post_settings["fields"], $dt_post ) ?>
 
-            <?php render_field_for_display( 'streams_leader', $post_settings["fields"], $dt_post ) ?>
+                <?php render_field_for_display( 'streams_participant', $post_settings["fields"], $dt_post ) ?>
+            </div>
 
-            <?php render_field_for_display( 'streams_participant', $post_settings["fields"], $dt_post ) ?>
 
         <?php }
 
-        // Streamss tile on groups details page
+        // Streams tile on groups details page
         if ($section == "streams" && $post_type === "groups"){
             $post_type = get_post_type();
             $post_settings = apply_filters( "dt_get_post_type_settings", [], $post_type );
@@ -326,14 +429,91 @@ class DT_Streams_Post_Type {
             ?>
 
             <label class="section-header">
-                <?php esc_html_e( 'Streamss', 'disciple_tools' )?>
+                <?php esc_html_e( 'Streams', 'disciple_tools' )?>
+                <button class="help-button float-right" data-section="streams-help-text">
+                    <img class="help-icon" src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/help.svg' ) ?>"/>
+                </button>
+                <button class="section-chevron chevron_down">
+                    <img src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/chevron_down.svg' ) ?>"/>
+                </button>
+                <button class="section-chevron chevron_up">
+                    <img src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/chevron_up.svg' ) ?>"/>
+                </button>
             </label>
+            <div class="section-body">
 
-            <?php render_field_for_display( 'streams', $post_settings["fields"], $dt_post ) ?>
+                <?php render_field_for_display( 'streams', $post_settings["fields"], $dt_post ) ?>
+
+            </div>
 
         <?php }
 
+        if ($section == "streams" && $post_type === "trainings"){
+            $post_type = get_post_type();
+            $post_settings = apply_filters( "dt_get_post_type_settings", [], $post_type );
+            $dt_post = DT_Posts::get_post( $post_type, get_the_ID() );
+            ?>
 
+            <label class="section-header">
+                <?php esc_html_e( 'Streams', 'disciple_tools' )?>
+                <button class="help-button float-right" data-section="streams-help-text">
+                    <img class="help-icon" src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/help.svg' ) ?>"/>
+                </button>
+                <button class="section-chevron chevron_down">
+                    <img src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/chevron_down.svg' ) ?>"/>
+                </button>
+                <button class="section-chevron chevron_up">
+                    <img src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/chevron_up.svg' ) ?>"/>
+                </button>
+            </label>
+            <div class="section-body">
+
+                <?php render_field_for_display( 'streams', $post_settings["fields"], $dt_post ) ?>
+
+            </div>
+
+        <?php }
+    }
+
+    public function modal_help_text() {
+        if ( is_singular( "streams" ) ) {
+            ?>
+            <div class="help-section" id="connections-help-text" style="display: none">
+                <h3><?php echo esc_html_x( "Connections", 'Optional Documentation', 'disciple_tools' ) ?></h3>
+                <p><?php echo esc_html_x( "These are key or tracked connections to leaders, disciples, groups/churches, and trainings.", 'Optional Documentation', 'disciple_tools' ) ?></p>
+                <p><?php echo esc_html_x( "Tracked connections allow for specific responsibility and tracking, versus totals tracking of stream generations.", 'Optional Documentation', 'disciple_tools' ) ?></p>
+            </div>
+            <div class="help-section" id="reports-help-text" style="display: none">
+                <h3><?php echo esc_html_x( "Reports", 'Optional Documentation', 'disciple_tools' ) ?></h3>
+                <p><?php echo esc_html_x( "These are key or tracked connections to leaders, disciples, groups/churches, and trainings.", 'Optional Documentation', 'disciple_tools' ) ?></p>
+                <p><?php echo esc_html_x( "Tracked connections allow for specific responsibility and tracking, versus totals tracking of stream generations.", 'Optional Documentation', 'disciple_tools' ) ?></p>
+            </div>
+            <?php
+        }
+        if ( is_singular( "contacts" ) ) {
+            ?>
+            <div class="help-section" id="streams-help-text" style="display: none">
+                <h3><?php echo esc_html_x( "Streams", 'Optional Documentation', 'disciple_tools' ) ?></h3>
+                <p><?php echo esc_html_x( "You can connect this contact as a leader or a participant to a stream.", 'Optional Documentation', 'disciple_tools' ) ?></p>
+            </div>
+            <?php
+        }
+        if ( is_singular( "groups" ) ) {
+            ?>
+            <div class="help-section" id="streams-help-text" style="display: none">
+                <h3><?php echo esc_html_x( "Streams", 'Optional Documentation', 'disciple_tools' ) ?></h3>
+                <p><?php echo esc_html_x( "You can connect this group to a stream.", 'Optional Documentation', 'disciple_tools' ) ?></p>
+            </div>
+            <?php
+        }
+        if ( is_singular( "trainings" ) ) {
+            ?>
+            <div class="help-section" id="streams-help-text" style="display: none">
+                <h3><?php echo esc_html_x( "Streams", 'Optional Documentation', 'disciple_tools' ) ?></h3>
+                <p><?php echo esc_html_x( "You can connect this group to a stream.", 'Optional Documentation', 'disciple_tools' ) ?></p>
+            </div>
+            <?php
+        }
     }
 
     private function update_event_counts( $streams_id, $action = "added", $type = 'contacts' ){
@@ -419,45 +599,28 @@ class DT_Streams_Post_Type {
             $filters["filters"][] = [
                 'ID' => 'all_new',
                 'tab' => 'all_streams',
-                'name' => _x( "New", 'List Filters', 'disciple_tools' ),
-                'query' => [ "status" => [ "new" ] ],
+                'name' => _x( "Model", 'List Filters', 'disciple_tools' ),
+                'query' => [ "status" => [ "model" ] ],
             ];
             $filters["filters"][] = [
                 'ID' => 'all_proposed',
                 'tab' => 'all_streams',
-                'name' => _x( "Proposed", 'List Filters', 'disciple_tools' ),
-                'query' => [ "status" => [ "proposed" ] ],
+                'name' => _x( "Assist", 'List Filters', 'disciple_tools' ),
+                'query' => [ "status" => [ "assist" ] ],
             ];
             $filters["filters"][] = [
                 'ID' => 'all_scheduled',
                 'tab' => 'all_streams',
-                'name' => _x( "Scheduled", 'List Filters', 'disciple_tools' ),
-                'query' => [ "status" => [ "scheduled" ] ],
+                'name' => _x( "Watch", 'List Filters', 'disciple_tools' ),
+                'query' => [ "status" => [ "watch" ] ],
             ];
             $filters["filters"][] = [
                 'ID' => 'all_in_progress',
                 'tab' => 'all_streams',
-                'name' => _x( "In Progress", 'List Filters', 'disciple_tools' ),
-                'query' => [ "status" => [ "in_progress" ] ],
+                'name' => _x( "Leave", 'List Filters', 'disciple_tools' ),
+                'query' => [ "status" => [ "leave" ] ],
             ];
-            $filters["filters"][] = [
-                'ID' => 'all_complete',
-                'tab' => 'all_streams',
-                'name' => _x( "Complete", 'List Filters', 'disciple_tools' ),
-                'query' => [ "status" => [ "complete" ] ],
-            ];
-            $filters["filters"][] = [
-                'ID' => 'all_paused',
-                'tab' => 'all_streams',
-                'name' => _x( "Paused", 'List Filters', 'disciple_tools' ),
-                'query' => [ "status" => [ "paused" ] ],
-            ];
-            $filters["filters"][] = [
-                'ID' => 'all_closed',
-                'tab' => 'all_streams',
-                'name' => _x( "Closed", 'List Filters', 'disciple_tools' ),
-                'query' => [ "status" => [ "closed" ] ],
-            ];
+
         }
         return $filters;
     }

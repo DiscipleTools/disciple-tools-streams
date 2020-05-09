@@ -304,7 +304,7 @@ function write_streams_choropleth_map() {
                     <div id='legend' class='legend'>
                         <div class="grid-x grid-margin-x grid-padding-x">
                             <div class="cell small-1 center info-bar-font">
-                                Streamss 
+                                Streams 
                             </div>
                             <div class="cell small-2 center border-left">
                                 <select id="level" class="small" style="width:170px;">
