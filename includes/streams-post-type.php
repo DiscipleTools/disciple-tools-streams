@@ -1,6 +1,12 @@
 <?php
 
 class DT_Streams_Post_Type {
+
+    // Setup post type naming
+    public $post_type = 'streams';
+    public $single = 'Stream';
+    public $plural = 'Streams';
+
     private static $_instance = null;
     public static function instance() {
         if ( is_null( self::$_instance ) ) {
@@ -32,7 +38,7 @@ class DT_Streams_Post_Type {
 
     public function after_setup_theme(){
         if ( class_exists( 'Disciple_Tools_Post_Type_Template' )) {
-            new Disciple_Tools_Post_Type_Template( "streams", 'Stream', 'Streams' );
+            new Disciple_Tools_Post_Type_Template( $this->post_type, ucwords( $this->single ), ucwords( $this->plural ) );
         }
     }
 
@@ -74,39 +80,6 @@ class DT_Streams_Post_Type {
                 'default' => [],
                 'show_in_table' => false,
                 'silent' => true,
-            ];
-            $fields["status"] = [
-                'name' => "Phase",
-                'type' => 'key_select',
-                'default' => [
-                    'model'   => [
-                        "label" => _x( 'Model', 'Streams Status label', 'disciple_tools' ),
-                        "description" => _x( "This stream is in the model phase.", "Streams Status field description", 'disciple_tools' ),
-                        "color" => "#F43636",
-                    ],
-                    'assist'   => [
-                        "label" => _x( 'Assist', 'Streams Status label', 'disciple_tools' ),
-                        "description" => _x( "This stream is in the assist phase.", "Streams Status field description", 'disciple_tools' ),
-                        "color" => "#F43636",
-                    ],
-                    'watch' => [
-                        "label" => _x( 'Watch', 'Streams Status label', 'disciple_tools' ),
-                        "description" => _x( "This stream is in the watch phase.", "Streams Status field description", 'disciple_tools' ),
-                        "color" => "#FF9800",
-                    ],
-                    'leave' => [
-                        "label" => _x( 'Leave', 'Streams Status label', 'disciple_tools' ),
-                        "description" => _x( "This stream is in the leave stage. It is self-sustaining.", "Streams Status field description", 'disciple_tools' ),
-                        "color" => "#FF9800",
-                    ],
-                ],
-                'show_in_table' => true
-            ];
-            $fields["start_date"] = [
-                'name' => "Start Date",
-                'type' => 'date',
-                'default' => '',
-                'show_in_table' => true
             ];
             $fields['parents'] = [
                 'name' => "Parent Streams",
@@ -256,7 +229,8 @@ class DT_Streams_Post_Type {
     public function dt_details_additional_section_ids( $sections, $post_type = "" ){
         if ( $post_type === "streams"){
             $sections[] = 'connections';
-            $sections[] = 'totals';
+            $sections[] = 'locations';
+
         }
         if ( $post_type === 'contacts' || $post_type === 'groups' ){
             $sections[] = 'streams';
@@ -274,40 +248,24 @@ class DT_Streams_Post_Type {
             $dt_post = DT_Posts::get_post( $post_type, get_the_ID() );
             ?>
             <div class="grid-x grid-padding-x">
-                <div class="cell medium-6">
+                <?php
+                if ( isset( $post_settings["fields"]['status'] ) ) {
+                    ?>
+                    <div class="cell medium-6">
                     <?php render_field_for_display( 'status', $post_settings["fields"], $dt_post ); ?>
-                </div>
-                <div class="cell medium-6">
-                    <?php render_field_for_display( 'coaches', $post_settings["fields"], $dt_post ); ?>
-                </div>
-                <div class="cell medium-6">
-                    <?php /* If Mapbox Upgrade */ if ( DT_Mapbox_API::get_key() ) : ?>
-                         <a class="button clear" id="new-mapbox-search"><?php esc_html_e( "add", 'zume' ) ?></a>
-
-                        <div id="mapbox-wrapper"></div>
-
-                        <?php if ( isset( $dt_post['location_grid_meta'] ) ) : ?>
-
-                            <!-- reveal -->
-                            <div class="reveal" id="map-reveal" data-reveal>
-                                <div id="map-reveal-content"><!-- load content here --><div class="loader">Loading...</div></div>
-                                <button class="close-button" data-close aria-label="Close modal" type="button">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        <?php endif; ?>
-
-                    <?php /* No Mapbox Upgrade */ else : ?>
-
-                        <?php render_field_for_display( 'location_grid', $post_settings["fields"], $dt_post ); ?>
-
-                    <?php endif; ?>
-                </div>
-                <div class="cell medium-6">
-
-                    <?php render_field_for_display( 'start_date', $post_settings["fields"], $dt_post ); ?>
-
-                </div>
+                    </div>
+                    <?php
+                }
+                ?>
+                <?php
+                if ( isset( $post_settings["fields"]['type'] ) ) {
+                    ?>
+                    <div class="cell medium-6">
+                        <?php render_field_for_display( 'type', $post_settings["fields"], $dt_post ); ?>
+                    </div>
+                    <?php
+                }
+                ?>
 
             </div>
             <?php
@@ -333,6 +291,9 @@ class DT_Streams_Post_Type {
                 </button>
             </h3>
             <div class="section-body">
+
+                <?php render_field_for_display( 'coaches', $post_settings["fields"], $dt_post ); ?>
+
                 <?php render_field_for_display( 'leaders', $post_settings["fields"], $dt_post ) ?>
 
                 <?php render_field_for_display( 'contacts', $post_settings["fields"], $dt_post ) ?>
@@ -351,6 +312,41 @@ class DT_Streams_Post_Type {
 
                 <?php render_field_for_display( 'children', $post_settings["fields"], $dt_post ) ?>
             </div>
+        <?php }
+
+        if ($section === "locations" && $post_type === $this->post_type ){
+            $post_type = get_post_type();
+            $post_settings = apply_filters( "dt_get_post_type_settings", [], $post_type );
+            $dt_post = DT_Posts::get_post( $post_type, get_the_ID() );
+
+            ?>
+
+            <label class="section-header">
+                <?php esc_html_e( 'Locations', 'disciple_tools' )?> <a class="button clear" id="new-mapbox-search"><?php esc_html_e( "add", 'disciple_tools' ) ?></a>
+            </label>
+
+            <?php /* If Mapbox Upgrade */ if ( DT_Mapbox_API::get_key() ) : ?>
+
+                <div id="mapbox-wrapper"></div>
+
+                <?php if ( isset( $dt_post['location_grid_meta'] ) ) : ?>
+
+                    <!-- reveal -->
+                    <div class="reveal" id="map-reveal" data-reveal>
+                        <div id="map-reveal-content"><!-- load content here --><div class="loader">Loading...</div></div>
+                        <button class="close-button" data-close aria-label="Close modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+            <?php /* No Mapbox Upgrade */ else : ?>
+
+                <?php render_field_for_display( 'location_grid', $post_settings["fields"], $dt_post ); ?>
+
+            <?php endif; ?>
+
+
         <?php }
 
         // Connections tile on Streams details page
