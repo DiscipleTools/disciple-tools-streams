@@ -230,7 +230,7 @@ class DT_Streams_Post_Type {
         if ( $post_type === "streams"){
             $sections[] = 'connections';
             $sections[] = 'locations';
-            $sections[] = 'totals';
+            $sections[] = 'stream_totals';
         }
         if ( $post_type === 'contacts' || $post_type === 'groups' ){
             $sections[] = 'streams';
@@ -350,7 +350,7 @@ class DT_Streams_Post_Type {
         <?php }
 
         // Connections tile on Streams details page
-        if ($section === "totals" && $post_type === "streams"){
+        if ($section === "stream_totals" && $post_type === "streams"){
             $post_type = get_post_type();
             $post_settings = apply_filters( "dt_get_post_type_settings", [], $post_type );
             $dt_post = DT_Posts::get_post( $post_type, get_the_ID() );
