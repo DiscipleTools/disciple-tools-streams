@@ -230,7 +230,7 @@ class DT_Streams_Post_Type {
         if ( $post_type === "streams"){
             $sections[] = 'connections';
             $sections[] = 'locations';
-
+            $sections[] = 'totals';
         }
         if ( $post_type === 'contacts' || $post_type === 'groups' ){
             $sections[] = 'streams';
