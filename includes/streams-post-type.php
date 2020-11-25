@@ -179,6 +179,7 @@ class DT_Streams_Post_Type {
                 'type' => 'connection',
                 "post_type" => 'streams',
                 "p2p_direction" => "to",
+                "tile" => 'other',
                 "p2p_key" => "streams_to_trainings",
             ];
         }
@@ -235,9 +236,9 @@ class DT_Streams_Post_Type {
         if ( $post_type === 'contacts' || $post_type === 'groups' ){
             $sections[] = 'streams';
         }
-        if ( $post_type === 'trainings' ){
-            $sections[] = 'streams';
-        }
+//        if ( $post_type === 'trainings' ){
+//            $sections[] = 'streams';
+//        }
         return $sections;
     }
 
@@ -444,31 +445,31 @@ class DT_Streams_Post_Type {
 
         <?php }
 
-        if ($section == "streams" && $post_type === "trainings"){
-            $post_type = get_post_type();
-            $post_settings = apply_filters( "dt_get_post_type_settings", [], $post_type );
-            $dt_post = DT_Posts::get_post( $post_type, get_the_ID() );
-            ?>
-
-            <label class="section-header">
-                <?php esc_html_e( 'Streams', 'disciple_tools' )?>
-                <button class="help-button float-right" data-section="streams-help-text">
-                    <img class="help-icon" src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/help.svg' ) ?>"/>
-                </button>
-                <button class="section-chevron chevron_down">
-                    <img src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/chevron_down.svg' ) ?>"/>
-                </button>
-                <button class="section-chevron chevron_up">
-                    <img src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/chevron_up.svg' ) ?>"/>
-                </button>
-            </label>
-            <div class="section-body">
-
-                <?php render_field_for_display( 'streams', $post_settings["fields"], $dt_post ) ?>
-
-            </div>
-
-        <?php }
+//        if ($section == "streams" && $post_type === "trainings"){
+//            $post_type = get_post_type();
+//            $post_settings = apply_filters( "dt_get_post_type_settings", [], $post_type );
+//            $dt_post = DT_Posts::get_post( $post_type, get_the_ID() );
+//            ?>
+<!---->
+<!--            <label class="section-header">-->
+<!--                --><?php //esc_html_e( 'Streams', 'disciple_tools' )?>
+<!--                <button class="help-button float-right" data-section="streams-help-text">-->
+<!--                    <img class="help-icon" src="--><?php //echo esc_html( get_template_directory_uri() . '/dt-assets/images/help.svg' ) ?><!--"/>-->
+<!--                </button>-->
+<!--                <button class="section-chevron chevron_down">-->
+<!--                    <img src="--><?php //echo esc_html( get_template_directory_uri() . '/dt-assets/images/chevron_down.svg' ) ?><!--"/>-->
+<!--                </button>-->
+<!--                <button class="section-chevron chevron_up">-->
+<!--                    <img src="--><?php //echo esc_html( get_template_directory_uri() . '/dt-assets/images/chevron_up.svg' ) ?><!--"/>-->
+<!--                </button>-->
+<!--            </label>-->
+<!--            <div class="section-body">-->
+<!---->
+<!--                --><?php //render_field_for_display( 'streams', $post_settings["fields"], $dt_post ) ?>
+<!---->
+<!--            </div>-->
+<!---->
+<!--        --><?php //}
     }
 
     public function modal_help_text() {
