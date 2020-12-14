@@ -51,7 +51,7 @@ class DT_Stream_Apps extends DT_Module_Base {
                 }
                 ?>
                 <script>
-                    var magicApps = [<?php echo json_encode($types) ?>][0]
+                    var magicApps = [<?php echo json_encode( $types ) ?>][0]
                 </script>
                 <?php
             } /* end empty types if */
@@ -59,10 +59,10 @@ class DT_Stream_Apps extends DT_Module_Base {
 
         if ( $current_post_type === 'streams' && $section === "reports" ){
             $reports = DT_Stream_App_Report::instance()->statistics_reports( get_the_ID() );
-            dt_write_log($reports);
+            dt_write_log( $reports );
 
             if ( ! empty( $reports ) ) {
-                foreach( $reports as $year => $report ){
+                foreach ( $reports as $year => $report ){
                     ?>
                     <div class="section-subheader">
                         Reports in <?php echo esc_html( $year ) ?>
@@ -85,7 +85,6 @@ class DT_Stream_Apps extends DT_Module_Base {
                 </div>
                 <?php
             }
-
         } /* end stream/app if*/
     }
 }
