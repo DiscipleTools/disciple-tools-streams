@@ -433,7 +433,7 @@ class DT_Stream_App_Report
                 'root' => esc_url_raw( rest_url() ),
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'parts' => $this->parts,
-                'post' => DT_Posts::get_post( 'streams', $this->parts['post_id'] ),
+                'name' => get_the_title( $this->parts['post_id'] ),
                 'translations' => [
                     'add' => __( 'Add', 'disciple-tools' )
                 ],
@@ -448,7 +448,7 @@ class DT_Stream_App_Report
                 let content = $('#content')
 
                 /* set title */
-                title.html( _.escape( postReport.post.name ) )
+                title.html( _.escape( postReport.name ) )
 
                 /* FUNCTIONS */
                 window.load_reports = ( data ) => {
@@ -956,7 +956,7 @@ class DT_Stream_App_Report
      * @return bool
      */
     public function authorize_url( $authorized ){
-        if ( isset( $_SERVER['REQUEST_URI'] ) && strpos( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ), 'dt-coaching-magic/v1/'.$this->type ) !== false ) {
+        if ( isset( $_SERVER['REQUEST_URI'] ) && strpos( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ), $this->root . '/v1/'.$this->type ) !== false ) {
             $authorized = true;
         }
         return $authorized;
@@ -985,7 +985,7 @@ class DT_Stream_App_Report
             return new WP_Error( __METHOD__, "Missing parameters", [ 'status' => 400 ] );
         }
 
-        $params = recursive_sanitize_text_field( $params );
+        $params = dt_recursive_sanitize_array( $params );
 
         // validate
         $magic = new DT_Magic_URL( "stream_app" );
@@ -997,7 +997,7 @@ class DT_Stream_App_Report
 
         $action = sanitize_text_field( wp_unslash( $params['action'] ) );
 
-        $params = recursive_sanitize_text_field( $params );
+        $params = dt_recursive_sanitize_array( $params );
 
         switch ( $action ) {
             case 'insert':
