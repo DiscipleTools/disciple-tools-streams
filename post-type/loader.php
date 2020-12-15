@@ -10,13 +10,13 @@ add_filter( 'dt_post_type_modules', function( $modules ){
         "post_type" => "streams",
         "description" => "Default Streams Module"
     ];
-    $modules["stream_app_module"] = [
-        "name" => "Streams - Apps Module",
+    $modules["streams_report_module"] = [
+        "name" => "Streams - Report Module",
         "enabled" => true,
         "locked" => false,
         "prerequisites" => [ "streams_base" ],
         "post_type" => "streams",
-        "description" => "Add Micro App Tile to Streams"
+        "description" => "Add Reports for Streams"
     ];
     return $modules;
 }, 20, 1 );
@@ -24,6 +24,5 @@ add_filter( 'dt_post_type_modules', function( $modules ){
 require_once 'module-base.php';
 DT_Stream_Base::instance();
 
-require_once 'module-app.php';
-DT_Stream_Apps::instance();
-DT_Stream_App_Report::instance();
+require_once 'module-reports.php';
+DT_Stream_Reports::instance();
