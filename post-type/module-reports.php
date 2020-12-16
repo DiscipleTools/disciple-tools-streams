@@ -428,12 +428,11 @@ class DT_Stream_Reports extends DT_Module_Base
             jQuery(document).ready(function($){
                 clearInterval(window.fiveMinuteTimer)
 
-                let add_new = $('#add-new')
-
-                add_new.html(`
-                <div class="center"><button type="button" id="add-report-button" class="button large" style="min-width:200px;">${_.escape( postReport.translations.add )}</button></div>
-                <div id="add-form-wrapper"></div>
-                `)
+                // let add_new = $('#add-new')
+                // add_new.html(`
+                //         <div class="cell center"><button type="button" id="add-report-button" class="button large" style="min-width:200px;">${_.escape( postReport.translations.add )}</button></div>
+                //         <div id="add-form-wrapper"></div>
+                //     `)
 
 
                 /* LOAD */
@@ -675,22 +674,21 @@ class DT_Stream_Reports extends DT_Module_Base
         ?>
         <div id="custom-style"></div>
         <div id="wrapper">
-            <div class="grid-x" data-sticky-container>
-                <div class="cell sticky" data-sticky>
-                    <div id="top-bar">
-                        <span id="title"></span>
-                        <span id="top-loader">
-                            <?php
-                            foreach ( $actions as $action => $label ) {
-                                ?>
-                                <a href="<?php echo esc_url( trailingslashit( site_url() ) .  esc_attr( $this->parts['root'] ) . '/' . esc_attr( $this->parts['type'] ) . '/'. esc_attr( $this->parts['public_key'] ) . '/'. esc_html( $action ) ) ?>" class="button small hollow"><?php echo esc_html( $label ) ?></a>
-                                <?php
-                            }
-                            ?>
-                        </span>
-                    </div>
-                    <div id="add-new"></div>
+            <div class="grid-x ">
+                <div class="cell center">
+                    <?php
+                    foreach ( $actions as $action => $label ) {
+                        ?>
+                        <a href="<?php echo esc_url( trailingslashit( site_url() ) .  esc_attr( $this->parts['root'] ) . '/' . esc_attr( $this->parts['type'] ) . '/'. esc_attr( $this->parts['public_key'] ) . '/'. esc_html( $action ) ) ?>" class="button small hollow"><?php echo esc_html( $label ) ?></a>
+                        <?php
+                    }
+                    ?>
                 </div>
+                <div class="cell center" id="title"></div>
+            </div>
+            <div class="grid-x" id="add-new">
+                <div class="cell center"><button type="button" id="add-report-button" class="button large" style="min-width:200px;">Add</button></div>
+                <div id="add-form-wrapper"></div>
             </div>
             <hr>
             <div class="grid-x grid-padding-x" id="main-section" style="height: inherit !important;">
@@ -715,23 +713,19 @@ class DT_Stream_Reports extends DT_Module_Base
         ?>
         <div id="custom-style"></div>
         <div id="wrapper">
-            <div class="grid-x" data-sticky-container>
-                <div class="cell sticky" data-sticky>
-                    <div id="top-bar">
-                        <span id="title"></span>
-                        <span id="top-loader">
-                            <?php
-                            foreach ( $actions as $action => $label ) {
-                                ?>
-                                <a href="<?php echo esc_url( trailingslashit( site_url() ) .  esc_attr( $this->parts['root'] ) . '/' . esc_attr( $this->parts['type'] ) . '/'. esc_attr( $this->parts['public_key'] ) . '/'. esc_html( $action ) ) ?>" class="button small hollow"><?php echo esc_html( $label ) ?></a>
-                                <?php
-                            }
-                            ?>
-                        </span>
-                    </div>
+            <div class="grid-x ">
+                <div class="cell center">
+                    <?php
+                    foreach ( $actions as $action => $label ) {
+                        ?>
+                        <a href="<?php echo esc_url( trailingslashit( site_url() ) .  esc_attr( $this->parts['root'] ) . '/' . esc_attr( $this->parts['type'] ) . '/'. esc_attr( $this->parts['public_key'] ) . '/'. esc_html( $action ) ) ?>" class="button small hollow"><?php echo esc_html( $label ) ?></a>
+                        <?php
+                    }
+                    ?>
                 </div>
-                <div class="cell"><hr></div>
+                <div class="cell center" id="title"></div>
             </div>
+            <hr>
             <div class="grid-x grid-padding-x">
                 <div class="cell center" id="bottom-spinner"><span class="loading-spinner active"></span></div>
                 <div class="cell" id="content"><div class="center">... loading</div></div>
@@ -804,22 +798,17 @@ class DT_Stream_Reports extends DT_Module_Base
         ?>
         <div id="custom-style"></div>
         <div id="wrapper">
-            <div class="grid-x" data-sticky-container>
-                <div class="cell sticky" data-sticky>
-                    <div id="top-bar">
-                        <span id="title"></span>
-                        <span id="top-loader">
-                            <?php
-                            foreach ( $actions as $action => $label ) {
-                                ?>
-                                <a href="<?php echo esc_url( trailingslashit( site_url() ) .  esc_attr( $this->parts['root'] ) . '/' . esc_attr( $this->parts['type'] ) . '/'. esc_attr( $this->parts['public_key'] ) . '/'. esc_html( $action ) ) ?>" class="button small hollow"><?php echo esc_html( $label ) ?></a>
-                                <?php
-                            }
-                            ?>
-                        </span>
-                    </div>
-                    <div id="add-new"></div>
+            <div class="grid-x ">
+                <div class="cell center">
+                    <?php
+                    foreach ( $actions as $action => $label ) {
+                        ?>
+                        <a href="<?php echo esc_url( trailingslashit( site_url() ) .  esc_attr( $this->parts['root'] ) . '/' . esc_attr( $this->parts['type'] ) . '/'. esc_attr( $this->parts['public_key'] ) . '/'. esc_html( $action ) ) ?>" class="button small hollow"><?php echo esc_html( $label ) ?></a>
+                        <?php
+                    }
+                    ?>
                 </div>
+                <div class="cell center" id="title"></div>
             </div>
             <div class="grid-x grid-padding-x">
                 <div class="cell center" id="bottom-spinner"><span class="loading-spinner active"></span></div>
@@ -849,10 +838,10 @@ class DT_Stream_Reports extends DT_Module_Base
                             height: ${window.innerHeight}px !important;
                         }
                         #map-wrapper {
-                            height: ${window.innerHeight-85}px !important;
+                            height: ${window.innerHeight-100}px !important;
                         }
                         #map {
-                            height: ${window.innerHeight-85}px !important;
+                            height: ${window.innerHeight-100}px !important;
                         }
                     </style>`)
 
