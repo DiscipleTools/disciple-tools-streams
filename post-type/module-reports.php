@@ -224,9 +224,17 @@ class DT_Stream_Reports extends DT_Module_Base
         if ( $post_type === 'streams' ){
             // do action
             $fields[$this->root . '_' . $this->type . '_public_key'] = [
-                'name'   => 'Stream Report',
+                'name'   => 'Private Report Key',
+                'description' => '',
                 'type'   => 'hash',
                 'hidden' => true,
+            ];
+            $fields['report_last_modified'] = [
+                'name'   => 'Last Report',
+                'description' => 'Stores the time of the last insert or delete performed on reports.',
+                'type' => 'date',
+                'default' => '',
+                'show_in_table' => true
             ];
         }
         return $fields;
@@ -1091,6 +1099,8 @@ class DT_Stream_Reports extends DT_Module_Base
             return new WP_Error( __METHOD__, "Failed to create report.", [ 'status' => 400 ] );
         }
 
+        update_post_meta( $post_id, 'report_last_modified', time() );
+
         return $this->retrieve_reports( $post_id );
 
     }
@@ -1230,6 +1240,9 @@ class DT_Stream_Reports extends DT_Module_Base
         if ( ! $result ) {
             return new WP_Error( __METHOD__, "Failed to delete report", [ 'status' => 400 ] );
         }
+
+        update_post_meta( $post_id, 'report_last_modified', time() );
+
         return $this->retrieve_reports( $post_id );
     }
 

@@ -185,11 +185,11 @@ class DT_Stream_Base extends DT_Module_Base {
             ];
             $fields["coaches"] = [
                 "name" => __( 'Training Coach / Church Planter', 'disciple_tools' ),
-                'description' => _x( 'The person who planted and/or is coaching this training. Only one person can be assigned to a training while multiple people can be coaches / church planters of this training.', 'Optional Documentation', 'disciple_tools' ),
+                'description' => _x( 'The person who planted and/or is coaching this stream. Only one person can be assigned to a stream while multiple people can be coaches / church planters of this stream.', 'Optional Documentation', 'disciple_tools' ),
                 "type" => "connection",
                 "post_type" => "contacts",
                 "p2p_direction" => "from",
-                "p2p_key" => "trainings_to_coaches",
+                "p2p_key" => "streams_to_coaches",
                 'tile' => '',
                 'icon' => get_template_directory_uri() . '/dt-assets/images/coach.svg',
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-contact.svg',
@@ -251,7 +251,7 @@ class DT_Stream_Base extends DT_Module_Base {
 
 
             // connection fields
-            $fields['leader_count'] = [
+            $fields['leader_total'] = [
                 'name' => "Leaders Total",
                 'type' => 'number',
                 'default' => '0',
@@ -269,40 +269,34 @@ class DT_Stream_Base extends DT_Module_Base {
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-contact.svg',
                 "in_create_form" => true,
             ];
-            $fields['disciple_count'] = [
+            $fields['disciple_total'] = [
                 'name' => "Disciples Total",
                 'type' => 'number',
                 'default' => '0',
                 'show_in_table' => true
             ];
-            $fields['contacts'] = [
+            $fields['disciples'] = [
                 'name' => "Key Disciples",
                 'type' => 'connection',
                 "post_type" => 'contacts',
                 'tile' => 'connections',
                 "p2p_direction" => "from",
-                "p2p_key" => "streams_to_contacts",
+                "p2p_key" => "streams_to_disciples",
                 'icon' => get_template_directory_uri() . "/dt-assets/images/contact-generation.svg",
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-contact.svg',
                 "in_create_form" => true,
             ];
-            $fields['group_count'] = [
+            $fields['group_total'] = [
                 'name' => "Groups Total",
                 'type' => 'number',
                 'default' => '0',
-                'show_in_table' => false
-            ];
-            $fields['church_count'] = [
-                'name' => "Churches Total",
-                'type' => 'number',
-                'default' => '0',
-                'show_in_table' => false
+                'show_in_table' => true
             ];
             $fields['groups'] = [
                 'name' => __( "Groups", 'disciple_tools' ),
                 'type' => 'connection',
                 "post_type" => 'groups',
-                "p2p_direction" => "to",
+                "p2p_direction" => "from",
                 "p2p_key" => "streams_to_groups",
                 "tile" => "connections",
                 'icon' => get_template_directory_uri() . "/dt-assets/images/groups.svg",
@@ -352,8 +346,8 @@ class DT_Stream_Base extends DT_Module_Base {
 
 
             if ( $this->trainings ) {
-                $fields['training_count'] = [
-                    'name' => "Trainings",
+                $fields['training_total'] = [
+                    'name' => "Trainings Total",
                     'type' => 'number',
                     'default' => '0',
                     'show_in_table' => false
@@ -374,7 +368,7 @@ class DT_Stream_Base extends DT_Module_Base {
 
         if ( $post_type === 'contacts' ){
             $fields['stream_leader'] = [
-                'name' => __( "Stream as Leader", 'disciple_tools' ),
+                'name' => __( "Leader in Stream", 'disciple_tools' ),
                 'description' => _x( 'Leader of a stream', 'Optional Documentation', 'disciple_tools' ),
                 'type' => 'connection',
                 "post_type" => $this->post_type,
@@ -385,12 +379,12 @@ class DT_Stream_Base extends DT_Module_Base {
                 'create-icon' => get_template_directory_uri() . "/dt-assets/images/add.svg",
             ];
             $fields['stream_disciple'] = [
-                'name' => __( "Stream as Participant", 'disciple_tools' ),
+                'name' => __( "Key Disciple in Stream", 'disciple_tools' ),
                 'description' => _x( 'Disciple in a stream.', 'Optional Documentation', 'disciple_tools' ),
                 'type' => 'connection',
                 "post_type" => $this->post_type,
                 "p2p_direction" => "to",
-                "p2p_key" => "streams_to_contacts",
+                "p2p_key" => "streams_to_disciples",
                 "tile" => "other",
                 'icon' => get_template_directory_uri() . "/dt-assets/images/stream.svg",
                 'create-icon' => get_template_directory_uri() . "/dt-assets/images/add.svg",
@@ -430,7 +424,7 @@ class DT_Stream_Base extends DT_Module_Base {
          */
         p2p_register_connection_type(
             [
-                'name'           => 'streams_to_contacts',
+                'name'           => 'streams_to_disciples',
                 'from'           => 'streams',
                 'to'             => 'contacts',
                 'admin_box' => [
@@ -626,8 +620,9 @@ class DT_Stream_Base extends DT_Module_Base {
     //action when a post connection is added during create or update
     public function post_connection_added( $post_type, $post_id, $field_key, $value ){
         if ( $post_type === "streams" ){
-            if ( $field_key === "contacts" ){
-                // share the stream with the owner of the contact when a member is added to a stream
+            if ( $field_key === "leaders" || $field_key === "disciples" || $field_key === "groups"   ){
+
+                // share the stream with the owner of the contact when a disciple is added to a stream
                 $assigned_to = get_post_meta( $value, "assigned_to", true );
                 if ( $assigned_to && strpos( $assigned_to, "-" ) !== false ){
                     $user_id = explode( "-", $assigned_to )[1];
@@ -635,11 +630,20 @@ class DT_Stream_Base extends DT_Module_Base {
                         DT_Posts::add_shared( $post_type, $post_id, $user_id, null, false, false );
                     }
                 }
-                self::update_stream_member_count( $post_id );
+
+                if ( $field_key === "leaders" ){
+                    self::update_stream_leader_total( $post_id );
+                }
+                if ( $field_key === "disciples" ){
+                    self::update_stream_disciple_total( $post_id );
+                }
+                if ( $field_key === "groups" ){
+                    self::update_stream_group_total( $post_id );
+                }
+
+
             }
-            if ( $field_key === "leaders" ){
-                self::update_stream_leader_count( $post_id );
-            }
+
             if ( $field_key === "coaches" ){
                 // share the stream with the coach when a coach is added.
                 $user_id = get_post_meta( $value, "corresponds_to_user", true );
@@ -649,7 +653,7 @@ class DT_Stream_Base extends DT_Module_Base {
             }
         }
         if ( $post_type === "contacts" && $field_key === "streams" ){
-            self::update_stream_member_count( $value );
+            self::update_stream_disciple_total( $value );
             // share the stream with the owner of the contact.
             $assigned_to = get_post_meta( $post_id, "assigned_to", true );
             if ( $assigned_to && strpos( $assigned_to, "-" ) !== false ){
@@ -664,15 +668,16 @@ class DT_Stream_Base extends DT_Module_Base {
     //action when a post connection is removed during create or update
     public function post_connection_removed( $post_type, $post_id, $field_key, $value ){
         if ( $post_type === "streams" ){
-            if ( $field_key === "contacts" ){
-                self::update_stream_member_count( $post_id, "removed" );
-            }
             if ( $field_key === "leaders" ){
-                self::update_stream_leader_count( $post_id, "removed" );
+                self::update_stream_leader_total( $post_id, "removed" );
             }
+            if ( $field_key === "disciples" ){
+                self::update_stream_disciple_total( $post_id, "removed" );
+            }
+
         }
         if ( $post_type === "contacts" && $field_key === "streams" ){
-            self::update_stream_member_count( $value, "removed" );
+            self::update_stream_disciple_total( $value, "removed" );
         }
     }
 
@@ -720,26 +725,26 @@ class DT_Stream_Base extends DT_Module_Base {
         endif;
     }
 
-    //update the stream member count when contacts are added or removed.
-    private static function update_stream_member_count( $stream_id, $action = "added" ){
+    //update the stream disciple total when contacts are added or removed.
+    private static function update_stream_disciple_total( $stream_id, $action = "added" ){
         $stream = get_post( $stream_id );
         $args = [
-            'connected_type'   => "streams_to_contacts",
+            'connected_type'   => "streams_to_disciples",
             'connected_direction' => 'from',
             'connected_items'  => $stream,
             'nopaging'         => true,
             'suppress_filters' => false,
         ];
         $contacts = get_posts( $args );
-        $member_count = get_post_meta( $stream_id, 'member_count', true );
-        if ( sizeof( $contacts ) > intval( $member_count ) ){
-            update_post_meta( $stream_id, 'member_count', sizeof( $contacts ) );
+        $disciple_total = get_post_meta( $stream_id, 'disciple_total', true );
+        if ( sizeof( $contacts ) > intval( $disciple_total ) ){
+            update_post_meta( $stream_id, 'disciple_total', sizeof( $contacts ) );
         } elseif ( $action === "removed" ){
-            update_post_meta( $stream_id, 'member_count', intval( $member_count ) - 1 );
+            update_post_meta( $stream_id, 'disciple_total', intval( $disciple_total ) - 1 );
         }
     }
 
-    private static function update_stream_leader_count( $stream_id, $action = "added" ){
+    private static function update_stream_leader_total( $stream_id, $action = "added" ){
         $stream = get_post( $stream_id );
         $args = [
             'connected_type'   => "streams_to_leaders",
@@ -749,14 +754,31 @@ class DT_Stream_Base extends DT_Module_Base {
             'suppress_filters' => false,
         ];
         $leaders = get_posts( $args );
-        $leader_count = get_post_meta( $stream_id, 'leader_count', true );
-        if ( sizeof( $leaders ) > intval( $leader_count ) ){
-            update_post_meta( $stream_id, 'leader_count', sizeof( $leaders ) );
+        $leader_total = get_post_meta( $stream_id, 'leader_total', true );
+        if ( sizeof( $leaders ) > intval( $leader_total ) ){
+            update_post_meta( $stream_id, 'leader_total', sizeof( $leaders ) );
         } elseif ( $action === "removed" ){
-            update_post_meta( $stream_id, 'leader_count', intval( $leader_count - 1 ) );
+            update_post_meta( $stream_id, 'leader_total', intval( $leader_total - 1 ) );
         }
     }
 
+    private static function update_stream_group_total( $id, $action = "added" ){
+        $this_post = get_post( $id );
+        $args = [
+            'connected_type'   => "streams_to_groups",
+            'connected_direction' => 'from',
+            'connected_items'  => $this_post,
+            'nopaging'         => true,
+            'suppress_filters' => false,
+        ];
+        $posts_list = get_posts( $args );
+        $total = get_post_meta( $id, 'group_total', true );
+        if ( sizeof( $posts_list ) > intval( $total ) ){
+            update_post_meta( $id, 'group_total', sizeof( $posts_list ) );
+        } elseif ( $action === "removed" ){
+            update_post_meta( $id, 'group_total', intval( $total - 1 ) );
+        }
+    }
 
     //check to see if the stream is marked as needing an update
     //if yes: mark as updated
@@ -832,7 +854,7 @@ class DT_Stream_Base extends DT_Module_Base {
         global $wpdb;
 
         $results = $wpdb->get_results( $wpdb->prepare( "
-            SELECT status.meta_value as status, count(pm.post_id) as count, count(un.post_id) as update_needed
+            SELECT status.meta_value as status, total(pm.post_id) as total, total(un.post_id) as update_needed
             FROM $wpdb->postmeta pm
             INNER JOIN $wpdb->postmeta status ON( status.post_id = pm.post_id AND status.meta_key = 'status' )
             INNER JOIN $wpdb->posts a ON( a.ID = pm.post_id AND a.post_type = 'streams' and a.post_status = 'publish' )
@@ -852,7 +874,7 @@ class DT_Stream_Base extends DT_Module_Base {
         global $wpdb;
         if ( current_user_can( 'view_any_streams' ) ){
             $results = $wpdb->get_results("
-                SELECT status.meta_value as status, count(pm.post_id) as count, count(un.post_id) as update_needed
+                SELECT status.meta_value as status, total(pm.post_id) as total, total(un.post_id) as update_needed
                 FROM $wpdb->postmeta pm
                 INNER JOIN $wpdb->postmeta status ON( status.post_id = pm.post_id AND status.meta_key = 'status' )
                 INNER JOIN $wpdb->posts a ON( a.ID = pm.post_id AND a.post_type = 'streams' and a.post_status = 'publish' )
@@ -862,7 +884,7 @@ class DT_Stream_Base extends DT_Module_Base {
             ", ARRAY_A);
         } else {
             $results = $wpdb->get_results($wpdb->prepare("
-                SELECT status.meta_value as status, count(pm.post_id) as count, count(un.post_id) as update_needed
+                SELECT status.meta_value as status, total(pm.post_id) as total, total(un.post_id) as update_needed
                 FROM $wpdb->postmeta pm
                 INNER JOIN $wpdb->postmeta status ON( status.post_id = pm.post_id AND status.meta_key = 'status' )
                 INNER JOIN $wpdb->posts a ON( a.ID = pm.post_id AND a.post_type = 'streams' and a.post_status = 'publish' )
@@ -881,23 +903,23 @@ class DT_Stream_Base extends DT_Module_Base {
     //build list page filters
     public static function dt_user_list_filters( $filters, $post_type ){
         if ( $post_type === 'streams' ){
-            $counts = self::get_my_streams_status_type();
+            $totals = self::get_my_streams_status_type();
             $fields = DT_Posts::get_post_field_settings( $post_type );
             /**
              * Setup my stream filters
              */
-            $active_counts = [];
+            $active_totals = [];
             $update_needed = 0;
-            $status_counts = [];
+            $status_totals = [];
             $total_my = 0;
-            foreach ( $counts as $count ){
-                $total_my += $count["count"];
-                dt_increment( $status_counts[$count["status"]], $count["count"] );
-                if ( $count["status"] === "new" ){
-                    if ( isset( $count["update_needed"] ) ) {
-                        $update_needed += (int) $count["update_needed"];
+            foreach ( $totals as $total ){
+                $total_my += $total["total"];
+                dt_increment( $status_totals[$total["status"]], $total["total"] );
+                if ( $total["status"] === "new" ){
+                    if ( isset( $total["update_needed"] ) ) {
+                        $update_needed += (int) $total["update_needed"];
                     }
-                    dt_increment( $active_counts[$count["status"]], $count["count"] );
+                    dt_increment( $active_totals[$total["status"]], $total["total"] );
                 }
             }
 
@@ -905,7 +927,7 @@ class DT_Stream_Base extends DT_Module_Base {
             $filters["tabs"][] = [
                 "key" => "assigned_to_me",
                 "label" => _x( "Assigned to me", 'List Filters', 'disciple_tools' ),
-                "count" => $total_my,
+                "total" => $total_my,
                 "order" => 20
             ];
             // add assigned to me filters
@@ -917,11 +939,11 @@ class DT_Stream_Base extends DT_Module_Base {
                     'assigned_to' => [ 'me' ],
                     'sort' => '-post_date'
                 ],
-                "count" => $total_my,
+                "total" => $total_my,
             ];
 
             foreach ( $fields["status"]["default"] as $status_key => $status_value ) {
-                if ( isset( $status_counts[$status_key] ) ){
+                if ( isset( $status_totals[$status_key] ) ){
                     $filters["filters"][] = [
                         "ID" => 'my_' . $status_key,
                         "tab" => 'assigned_to_me',
@@ -931,7 +953,7 @@ class DT_Stream_Base extends DT_Module_Base {
                             'status' => [ $status_key ],
                             'sort' => '-post_date'
                         ],
-                        "count" => $status_counts[$status_key]
+                        "total" => $status_totals[$status_key]
                     ];
                     if ( $status_key === "new" ){
                         if ( $update_needed > 0 ){
@@ -944,7 +966,7 @@ class DT_Stream_Base extends DT_Module_Base {
                                     'status' => [ 'new' ],
                                     'requires_update' => [ true ],
                                 ],
-                                "count" => $update_needed,
+                                "total" => $update_needed,
                                 'subfilter' => true
                             ];
                         }
@@ -952,25 +974,25 @@ class DT_Stream_Base extends DT_Module_Base {
                 }
             }
 
-            $counts = self::get_all_streams_status_type();
-            $active_counts = [];
+            $totals = self::get_all_streams_status_type();
+            $active_totals = [];
             $update_needed = 0;
-            $status_counts = [];
+            $status_totals = [];
             $total_all = 0;
-            foreach ( $counts as $count ){
-                $total_all += $count["count"];
-                dt_increment( $status_counts[$count["status"]], $count["count"] );
-                if ( $count["status"] === "new" ){
-                    if ( isset( $count["update_needed"] ) ) {
-                        $update_needed += (int) $count["update_needed"];
+            foreach ( $totals as $total ){
+                $total_all += $total["total"];
+                dt_increment( $status_totals[$total["status"]], $total["total"] );
+                if ( $total["status"] === "new" ){
+                    if ( isset( $total["update_needed"] ) ) {
+                        $update_needed += (int) $total["update_needed"];
                     }
-                    dt_increment( $active_counts[$count["status"]], $count["count"] );
+                    dt_increment( $active_totals[$total["status"]], $total["total"] );
                 }
             }
             $filters["tabs"][] = [
                 "key" => "all",
                 "label" => _x( "All", 'List Filters', 'disciple_tools' ),
-                "count" => $total_all,
+                "total" => $total_all,
                 "order" => 10
             ];
             // add assigned to me filters
@@ -981,11 +1003,11 @@ class DT_Stream_Base extends DT_Module_Base {
                 'query' => [
                     'sort' => '-post_date'
                 ],
-                "count" => $total_all
+                "total" => $total_all
             ];
 
             foreach ( $fields["status"]["default"] as $status_key => $status_value ) {
-                if ( isset( $status_counts[$status_key] ) ){
+                if ( isset( $status_totals[$status_key] ) ){
                     $filters["filters"][] = [
                         "ID" => 'all_' . $status_key,
                         "tab" => 'all',
@@ -994,7 +1016,7 @@ class DT_Stream_Base extends DT_Module_Base {
                             'status' => [ $status_key ],
                             'sort' => '-post_date'
                         ],
-                        "count" => $status_counts[$status_key]
+                        "total" => $status_totals[$status_key]
                     ];
                     if ( $status_key === "new" ){
                         if ( $update_needed > 0 ){
@@ -1006,7 +1028,7 @@ class DT_Stream_Base extends DT_Module_Base {
                                     'status' => [ 'new' ],
                                     'requires_update' => [ true ],
                                 ],
-                                "count" => $update_needed,
+                                "total" => $update_needed,
                                 'subfilter' => true
                             ];
                         }

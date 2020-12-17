@@ -126,7 +126,8 @@ class DT_Streams {
 
         require_once( 'includes/customize-site-linking.php' );
         require_once( 'includes/enqueue.php' );
-        require_once( 'metrics/metrics.php' );
+        require_once( 'metrics/mapbox-maps.php' );
+        require_once( 'metrics/mapbox-personal-maps.php' );
     }
 
     /**
