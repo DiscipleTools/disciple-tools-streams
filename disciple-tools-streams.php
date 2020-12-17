@@ -122,10 +122,13 @@ class DT_Streams {
             require_once( 'includes/admin/admin-menu-and-tabs.php' );
         }
 
+        /* post type */
         require_once( 'post-type/loader.php' );
 
+        /* site linking */
         require_once( 'includes/customize-site-linking.php' );
-        require_once( 'includes/enqueue.php' );
+
+        /* metrics */
         require_once( 'metrics/mapbox-maps.php' );
         require_once( 'metrics/mapbox-personal-maps.php' );
     }
