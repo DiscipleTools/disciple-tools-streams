@@ -34,8 +34,6 @@ class DT_Stream_Base extends DT_Module_Base {
         add_action( 'dt_details_additional_section', [ $this, 'dt_details_additional_section' ], 50, 2 );
         add_action( 'wp_enqueue_scripts', [ $this, 'scripts' ], 99 );
 
-        add_action( 'dt_render_field_for_display_template', [ $this, 'render_datetime_field' ], 10, 5 );
-
         // hooks
         add_action( "post_connection_removed", [ $this, "post_connection_removed" ], 10, 4 );
         add_action( "post_connection_added", [ $this, "post_connection_added" ], 10, 4 );
@@ -620,7 +618,7 @@ class DT_Stream_Base extends DT_Module_Base {
     //action when a post connection is added during create or update
     public function post_connection_added( $post_type, $post_id, $field_key, $value ){
         if ( $post_type === "streams" ){
-            if ( $field_key === "leaders" || $field_key === "disciples" || $field_key === "groups"   ){
+            if ( $field_key === "leaders" || $field_key === "disciples" || $field_key === "groups" ){
 
                 // share the stream with the owner of the contact when a disciple is added to a stream
                 $assigned_to = get_post_meta( $value, "assigned_to", true );
@@ -640,8 +638,20 @@ class DT_Stream_Base extends DT_Module_Base {
                 if ( $field_key === "groups" ){
                     self::update_stream_group_total( $post_id );
                 }
+            }
 
+            if ( $field_key === "trainings" ){
 
+                // share the stream with the owner of the contact when a disciple is added to a stream
+                $assigned_to = get_post_meta( $value, "assigned_to", true );
+                if ( $assigned_to && strpos( $assigned_to, "-" ) !== false ){
+                    $user_id = explode( "-", $assigned_to )[1];
+                    if ( $user_id ){
+                        DT_Posts::add_shared( $post_type, $post_id, $user_id, null, false, false );
+                    }
+                }
+
+                self::update_stream_training_total( $post_id );
             }
 
             if ( $field_key === "coaches" ){
@@ -674,7 +684,6 @@ class DT_Stream_Base extends DT_Module_Base {
             if ( $field_key === "disciples" ){
                 self::update_stream_disciple_total( $post_id, "removed" );
             }
-
         }
         if ( $post_type === "contacts" && $field_key === "streams" ){
             self::update_stream_disciple_total( $value, "removed" );
@@ -711,18 +720,22 @@ class DT_Stream_Base extends DT_Module_Base {
         return $fields;
     }
 
-    public function render_datetime_field( $post, $field_type, $field_key, $required_tag ){
-        if ( $field_type === "datetime" ) :
-            ?>
-            <div class="<?php echo esc_html( $field_key ) ?> input-group">
-                <input id="<?php echo esc_html( $field_key ) ?>" class="input-group-field dt_datetime_picker" type="text" autocomplete="off" <?php echo esc_html( $required_tag ) ?>
-                       value="<?php echo esc_html( $post[$field_key]["timestamp"] ?? '' ) ?>" >
-                <div class="input-group-button">
-                    <button id="<?php echo esc_html( $field_key ) ?>-clear-button" class="button alert clear-date-button" data-inputid="<?php echo esc_html( $field_key ) ?>" title="Delete Date" type="button">x</button>
-                </div>
-            </div>
-            <?php
-        endif;
+    private static function update_stream_leader_total( $stream_id, $action = "added" ){
+        $stream = get_post( $stream_id );
+        $args = [
+            'connected_type'   => "streams_to_leaders",
+            'connected_direction' => 'from',
+            'connected_items'  => $stream,
+            'nopaging'         => true,
+            'suppress_filters' => false,
+        ];
+        $leaders = get_posts( $args );
+        $leader_total = get_post_meta( $stream_id, 'leader_total', true );
+        if ( sizeof( $leaders ) > intval( $leader_total ) ){
+            update_post_meta( $stream_id, 'leader_total', sizeof( $leaders ) );
+        } elseif ( $action === "removed" ){
+            update_post_meta( $stream_id, 'leader_total', intval( $leader_total - 1 ) );
+        }
     }
 
     //update the stream disciple total when contacts are added or removed.
@@ -744,24 +757,6 @@ class DT_Stream_Base extends DT_Module_Base {
         }
     }
 
-    private static function update_stream_leader_total( $stream_id, $action = "added" ){
-        $stream = get_post( $stream_id );
-        $args = [
-            'connected_type'   => "streams_to_leaders",
-            'connected_direction' => 'from',
-            'connected_items'  => $stream,
-            'nopaging'         => true,
-            'suppress_filters' => false,
-        ];
-        $leaders = get_posts( $args );
-        $leader_total = get_post_meta( $stream_id, 'leader_total', true );
-        if ( sizeof( $leaders ) > intval( $leader_total ) ){
-            update_post_meta( $stream_id, 'leader_total', sizeof( $leaders ) );
-        } elseif ( $action === "removed" ){
-            update_post_meta( $stream_id, 'leader_total', intval( $leader_total - 1 ) );
-        }
-    }
-
     private static function update_stream_group_total( $id, $action = "added" ){
         $this_post = get_post( $id );
         $args = [
@@ -777,6 +772,24 @@ class DT_Stream_Base extends DT_Module_Base {
             update_post_meta( $id, 'group_total', sizeof( $posts_list ) );
         } elseif ( $action === "removed" ){
             update_post_meta( $id, 'group_total', intval( $total - 1 ) );
+        }
+    }
+
+    private static function update_stream_training_total( $stream_id, $action = "added" ){
+        $stream = get_post( $stream_id );
+        $args = [
+            'connected_type'   => "streams_to_trainings",
+            'connected_direction' => 'from',
+            'connected_items'  => $stream,
+            'nopaging'         => true,
+            'suppress_filters' => false,
+        ];
+        $trainings = get_posts( $args );
+        $training_total = get_post_meta( $stream_id, 'training_total', true );
+        if ( sizeof( $trainings ) > intval( $training_total ) ){
+            update_post_meta( $stream_id, 'training_total', sizeof( $trainings ) );
+        } elseif ( $action === "removed" ){
+            update_post_meta( $stream_id, 'training_total', intval( $training_total - 1 ) );
         }
     }
 

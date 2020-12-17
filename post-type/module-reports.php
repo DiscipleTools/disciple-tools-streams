@@ -5,12 +5,12 @@ class DT_Stream_Reports extends DT_Module_Base
 {
     public $module = "streams_report_module";
     public $post_type = 'streams';
-    
+
     public $magic = false;
     public $parts = false;
     public $root = "streams_app"; // define the root of the url {yoursite}/root/type/key/action
     public $type = 'report'; // define the type
-    
+
 
     private static $_instance = null;
     public static function instance() {
@@ -26,9 +26,9 @@ class DT_Stream_Reports extends DT_Module_Base
             return;
         }
         // register tiles if on details page
-        add_filter('dt_details_additional_tiles', [$this, 'dt_details_additional_tiles'], 5, 2);
-        add_action('dt_details_additional_section', [$this, 'dt_details_additional_section'], 10, 2);
-        add_action('wp_enqueue_scripts', [$this, 'tile_scripts'], 100);
+        add_filter( 'dt_details_additional_tiles', [ $this, 'dt_details_additional_tiles' ], 5, 2 );
+        add_action( 'dt_details_additional_section', [ $this, 'dt_details_additional_section' ], 10, 2 );
+        add_action( 'wp_enqueue_scripts', [ $this, 'tile_scripts' ], 100 );
 
 
         // register type
@@ -89,7 +89,7 @@ class DT_Stream_Reports extends DT_Module_Base
 
     public function dt_details_additional_section( $section, $post_type ) {
         // test if streams post type and streams_app_module enabled
-        if (  $post_type === 'streams' ) {
+        if ( $post_type === 'streams' ) {
 
             // reports tile
             if ( $section === "reports" ){
@@ -100,12 +100,12 @@ class DT_Stream_Reports extends DT_Module_Base
                 if ( isset( $types['report'], $types['report']['root'], $types['report']['type'] ) ) {
                     $types['report']['new_key'] = $magic->create_unique_key();
 
-                    $reports = DT_Stream_Reports::instance()->statistics_reports( get_the_ID() );
+                    $reports = self::instance()->statistics_reports( get_the_ID() );
                     /**
                      * Button Controls
                      */
                     ?>
-                    <div class="cell" id="<?php echo esc_attr( $types['report']['root']  ) ?>-<?php echo esc_attr( $types['report']['type'] ) ?>-wrapper"></div>
+                    <div class="cell" id="<?php echo esc_attr( $types['report']['root'] ) ?>-<?php echo esc_attr( $types['report']['type'] ) ?>-wrapper"></div>
                     <?php
                     /**
                      * List Reports
@@ -126,7 +126,7 @@ class DT_Stream_Reports extends DT_Module_Base
                                 </div>
                             </div>
                             <div><hr>
-                                <a class="button hollow" id="<?php echo esc_attr( $types['report']['root']  ) ?>-<?php echo esc_attr( $types['report']['type'] ) ?>-manage-reports">manage reports</a>
+                                <a class="button hollow" id="<?php echo esc_attr( $types['report']['root'] ) ?>-<?php echo esc_attr( $types['report']['type'] ) ?>-manage-reports">manage reports</a>
                             </div>
                             <?php
                             break; // loop only the most recent year
@@ -1017,7 +1017,7 @@ class DT_Stream_Reports extends DT_Module_Base
             case 'delete':
                 return $this->delete_report( $params, $post_id );
             case 'geojson':
-                return $this->geojson_reports($post_id );
+                return $this->geojson_reports( $post_id );
             case 'statistics':
                 return $this->statistics_reports( $post_id );
             case 'get_all':
@@ -1039,7 +1039,7 @@ class DT_Stream_Reports extends DT_Module_Base
 
         $post_id =sanitize_text_field( wp_unslash( $params['post_id'] ) );
 
-        if ( ! Disciple_Tools_Posts::can_view('streams', $post_id ) ) {
+        if ( ! Disciple_Tools_Posts::can_view( 'streams', $post_id ) ) {
             return new WP_Error( __METHOD__, "Do not have permission", [ 'status' => 401 ] );
         }
 
