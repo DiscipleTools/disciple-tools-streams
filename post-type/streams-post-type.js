@@ -210,6 +210,9 @@ jQuery(document).ready(function($) {
                             zoom: 0
                         });
 
+                        map.dragRotate.disable();
+                        map.touchZoomRotate.disableRotation();
+
                         map.on('load', function() {
                             map.addSource('layer-source-reports', {
                                 type: 'geojson',

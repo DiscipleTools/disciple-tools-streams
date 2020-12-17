@@ -421,18 +421,13 @@ class DT_Stream_Reports extends DT_Module_Base
                 'parts' => $this->parts,
                 'name' => get_the_title( $this->parts['post_id'] ),
                 'translations' => [
-                    'add' => __( 'Add', 'disciple-tools' )
+                    'add' => __( 'Add', 'disciple-tools' ),
+                    'search_location' => 'Search for Location'
                 ],
             ]) ?>][0]
 
             jQuery(document).ready(function($){
                 clearInterval(window.fiveMinuteTimer)
-
-                // let add_new = $('#add-new')
-                // add_new.html(`
-                //         <div class="cell center"><button type="button" id="add-report-button" class="button large" style="min-width:200px;">${_.escape( postReport.translations.add )}</button></div>
-                //         <div id="add-form-wrapper"></div>
-                //     `)
 
 
                 /* LOAD */
@@ -566,7 +561,11 @@ class DT_Stream_Reports extends DT_Module_Base
                                         ${ten_years}
                                     </select>
                                 </div>
-                                <div class="cell center" style="padding-left: 5px;" ><button class="button large" type="button" id="save_new_report" disabled="disabled">Save</button>  <button class="button large alert" type="button" id="cancel_new_report">&times;</button></div>
+                                <div class="cell center" >
+                                    <button class="button large save-report" type="button" id="save_new_report" disabled="disabled">Save</button>
+                                    <button class="button large save-report" type="button" id="save_and_add_new_report" disabled="disabled">Save and Add</button>
+                                    <button class="button large alert" type="button" id="cancel_new_report">&times;</button>
+                                </div>
                             </div>
                         `)
 
@@ -585,14 +584,22 @@ class DT_Stream_Reports extends DT_Module_Base
                             $('#add-report-button').show()
                         })
 
+                        $('#save_and_add_new_report').on('click', function(){
+                            window.insert_report()
+                            $('#add-form-wrapper').empty()
+                            $('#add-report-button').click()
+                            $('#value').focus()
+                        })
+
                         $('#cancel_new_report').on('click', function(){
                             window.get_reports()
-                            window.add_new_listener()
+                            $('#add-form-wrapper').empty()
+                            $('#add-report-button').show()
                         })
 
                         $('#mapbox-search').on('change', function(e){
                             if ( typeof window.selected_location_grid_meta !== 'undefined' || window.selected_location_grid_meta !== '' ) {
-                                $('#save_new_report').removeAttr('disabled')
+                                $('.save-report').removeAttr('disabled')
                             }
                         })
                     })
@@ -856,6 +863,12 @@ class DT_Stream_Reports extends DT_Module_Base
                         zoom: 0
                     });
 
+                    // disable map rotation using right click + drag
+                    map.dragRotate.disable();
+
+                    // disable map rotation using touch rotation gesture
+                    map.touchZoomRotate.disableRotation();
+
                     map.on('load', function() {
                         map.addSource('layer-source-reports', {
                             type: 'geojson',
@@ -1031,7 +1044,11 @@ class DT_Stream_Reports extends DT_Module_Base
 
     public function insert_report( $params, $post_id ) {
 
-        // @todo test if values set
+        if ( ! isset( $params['parts']['root'], $params['parts']['type'], $params['type'], $post_id ) ){
+            return new WP_Error( __METHOD__, "Missing params", [ 'status' => 400 ] );
+        }
+
+        $params = dt_recursive_sanitize_array( $params );
 
         // run your function here
         $args = [

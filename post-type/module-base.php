@@ -210,6 +210,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 "p2p_direction" => "from",
                 "p2p_key" => "streams_to_peoplegroups",
                 'icon' => get_template_directory_uri() . "/dt-assets/images/people-group.svg",
+                "in_create_form" => false,
             ];
 
 
@@ -251,7 +252,7 @@ class DT_Stream_Base extends DT_Module_Base {
 
             // connection fields
             $fields['leader_count'] = [
-                'name' => "Leaders",
+                'name' => "Leaders Total",
                 'type' => 'number',
                 'default' => '0',
                 'show_in_table' => true
@@ -266,9 +267,10 @@ class DT_Stream_Base extends DT_Module_Base {
                 "p2p_key" => "streams_to_leaders",
                 'icon' => get_template_directory_uri() . "/dt-assets/images/contact-generation.svg",
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-contact.svg',
+                "in_create_form" => true,
             ];
             $fields['disciple_count'] = [
-                'name' => "Disciples",
+                'name' => "Disciples Total",
                 'type' => 'number',
                 'default' => '0',
                 'show_in_table' => true
@@ -282,15 +284,16 @@ class DT_Stream_Base extends DT_Module_Base {
                 "p2p_key" => "streams_to_contacts",
                 'icon' => get_template_directory_uri() . "/dt-assets/images/contact-generation.svg",
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-contact.svg',
+                "in_create_form" => true,
             ];
             $fields['group_count'] = [
-                'name' => "Groups",
+                'name' => "Groups Total",
                 'type' => 'number',
                 'default' => '0',
                 'show_in_table' => false
             ];
             $fields['church_count'] = [
-                'name' => "Churches",
+                'name' => "Churches Total",
                 'type' => 'number',
                 'default' => '0',
                 'show_in_table' => false
@@ -304,6 +307,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 "tile" => "connections",
                 'icon' => get_template_directory_uri() . "/dt-assets/images/groups.svg",
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-group.svg',
+                "in_create_form" => true,
             ];
 
 
@@ -319,6 +323,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'tile' => 'connections',
                 'icon' => get_template_directory_uri() . '/dt-assets/images/group-parent.svg',
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add.svg',
+                "in_create_form" => true,
             ];
             $fields["peer_streams"] = [
                 "name" => __( 'Peer Streams', 'disciple_tools' ),
@@ -330,6 +335,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'tile' => 'connections',
                 'icon' => get_template_directory_uri() . '/dt-assets/images/group-peer.svg',
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add.svg',
+                "in_create_form" => true,
             ];
             $fields["child_streams"] = [
                 "name" => __( 'Child Streams', 'disciple_tools' ),
@@ -341,6 +347,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'tile' => 'connections',
                 'icon' => get_template_directory_uri() . '/dt-assets/images/group-child.svg',
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add.svg',
+                "in_create_form" => true,
             ];
 
 
@@ -360,6 +367,7 @@ class DT_Stream_Base extends DT_Module_Base {
                     "p2p_key" => "streams_to_trainings",
                     'icon' => get_template_directory_uri() . '/dt-assets/images/trainings.svg',
                     'create-icon' => get_template_directory_uri() . '/dt-assets/images/trainings-hollow.svg',
+                    "in_create_form" => true,
                 ];
             }
         }
