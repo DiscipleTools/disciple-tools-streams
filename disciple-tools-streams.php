@@ -3,12 +3,12 @@
  * Plugin Name: Disciple Tools - Streams
  * Plugin URI: https://github.com/DiscipleTools/disciple-tools-streams
  * Description: Disciple Tools Streams Extension adds recording of streams and cross reference them with contacts, groups, and locations.
- * Version:  0.1
+ * Version:  1.0
  * Author URI: https://github.com/DiscipleTools
  * GitHub Plugin URI: https://github.com/DiscipleTools/disciple-tools-streams
  * Requires at least: 4.7.0
  * (Requires 4.7+ because of the integration of the REST API at 4.7 and the security requirements of this milestone version.)
- * Tested up to: 4.9
+ * Tested up to: 5.6
  *
  * @package Disciple_Tools
  * @link    https://github.com/DiscipleTools
@@ -20,7 +20,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
-$dt_streams_required_dt_theme_version = '0.28.0';
+$dt_streams_required_dt_theme_version = '1.0';
 
 /**
  * Gets the instance of the `DT_Streams` class.
@@ -121,10 +121,18 @@ class DT_Streams {
         if ( is_admin() ) {
             require_once( 'includes/admin/admin-menu-and-tabs.php' );
         }
-        require_once( 'includes/streams-post-type.php' );
+
+        /* post type */
+        require_once( 'post-type/loader.php' );
+
+        /* site linking */
         require_once( 'includes/customize-site-linking.php' );
         require_once( 'includes/enqueue.php' );
-        require_once( 'includes/metrics.php' );
+
+
+        /* metrics */
+        require_once( 'metrics/mapbox-maps.php' );
+        require_once( 'metrics/mapbox-personal-maps.php' );
     }
 
     /**
@@ -148,11 +156,8 @@ class DT_Streams {
 
         // Admin and settings variables
         $this->token             = 'dt_streams';
-        $this->version             = '0.1';
+        $this->version             = '1.0';
 
-        // rest api class
-//        require_once( 'includes/rest-api.php' );
-//        DT_Streams_Endpoints::instance();
     }
 
     /**
