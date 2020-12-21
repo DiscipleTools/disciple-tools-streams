@@ -171,8 +171,8 @@ class DT_Stream_Reports extends DT_Module_Base
             'type' => $this->type,
             'meta_key' => $this->root . '_' . $this->type . '_public_key', // coaching-magic_c_key
             'actions' => [
-                '' => 'Home',
-                'stats' => 'Stats',
+                '' => 'Add Report',
+                'stats' => 'Summary',
                 'maps' => 'Maps'
             ],
             'post_type' => $this->post_type,
@@ -429,7 +429,7 @@ class DT_Stream_Reports extends DT_Module_Base
                 'parts' => $this->parts,
                 'name' => get_the_title( $this->parts['post_id'] ),
                 'translations' => [
-                    'add' => __( 'Add', 'disciple-tools' ),
+                    'add' => __( 'Add Report', 'disciple-tools' ),
                     'search_location' => 'Search for Location'
                 ],
             ]) ?>][0]
@@ -702,7 +702,7 @@ class DT_Stream_Reports extends DT_Module_Base
                 <div class="cell center" id="title"></div>
             </div>
             <div class="grid-x" id="add-new">
-                <div class="cell center"><button type="button" id="add-report-button" class="button large" style="min-width:200px;">Add</button></div>
+                <div class="cell center"><button type="button" id="add-report-button" class="button large" style="min-width:200px;">Add Report</button></div>
                 <div id="add-form-wrapper"></div>
             </div>
             <hr>

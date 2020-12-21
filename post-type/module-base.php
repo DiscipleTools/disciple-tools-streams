@@ -867,7 +867,7 @@ class DT_Stream_Base extends DT_Module_Base {
         global $wpdb;
 
         $results = $wpdb->get_results( $wpdb->prepare( "
-            SELECT status.meta_value as status, total(pm.post_id) as total, total(un.post_id) as update_needed
+            SELECT status.meta_value as status, COUNT(pm.post_id) as count, COUNT(un.post_id) as update_needed
             FROM $wpdb->postmeta pm
             INNER JOIN $wpdb->postmeta status ON( status.post_id = pm.post_id AND status.meta_key = 'status' )
             INNER JOIN $wpdb->posts a ON( a.ID = pm.post_id AND a.post_type = 'streams' and a.post_status = 'publish' )
@@ -887,7 +887,7 @@ class DT_Stream_Base extends DT_Module_Base {
         global $wpdb;
         if ( current_user_can( 'view_any_streams' ) ){
             $results = $wpdb->get_results("
-                SELECT status.meta_value as status, total(pm.post_id) as total, total(un.post_id) as update_needed
+                SELECT status.meta_value as status, COUNT(pm.post_id) as count, COUNT(un.post_id) as update_needed
                 FROM $wpdb->postmeta pm
                 INNER JOIN $wpdb->postmeta status ON( status.post_id = pm.post_id AND status.meta_key = 'status' )
                 INNER JOIN $wpdb->posts a ON( a.ID = pm.post_id AND a.post_type = 'streams' and a.post_status = 'publish' )
@@ -897,7 +897,7 @@ class DT_Stream_Base extends DT_Module_Base {
             ", ARRAY_A);
         } else {
             $results = $wpdb->get_results($wpdb->prepare("
-                SELECT status.meta_value as status, total(pm.post_id) as total, total(un.post_id) as update_needed
+                SELECT status.meta_value as status, COUNT(pm.post_id) as count, COUNT(un.post_id) as update_needed
                 FROM $wpdb->postmeta pm
                 INNER JOIN $wpdb->postmeta status ON( status.post_id = pm.post_id AND status.meta_key = 'status' )
                 INNER JOIN $wpdb->posts a ON( a.ID = pm.post_id AND a.post_type = 'streams' and a.post_status = 'publish' )
@@ -926,13 +926,13 @@ class DT_Stream_Base extends DT_Module_Base {
             $status_totals = [];
             $total_my = 0;
             foreach ( $totals as $total ){
-                $total_my += $total["total"];
-                dt_increment( $status_totals[$total["status"]], $total["total"] );
+                $total_my += $total["count"];
+                dt_increment( $status_totals[$total["status"]], $total["count"] );
                 if ( $total["status"] === "new" ){
                     if ( isset( $total["update_needed"] ) ) {
                         $update_needed += (int) $total["update_needed"];
                     }
-                    dt_increment( $active_totals[$total["status"]], $total["total"] );
+                    dt_increment( $active_totals[$total["status"]], $total["count"] );
                 }
             }
 
@@ -940,7 +940,7 @@ class DT_Stream_Base extends DT_Module_Base {
             $filters["tabs"][] = [
                 "key" => "assigned_to_me",
                 "label" => _x( "Assigned to me", 'List Filters', 'disciple_tools' ),
-                "total" => $total_my,
+                "count" => $total_my,
                 "order" => 20
             ];
             // add assigned to me filters
@@ -952,7 +952,7 @@ class DT_Stream_Base extends DT_Module_Base {
                     'assigned_to' => [ 'me' ],
                     'sort' => '-post_date'
                 ],
-                "total" => $total_my,
+                "count" => $total_my,
             ];
 
             foreach ( $fields["status"]["default"] as $status_key => $status_value ) {
@@ -966,7 +966,7 @@ class DT_Stream_Base extends DT_Module_Base {
                             'status' => [ $status_key ],
                             'sort' => '-post_date'
                         ],
-                        "total" => $status_totals[$status_key]
+                        "count" => $status_totals[$status_key]
                     ];
                     if ( $status_key === "new" ){
                         if ( $update_needed > 0 ){
@@ -979,7 +979,7 @@ class DT_Stream_Base extends DT_Module_Base {
                                     'status' => [ 'new' ],
                                     'requires_update' => [ true ],
                                 ],
-                                "total" => $update_needed,
+                                "count" => $update_needed,
                                 'subfilter' => true
                             ];
                         }
@@ -993,19 +993,19 @@ class DT_Stream_Base extends DT_Module_Base {
             $status_totals = [];
             $total_all = 0;
             foreach ( $totals as $total ){
-                $total_all += $total["total"];
-                dt_increment( $status_totals[$total["status"]], $total["total"] );
+                $total_all += $total["count"];
+                dt_increment( $status_totals[$total["status"]], $total["count"] );
                 if ( $total["status"] === "new" ){
                     if ( isset( $total["update_needed"] ) ) {
                         $update_needed += (int) $total["update_needed"];
                     }
-                    dt_increment( $active_totals[$total["status"]], $total["total"] );
+                    dt_increment( $active_totals[$total["status"]], $total["count"] );
                 }
             }
             $filters["tabs"][] = [
                 "key" => "all",
                 "label" => _x( "All", 'List Filters', 'disciple_tools' ),
-                "total" => $total_all,
+                "count" => $total_all,
                 "order" => 10
             ];
             // add assigned to me filters
@@ -1016,7 +1016,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'query' => [
                     'sort' => '-post_date'
                 ],
-                "total" => $total_all
+                "count" => $total_all
             ];
 
             foreach ( $fields["status"]["default"] as $status_key => $status_value ) {
@@ -1029,7 +1029,7 @@ class DT_Stream_Base extends DT_Module_Base {
                             'status' => [ $status_key ],
                             'sort' => '-post_date'
                         ],
-                        "total" => $status_totals[$status_key]
+                        "count" => $status_totals[$status_key]
                     ];
                     if ( $status_key === "new" ){
                         if ( $update_needed > 0 ){
@@ -1041,7 +1041,7 @@ class DT_Stream_Base extends DT_Module_Base {
                                     'status' => [ 'new' ],
                                     'requires_update' => [ true ],
                                 ],
-                                "total" => $update_needed,
+                                "count" => $update_needed,
                                 'subfilter' => true
                             ];
                         }
