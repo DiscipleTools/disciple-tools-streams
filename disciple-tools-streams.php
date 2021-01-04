@@ -118,9 +118,9 @@ class DT_Streams {
      * @return void
      */
     private function includes() {
-        if ( is_admin() ) {
-            require_once( 'includes/admin/admin-menu-and-tabs.php' );
-        }
+//        if ( is_admin() ) {
+//            require_once( 'includes/admin/admin-menu-and-tabs.php' );
+//        }
 
         /* post type */
         require_once( 'post-type/loader.php' );
