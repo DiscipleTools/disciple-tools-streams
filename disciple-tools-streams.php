@@ -123,8 +123,8 @@ class DT_Streams {
         require_once( 'post-type/loader.php' );
 
         /* site linking */
-        require_once('admin/customize-site-linking.php');
-        require_once('post-type/enqueue.php');
+        require_once( 'admin/customize-site-linking.php' );
+        require_once( 'post-type/enqueue.php' );
 
 
         /* metrics */
