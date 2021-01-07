@@ -3,7 +3,7 @@
  * Plugin Name: Disciple Tools - Streams
  * Plugin URI: https://github.com/DiscipleTools/disciple-tools-streams
  * Description: Disciple Tools Streams Extension adds recording of streams and cross reference them with contacts, groups, and locations.
- * Version:  1.0
+ * Version:  2.0
  * Author URI: https://github.com/DiscipleTools
  * GitHub Plugin URI: https://github.com/DiscipleTools/disciple-tools-streams
  * Requires at least: 4.7.0
@@ -118,9 +118,6 @@ class DT_Streams {
      * @return void
      */
     private function includes() {
-//        if ( is_admin() ) {
-//            require_once( 'includes/admin/admin-menu-and-tabs.php' );
-//        }
 
         /* post type */
         require_once( 'post-type/loader.php' );
@@ -156,7 +153,7 @@ class DT_Streams {
 
         // Admin and settings variables
         $this->token             = 'dt_streams';
-        $this->version             = '1.0';
+        $this->version             = '2.0';
 
     }
 
