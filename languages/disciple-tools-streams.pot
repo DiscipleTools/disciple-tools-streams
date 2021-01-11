@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Disciple Tools - Streams\n"
-"POT-Creation-Date: 2021-01-11 10:42-0700\n"
+"POT-Creation-Date: 2021-01-11 14:59-0700\n"
 "PO-Revision-Date: 2021-01-11 10:42-0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -29,23 +29,12 @@ msgstr ""
 msgid "Streams"
 msgstr ""
 
-#: disciple-tools-streams.php:247 disciple-tools-streams.php:258
+#: disciple-tools-streams.php:261 disciple-tools-streams.php:272
 msgid "Whoah, partner!"
 msgstr ""
 
-#: disciple-tools-streams.php:270
+#: disciple-tools-streams.php:284
 msgid "Method does not exist."
-msgstr ""
-
-#: disciple-tools-streams.php:285
-msgid ""
-"'Disciple Tools - Streams' plugin requires 'Disciple Tools' theme to work. "
-"Please activate 'Disciple Tools' theme or make sure it is latest version."
-msgstr ""
-
-#: disciple-tools-streams.php:287
-#, php-format
-msgid "Current Disciple Tools version: %1$s, required version: %2$s"
 msgstr ""
 
 #: metrics/mapbox-maps.php:30
