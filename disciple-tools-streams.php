@@ -3,6 +3,8 @@
  * Plugin Name: Disciple Tools - Streams
  * Plugin URI: https://github.com/DiscipleTools/disciple-tools-streams
  * Description: Disciple Tools Streams Extension adds recording of streams and cross reference them with contacts, groups, and locations.
+ * Text Domain: disciple-tools-streams
+ * Domain Path: /languages
  * Version:  2.0
  * Author URI: https://github.com/DiscipleTools
  * GitHub Plugin URI: https://github.com/DiscipleTools/disciple-tools-streams
@@ -56,7 +58,7 @@ function dt_streams() {
      */
     return DT_Streams::get_instance();
 }
-add_action( 'after_setup_theme', 'dt_streams', 99 );
+add_action( 'after_setup_theme', 'dt_streams', 21 );
 
 /**
  * Singleton class for setting up the plugin.
@@ -182,7 +184,7 @@ class DT_Streams {
         }
 
         // Internationalize the text strings used.
-        add_action( 'after_setup_theme', array( $this, 'i18n' ), 2 );
+        add_action( 'after_setup_theme', array( $this, 'i18n' ), 50 );
     }
 
     /**
@@ -222,7 +224,19 @@ class DT_Streams {
      * @return void
      */
     public function i18n() {
-        load_plugin_textdomain( 'dt_streams', false, trailingslashit( dirname( plugin_basename( __FILE__ ) ) ). 'languages' );
+        $domain = 'disciple-tools-streams'; // this must be the same as the slug for the plugin
+        $locale = apply_filters(
+            'plugin_locale',
+            ( is_admin() && function_exists( 'get_user_locale' ) ) ? get_user_locale() : get_locale(),
+            $domain
+        );
+
+        $mo_file = $domain . '-' . $locale . '.mo';
+        $path = realpath( dirname( __FILE__ ) . '/languages' );
+
+        if ($path && file_exists( $path )) {
+            load_textdomain( $domain, $path . '/' . $mo_file );
+        }
     }
 
     /**
@@ -233,7 +247,7 @@ class DT_Streams {
      * @return string
      */
     public function __toString() {
-        return 'dt_streams';
+        return 'disciple-tools-streams';
     }
 
     /**
