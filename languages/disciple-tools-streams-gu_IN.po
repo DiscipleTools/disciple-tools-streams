@@ -5,499 +5,498 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: Disciple Tools Plugins\n"
-"Language: fr\n"
+"Language: gu\n"
 
 #: disciple-tools-dashboard.php:253 disciple-tools-dashboard.php:264
 msgid "Whoah, partner!"
-msgstr "Whoah, partenaire!"
+msgstr "વહુ, ભાગીદાર!"
 
 #: disciple-tools-dashboard.php:276
 msgid "Method does not exist."
-msgstr "La méthode n'existe pas."
+msgstr "પદ્ધતિ અસ્તિત્વમાં નથી."
 
 #: metrics/mapbox-maps.php:30
 msgid "Training Maps"
-msgstr "Cartes d'entraînement"
+msgstr "તાલીમ નકશા"
 
 #: post-type/module-base.php:354
 msgid "Trainings"
-msgstr "Formations"
+msgstr "તાલીમ"
 
 #: metrics/mapbox-personal-maps.php:30
 msgid "Trainings Maps"
-msgstr "Cartes des formations"
+msgstr "તાલીમ નકશા"
 
 #: network/customize-site-linking.php:10 post-type/module-base.php:54
 msgid "Training"
-msgstr "Entraînement"
+msgstr "તાલીમ"
 
 #: post-type/module-base.php:59
 msgid "Multiplier"
-msgstr "Multiplicateur"
+msgstr "ગુણાકાર"
 
 #: post-type/module-base.php:65
 msgid "Dispatcher"
-msgstr "Répartiteur"
+msgstr "રવાનગી"
 
 #: post-type/module-base.php:72
 msgid "Disciple.Tools Admin"
-msgstr "Administrateur Disciple.Tools"
+msgstr "શિષ્ય.ટૂલ એડમિન"
 
 #: post-type/module-base.php:79
 msgid "Administrator"
-msgstr "Administrateur"
+msgstr "સંચાલક"
 
 #: post-type/module-base.php:432
 msgid "Members"
-msgstr "Membres"
+msgstr "સભ્યો"
 
 #: post-type/module-base.php:433
 msgid "Contacts"
-msgstr "Contacts"
+msgstr "સંપર્કો"
 
 #: post-type/module-base.php:294 post-type/module-base.php:450
 msgid "Groups"
-msgstr "Groupes"
+msgstr "જૂથો"
 
 #: post-type/module-base.php:259 post-type/module-base.php:467
 msgid "Leaders"
-msgstr "Dirigeants"
+msgstr "નેતાઓ"
 
 #: post-type/module-base.php:484
 msgid "Coaches"
-msgstr "Les entraîneurs"
+msgstr "કોચ"
 
 #: post-type/module-base.php:497
 msgid "Planted by"
-msgstr "Planté par"
+msgstr "દ્વારા વાવેતર કર્યુ"
 
 #: post-type/module-base.php:498
 msgid "Planting"
-msgstr "Plantation"
+msgstr "વાવેતર"
 
 #: post-type/module-base.php:203 post-type/module-base.php:519
 msgid "People Groups"
-msgstr "Groupes de personnes"
+msgstr "લોકો જૂથો"
 
 #: post-type/module-base.php:102
 msgid "Tags"
-msgstr "Mots clés"
+msgstr "ટ Tagsગ્સ"
 
 #: post-type/module-base.php:215
 msgctxt "Optional Documentation"
 msgid "A useful way to training related items and can help training contacts associated with noteworthy characteristics. e.g. business owner, sports lover. The contacts can also be filtered using these tags."
-msgstr "Un moyen utile de former des éléments liés et peut aider à former des contacts associés à des caractéristiques remarquables. par exemple. propriétaire d'entreprise, amateur de sport. Les contacts peuvent également être filtrés à l'aide de ces balises."
+msgstr "સંબંધિત વસ્તુઓને તાલીમ આપવાની એક ઉપયોગી રીત અને નોંધપાત્ર લાક્ષણિકતાઓ સાથે સંકળાયેલા સંપર્કને તાલીમ આપવામાં સહાય કરી શકે છે. દા.ત. વ્યવસાય માલિક, રમતો પ્રેમી. આ ટsગ્સનો ઉપયોગ કરીને સંપર્કોને પણ ફિલ્ટર કરી શકાય છે."
 
 #: post-type/module-base.php:111
 msgid "Follow"
-msgstr "Suivre"
+msgstr "અનુસરો"
 
 #: post-type/module-base.php:118
 msgid "Un-Follow"
-msgstr "Annuler le suivi"
+msgstr "અન-અનુસરો"
 
 #: includes/template-dashboard.php:164
 msgid "Tasks"
-msgstr "Tâches"
+msgstr "કાર્યો"
 
 #: post-type/module-base.php:249
 msgctxt "Training Status label"
 msgid "New"
-msgstr "Nouveau"
+msgstr "નવું"
 
 #: post-type/module-base.php:250
 msgctxt "Training Status field description"
 msgid "New training added to the system"
-msgstr "Nouvelle formation ajoutée au système"
+msgstr "સિસ્ટમમાં નવી તાલીમ ઉમેરવામાં"
 
 #: post-type/module-base.php:254
 msgctxt "Training Status label"
 msgid "Proposed"
-msgstr "Proposé"
+msgstr "દરખાસ્ત"
 
 #: post-type/module-base.php:255
 msgctxt "Training Status field description"
 msgid "This training has been proposed and is in initial conversations"
-msgstr "Cette formation a été proposée et fait l'objet de conversations initiales"
+msgstr "આ તાલીમ સૂચવવામાં આવી છે અને પ્રારંભિક વાતચીતમાં છે"
 
 #: post-type/module-base.php:259
 msgctxt "Training Status label"
 msgid "Scheduled"
-msgstr "Programmé"
+msgstr "સુનિશ્ચિત"
 
 #: post-type/module-base.php:260
 msgctxt "Training Status field description"
 msgid "This training is confirmed, on the calendar."
-msgstr "Cette formation est confirmée, sur le calendrier."
+msgstr "આ તાલીમ ક confirmedલેન્ડર પર પુષ્ટિ મળી છે."
 
 #: post-type/module-base.php:264
 msgctxt "Training Status label"
 msgid "In Progress"
-msgstr "En cours"
+msgstr "પ્રગતિમાં"
 
 #: post-type/module-base.php:265
 msgctxt "Training Status field description"
 msgid "This training is confirmed, on the calendar, or currently active."
-msgstr "Cette formation est confirmée, sur le calendrier ou actuellement active."
+msgstr "આ તાલીમની પુષ્ટિ, કેલેન્ડર પર અથવા હાલમાં સક્રિય છે."
 
 #: post-type/module-base.php:269
 msgctxt "Training Status label"
 msgid "Complete"
-msgstr "Achevée"
+msgstr "પૂર્ણ"
 
 #: post-type/module-base.php:270
 msgctxt "Training Status field description"
 msgid "This training has successfully completed"
-msgstr "Cette formation a réussi"
+msgstr "આ તાલીમ સફળતાપૂર્વક પૂર્ણ થઈ છે"
 
 #: post-type/module-base.php:274
 msgctxt "Training Status label"
 msgid "Paused"
-msgstr "En pause"
+msgstr "થોભાવ્યું"
 
 #: post-type/module-base.php:275
 msgctxt "Training Status field description"
 msgid "This contact is currently on hold. It has potential of getting scheduled in the future."
-msgstr "Ce contact est actuellement en attente. Il a le potentiel d'être programmé à l'avenir."
+msgstr "આ સંપર્ક હાલમાં પકડી રાખ્યો છે. તે ભવિષ્યમાં સુનિશ્ચિત થવાની સંભાવના છે."
 
 #: post-type/module-base.php:279
 msgctxt "Training Status label"
 msgid "Closed"
-msgstr "Fermé"
+msgstr "બંધ"
 
 #: post-type/module-base.php:280
 msgctxt "Training Status field description"
 msgid "This training is no longer going to happen."
-msgstr "Cette formation n'aura plus lieu."
+msgstr "આ તાલીમ હવે બનવાની નથી."
 
 #: post-type/module-base.php:176
 msgid "Assigned To"
-msgstr "Assigné à"
+msgstr "સોંપ્યું"
 
 #: post-type/module-base.php:288
 msgid "Select the main person who is responsible for reporting on this training."
-msgstr "Sélectionnez la personne principale chargée de rendre compte de cette formation."
+msgstr "આ તાલીમ અંગેની જાણ કરવા માટે જવાબદાર મુખ્ય વ્યક્તિ પસંદ કરો."
 
 #: post-type/module-base.php:185
 msgid "Training Coach / Church Planter"
-msgstr "Coach de formation / implanteur d'églises"
+msgstr "તાલીમ કોચ / ચર્ચ પ્લાન્ટર"
 
 #: post-type/module-base.php:297
 msgctxt "Optional Documentation"
 msgid "The person who planted and/or is coaching this training. Only one person can be assigned to a training while multiple people can be coaches / church planters of this training."
-msgstr "La personne qui a planté et / ou qui encadre cette formation. Une seule personne peut être affectée à une formation tandis que plusieurs personnes peuvent être des entraîneurs / implanteurs d'églises de cette formation."
+msgstr "જે વ્યક્તિએ આ તાલીમ રોપણી કરી છે અને / અથવા તે કોચિંગ આપી રહી છે. ફક્ત એક જ વ્યક્તિને તાલીમ સોંપવામાં આવી શકે છે જ્યારે અનેક લોકો આ તાલીમના કોચ / ચર્ચ વાવેતર કરી શકે છે."
 
 #: post-type/module-base.php:196
 msgid "Requires Update"
-msgstr "Nécessite une mise à jour"
+msgstr "અપડેટની જરૂર છે"
 
 #: post-type/module-base.php:313
 msgid "Video Link"
-msgstr "Lien vidéo"
+msgstr "વિડિઓ લિંક"
 
 #: post-type/module-base.php:314
 msgctxt "Optional Documentation"
 msgid "Link to video chat service"
-msgstr "Lien vers le service de chat vidéo"
+msgstr "વિડિઓ ચેટ સેવા સાથે લિંક"
 
 #: post-type/module-base.php:321
 msgid "Notes"
-msgstr "Remarques"
+msgstr "નોંધો"
 
 #: post-type/module-base.php:322
 msgctxt "Optional Documentation"
 msgid "Notes on when the trainings will happen"
-msgstr "Notes sur le moment où les formations auront lieu"
+msgstr "તાલીમ ક્યારે થશે તેની નોંધ"
 
 #: post-type/module-base.php:331 post-type/module-base.php:543
 msgid "Meeting Times"
-msgstr "Heures de réunion"
+msgstr "મીટિંગ ટાઇમ્સ"
 
 #: post-type/module-base.php:219 post-type/module-base.php:228
 msgid "Locations"
-msgstr "Emplacements"
+msgstr "સ્થાનો"
 
 #: post-type/module-base.php:220 post-type/module-base.php:229
 msgctxt "Optional Documentation"
 msgid "The general location where this contact is located."
-msgstr "L'emplacement général où se trouve ce contact."
+msgstr "આ સંપર્ક જ્યાં સ્થિત છે તે સામાન્ય સ્થાન."
 
 #: post-type/module-base.php:236
 msgid "Address"
-msgstr "Adresse"
+msgstr "સરનામું"
 
 #: post-type/module-base.php:413
 msgid "Parent Training"
-msgstr "Formation des parents"
+msgstr "પિતૃ તાલીમ"
 
 #: post-type/module-base.php:414
 msgctxt "Optional Documentation"
 msgid "A training that launched this training."
-msgstr "Une formation qui a lancé cette formation."
+msgstr "એક તાલીમ કે જેણે આ તાલીમ શરૂ કરી."
 
 #: post-type/module-base.php:424
 msgid "Peer Training"
-msgstr "Formation par les pairs"
+msgstr "પીઅર તાલીમ"
 
 #: post-type/module-base.php:425
 msgctxt "Optional Documentation"
 msgid "A related training that isn't a parent/child in relationship. It might indicate trainings that collaborate, are about to merge, recently split, etc."
-msgstr "Une formation connexe qui n'est pas un parent / enfant en couple. Cela peut indiquer des formations qui collaborent, sont sur le point de fusionner, récemment divisées, etc."
+msgstr "સંબંધિત તાલીમ જે સંબંધમાં માતાપિતા / બાળક નથી. તે કદાચ તાલીમ સૂચવે છે જે સહયોગ કરે છે, મર્જ થવાની તૈયારીમાં છે, તાજેતરમાં વિભાજિત થાય છે વગેરે."
 
 #: post-type/module-base.php:435
 msgid "Child Training"
-msgstr "Formation des enfants"
+msgstr "બાળ તાલીમ"
 
 #: post-type/module-base.php:436
 msgctxt "Optional Documentation"
 msgid "A training that has been birthed out of this training."
-msgstr "Une formation issue de cette formation."
+msgstr "એક તાલીમ જે આ તાલીમમાંથી બહાર આવી છે."
 
 #: post-type/module-base.php:446 post-type/module-base.php:542
 #: post-type/module-base.php:653
 msgid "Member List"
-msgstr "Liste des membres"
+msgstr "સભ્ય યાદી"
 
 #: post-type/module-base.php:447
 msgctxt "Optional Documentation"
 msgid "The contacts who are members of this training."
-msgstr "Les contacts membres de cette formation."
+msgstr "સંપર્કો જે આ તાલીમના સભ્યો છે."
 
 #: post-type/module-base.php:464
 msgctxt "Optional Documentation"
 msgid "The people trainings represented by this training."
-msgstr "Les formations de personnes représentées par cette formation."
+msgstr "આ તાલીમ દ્વારા રજૂ લોકોની તાલીમ."
 
 #: post-type/module-base.php:484
 msgid "Member Count"
-msgstr "Nombre de membres"
+msgstr "સભ્ય ગણતરી"
 
 #: post-type/module-base.php:485 post-type/module-base.php:492
 msgctxt "Optional Documentation"
 msgid "The number of members in this training. It will automatically be updated when new members are added or removed in the member list. Change this number manually to included people who may not be in the system but are also members of the training."
-msgstr "Le nombre de membres dans cette formation. Il sera automatiquement mis à jour lorsque de nouveaux membres sont ajoutés ou supprimés dans la liste des membres. Modifiez ce numéro manuellement pour inclure les personnes qui ne sont peut-être pas dans le système mais qui sont également membres de la formation."
+msgstr "આ તાલીમમાં સભ્યોની સંખ્યા. જ્યારે સભ્ય સૂચિમાં નવા સભ્યો ઉમેરવામાં આવશે અથવા દૂર કરવામાં આવશે ત્યારે તે આપમેળે અપડેટ થશે. આ નંબરને મેન્યુઅલી બદલો શામેલ લોકોને સમાવો કે જે સિસ્ટમમાં ન હોય પણ તાલીમના સભ્યો પણ હોય."
 
 #: post-type/module-base.php:491
 msgid "Leader Count"
-msgstr "Nombre de chefs"
+msgstr "નેતા ગણતરી"
 
 #: post-type/module-base.php:503
 msgid "Training as Leader"
-msgstr "Formation en tant que leader"
+msgstr "નેતા તરીકે તાલીમ"
 
 #: post-type/module-base.php:504
 msgctxt "Optional Documentation"
 msgid "Leader of a training"
-msgstr "Responsable d'une formation"
+msgstr "એક તાલીમ નેતા"
 
 #: post-type/module-base.php:514
 msgid "Training as Participant"
-msgstr "Formation en tant que participant"
+msgstr "સહભાગી તરીકે તાલીમ"
 
 #: post-type/module-base.php:515
 msgctxt "Optional Documentation"
 msgid "Participant in a training."
-msgstr "Participant à une formation."
+msgstr "તાલીમમાં ભાગ લેનાર."
 
 #: post-type/module-base.php:537
 msgid "Other"
-msgstr "Autre"
+msgstr "અન્ય"
 
 #: post-type/module-base.php:568
 msgctxt "input field placeholder"
 msgid "Search Users"
-msgstr "Rechercher des utilisateurs"
+msgstr "વપરાશકર્તાઓ શોધો"
 
 #: post-type/module-base.php:601
 msgctxt "Search 'something'"
 msgid "Search %s"
-msgstr "Rechercher% s"
+msgstr "% S શોધો"
 
 #: post-type/module-base.php:656
 msgid "Create"
-msgstr "Créer"
+msgstr "બનાવો"
 
 #: post-type/module-base.php:661
 msgid "Select"
-msgstr "Sélectionner"
+msgstr "પસંદ કરો"
 
 #: post-type/module-base.php:666
 msgid "To add new members, click on 'Create' or 'Select'."
-msgstr "Pour ajouter de nouveaux membres, cliquez sur «Créer» ou «Sélectionner»."
+msgstr "નવા સભ્યો ઉમેરવા માટે, 'બનાવો' અથવા 'પસંદ કરો' પર ક્લિક કરો."
 
 #: post-type/module-base.php:671
 msgctxt "Add members modal"
 msgid "Add members from existing contacts"
-msgstr "Ajouter des membres à partir de contacts existants"
+msgstr "હાલના સંપર્કોમાંથી સભ્યો ઉમેરો"
 
 #: post-type/module-base.php:672
 msgctxt "Add members modal"
 msgid "In the 'Member List' field, type the name of an existing contact to add them to this training."
-msgstr "Dans le champ «Liste des membres», saisissez le nom d'un contact existant pour l'ajouter à cette formation."
+msgstr "'સભ્યની સૂચિ' ફીલ્ડમાં, આ તાલીમમાં તેમને ઉમેરવા માટે હાલના સંપર્કનું નામ લખો."
 
 #: post-type/module-base.php:681
 msgid "Close"
-msgstr "Fermer"
+msgstr "બંધ"
 
 #: post-type/module-base.php:879
 msgid "Removed %1$s: %2$s"
-msgstr "% 1 $ s supprimé:% 2 $ s"
+msgstr "% 1 $ s દૂર કર્યું:% 2 $ s"
 
 #: post-type/module-base.php:882
 msgid "Added %1$s: %2$s"
-msgstr "% 1 $ s ajouté:% 2 $ s"
+msgstr "% 1 $ s ઉમેરી:% 2 $ s"
 
 #: post-type/module-base.php:885
 msgid "Updated %1$s: %2$s to %3$s"
-msgstr "% 1 $ s mis à jour:% 2 $ s vers% 3 $ s"
+msgstr "% 1 $ s:% 2 $ s થી% 3 $ s પર અપડેટ કર્યું"
 
 #: post-type/module-base.php:942
 msgctxt "List Filters"
 msgid "Assigned to me"
-msgstr "Assigné à moi"
+msgstr "મને સોંપેલ"
 
 #: post-type/module-base.php:950 post-type/module-base.php:1007
 #: post-type/module-base.php:1015
 msgctxt "List Filters"
 msgid "All"
-msgstr "Tout"
+msgstr "બધા"
 
 #: post-type/module-reports.php:85
 msgid "Reports"
-msgstr "Rapports"
+msgstr "અહેવાલો"
 
 #: post-type/module-reports.php:121
 msgid "Total Groups"
-msgstr "Total des groupes"
+msgstr "કુલ જૂથો"
 
 #: post-type/module-reports.php:122
 msgid "Total Baptisms"
-msgstr "Baptêmes totaux"
+msgstr "કુલ બાપ્તિસ્મા"
 
 #: post-type/module-reports.php:123
 msgid "Countries"
-msgstr "Des pays"
+msgstr "દેશો"
 
 #: post-type/module-reports.php:124
 msgid "States"
-msgstr "États"
+msgstr "રાજ્યો"
 
 #: post-type/module-reports.php:125
 msgid "Counties"
-msgstr "Comtés"
+msgstr "કાઉન્ટીઓ"
 
 #: post-type/module-public-calendar.php:432
 #: post-type/module-registration.php:385
 msgid "Add"
-msgstr "Ajouter"
+msgstr "ઉમેરો"
 
 #: post-type/module-registration.php:31
 msgid "Apps"
-msgstr "applications"
+msgstr "એપ્લિકેશન્સ"
 
 #: post-type/module-registration.php:59
 msgid "copy link"
-msgstr "Copier le lien"
+msgstr "કડી કડી"
 
 #: post-type/module-registration.php:61
 msgid "edit form"
-msgstr "modifier le formulaire"
+msgstr "ફેરફાર કરો ફોર્મ"
 
 #: post-type/module-registration.php:63
 msgid "report"
-msgstr "rapport"
+msgstr "અહેવાલ"
 
 #: post-type/module-registration.php:67
 msgid "create link"
-msgstr "créer un lien"
+msgstr "કડી બનાવો"
 
 #: post-type/module-registration.php:114
 msgid "link"
-msgstr "lien"
+msgstr "કડી"
 
 #: post-type/module-registration.php:116
 msgid "show on calendar"
-msgstr "afficher sur le calendrier"
+msgstr "ક calendarલેન્ડર પર બતાવો"
 
 #: post-type/module-registration.php:118
-#, fuzzy
 msgid "open registration"
-msgstr "inscription ouverte "
+msgstr "ખુલ્લી નોંધણી "
 
 #: post-type/module-registration.php:265
 msgid "add"
-msgstr "ajouter"
+msgstr "ઉમેરો"
 
 #: post-type/module-registration.php:266
 msgid "Use"
-msgstr "Utilisation"
+msgstr "વાપરવુ"
 
 #: post-type/module-registration.php:267 post-type/module-registration.php:695
 msgid "Search Location"
-msgstr "Rechercher un emplacement"
+msgstr "શોધ સ્થાન"
 
 #: post-type/module-registration.php:268
 msgid "Delete Location"
-msgstr "Supprimer l'emplacement"
+msgstr "સ્થાન કા Deleteી નાખો"
 
 #: post-type/module-registration.php:269
 msgid "Open Mapping"
-msgstr "Mappage ouvert"
+msgstr "ઓપન મેપિંગ"
 
 #: post-type/module-registration.php:270
 msgid "clear"
-msgstr "clair"
+msgstr "ચોખ્ખુ"
 
 #: post-type/module-registration.php:384
 msgid "Register for Training"
-msgstr "S'inscrire à la formation"
+msgstr "તાલીમ માટે નોંધણી કરો"
 
 #: post-type/module-registration.php:386
 msgid "Join Training"
-msgstr "Rejoindre la formation"
+msgstr "તાલીમ જોડાઓ"
 
 #: post-type/module-registration.php:387
 msgid "Join in"
-msgstr "Se joindre à"
+msgstr "માં જોડાવા"
 
 #: post-type/module-registration.php:700
 msgid "Clear"
-msgstr "Clair"
+msgstr "ચોખ્ખુ"
 
 #. Plugin Name of the plugin/theme
 #: 
 msgid "Disciple Tools - Training"
-msgstr "Outils de disciple - Formation"
+msgstr "શિષ્ય સાધનો - તાલીમ"
 
 #: includes/admin/admin-menu-and-tabs.php:62
 msgid "Extensions (DT)"
-msgstr "Extensions (DT)"
+msgstr "એક્સ્ટેંશન (ડીટી)"
 
 #: admin/menu-and-tabs.php:64 admin/menu-and-tabs.php:65
 #: admin/menu-and-tabs.php:103
 msgid "Network Dashboard"
-msgstr "Tableau de bord réseau"
+msgstr "નેટવર્ક ડેશબોર્ડ"
 
 #: includes/admin/admin-menu-and-tabs.php:79
 msgid "You do not have sufficient permissions to access this page."
-msgstr "Vous ne disposez pas des autorisations suffisantes pour accéder à cette page."
+msgstr "તમારી પાસે આ પૃષ્ઠને toક્સેસ કરવા માટે પૂરતી પરવાનગી નથી."
 
 #: admin/menu-and-tabs.php:107 admin/menu-and-tabs.php:130
 #: admin/menu-and-tabs.php:135
 msgid "nav-tab-active"
-msgstr "nav-tab-active"
+msgstr "એનએવી-ટ tabબ-સક્રિય"
 
 #: admin/migrations/0000-initial.php:21
 msgid "Network Dashboard Viewer"
-msgstr "Visionneuse de tableau de bord réseau"
+msgstr "નેટવર્ક ડેશબોર્ડ દર્શક"
 
 #: metrics/base.php:220
 msgid "ID"
-msgstr "ID"
+msgstr "આઈ.ડી."
 
 #: metrics/base.php:221 metrics/base.php:255
 msgid "Site"
-msgstr "Site"
+msgstr "સાઇટ"
 
 #: metrics/base.php:224 metrics/base.php:254 metrics/network-maps-area.php:89
 #: metrics/network-maps-area.php:133 metrics/network-statistics-users.php:12
@@ -505,374 +504,374 @@ msgstr "Site"
 #: metrics/network-statistics-users.php:14
 #: metrics/network-statistics-users.php:50
 msgid "Users"
-msgstr "Utilisateurs"
+msgstr "વપરાશકર્તાઓ"
 
 #: metrics/base.php:225
 msgid "Timestamp"
-msgstr "Horodatage"
+msgstr "ટાઇમસ્ટેમ્પ"
 
 #: metrics/base.php:226
 msgid "Visit"
-msgstr "Visite"
+msgstr "મુલાકાત લો"
 
 #: metrics/base.php:227
 msgid "View"
-msgstr "Vue"
+msgstr "જુઓ"
 
 #: metrics/base.php:229
 msgid "Active Snapshot"
-msgstr "Instantané actif"
+msgstr "સક્રિય સ્નેપશોટ"
 
 #: metrics/base.php:230
 msgid "Generations"
-msgstr "Générations"
+msgstr "પે Geneીઓ"
 
 #: metrics/base.php:231
 msgid "Follow-up Funnel"
-msgstr "Entonnoir de suivi"
+msgstr "ફોલો-અપ ફનલ"
 
 #: metrics/base.php:232
 msgid "On-Going Meetings"
-msgstr "Réunions en cours"
+msgstr "ચાલુ બેઠકો"
 
 #: metrics/base.php:233
 msgid "Coaching"
-msgstr "encadrement"
+msgstr "કોચિંગ"
 
 #: metrics/base.php:234
 msgid "Baptized"
-msgstr "Baptisé"
+msgstr "બાપ્તિસ્મા"
 
 #: metrics/base.php:235
 msgid "Active Groups"
-msgstr "Groupes actifs"
+msgstr "સક્રિય જૂથો"
 
 #: metrics/base.php:236 metrics/base.php:258
 msgid "Church"
-msgstr "Église"
+msgstr "ચર્ચ"
 
 #: metrics/base.php:237
 msgid "Health Metrics"
-msgstr "Mesures de santé"
+msgstr "આરોગ્ય મેટ્રિક્સ"
 
 #: metrics/base.php:238
 msgid "Total Users"
-msgstr "Nombre total d'utilisateurs"
+msgstr "કુલ વપરાશકર્તાઓ"
 
 #: metrics/base.php:239
 msgid "Responders"
-msgstr "Répondeurs"
+msgstr "જવાબો"
 
 #: metrics/base.php:240
 msgid "Dispatchers"
-msgstr "Répartiteurs"
+msgstr "રવાનગી"
 
 #: metrics/base.php:241
 msgid "Multipliers"
-msgstr "Multiplicateurs"
+msgstr "ગુણાકાર"
 
 #: metrics/base.php:242
 msgid "Admins"
-msgstr "Administrateurs"
+msgstr "સંચાલકો"
 
 #: metrics/base.php:243
 msgid "User Login Activity"
-msgstr "Activité de connexion des utilisateurs"
+msgstr "વપરાશકર્તા લ Loginગિન પ્રવૃત્તિ"
 
 #: metrics/base.php:244
 msgid "Users Active in the Last 30 Days"
-msgstr "Utilisateurs actifs au cours des 30 derniers jours"
+msgstr "છેલ્લા 30 દિવસમાં સક્રિય વપરાશકર્તાઓ"
 
 #: metrics/base.php:245
 msgid "Practicing"
-msgstr "Pratiquant"
+msgstr "પ્રેક્ટિસ"
 
 #: metrics/base.php:246
 msgid "Not Practicing"
-msgstr "Ne pas pratiquer"
+msgstr "પ્રેક્ટિસ નહીં"
 
 #: metrics/base.php:247
 msgid "Chart Funnel"
-msgstr "Entonnoir graphique"
+msgstr "ચાર્ટ ફનલ"
 
 #: metrics/base.php:250
 msgid "Contact"
-msgstr "Contact"
+msgstr "સંપર્ક કરો"
 
 #: metrics/base.php:251
 msgid "Group"
-msgstr "Groupe"
+msgstr "જૂથ"
 
 #: metrics/base.php:253
 msgid "User"
-msgstr "Utilisateur"
+msgstr "વપરાશકર્તા"
 
 #: metrics/base.php:256 metrics/base.php:301
 msgid "Sites"
-msgstr "Des sites"
+msgstr "સાઇટ્સ"
 
 #: metrics/base.php:257
 msgid "Baptisms"
-msgstr "Baptêmes"
+msgstr "બાપ્તિસ્મા"
 
 #: metrics/base.php:259 metrics/network-maps-area.php:97
 #: metrics/network-maps-area.php:127
 msgid "Churches"
-msgstr "Des églises"
+msgstr "ચર્ચો"
 
 #: metrics/base.php:260
 msgid "Location"
-msgstr "Emplacement"
+msgstr "સ્થાન"
 
 #: metrics/base.php:261
 msgid "Types"
-msgstr "Les types"
+msgstr "પ્રકારો"
 
 #: metrics/base.php:263
 msgid "modify filter"
-msgstr "modifier le filtre"
+msgstr "ફિલ્ટર સુધારો"
 
 #: metrics/base.php:264
 msgid "Filter List"
-msgstr "Liste de filtres"
+msgstr "ફિલ્ટર સૂચિ"
 
 #: metrics/base.php:265
 msgid "reset data"
-msgstr "Réinitialiser les données"
+msgstr "ડેટા ફરીથી સેટ કરો"
 
 #: post-type/module-base.php:133
 msgid "Status"
-msgstr "Statut"
+msgstr "સ્થિતિ"
 
 #: metrics/base.php:268
 msgid "Status - All"
-msgstr "Statut - Tous"
+msgstr "સ્થિતિ - બધા"
 
 #: metrics/base.php:270
 msgid "Zoom Level"
-msgstr "Le niveau de zoom"
+msgstr "ઝૂમ લેવલ"
 
 #: metrics/base.php:271
 msgid "Auto Zoom"
-msgstr "Zoom automatique"
+msgstr "Autoટો ઝૂમ"
 
 #: metrics/base.php:272
 msgid "World"
-msgstr "Monde"
+msgstr "દુનિયા"
 
 #: metrics/base.php:273
 msgid "Country"
-msgstr "Pays"
+msgstr "દેશ"
 
 #: metrics/base.php:274
 msgid "State"
-msgstr "Etat"
+msgstr "રાજ્ય"
 
 #: includes/template-dashboard.php:23
 msgid "Active Contacts"
-msgstr "Contacts actifs"
+msgstr "સક્રિય સંપર્કો"
 
 #: metrics/base.php:277
 msgid "Paused Contacts"
-msgstr "Contacts en pause"
+msgstr "સંપર્કો થોભાવ્યા"
 
 #: metrics/base.php:278
 msgid "Closed Contacts"
-msgstr "Contacts fermés"
+msgstr "સંપર્કો બંધ"
 
 #: metrics/base.php:279
 msgid "Total Contacts"
-msgstr "Nombre total de contacts"
+msgstr "કુલ સંપર્કો"
 
 #: metrics/base.php:280
 msgid "New Contacts"
-msgstr "Nouveaux contacts"
+msgstr "નવા સંપર્કો"
 
 #: metrics/base.php:282
 msgid "New Baptisms"
-msgstr "Nouveaux baptêmes"
+msgstr "નવી બાપ્તિસ્મા"
 
 #: metrics/base.php:283
 msgid "Baptism Generations"
-msgstr "Générations de baptême"
+msgstr "બાપ્તિસ્મા પેrationsી"
 
 #: metrics/base.php:284
 msgid "Select Location"
-msgstr "Sélectionnez l'emplacement"
+msgstr "સ્થાન પસંદ કરો"
 
 #: metrics/base.php:286
 msgid "New Groups"
-msgstr "Nouveaux groupes"
+msgstr "નવા જૂથો"
 
 #: metrics/base.php:287
 msgid "Pre-Group"
-msgstr "Pré-groupe"
+msgstr "પૂર્વ જૂથ"
 
 #: metrics/base.php:288
 msgid "Pre-Groups"
-msgstr "Pré-groupes"
+msgstr "પૂર્વ જૂથો"
 
 #: metrics/base.php:290
 msgid "Last 7 Days"
-msgstr "Les 7 derniers jours"
+msgstr "છેલ્લા 7 દિવસો"
 
 #: metrics/base.php:291
 msgid "Last 30 Days"
-msgstr "Les 30 derniers jours"
+msgstr "છેલ્લા 30 દિવસો"
 
 #: metrics/base.php:292
 msgid "Last 60 Days"
-msgstr "60 derniers jours"
+msgstr "છેલ્લા 60 દિવસો"
 
 #: metrics/base.php:293
 msgid "Last 12 Months"
-msgstr "12 derniers mois"
+msgstr "છેલ્લા 12 મહિના"
 
 #: metrics/base.php:294
 msgid "Last 24 Months"
-msgstr "24 derniers mois"
+msgstr "છેલ્લા 24 મહિના"
 
 #: metrics/base.php:295
 msgid "This Year"
-msgstr "Cette année"
+msgstr "આ વર્ષ"
 
 #: metrics/base.php:297
 msgid "Activity Map"
-msgstr "Carte d'activité"
+msgstr "પ્રવૃત્તિ નકશો"
 
 #: metrics/base.php:298 metrics/network-activity-stats.php:11
 #: metrics/network-activity-stats.php:12 metrics/network-activity-stats.php:13
 #: metrics/network-activity-stats.php:57
 msgid "Stats"
-msgstr "Statistiques"
+msgstr "આંકડા"
 
 #: metrics/base.php:299
 msgid "Activities"
-msgstr "Activités"
+msgstr "પ્રવૃત્તિઓ"
 
 #: metrics/base.php:300
 msgid "Actions"
-msgstr "Actions"
+msgstr "ક્રિયાઓ"
 
 #: metrics/base.php:302
 msgid "By Action Type"
-msgstr "Par type d'action"
+msgstr "ક્રિયા પ્રકાર દ્વારા"
 
 #: metrics/base.php:303
 msgid "Key"
-msgstr "Clé"
+msgstr "કી"
 
 #: metrics/base.php:304
 msgid "Name"
-msgstr "Nom"
+msgstr "નામ"
 
 #: metrics/base.php:305
 msgid "Total Activities"
-msgstr "Total des activités"
+msgstr "કુલ પ્રવૃત્તિઓ"
 
 #: metrics/base.php:306
 msgid "Feed"
-msgstr "Alimentation"
+msgstr "ફીડ"
 
 #: metrics/base.php:307
 msgid "Time"
-msgstr "Temps"
+msgstr "સમય"
 
 #: metrics/base.php:308
 msgid "Result Limit"
-msgstr "Limite de résultat"
+msgstr "પરિણામની મર્યાદા"
 
 #: metrics/base.php:309
 msgid "uncheck"
-msgstr "décocher"
+msgstr "અનચેક"
 
 #: metrics/base.php:311 metrics/network-home.php:12 metrics/network-home.php:13
 #: metrics/network-home.php:14 metrics/network-home.php:48
 msgid "Home"
-msgstr "Accueil"
+msgstr "ખેર"
 
 #: metrics/base.php:313
 msgid "Events (30 Days)"
-msgstr "Événements (30 jours)"
+msgstr "ઇવેન્ટ્સ (30 દિવસ)"
 
 #: metrics/base.php:315
 msgid "All Active/Inactive"
-msgstr "Tout actif / inactif"
+msgstr "બધા સક્રિય / નિષ્ક્રિય"
 
 #: metrics/base.php:316 metrics/network-maps-hovermap.php:12
 #: metrics/network-maps-hovermap.php:13 metrics/network-maps-hovermap.php:14
 #: metrics/network-maps-hovermap.php:51
 msgid "Hover Map"
-msgstr "Carte de survol"
+msgstr "નકશો હoverવર"
 
 #: metrics/loader.php:16
 msgid "Network"
-msgstr "Réseau"
+msgstr "નેટવર્ક"
 
 #: metrics/network-activity-map.php:15 metrics/network-activity-map.php:16
 #: metrics/network-activity-map.php:17 metrics/network-activity-map.php:63
 msgid "Map"
-msgstr "Carte"
+msgstr "નકશો"
 
 #: metrics/network-activity-stream.php:12
 #: metrics/network-activity-stream.php:13
 #: metrics/network-activity-stream.php:14
 #: metrics/network-activity-stream.php:51
 msgid "Log"
-msgstr "Journal"
+msgstr "લ Logગ"
 
 #: metrics/network-activity.php:12 metrics/network-activity.php:13
 #: metrics/network-activity.php:14 metrics/network-activity.php:25
 msgid "Activity"
-msgstr "Activité"
+msgstr "પ્રવૃત્તિ"
 
 #: metrics/network-maps-area.php:15 metrics/network-maps-area.php:16
 #: metrics/network-maps-area.php:17 metrics/network-maps-area.php:110
 msgid "Area Maps"
-msgstr "Cartes de la région"
+msgstr "ક્ષેત્ર નકશા"
 
 #: metrics/network-maps-locationlist.php:12
 #: metrics/network-maps-locationlist.php:13
 #: metrics/network-maps-locationlist.php:14
 #: metrics/network-maps-locationlist.php:46
 msgid "Location List"
-msgstr "Liste des emplacements"
+msgstr "સ્થાન સૂચિ"
 
 #: metrics/network-maps.php:12 metrics/network-maps.php:13
 #: metrics/network-maps.php:14 metrics/network-maps.php:25
 msgid "Maps"
-msgstr "Plans"
+msgstr "નકશા"
 
 #: metrics/network-sites.php:12 metrics/network-sites.php:13
 #: metrics/network-sites.php:14 metrics/network-sites.php:45
 msgid "Site Reports"
-msgstr "Rapports de site"
+msgstr "સાઇટ અહેવાલો"
 
 #: metrics/network-statistics.php:12 metrics/network-statistics.php:13
 #: metrics/network-statistics.php:14 metrics/network-statistics.php:25
 msgid "Statistics"
-msgstr "Statistiques"
+msgstr "આંકડા"
 
 #: shared/permissions.php:41
 msgid "Network Dashboard Transfer Both Ways"
-msgstr "Transfert de tableau de bord réseau dans les deux sens"
+msgstr "નેટવર્ક ડેશબોર્ડ બંને રીતે સ્થાનાંતરિત કરે છે"
 
 #: shared/permissions.php:42
 msgid "Network Dashboard Receiving Only"
-msgstr "Réception du tableau de bord réseau uniquement"
+msgstr "ફક્ત નેટવર્ક ડેશબોર્ડ પ્રાપ્ત થાય છે"
 
 #: shared/permissions.php:43
 msgid "Network Dashboard Sending Only"
-msgstr "Network Dashboard Envoi uniquement"
+msgstr "નેટવર્ક ડેશબોર્ડ ફક્ત મોકલી રહ્યું છે"
 
 #: shared/site-profile.php:99
 msgid "Network Dashboard Site Profile"
-msgstr "Profil de site du tableau de bord réseau"
+msgstr "નેટવર્ક ડેશબોર્ડ સાઇટ પ્રોફાઇલ"
 
 #. Plugin Name of the plugin/theme
 #: 
 msgid "Disciple Tools - Network Dashboard"
-msgstr "Outils de disciple - Tableau de bord réseau"
+msgstr "શિષ્ય સાધનો - નેટવર્ક ડેશબોર્ડ"
 
 #: admin/customize-site-linking.php:10 metrics/mapbox-maps.php:31
 #: metrics/mapbox-personal-maps.php:31 post-type/module-base.php:393
@@ -880,268 +879,268 @@ msgstr "Outils de disciple - Tableau de bord réseau"
 #: post-type/module-base.php:466 post-type/module-base.php:483
 #: post-type/module-base.php:520
 msgid "Streams"
-msgstr "Ruisseaux"
+msgstr "સ્ટ્રીમ્સ"
 
 #: metrics/mapbox-maps.php:30
 msgid "Stream Maps"
-msgstr "Cartes de flux"
+msgstr "પ્રવાહ નકશા"
 
 #: metrics/mapbox-personal-maps.php:30
 msgid "Streams Maps"
-msgstr "Cartes des flux"
+msgstr "સ્ટ્રીમ્સ નકશા"
 
 #: post-type/module-base.php:103
 msgctxt "Optional Documentation"
 msgid "A useful way to stream related items and can help stream contacts associated with noteworthy characteristics. e.g. business owner, sports lover. The contacts can also be filtered using these tags."
-msgstr "Un moyen utile de diffuser des éléments connexes et peut aider à diffuser des contacts associés à des caractéristiques remarquables. par exemple. propriétaire d'entreprise, amateur de sport. Les contacts peuvent également être filtrés à l'aide de ces balises."
+msgstr "સંબંધિત વસ્તુઓને સ્ટ્રીમ કરવાની એક ઉપયોગી રીત અને નોંધપાત્ર લાક્ષણિકતાઓ સાથે સંકળાયેલા સંપર્કોને સ્ટ્રીમ કરવામાં સહાય કરી શકે છે. દા.ત. વ્યવસાય માલિક, રમતો પ્રેમી. આ ટsગ્સનો ઉપયોગ કરીને સંપર્કોને પણ ફિલ્ટર કરી શકાય છે."
 
 #: post-type/module-base.php:138
 msgctxt "Stream Status label"
 msgid "New"
-msgstr "Nouveau"
+msgstr "નવું"
 
 #: post-type/module-base.php:139
 msgctxt "Stream Status field description"
 msgid "New stream added to the system"
-msgstr "Nouveau flux ajouté au système"
+msgstr "સિસ્ટમમાં નવો પ્રવાહ ઉમેર્યો"
 
 #: post-type/module-base.php:143
 msgctxt "Stream Status label"
 msgid "Model"
-msgstr "Modèle"
+msgstr "મોડેલ"
 
 #: post-type/module-base.php:144
 msgctxt "Stream Status field description"
 msgid "This stream has been proposed and is in initial conversations"
-msgstr "Ce flux a été proposé et est dans les conversations initiales"
+msgstr "આ પ્રવાહની દરખાસ્ત કરવામાં આવી છે અને પ્રારંભિક વાતચીતમાં છે"
 
 #: post-type/module-base.php:148
 msgctxt "Stream Status label"
 msgid "Assist"
-msgstr "Aider"
+msgstr "સહાય કરો"
 
 #: post-type/module-base.php:149
 msgctxt "Stream Status field description"
 msgid "This stream is confirmed, on the calendar."
-msgstr "Ce flux est confirmé, sur le calendrier."
+msgstr "આ પ્રવાહની પુષ્ટિ, કેલેન્ડર પર છે."
 
 #: post-type/module-base.php:153
 msgctxt "Stream Status label"
 msgid "Watch"
-msgstr "Regarder"
+msgstr "જુઓ"
 
 #: post-type/module-base.php:154
 msgctxt "Stream Status field description"
 msgid "This stream is confirmed, on the calendar, or currently active."
-msgstr "Ce flux est confirmé, sur le calendrier ou actuellement actif."
+msgstr "આ પ્રવાહની પુષ્ટિ, કેલેન્ડર પર અથવા હાલમાં સક્રિય છે."
 
 #: post-type/module-base.php:158
 msgctxt "Stream Status label"
 msgid "Leave"
-msgstr "Partir"
+msgstr "રજા"
 
 #: post-type/module-base.php:159
 msgctxt "Stream Status field description"
 msgid "This stream has successfully completed"
-msgstr "Ce flux s'est terminé avec succès"
+msgstr "આ પ્રવાહ સફળતાપૂર્વક પૂર્ણ થયો છે"
 
 #: post-type/module-base.php:163
 msgctxt "Stream Status label"
 msgid "Paused"
-msgstr "En pause"
+msgstr "થોભાવ્યું"
 
 #: post-type/module-base.php:164
 msgctxt "Stream Status field description"
 msgid "This contact is currently on hold. It has potential of getting scheduled in the future."
-msgstr "Ce contact est actuellement en attente. Il a le potentiel d'être programmé à l'avenir."
+msgstr "આ સંપર્ક હાલમાં પકડી રાખ્યો છે. તે ભવિષ્યમાં સુનિશ્ચિત થવાની સંભાવના છે."
 
 #: post-type/module-base.php:168
 msgctxt "Stream Status label"
 msgid "Closed"
-msgstr "Fermé"
+msgstr "બંધ"
 
 #: post-type/module-base.php:169
 msgctxt "Stream Status field description"
 msgid "This stream is no longer going to happen."
-msgstr "Ce flux ne se produira plus."
+msgstr "આ પ્રવાહ હવે થવાનો નથી."
 
 #: post-type/module-base.php:177
 msgid "Select the main person who is responsible for reporting on this stream."
-msgstr "Sélectionnez la personne principale responsable de la création de rapports sur ce flux."
+msgstr "આ પ્રવાહ પર જાણ કરવા માટે જવાબદાર મુખ્ય વ્યક્તિ પસંદ કરો."
 
 #: post-type/module-base.php:186
 msgctxt "Optional Documentation"
 msgid "The person who planted and/or is coaching this stream. Only one person can be assigned to a stream while multiple people can be coaches / church planters of this stream."
-msgstr "La personne qui a planté et / ou qui encadre ce flux. Une seule personne peut être affectée à un flux tandis que plusieurs personnes peuvent être entraîneurs / implanteurs d'églises de ce flux."
+msgstr "જે વ્યક્તિએ આ પ્રવાહ વાવ્યો અને / અથવા કોચિંગ આપી રહ્યો છે. ફક્ત એક જ વ્યક્તિને પ્રવાહમાં સોંપવામાં આવી શકે છે જ્યારે ઘણા લોકો આ પ્રવાહના કોચ / ચર્ચ વાવેતર કરી શકે છે."
 
 #: post-type/module-base.php:204
 msgctxt "Optional Documentation"
 msgid "The people streams represented by this stream."
-msgstr "Les flux de personnes représentés par ce flux."
+msgstr "લોકો આ પ્રવાહ દ્વારા રજૂ કરે છે."
 
 #: post-type/module-base.php:309
 msgid "Parent Stream"
-msgstr "Flux parent"
+msgstr "પિતૃ પ્રવાહ"
 
 #: post-type/module-base.php:310
 msgctxt "Optional Documentation"
 msgid "A stream that launched this stream."
-msgstr "Un flux qui a lancé ce flux."
+msgstr "એક પ્રવાહ કે જેણે આ પ્રવાહનો પ્રારંભ કર્યો."
 
 #: post-type/module-base.php:321
 msgid "Peer Streams"
-msgstr "Flux de pairs"
+msgstr "પીઅર સ્ટ્રીમ્સ"
 
 #: post-type/module-base.php:322
 msgctxt "Optional Documentation"
 msgid "A related stream that isn't a parent/child in relationship. It might indicate streams that collaborate, are about to merge, recently split, etc."
-msgstr "Un flux associé qui n'est pas un parent / enfant en relation. Cela peut indiquer des flux qui collaborent, sont sur le point de fusionner, récemment divisés, etc."
+msgstr "સંબંધિત સ્ટ્રીમ જે સંબંધમાં માતાપિતા / બાળક નથી. તે સ્ટ્રીમ્સને સંકેત આપી શકે છે જે સહયોગ કરે છે, મર્જ થવાના છે, તાજેતરમાં વિભાજિત થાય છે, વગેરે."
 
 #: post-type/module-base.php:333
 msgid "Child Streams"
-msgstr "Flux enfants"
+msgstr "બાળ પ્રવાહો"
 
 #: post-type/module-base.php:334
 msgctxt "Optional Documentation"
 msgid "A stream that has been birthed out of this stream."
-msgstr "Un flux qui est né de ce flux."
+msgstr "એક પ્રવાહ કે જે આ પ્રવાહમાંથી નીકળી ગયો છે."
 
 #: post-type/module-base.php:369
 msgid "Leader in Stream"
-msgstr "Leader en Stream"
+msgstr "પ્રવાહમાં નેતા"
 
 #: post-type/module-base.php:370
 msgctxt "Optional Documentation"
 msgid "Leader of a stream"
-msgstr "Leader d'un flux"
+msgstr "એક પ્રવાહનો નેતા"
 
 #: post-type/module-base.php:380
 msgid "Key Disciple in Stream"
-msgstr "Disciple clé dans le flux"
+msgstr "પ્રવાહમાં કી શિષ્ય"
 
 #: post-type/module-base.php:381
 msgctxt "Optional Documentation"
 msgid "Disciple in a stream."
-msgstr "Disciple dans un ruisseau."
+msgstr "એક પ્રવાહમાં શિષ્ય."
 
 #: post-type/module-base.php:536
 msgid "Connections"
-msgstr "Connexions"
+msgstr "જોડાણો"
 
 #: post-type/module-reports.php:432
 msgid "Add Report"
-msgstr "Ajouter un rapport"
+msgstr "રિપોર્ટ ઉમેરો"
 
 #. Plugin Name of the plugin/theme
 #: 
 msgid "Disciple Tools - Streams"
-msgstr "Outils de disciple - Streams"
+msgstr "શિષ્ય સાધનો - સ્ટ્રીમ્સ"
 
 #: logging/log-generations.php:11
 msgid "Pre-Group Generations"
-msgstr "Générations pré-groupe"
+msgstr "પૂર્વ જૂથ પે Geneીઓ"
 
 #: logging/log-generations.php:17
 msgid "Group Generations"
-msgstr "Générations de groupe"
+msgstr "જૂથ પેrationsી"
 
 #: logging/log-generations.php:23
 msgid "Church Generations"
-msgstr "Générations d'église"
+msgstr "ચર્ચ પેrationsી"
 
 #: logging/log-generations.php:29
 msgid "Team Generations"
-msgstr "Générations d'équipe"
+msgstr "ટીમ જનરેશન"
 
 #: logging/log-generations.php:76
 msgid "%s is reporting a new pre-group generation."
-msgstr "% s signale une nouvelle génération pré-groupe."
+msgstr "% s નવી પૂર્વ-જૂથ જનરેશનની જાણ કરી રહ્યું છે."
 
 #: logging/log-generations.php:81
 msgid "%s is reporting a new group generation."
-msgstr "% s signale une nouvelle génération de groupe."
+msgstr "% s નવી જૂથ પે generationીનો અહેવાલ આપે છે."
 
 #: logging/log-generations.php:86
 msgid "%s is reporting a new church generation."
-msgstr "% s rapporte une nouvelle génération d'églises."
+msgstr "% s નવી ચર્ચ પે generationીની જાણ કરે છે."
 
 #: logging/log-generations.php:91
 msgid "%s is reporting a new leadership team generation."
-msgstr "% s rapporte une nouvelle génération d'équipe de direction."
+msgstr "% s નવી નેતૃત્વ ટીમ બનાવટની જાણ કરે છે."
 
 #: logging/log-new-posts.php:11
 msgid "New Contact"
-msgstr "Nouveau contact"
+msgstr "નવો સંપર્ક"
 
 #: logging/log-new-posts.php:16
 msgid "New Pre-Group"
-msgstr "Nouveau pré-groupe"
+msgstr "નવું પૂર્વ જૂથ"
 
 #: logging/log-new-posts.php:21
 msgid "New Group"
-msgstr "Nouveau groupe"
+msgstr "નવું જૂથ"
 
 #: logging/log-new-posts.php:26
 msgid "New Church"
-msgstr "Nouvelle église"
+msgstr "ન્યુ ચર્ચ"
 
 #: logging/log-new-posts.php:31
 msgid "New Team"
-msgstr "Nouvelle équipe"
+msgstr "નવી ટીમ"
 
 #: logging/log-new-posts.php:36
 msgid "New Baptism"
-msgstr "Nouveau baptême"
+msgstr "નવો બાપ્તિસ્મા"
 
 #: logging/log-new-posts.php:41
 msgid "New Coaching"
-msgstr "Nouveau coaching"
+msgstr "નવી કોચિંગ"
 
 #: logging/log-new-posts.php:164
 msgid "%s is reporting a new contact."
-msgstr "% s signale un nouveau contact."
+msgstr "% s નવા સંપર્કની જાણ કરી રહ્યું છે."
 
 #: logging/log-new-posts.php:169
 msgid "%s is reporting a new pre-group formed."
-msgstr "% s signale la formation d'un nouveau pré-groupe."
+msgstr "% s રચિત નવા પૂર્વ જૂથની જાણ કરી રહ્યું છે."
 
 #: logging/log-new-posts.php:174
 msgid "%s is reporting a new group formed."
-msgstr "% s signale la formation d'un nouveau groupe."
+msgstr "% s એ બનાવેલ નવા જૂથની જાણ કરી રહ્યાં છે."
 
 #: logging/log-new-posts.php:179
 msgid "%s is reporting a new church."
-msgstr "% s signale une nouvelle église."
+msgstr "% s નવા ચર્ચની જાણ કરે છે."
 
 #: logging/log-new-posts.php:184
 msgid "%s is reporting a new leadership team formed."
-msgstr "% s signale la formation d'une nouvelle équipe de direction."
+msgstr "% s રચિત નવી લીડરશીપ ટીમની રીપોર્ટ આપી રહ્યો છે."
 
 #: logging/log-new-posts.php:189
 msgid "%s is reporting a new baptism."
-msgstr "% s signale un nouveau baptême."
+msgstr "% s નવા બાપ્તિસ્માની જાણ કરે છે."
 
 #: logging/log-new-posts.php:194
 msgid "%s is reporting an coaching relationship."
-msgstr "% s signale une relation de coaching."
+msgstr "% s કોચિંગના સંબંધની જાણ કરી રહ્યું છે."
 
 #: metrics/network-maps-area.php:74 metrics/network-maps-area.php:83
 #: metrics/network-maps-area.php:91 metrics/network-maps-area.php:99
 msgid "Active"
-msgstr "actif"
+msgstr "સક્રિય"
 
 #: metrics/network-maps-area.php:75
 msgid "Paused"
-msgstr "En pause"
+msgstr "થોભાવ્યું"
 
 #: metrics/network-maps-area.php:76
 msgid "Closed"
-msgstr "Fermé"
+msgstr "બંધ"
 
 #: metrics/network-maps-area.php:84 metrics/network-maps-area.php:92
 #: metrics/network-maps-area.php:100
 msgid "Inactive"
-msgstr "Inactif"
+msgstr "નિષ્ક્રિય"
 
 #. Plugin URI of the plugin/theme
 #: 
@@ -1151,7 +1150,7 @@ msgstr "https://github.com/DiscipleTools/disciple-tools-network-dashboard"
 #. Description of the plugin/theme
 #: 
 msgid "Connect this Disciple Tools site to a larger network of sites. Adds security sensitive totals, mapping, activity logging."
-msgstr "Connectez ce site Disciple Tools à un plus grand réseau de sites. Ajoute les totaux sensibles à la sécurité, le mappage, la journalisation des activités."
+msgstr "આ શિષ્ય ટૂલ્સ સાઇટને સાઇટ્સના મોટા નેટવર્કથી કનેક્ટ કરો. સુરક્ષા સંવેદનશીલ સરેરાશ, મેપિંગ, પ્રવૃત્તિ લgingગિંગને ઉમેરો."
 
 #. Author URI of the plugin/theme
 #: 
@@ -1166,15 +1165,15 @@ msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
 #. Description of the plugin/theme
 #: 
 msgid "Disciple Tools Streams Extension adds recording of streams and cross reference them with contacts, groups, and locations."
-msgstr "Disciple Tools Streams Extension ajoute l'enregistrement des flux et les renvoie avec des contacts, des groupes et des emplacements."
+msgstr "શિષ્ય ટૂલ્સ સ્ટ્રીમ્સ એક્સ્ટેંશન, સ્ટ્રીમ્સનું રેકોર્ડિંગ ઉમેર્યું છે અને સંપર્કો, જૂથો અને સ્થાનો સાથે તેમને ક્રોસ સંદર્ભ આપશે."
 
 #: disciple-tools-training.php:297
 msgid "'Disciple Tools - Training' plugin requires 'Disciple Tools' theme to work. Please activate 'Disciple Tools' theme or make sure it is latest version."
-msgstr "Le plugin «Disciple Tools - Training» nécessite le thème «Disciple Tools» pour fonctionner. Veuillez activer le thème «Disciple Tools» ou assurez-vous qu'il s'agit de la dernière version."
+msgstr "'શિષ્ય સાધનો - તાલીમ' પ્લગઇનને કાર્ય કરવા માટે 'શિષ્ય સાધનો' થીમની જરૂર છે. કૃપા કરીને 'શિષ્ય ટૂલ્સ' થીમ સક્રિય કરો અથવા ખાતરી કરો કે તે નવીનતમ સંસ્કરણ છે."
 
 #: disciple-tools-training.php:299
 msgid "Current Disciple Tools version: %1$s, required version: %2$s"
-msgstr "Version actuelle de Disciple Tools:% 1 $ s, version requise:% 2 $ s"
+msgstr "વર્તમાન શિષ્ય સાધનોનું સંસ્કરણ:% 1 $ s, આવશ્યક સંસ્કરણ:% 2 $ s"
 
 #. Plugin URI of the plugin/theme
 #: 
@@ -1184,148 +1183,148 @@ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
 #. Description of the plugin/theme
 #: 
 msgid "Disciple Tools Training Extension adds recording of trainings and cross reference them with contacts, groups, and locations."
-msgstr "Disciple Tools Training Extension ajoute l'enregistrement des formations et les renvoie avec des contacts, des groupes et des lieux."
+msgstr "શિષ્ય સાધનો તાલીમ વિસ્તરણ, તાલીમના રેકોર્ડિંગને જોડે છે અને તેમને સંપર્કો, જૂથો અને સ્થાનો સાથે સંદર્ભમાં સંદર્ભ આપે છે."
 
 #: post-type/module-base.php:128
 msgid "Duplicates"
-msgstr "Doublons"
+msgstr "ડુપ્લિકેટ્સ"
 
 #: post-type/module-base.php:185
 msgid "Coach"
-msgstr "Entraîneur"
+msgstr "કોચ"
 
 #: post-type/module-base.php:253
 msgid "Leaders Total"
-msgstr "Leaders Total"
+msgstr "કુલ નેતાઓ"
 
 #: post-type/module-base.php:271
 msgid "Disciples Total"
-msgstr "Total de disciples"
+msgstr "શિષ્ય કુલ"
 
 #: post-type/module-base.php:277
 msgid "Key Disciples"
-msgstr "Disciples clés"
+msgstr "કી શિષ્યો"
 
 #: post-type/module-base.php:288
 msgid "Groups Total"
-msgstr "Total des groupes"
+msgstr "જૂથો કુલ"
 
 #: post-type/module-base.php:348
 msgid "Trainings Total"
-msgstr "Total des formations"
+msgstr "કુલ તાલીમ"
 
 #: includes/admin/admin-menu-and-tabs.php:63
 msgid "Dashboard Plugin"
-msgstr "Plugin de tableau de bord"
+msgstr "ડેશબોર્ડ પ્લગઇન"
 
 #: includes/admin/admin-menu-and-tabs.php:84 includes/functions.php:84
 msgid "Dashboard"
-msgstr "Tableau de bord"
+msgstr "ડેશબોર્ડ"
 
 #: includes/rest-api.php:80
 msgid "%s days since last update"
-msgstr "% s jours depuis la dernière mise à jour"
+msgstr "છેલ્લા અપડેટ પછી% s દિવસ"
 
 #: includes/rest-api.php:416
 msgid "Accept"
-msgstr "J'accepte"
+msgstr "સ્વીકારો"
 
 #: includes/rest-api.php:417
 msgid "Decline"
-msgstr "Déclin"
+msgstr "ઘટી"
 
 #: includes/rest-api.php:418
 msgid "# Contacts Assigned"
-msgstr "# Contacts attribués"
+msgstr "# સંપર્કો સોંપેલ"
 
 #: includes/rest-api.php:419
 msgid "# First Meetings"
-msgstr "# Premières réunions"
+msgstr "# પ્રથમ સભાઓ"
 
 #: includes/rest-api.php:420
 msgid "# Faith milestones"
-msgstr "# Jalons de foi"
+msgstr "# વિશ્વાસ સીમાચિહ્નો"
 
 #: includes/rest-api.php:421
 msgid "Hurray! You are caught up."
-msgstr "Hourra! Vous êtes rattrapé."
+msgstr "હુરે! તમે પકડાઈ ગયા છો."
 
 #: includes/rest-api.php:422
 msgid "remove"
-msgstr "retirer"
+msgstr "દૂર કરો"
 
 #: includes/rest-api.php:423
 msgid "mark as complete"
-msgstr "marquer comme terminé"
+msgstr "સંપૂર્ણ તરીકે ચિહ્નિત કરો"
 
 #: includes/rest-api.php:424
 msgid "No task created"
-msgstr "Aucune tâche créée"
+msgstr "કોઈ કાર્ય બનાવ્યું નથી"
 
 #: includes/rest-api.php:425
 msgid "Reminder"
-msgstr "Rappel"
+msgstr "રીમાઇન્ડર"
 
 #: includes/rest-api.php:426
 msgid "No note set"
-msgstr "Aucun jeu de notes"
+msgstr "કોઈ નોંધ સેટ નથી"
 
 #: includes/template-dashboard.php:30
 msgid "Add a contact"
-msgstr "Ajouter un contact"
+msgstr "સંપર્ક ઉમેરો"
 
 #: includes/template-dashboard.php:33
 msgid "View Contacts List"
-msgstr "Afficher la liste des contacts"
+msgstr "સંપર્કોની સૂચિ જુઓ"
 
 #: includes/template-dashboard.php:47
 msgid "Pending Contacts"
-msgstr "Contacts en attente"
+msgstr "બાકી સંપર્કો"
 
 #: includes/template-dashboard.php:52 includes/template-dashboard.php:70
 msgid "View All"
-msgstr "Voir tout"
+msgstr "બધુજ જુઓ"
 
 #: includes/template-dashboard.php:65
 msgid "Update Needed"
-msgstr "Mise à jour nécessaire"
+msgstr "અપડેટ આવશ્યક છે"
 
 #: includes/template-dashboard.php:79
 msgid "Contact Workload"
-msgstr "Charge de travail de contact"
+msgstr "વર્કલોડનો સંપર્ક કરો"
 
 #: includes/template-dashboard.php:83
 msgid "Choose an option to let the dispatcher(s) know if you are ready for new contacts"
-msgstr "Choisissez une option pour informer le (s) répartiteur (s) si vous êtes prêt pour de nouveaux contacts"
+msgstr "જો તમે નવા સંપર્કો માટે તૈયાર છો તો રવાનગીને જાણ કરવા માટે કોઈ વિકલ્પ પસંદ કરો"
 
 #: includes/template-dashboard.php:93
 msgid "Set travel or dates unavailable"
-msgstr "Définir le voyage ou les dates indisponibles"
+msgstr "મુસાફરી સેટ કરો અથવા તારીખો અનુપલબ્ધ છે"
 
 #: includes/template-dashboard.php:106
 msgid "Personal Benchmarks"
-msgstr "Benchmarks personnels"
+msgstr "વ્યક્તિગત બેંચમાર્ક્સ"
 
 #: includes/template-dashboard.php:135
 msgid "Faith Milestone Totals"
-msgstr "Totaux des jalons de foi"
+msgstr "વિશ્વાસ માઇલસ્ટોન કુલ"
 
 #: includes/template-dashboard.php:138
 msgid "Milestones on your active contacts"
-msgstr "Jalons sur vos contacts actifs"
+msgstr "તમારા સક્રિય સંપર્કો પર માઇલ સ્ટોન્સ"
 
 #: includes/template-dashboard.php:149
 msgid "Seeker Path Progress"
-msgstr "Progression du chemin du chercheur"
+msgstr "સિકર પથ પ્રગતિ"
 
 #: includes/template-dashboard.php:152
 msgid "No data to show yet. You have no active contacts"
-msgstr "Aucune donnée à afficher pour le moment. Vous n'avez aucun contact actif"
+msgstr "હજી બતાવવા માટે કોઈ ડેટા નથી. તમારી પાસે કોઈ સક્રિય સંપર્કો નથી"
 
 #. Plugin Name of the plugin/theme
 #: 
 msgid "Disciple Tools - Dashboard"
-msgstr "Outils de disciple - Tableau de bord"
+msgstr "શિષ્ય સાધનો - ડેશબોર્ડ"
 
 #. Plugin URI of the plugin/theme
 #: 
@@ -1335,5 +1334,5 @@ msgstr "https://github.com/DiscipleTools/disciple-tools-dashboard"
 #. Description of the plugin/theme
 #: 
 msgid "The multiplier dashboard upgrades the multipliers experience as soon as they log into the system giving them a landing page with stats."
-msgstr "Le tableau de bord du multiplicateur améliore l'expérience des multiplicateurs dès qu'ils se connectent au système en leur donnant une page de destination avec des statistiques"
+msgstr "મલ્ટીપ્લાયર ડેશબોર્ડ મલ્ટીપ્લાયર્સના અનુભવને અપગ્રેડ કરે છે જલદી તેઓ સિસ્ટમમાં લ logગ ઇન કરે છે જ્યારે તેમને આંકડા સાથે લેન્ડિંગ પૃષ્ઠ આપે છે."
 

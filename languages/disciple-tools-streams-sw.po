@@ -5,499 +5,498 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: Disciple Tools Plugins\n"
-"Language: fr\n"
+"Language: sw\n"
 
 #: disciple-tools-dashboard.php:253 disciple-tools-dashboard.php:264
 msgid "Whoah, partner!"
-msgstr "Whoah, partenaire!"
+msgstr "Whoah, mwenzio!"
 
 #: disciple-tools-dashboard.php:276
 msgid "Method does not exist."
-msgstr "La méthode n'existe pas."
+msgstr "Njia haipo."
 
 #: metrics/mapbox-maps.php:30
 msgid "Training Maps"
-msgstr "Cartes d'entraînement"
+msgstr "Ramani za Mafunzo"
 
 #: post-type/module-base.php:354
 msgid "Trainings"
-msgstr "Formations"
+msgstr "Mafunzo"
 
 #: metrics/mapbox-personal-maps.php:30
 msgid "Trainings Maps"
-msgstr "Cartes des formations"
+msgstr "Ramani za Mafunzo"
 
 #: network/customize-site-linking.php:10 post-type/module-base.php:54
 msgid "Training"
-msgstr "Entraînement"
+msgstr "Mafunzo"
 
 #: post-type/module-base.php:59
 msgid "Multiplier"
-msgstr "Multiplicateur"
+msgstr "Ongeza"
 
 #: post-type/module-base.php:65
 msgid "Dispatcher"
-msgstr "Répartiteur"
+msgstr "Msambazaji"
 
 #: post-type/module-base.php:72
 msgid "Disciple.Tools Admin"
-msgstr "Administrateur Disciple.Tools"
+msgstr "Wanafunzi Usimamizi wa Vifaa"
 
 #: post-type/module-base.php:79
 msgid "Administrator"
-msgstr "Administrateur"
+msgstr "Msimamizi"
 
 #: post-type/module-base.php:432
 msgid "Members"
-msgstr "Membres"
+msgstr "Wanachama"
 
 #: post-type/module-base.php:433
 msgid "Contacts"
-msgstr "Contacts"
+msgstr "Mawasiliano"
 
 #: post-type/module-base.php:294 post-type/module-base.php:450
 msgid "Groups"
-msgstr "Groupes"
+msgstr "Vikundi"
 
 #: post-type/module-base.php:259 post-type/module-base.php:467
 msgid "Leaders"
-msgstr "Dirigeants"
+msgstr "Viongozi"
 
 #: post-type/module-base.php:484
 msgid "Coaches"
-msgstr "Les entraîneurs"
+msgstr "Makocha"
 
 #: post-type/module-base.php:497
 msgid "Planted by"
-msgstr "Planté par"
+msgstr "Iliyopandwa na"
 
 #: post-type/module-base.php:498
 msgid "Planting"
-msgstr "Plantation"
+msgstr "Kupanda"
 
 #: post-type/module-base.php:203 post-type/module-base.php:519
 msgid "People Groups"
-msgstr "Groupes de personnes"
+msgstr "Vikundi vya Watu"
 
 #: post-type/module-base.php:102
 msgid "Tags"
-msgstr "Mots clés"
+msgstr "Vitambulisho"
 
 #: post-type/module-base.php:215
 msgctxt "Optional Documentation"
 msgid "A useful way to training related items and can help training contacts associated with noteworthy characteristics. e.g. business owner, sports lover. The contacts can also be filtered using these tags."
-msgstr "Un moyen utile de former des éléments liés et peut aider à former des contacts associés à des caractéristiques remarquables. par exemple. propriétaire d'entreprise, amateur de sport. Les contacts peuvent également être filtrés à l'aide de ces balises."
+msgstr "Njia muhimu ya mafunzo ya vitu vinavyohusiana na inaweza kusaidia mafunzo ya mawasiliano yanayohusiana na sifa muhimu. k.v. mmiliki wa biashara, mpenzi wa michezo. Mawasiliano inaweza pia kuchujwa kwa kutumia lebo hizi."
 
 #: post-type/module-base.php:111
 msgid "Follow"
-msgstr "Suivre"
+msgstr "Fuata"
 
 #: post-type/module-base.php:118
 msgid "Un-Follow"
-msgstr "Annuler le suivi"
+msgstr "Usifuate"
 
 #: includes/template-dashboard.php:164
 msgid "Tasks"
-msgstr "Tâches"
+msgstr "Kazi"
 
 #: post-type/module-base.php:249
 msgctxt "Training Status label"
 msgid "New"
-msgstr "Nouveau"
+msgstr "Mpya"
 
 #: post-type/module-base.php:250
 msgctxt "Training Status field description"
 msgid "New training added to the system"
-msgstr "Nouvelle formation ajoutée au système"
+msgstr "Mafunzo mapya yaliongezwa kwenye mfumo"
 
 #: post-type/module-base.php:254
 msgctxt "Training Status label"
 msgid "Proposed"
-msgstr "Proposé"
+msgstr "Imependekezwa"
 
 #: post-type/module-base.php:255
 msgctxt "Training Status field description"
 msgid "This training has been proposed and is in initial conversations"
-msgstr "Cette formation a été proposée et fait l'objet de conversations initiales"
+msgstr "Mafunzo haya yamependekezwa na ni katika mazungumzo ya mwanzo"
 
 #: post-type/module-base.php:259
 msgctxt "Training Status label"
 msgid "Scheduled"
-msgstr "Programmé"
+msgstr "Imepangwa"
 
 #: post-type/module-base.php:260
 msgctxt "Training Status field description"
 msgid "This training is confirmed, on the calendar."
-msgstr "Cette formation est confirmée, sur le calendrier."
+msgstr "Mafunzo haya yamethibitishwa, kwenye kalenda."
 
 #: post-type/module-base.php:264
 msgctxt "Training Status label"
 msgid "In Progress"
-msgstr "En cours"
+msgstr "Inaendelea"
 
 #: post-type/module-base.php:265
 msgctxt "Training Status field description"
 msgid "This training is confirmed, on the calendar, or currently active."
-msgstr "Cette formation est confirmée, sur le calendrier ou actuellement active."
+msgstr "Mafunzo haya yamethibitishwa, kwenye kalenda, au kwa sasa inatumika."
 
 #: post-type/module-base.php:269
 msgctxt "Training Status label"
 msgid "Complete"
-msgstr "Achevée"
+msgstr "Kukamilisha"
 
 #: post-type/module-base.php:270
 msgctxt "Training Status field description"
 msgid "This training has successfully completed"
-msgstr "Cette formation a réussi"
+msgstr "Mafunzo haya yamekamilishwa vyema"
 
 #: post-type/module-base.php:274
 msgctxt "Training Status label"
 msgid "Paused"
-msgstr "En pause"
+msgstr "Imesitishwa"
 
 #: post-type/module-base.php:275
 msgctxt "Training Status field description"
 msgid "This contact is currently on hold. It has potential of getting scheduled in the future."
-msgstr "Ce contact est actuellement en attente. Il a le potentiel d'être programmé à l'avenir."
+msgstr "Anwani hii kwa sasa imesimama. Ina uwezo wa kupata ratiba katika siku zijazo."
 
 #: post-type/module-base.php:279
 msgctxt "Training Status label"
 msgid "Closed"
-msgstr "Fermé"
+msgstr "Imefungwa"
 
 #: post-type/module-base.php:280
 msgctxt "Training Status field description"
 msgid "This training is no longer going to happen."
-msgstr "Cette formation n'aura plus lieu."
+msgstr "Mafunzo haya hayatatokea tena."
 
 #: post-type/module-base.php:176
 msgid "Assigned To"
-msgstr "Assigné à"
+msgstr "Iliyopewa Kwa"
 
 #: post-type/module-base.php:288
 msgid "Select the main person who is responsible for reporting on this training."
-msgstr "Sélectionnez la personne principale chargée de rendre compte de cette formation."
+msgstr "Chagua mtu mkuu anayehusika na kuripoti juu ya mafunzo haya."
 
 #: post-type/module-base.php:185
 msgid "Training Coach / Church Planter"
-msgstr "Coach de formation / implanteur d'églises"
+msgstr "Mkufunzi wa Mafunzo / Mpanda Kanisa"
 
 #: post-type/module-base.php:297
 msgctxt "Optional Documentation"
 msgid "The person who planted and/or is coaching this training. Only one person can be assigned to a training while multiple people can be coaches / church planters of this training."
-msgstr "La personne qui a planté et / ou qui encadre cette formation. Une seule personne peut être affectée à une formation tandis que plusieurs personnes peuvent être des entraîneurs / implanteurs d'églises de cette formation."
+msgstr "Mtu aliyepanda na / au anafundisha mafunzo haya. Mtu mmoja tu ndiye anayeweza kupewa mafunzo wakati watu wengi wanaweza kuwa makocha / wapanda kanisa wa mafunzo haya."
 
 #: post-type/module-base.php:196
 msgid "Requires Update"
-msgstr "Nécessite une mise à jour"
+msgstr "Inahitaji Sasisho"
 
 #: post-type/module-base.php:313
 msgid "Video Link"
-msgstr "Lien vidéo"
+msgstr "Kiungo cha Video"
 
 #: post-type/module-base.php:314
 msgctxt "Optional Documentation"
 msgid "Link to video chat service"
-msgstr "Lien vers le service de chat vidéo"
+msgstr "Unganisha na huduma ya gumzo la video"
 
 #: post-type/module-base.php:321
 msgid "Notes"
-msgstr "Remarques"
+msgstr "Vidokezo"
 
 #: post-type/module-base.php:322
 msgctxt "Optional Documentation"
 msgid "Notes on when the trainings will happen"
-msgstr "Notes sur le moment où les formations auront lieu"
+msgstr "Vidokezo juu ya lini mafunzo yatatokea"
 
 #: post-type/module-base.php:331 post-type/module-base.php:543
 msgid "Meeting Times"
-msgstr "Heures de réunion"
+msgstr "Nyakati za Mkutano"
 
 #: post-type/module-base.php:219 post-type/module-base.php:228
 msgid "Locations"
-msgstr "Emplacements"
+msgstr "Maeneo"
 
 #: post-type/module-base.php:220 post-type/module-base.php:229
 msgctxt "Optional Documentation"
 msgid "The general location where this contact is located."
-msgstr "L'emplacement général où se trouve ce contact."
+msgstr "Mahali pa jumla ambapo anwani hii iko."
 
 #: post-type/module-base.php:236
 msgid "Address"
-msgstr "Adresse"
+msgstr "Anwani"
 
 #: post-type/module-base.php:413
 msgid "Parent Training"
-msgstr "Formation des parents"
+msgstr "Mafunzo ya Mzazi"
 
 #: post-type/module-base.php:414
 msgctxt "Optional Documentation"
 msgid "A training that launched this training."
-msgstr "Une formation qui a lancé cette formation."
+msgstr "Mafunzo ambayo yalizindua mafunzo haya."
 
 #: post-type/module-base.php:424
 msgid "Peer Training"
-msgstr "Formation par les pairs"
+msgstr "Mafunzo ya rika"
 
 #: post-type/module-base.php:425
 msgctxt "Optional Documentation"
 msgid "A related training that isn't a parent/child in relationship. It might indicate trainings that collaborate, are about to merge, recently split, etc."
-msgstr "Une formation connexe qui n'est pas un parent / enfant en couple. Cela peut indiquer des formations qui collaborent, sont sur le point de fusionner, récemment divisées, etc."
+msgstr "Mafunzo yanayohusiana ambayo sio mzazi / mtoto katika uhusiano. Inaweza kuonyesha mafunzo ambayo yanashirikiana, yanakaribia kuungana, kugawanyika hivi karibuni, nk"
 
 #: post-type/module-base.php:435
 msgid "Child Training"
-msgstr "Formation des enfants"
+msgstr "Mafunzo ya Mtoto"
 
 #: post-type/module-base.php:436
 msgctxt "Optional Documentation"
 msgid "A training that has been birthed out of this training."
-msgstr "Une formation issue de cette formation."
+msgstr "Mafunzo ambayo yamezaliwa nje ya mafunzo haya."
 
 #: post-type/module-base.php:446 post-type/module-base.php:542
 #: post-type/module-base.php:653
 msgid "Member List"
-msgstr "Liste des membres"
+msgstr "Orodha ya Wanachama"
 
 #: post-type/module-base.php:447
 msgctxt "Optional Documentation"
 msgid "The contacts who are members of this training."
-msgstr "Les contacts membres de cette formation."
+msgstr "Mawasiliano ambao ni wanachama wa mafunzo haya."
 
 #: post-type/module-base.php:464
 msgctxt "Optional Documentation"
 msgid "The people trainings represented by this training."
-msgstr "Les formations de personnes représentées par cette formation."
+msgstr "Mafunzo ya watu yaliyowakilishwa na mafunzo haya."
 
 #: post-type/module-base.php:484
 msgid "Member Count"
-msgstr "Nombre de membres"
+msgstr "Hesabu ya Mwanachama"
 
 #: post-type/module-base.php:485 post-type/module-base.php:492
 msgctxt "Optional Documentation"
 msgid "The number of members in this training. It will automatically be updated when new members are added or removed in the member list. Change this number manually to included people who may not be in the system but are also members of the training."
-msgstr "Le nombre de membres dans cette formation. Il sera automatiquement mis à jour lorsque de nouveaux membres sont ajoutés ou supprimés dans la liste des membres. Modifiez ce numéro manuellement pour inclure les personnes qui ne sont peut-être pas dans le système mais qui sont également membres de la formation."
+msgstr "Idadi ya wanachama katika mafunzo haya. Itasasishwa kiatomati wakati washiriki wapya wanapoongezwa au kuondolewa kwenye orodha ya washiriki. Badilisha nambari hii kwa mkono kuwajumuisha watu ambao hawawezi kuwa kwenye mfumo lakini pia ni washiriki wa mafunzo."
 
 #: post-type/module-base.php:491
 msgid "Leader Count"
-msgstr "Nombre de chefs"
+msgstr "Hesabu ya Kiongozi"
 
 #: post-type/module-base.php:503
 msgid "Training as Leader"
-msgstr "Formation en tant que leader"
+msgstr "Mafunzo kama Kiongozi"
 
 #: post-type/module-base.php:504
 msgctxt "Optional Documentation"
 msgid "Leader of a training"
-msgstr "Responsable d'une formation"
+msgstr "Kiongozi wa mafunzo"
 
 #: post-type/module-base.php:514
 msgid "Training as Participant"
-msgstr "Formation en tant que participant"
+msgstr "Mafunzo kama Mshiriki"
 
 #: post-type/module-base.php:515
 msgctxt "Optional Documentation"
 msgid "Participant in a training."
-msgstr "Participant à une formation."
+msgstr "Mshiriki katika mafunzo."
 
 #: post-type/module-base.php:537
 msgid "Other"
-msgstr "Autre"
+msgstr "Nyingine"
 
 #: post-type/module-base.php:568
 msgctxt "input field placeholder"
 msgid "Search Users"
-msgstr "Rechercher des utilisateurs"
+msgstr "Tafuta Watumiaji"
 
 #: post-type/module-base.php:601
 msgctxt "Search 'something'"
 msgid "Search %s"
-msgstr "Rechercher% s"
+msgstr "Tafuta% s"
 
 #: post-type/module-base.php:656
 msgid "Create"
-msgstr "Créer"
+msgstr "Unda"
 
 #: post-type/module-base.php:661
 msgid "Select"
-msgstr "Sélectionner"
+msgstr "Chagua"
 
 #: post-type/module-base.php:666
 msgid "To add new members, click on 'Create' or 'Select'."
-msgstr "Pour ajouter de nouveaux membres, cliquez sur «Créer» ou «Sélectionner»."
+msgstr "Ili kuongeza washiriki wapya, bonyeza 'Unda' au 'Chagua'."
 
 #: post-type/module-base.php:671
 msgctxt "Add members modal"
 msgid "Add members from existing contacts"
-msgstr "Ajouter des membres à partir de contacts existants"
+msgstr "Ongeza wanachama kutoka kwa anwani zilizopo"
 
 #: post-type/module-base.php:672
 msgctxt "Add members modal"
 msgid "In the 'Member List' field, type the name of an existing contact to add them to this training."
-msgstr "Dans le champ «Liste des membres», saisissez le nom d'un contact existant pour l'ajouter à cette formation."
+msgstr "Kwenye uwanja wa 'Orodha ya Mwanachama', andika jina la anwani iliyopo ili uwaongeze kwenye mafunzo haya."
 
 #: post-type/module-base.php:681
 msgid "Close"
-msgstr "Fermer"
+msgstr "Funga"
 
 #: post-type/module-base.php:879
 msgid "Removed %1$s: %2$s"
-msgstr "% 1 $ s supprimé:% 2 $ s"
+msgstr "Imeondoa% 1 $ s:% 2 $ s"
 
 #: post-type/module-base.php:882
 msgid "Added %1$s: %2$s"
-msgstr "% 1 $ s ajouté:% 2 $ s"
+msgstr "Imeongeza% 1 $ s:% 2 $ s"
 
 #: post-type/module-base.php:885
 msgid "Updated %1$s: %2$s to %3$s"
-msgstr "% 1 $ s mis à jour:% 2 $ s vers% 3 $ s"
+msgstr "Imesasisha% 1 $ s:% 2 $ s hadi% 3 $ s"
 
 #: post-type/module-base.php:942
 msgctxt "List Filters"
 msgid "Assigned to me"
-msgstr "Assigné à moi"
+msgstr "Nimepewa mimi"
 
 #: post-type/module-base.php:950 post-type/module-base.php:1007
 #: post-type/module-base.php:1015
 msgctxt "List Filters"
 msgid "All"
-msgstr "Tout"
+msgstr "Wote"
 
 #: post-type/module-reports.php:85
 msgid "Reports"
-msgstr "Rapports"
+msgstr "Ripoti"
 
 #: post-type/module-reports.php:121
 msgid "Total Groups"
-msgstr "Total des groupes"
+msgstr "Jumla ya Vikundi"
 
 #: post-type/module-reports.php:122
 msgid "Total Baptisms"
-msgstr "Baptêmes totaux"
+msgstr "Jumla ya Ubatizo"
 
 #: post-type/module-reports.php:123
 msgid "Countries"
-msgstr "Des pays"
+msgstr "Nchi"
 
 #: post-type/module-reports.php:124
 msgid "States"
-msgstr "États"
+msgstr "Majimbo"
 
 #: post-type/module-reports.php:125
 msgid "Counties"
-msgstr "Comtés"
+msgstr "Kaunti"
 
 #: post-type/module-public-calendar.php:432
 #: post-type/module-registration.php:385
 msgid "Add"
-msgstr "Ajouter"
+msgstr "Ongeza"
 
 #: post-type/module-registration.php:31
 msgid "Apps"
-msgstr "applications"
+msgstr "Programu"
 
 #: post-type/module-registration.php:59
 msgid "copy link"
-msgstr "Copier le lien"
+msgstr "nakala ya kiungo"
 
 #: post-type/module-registration.php:61
 msgid "edit form"
-msgstr "modifier le formulaire"
+msgstr "hariri fomu"
 
 #: post-type/module-registration.php:63
 msgid "report"
-msgstr "rapport"
+msgstr "ripoti"
 
 #: post-type/module-registration.php:67
 msgid "create link"
-msgstr "créer un lien"
+msgstr "unda kiungo"
 
 #: post-type/module-registration.php:114
 msgid "link"
-msgstr "lien"
+msgstr "kiungo"
 
 #: post-type/module-registration.php:116
 msgid "show on calendar"
-msgstr "afficher sur le calendrier"
+msgstr "onyesha kwenye kalenda"
 
 #: post-type/module-registration.php:118
-#, fuzzy
 msgid "open registration"
-msgstr "inscription ouverte "
+msgstr "usajili wazi "
 
 #: post-type/module-registration.php:265
 msgid "add"
-msgstr "ajouter"
+msgstr "ongeza"
 
 #: post-type/module-registration.php:266
 msgid "Use"
-msgstr "Utilisation"
+msgstr "Tumia"
 
 #: post-type/module-registration.php:267 post-type/module-registration.php:695
 msgid "Search Location"
-msgstr "Rechercher un emplacement"
+msgstr "Tafuta Mahali"
 
 #: post-type/module-registration.php:268
 msgid "Delete Location"
-msgstr "Supprimer l'emplacement"
+msgstr "Futa Mahali"
 
 #: post-type/module-registration.php:269
 msgid "Open Mapping"
-msgstr "Mappage ouvert"
+msgstr "Fungua Ramani"
 
 #: post-type/module-registration.php:270
 msgid "clear"
-msgstr "clair"
+msgstr "wazi"
 
 #: post-type/module-registration.php:384
 msgid "Register for Training"
-msgstr "S'inscrire à la formation"
+msgstr "Jisajili kwa Mafunzo"
 
 #: post-type/module-registration.php:386
 msgid "Join Training"
-msgstr "Rejoindre la formation"
+msgstr "Jiunge na Mafunzo"
 
 #: post-type/module-registration.php:387
 msgid "Join in"
-msgstr "Se joindre à"
+msgstr "Jiunge"
 
 #: post-type/module-registration.php:700
 msgid "Clear"
-msgstr "Clair"
+msgstr "Wazi"
 
 #. Plugin Name of the plugin/theme
 #: 
 msgid "Disciple Tools - Training"
-msgstr "Outils de disciple - Formation"
+msgstr "Zana za Wanafunzi - Mafunzo"
 
 #: includes/admin/admin-menu-and-tabs.php:62
 msgid "Extensions (DT)"
-msgstr "Extensions (DT)"
+msgstr "Viendelezi (DT)"
 
 #: admin/menu-and-tabs.php:64 admin/menu-and-tabs.php:65
 #: admin/menu-and-tabs.php:103
 msgid "Network Dashboard"
-msgstr "Tableau de bord réseau"
+msgstr "Dashibodi ya Mtandao"
 
 #: includes/admin/admin-menu-and-tabs.php:79
 msgid "You do not have sufficient permissions to access this page."
-msgstr "Vous ne disposez pas des autorisations suffisantes pour accéder à cette page."
+msgstr "Huna ruhusa za kutosha kufikia ukurasa huu."
 
 #: admin/menu-and-tabs.php:107 admin/menu-and-tabs.php:130
 #: admin/menu-and-tabs.php:135
 msgid "nav-tab-active"
-msgstr "nav-tab-active"
+msgstr "nav-tab-kazi"
 
 #: admin/migrations/0000-initial.php:21
 msgid "Network Dashboard Viewer"
-msgstr "Visionneuse de tableau de bord réseau"
+msgstr "Mtazamaji wa Dashibodi ya Mtandao"
 
 #: metrics/base.php:220
 msgid "ID"
-msgstr "ID"
+msgstr "Kitambulisho"
 
 #: metrics/base.php:221 metrics/base.php:255
 msgid "Site"
-msgstr "Site"
+msgstr "Tovuti"
 
 #: metrics/base.php:224 metrics/base.php:254 metrics/network-maps-area.php:89
 #: metrics/network-maps-area.php:133 metrics/network-statistics-users.php:12
@@ -505,374 +504,374 @@ msgstr "Site"
 #: metrics/network-statistics-users.php:14
 #: metrics/network-statistics-users.php:50
 msgid "Users"
-msgstr "Utilisateurs"
+msgstr "Watumiaji"
 
 #: metrics/base.php:225
 msgid "Timestamp"
-msgstr "Horodatage"
+msgstr "Muhuri wa muda"
 
 #: metrics/base.php:226
 msgid "Visit"
-msgstr "Visite"
+msgstr "Tembelea"
 
 #: metrics/base.php:227
 msgid "View"
-msgstr "Vue"
+msgstr "Angalia"
 
 #: metrics/base.php:229
 msgid "Active Snapshot"
-msgstr "Instantané actif"
+msgstr "Picha inayotumika"
 
 #: metrics/base.php:230
 msgid "Generations"
-msgstr "Générations"
+msgstr "Vizazi"
 
 #: metrics/base.php:231
 msgid "Follow-up Funnel"
-msgstr "Entonnoir de suivi"
+msgstr "Funnel ya Kufuatilia"
 
 #: metrics/base.php:232
 msgid "On-Going Meetings"
-msgstr "Réunions en cours"
+msgstr "Mikutano inayoendelea"
 
 #: metrics/base.php:233
 msgid "Coaching"
-msgstr "encadrement"
+msgstr "Kufundisha"
 
 #: metrics/base.php:234
 msgid "Baptized"
-msgstr "Baptisé"
+msgstr "Ubatizo"
 
 #: metrics/base.php:235
 msgid "Active Groups"
-msgstr "Groupes actifs"
+msgstr "Vikundi Vinavyotumika"
 
 #: metrics/base.php:236 metrics/base.php:258
 msgid "Church"
-msgstr "Église"
+msgstr "Kanisa"
 
 #: metrics/base.php:237
 msgid "Health Metrics"
-msgstr "Mesures de santé"
+msgstr "Metriki za kiafya"
 
 #: metrics/base.php:238
 msgid "Total Users"
-msgstr "Nombre total d'utilisateurs"
+msgstr "Watumiaji Jumla"
 
 #: metrics/base.php:239
 msgid "Responders"
-msgstr "Répondeurs"
+msgstr "Wajibu"
 
 #: metrics/base.php:240
 msgid "Dispatchers"
-msgstr "Répartiteurs"
+msgstr "Wasambazaji"
 
 #: metrics/base.php:241
 msgid "Multipliers"
-msgstr "Multiplicateurs"
+msgstr "Kuzidisha"
 
 #: metrics/base.php:242
 msgid "Admins"
-msgstr "Administrateurs"
+msgstr "Wasimamizi"
 
 #: metrics/base.php:243
 msgid "User Login Activity"
-msgstr "Activité de connexion des utilisateurs"
+msgstr "Shughuli ya Kuingia kwa Mtumiaji"
 
 #: metrics/base.php:244
 msgid "Users Active in the Last 30 Days"
-msgstr "Utilisateurs actifs au cours des 30 derniers jours"
+msgstr "Watumiaji Wanafanya Kazi katika Siku 30 Zilizopita"
 
 #: metrics/base.php:245
 msgid "Practicing"
-msgstr "Pratiquant"
+msgstr "Kufanya mazoezi"
 
 #: metrics/base.php:246
 msgid "Not Practicing"
-msgstr "Ne pas pratiquer"
+msgstr "Sio Mazoezi"
 
 #: metrics/base.php:247
 msgid "Chart Funnel"
-msgstr "Entonnoir graphique"
+msgstr "Funnel ya Chati"
 
 #: metrics/base.php:250
 msgid "Contact"
-msgstr "Contact"
+msgstr "Mawasiliano"
 
 #: metrics/base.php:251
 msgid "Group"
-msgstr "Groupe"
+msgstr "Kikundi"
 
 #: metrics/base.php:253
 msgid "User"
-msgstr "Utilisateur"
+msgstr "Mtumiaji"
 
 #: metrics/base.php:256 metrics/base.php:301
 msgid "Sites"
-msgstr "Des sites"
+msgstr "Tovuti"
 
 #: metrics/base.php:257
 msgid "Baptisms"
-msgstr "Baptêmes"
+msgstr "Ubatizo"
 
 #: metrics/base.php:259 metrics/network-maps-area.php:97
 #: metrics/network-maps-area.php:127
 msgid "Churches"
-msgstr "Des églises"
+msgstr "Makanisa"
 
 #: metrics/base.php:260
 msgid "Location"
-msgstr "Emplacement"
+msgstr "Mahali"
 
 #: metrics/base.php:261
 msgid "Types"
-msgstr "Les types"
+msgstr "Aina"
 
 #: metrics/base.php:263
 msgid "modify filter"
-msgstr "modifier le filtre"
+msgstr "rekebisha kichujio"
 
 #: metrics/base.php:264
 msgid "Filter List"
-msgstr "Liste de filtres"
+msgstr "Orodha ya Vichungi"
 
 #: metrics/base.php:265
 msgid "reset data"
-msgstr "Réinitialiser les données"
+msgstr "rekebisha data"
 
 #: post-type/module-base.php:133
 msgid "Status"
-msgstr "Statut"
+msgstr "Hali"
 
 #: metrics/base.php:268
 msgid "Status - All"
-msgstr "Statut - Tous"
+msgstr "Hali - Yote"
 
 #: metrics/base.php:270
 msgid "Zoom Level"
-msgstr "Le niveau de zoom"
+msgstr "Kiwango cha Kuza"
 
 #: metrics/base.php:271
 msgid "Auto Zoom"
-msgstr "Zoom automatique"
+msgstr "Kuza kiotomatiki"
 
 #: metrics/base.php:272
 msgid "World"
-msgstr "Monde"
+msgstr "Ulimwengu"
 
 #: metrics/base.php:273
 msgid "Country"
-msgstr "Pays"
+msgstr "Nchi"
 
 #: metrics/base.php:274
 msgid "State"
-msgstr "Etat"
+msgstr "Hali"
 
 #: includes/template-dashboard.php:23
 msgid "Active Contacts"
-msgstr "Contacts actifs"
+msgstr "Anwani inayotumika"
 
 #: metrics/base.php:277
 msgid "Paused Contacts"
-msgstr "Contacts en pause"
+msgstr "Anwani Zilizosimamishwa"
 
 #: metrics/base.php:278
 msgid "Closed Contacts"
-msgstr "Contacts fermés"
+msgstr "Anwani zilizofungwa"
 
 #: metrics/base.php:279
 msgid "Total Contacts"
-msgstr "Nombre total de contacts"
+msgstr "Jumla ya Anwani"
 
 #: metrics/base.php:280
 msgid "New Contacts"
-msgstr "Nouveaux contacts"
+msgstr "Anwani Mpya"
 
 #: metrics/base.php:282
 msgid "New Baptisms"
-msgstr "Nouveaux baptêmes"
+msgstr "Ubatizo Mpya"
 
 #: metrics/base.php:283
 msgid "Baptism Generations"
-msgstr "Générations de baptême"
+msgstr "Vizazi vya Ubatizo"
 
 #: metrics/base.php:284
 msgid "Select Location"
-msgstr "Sélectionnez l'emplacement"
+msgstr "Chagua Mahali"
 
 #: metrics/base.php:286
 msgid "New Groups"
-msgstr "Nouveaux groupes"
+msgstr "Vikundi vipya"
 
 #: metrics/base.php:287
 msgid "Pre-Group"
-msgstr "Pré-groupe"
+msgstr "Kabla ya Kikundi"
 
 #: metrics/base.php:288
 msgid "Pre-Groups"
-msgstr "Pré-groupes"
+msgstr "Kabla ya Vikundi"
 
 #: metrics/base.php:290
 msgid "Last 7 Days"
-msgstr "Les 7 derniers jours"
+msgstr "Siku 7 zilizopita"
 
 #: metrics/base.php:291
 msgid "Last 30 Days"
-msgstr "Les 30 derniers jours"
+msgstr "Siku 30 zilizopita"
 
 #: metrics/base.php:292
 msgid "Last 60 Days"
-msgstr "60 derniers jours"
+msgstr "Siku 60 zilizopita"
 
 #: metrics/base.php:293
 msgid "Last 12 Months"
-msgstr "12 derniers mois"
+msgstr "Miezi 12 iliyopita"
 
 #: metrics/base.php:294
 msgid "Last 24 Months"
-msgstr "24 derniers mois"
+msgstr "Miezi 24 iliyopita"
 
 #: metrics/base.php:295
 msgid "This Year"
-msgstr "Cette année"
+msgstr "Mwaka huu"
 
 #: metrics/base.php:297
 msgid "Activity Map"
-msgstr "Carte d'activité"
+msgstr "Ramani ya Shughuli"
 
 #: metrics/base.php:298 metrics/network-activity-stats.php:11
 #: metrics/network-activity-stats.php:12 metrics/network-activity-stats.php:13
 #: metrics/network-activity-stats.php:57
 msgid "Stats"
-msgstr "Statistiques"
+msgstr "Takwimu"
 
 #: metrics/base.php:299
 msgid "Activities"
-msgstr "Activités"
+msgstr "Shughuli"
 
 #: metrics/base.php:300
 msgid "Actions"
-msgstr "Actions"
+msgstr "Vitendo"
 
 #: metrics/base.php:302
 msgid "By Action Type"
-msgstr "Par type d'action"
+msgstr "Kwa Aina ya Vitendo"
 
 #: metrics/base.php:303
 msgid "Key"
-msgstr "Clé"
+msgstr "Muhimu"
 
 #: metrics/base.php:304
 msgid "Name"
-msgstr "Nom"
+msgstr "Jina"
 
 #: metrics/base.php:305
 msgid "Total Activities"
-msgstr "Total des activités"
+msgstr "Shughuli za Jumla"
 
 #: metrics/base.php:306
 msgid "Feed"
-msgstr "Alimentation"
+msgstr "Kulisha"
 
 #: metrics/base.php:307
 msgid "Time"
-msgstr "Temps"
+msgstr "Wakati"
 
 #: metrics/base.php:308
 msgid "Result Limit"
-msgstr "Limite de résultat"
+msgstr "Kikomo cha Matokeo"
 
 #: metrics/base.php:309
 msgid "uncheck"
-msgstr "décocher"
+msgstr "ondoa alama"
 
 #: metrics/base.php:311 metrics/network-home.php:12 metrics/network-home.php:13
 #: metrics/network-home.php:14 metrics/network-home.php:48
 msgid "Home"
-msgstr "Accueil"
+msgstr "Nyumbani"
 
 #: metrics/base.php:313
 msgid "Events (30 Days)"
-msgstr "Événements (30 jours)"
+msgstr "Matukio (Siku 30)"
 
 #: metrics/base.php:315
 msgid "All Active/Inactive"
-msgstr "Tout actif / inactif"
+msgstr "Yote Inayotumika / Haifanyi kazi"
 
 #: metrics/base.php:316 metrics/network-maps-hovermap.php:12
 #: metrics/network-maps-hovermap.php:13 metrics/network-maps-hovermap.php:14
 #: metrics/network-maps-hovermap.php:51
 msgid "Hover Map"
-msgstr "Carte de survol"
+msgstr "Hover Ramani"
 
 #: metrics/loader.php:16
 msgid "Network"
-msgstr "Réseau"
+msgstr "Mtandao"
 
 #: metrics/network-activity-map.php:15 metrics/network-activity-map.php:16
 #: metrics/network-activity-map.php:17 metrics/network-activity-map.php:63
 msgid "Map"
-msgstr "Carte"
+msgstr "Ramani"
 
 #: metrics/network-activity-stream.php:12
 #: metrics/network-activity-stream.php:13
 #: metrics/network-activity-stream.php:14
 #: metrics/network-activity-stream.php:51
 msgid "Log"
-msgstr "Journal"
+msgstr "Ingia"
 
 #: metrics/network-activity.php:12 metrics/network-activity.php:13
 #: metrics/network-activity.php:14 metrics/network-activity.php:25
 msgid "Activity"
-msgstr "Activité"
+msgstr "Shughuli"
 
 #: metrics/network-maps-area.php:15 metrics/network-maps-area.php:16
 #: metrics/network-maps-area.php:17 metrics/network-maps-area.php:110
 msgid "Area Maps"
-msgstr "Cartes de la région"
+msgstr "Ramani za eneo"
 
 #: metrics/network-maps-locationlist.php:12
 #: metrics/network-maps-locationlist.php:13
 #: metrics/network-maps-locationlist.php:14
 #: metrics/network-maps-locationlist.php:46
 msgid "Location List"
-msgstr "Liste des emplacements"
+msgstr "Orodha ya Mahali"
 
 #: metrics/network-maps.php:12 metrics/network-maps.php:13
 #: metrics/network-maps.php:14 metrics/network-maps.php:25
 msgid "Maps"
-msgstr "Plans"
+msgstr "Ramani"
 
 #: metrics/network-sites.php:12 metrics/network-sites.php:13
 #: metrics/network-sites.php:14 metrics/network-sites.php:45
 msgid "Site Reports"
-msgstr "Rapports de site"
+msgstr "Ripoti za Tovuti"
 
 #: metrics/network-statistics.php:12 metrics/network-statistics.php:13
 #: metrics/network-statistics.php:14 metrics/network-statistics.php:25
 msgid "Statistics"
-msgstr "Statistiques"
+msgstr "Takwimu"
 
 #: shared/permissions.php:41
 msgid "Network Dashboard Transfer Both Ways"
-msgstr "Transfert de tableau de bord réseau dans les deux sens"
+msgstr "Uhamisho wa Dashibodi ya Mtandao Njia zote mbili"
 
 #: shared/permissions.php:42
 msgid "Network Dashboard Receiving Only"
-msgstr "Réception du tableau de bord réseau uniquement"
+msgstr "Dashibodi ya Mtandao Inapokea Tu"
 
 #: shared/permissions.php:43
 msgid "Network Dashboard Sending Only"
-msgstr "Network Dashboard Envoi uniquement"
+msgstr "Dashibodi ya Mtandao Inatuma Tu"
 
 #: shared/site-profile.php:99
 msgid "Network Dashboard Site Profile"
-msgstr "Profil de site du tableau de bord réseau"
+msgstr "Profaili ya Tovuti ya Dashibodi ya Mtandao"
 
 #. Plugin Name of the plugin/theme
 #: 
 msgid "Disciple Tools - Network Dashboard"
-msgstr "Outils de disciple - Tableau de bord réseau"
+msgstr "Zana za Wanafunzi - Dashibodi ya Mtandao"
 
 #: admin/customize-site-linking.php:10 metrics/mapbox-maps.php:31
 #: metrics/mapbox-personal-maps.php:31 post-type/module-base.php:393
@@ -880,268 +879,268 @@ msgstr "Outils de disciple - Tableau de bord réseau"
 #: post-type/module-base.php:466 post-type/module-base.php:483
 #: post-type/module-base.php:520
 msgid "Streams"
-msgstr "Ruisseaux"
+msgstr "Mito"
 
 #: metrics/mapbox-maps.php:30
 msgid "Stream Maps"
-msgstr "Cartes de flux"
+msgstr "Tiririsha Ramani"
 
 #: metrics/mapbox-personal-maps.php:30
 msgid "Streams Maps"
-msgstr "Cartes des flux"
+msgstr "Ramani za Mikondo"
 
 #: post-type/module-base.php:103
 msgctxt "Optional Documentation"
 msgid "A useful way to stream related items and can help stream contacts associated with noteworthy characteristics. e.g. business owner, sports lover. The contacts can also be filtered using these tags."
-msgstr "Un moyen utile de diffuser des éléments connexes et peut aider à diffuser des contacts associés à des caractéristiques remarquables. par exemple. propriétaire d'entreprise, amateur de sport. Les contacts peuvent également être filtrés à l'aide de ces balises."
+msgstr "Njia muhimu ya kutiririsha vitu vinavyohusiana na inaweza kusaidia kutiririsha anwani zinazohusiana na sifa muhimu. k.v. mmiliki wa biashara, mpenzi wa michezo. Mawasiliano inaweza pia kuchujwa kwa kutumia lebo hizi."
 
 #: post-type/module-base.php:138
 msgctxt "Stream Status label"
 msgid "New"
-msgstr "Nouveau"
+msgstr "Mpya"
 
 #: post-type/module-base.php:139
 msgctxt "Stream Status field description"
 msgid "New stream added to the system"
-msgstr "Nouveau flux ajouté au système"
+msgstr "Mtiririko mpya umeongezwa kwenye mfumo"
 
 #: post-type/module-base.php:143
 msgctxt "Stream Status label"
 msgid "Model"
-msgstr "Modèle"
+msgstr "Mfano"
 
 #: post-type/module-base.php:144
 msgctxt "Stream Status field description"
 msgid "This stream has been proposed and is in initial conversations"
-msgstr "Ce flux a été proposé et est dans les conversations initiales"
+msgstr "Mtiririko huu umependekezwa na uko kwenye mazungumzo ya mwanzo"
 
 #: post-type/module-base.php:148
 msgctxt "Stream Status label"
 msgid "Assist"
-msgstr "Aider"
+msgstr "Kusaidia"
 
 #: post-type/module-base.php:149
 msgctxt "Stream Status field description"
 msgid "This stream is confirmed, on the calendar."
-msgstr "Ce flux est confirmé, sur le calendrier."
+msgstr "Mtiririko huu umethibitishwa, kwenye kalenda."
 
 #: post-type/module-base.php:153
 msgctxt "Stream Status label"
 msgid "Watch"
-msgstr "Regarder"
+msgstr "Tazama"
 
 #: post-type/module-base.php:154
 msgctxt "Stream Status field description"
 msgid "This stream is confirmed, on the calendar, or currently active."
-msgstr "Ce flux est confirmé, sur le calendrier ou actuellement actif."
+msgstr "Mtiririko huu umethibitishwa, kwenye kalenda, au unatumika sasa."
 
 #: post-type/module-base.php:158
 msgctxt "Stream Status label"
 msgid "Leave"
-msgstr "Partir"
+msgstr "Ondoka"
 
 #: post-type/module-base.php:159
 msgctxt "Stream Status field description"
 msgid "This stream has successfully completed"
-msgstr "Ce flux s'est terminé avec succès"
+msgstr "Mtiririko huu umekamilika"
 
 #: post-type/module-base.php:163
 msgctxt "Stream Status label"
 msgid "Paused"
-msgstr "En pause"
+msgstr "Imesitishwa"
 
 #: post-type/module-base.php:164
 msgctxt "Stream Status field description"
 msgid "This contact is currently on hold. It has potential of getting scheduled in the future."
-msgstr "Ce contact est actuellement en attente. Il a le potentiel d'être programmé à l'avenir."
+msgstr "Anwani hii kwa sasa imesimama. Ina uwezo wa kupata ratiba katika siku zijazo."
 
 #: post-type/module-base.php:168
 msgctxt "Stream Status label"
 msgid "Closed"
-msgstr "Fermé"
+msgstr "Imefungwa"
 
 #: post-type/module-base.php:169
 msgctxt "Stream Status field description"
 msgid "This stream is no longer going to happen."
-msgstr "Ce flux ne se produira plus."
+msgstr "Mtiririko huu hautatokea tena."
 
 #: post-type/module-base.php:177
 msgid "Select the main person who is responsible for reporting on this stream."
-msgstr "Sélectionnez la personne principale responsable de la création de rapports sur ce flux."
+msgstr "Chagua mtu mkuu anayehusika na kuripoti kwenye mkondo huu."
 
 #: post-type/module-base.php:186
 msgctxt "Optional Documentation"
 msgid "The person who planted and/or is coaching this stream. Only one person can be assigned to a stream while multiple people can be coaches / church planters of this stream."
-msgstr "La personne qui a planté et / ou qui encadre ce flux. Une seule personne peut être affectée à un flux tandis que plusieurs personnes peuvent être entraîneurs / implanteurs d'églises de ce flux."
+msgstr "Mtu aliyepanda na / au anafundisha mkondo huu. Ni mtu mmoja tu anayeweza kupewa mkondo wakati watu wengi wanaweza kuwa makocha / wapanda kanisa wa mkondo huu."
 
 #: post-type/module-base.php:204
 msgctxt "Optional Documentation"
 msgid "The people streams represented by this stream."
-msgstr "Les flux de personnes représentés par ce flux."
+msgstr "Vijito vya watu vinawakilishwa na mkondo huu."
 
 #: post-type/module-base.php:309
 msgid "Parent Stream"
-msgstr "Flux parent"
+msgstr "Mkondo wa Mzazi"
 
 #: post-type/module-base.php:310
 msgctxt "Optional Documentation"
 msgid "A stream that launched this stream."
-msgstr "Un flux qui a lancé ce flux."
+msgstr "Mtiririko ulioanzisha mkondo huu."
 
 #: post-type/module-base.php:321
 msgid "Peer Streams"
-msgstr "Flux de pairs"
+msgstr "Mito ya rika"
 
 #: post-type/module-base.php:322
 msgctxt "Optional Documentation"
 msgid "A related stream that isn't a parent/child in relationship. It might indicate streams that collaborate, are about to merge, recently split, etc."
-msgstr "Un flux associé qui n'est pas un parent / enfant en relation. Cela peut indiquer des flux qui collaborent, sont sur le point de fusionner, récemment divisés, etc."
+msgstr "Mkondo unaohusiana ambao sio mzazi / mtoto katika uhusiano. Inaweza kuonyesha mito inayoshirikiana, iko karibu kuungana, kugawanyika hivi karibuni, nk."
 
 #: post-type/module-base.php:333
 msgid "Child Streams"
-msgstr "Flux enfants"
+msgstr "Mikondo ya Mtoto"
 
 #: post-type/module-base.php:334
 msgctxt "Optional Documentation"
 msgid "A stream that has been birthed out of this stream."
-msgstr "Un flux qui est né de ce flux."
+msgstr "Mto ambao umezalishwa nje ya mkondo huu."
 
 #: post-type/module-base.php:369
 msgid "Leader in Stream"
-msgstr "Leader en Stream"
+msgstr "Kiongozi katika Mkondo"
 
 #: post-type/module-base.php:370
 msgctxt "Optional Documentation"
 msgid "Leader of a stream"
-msgstr "Leader d'un flux"
+msgstr "Kiongozi wa mkondo"
 
 #: post-type/module-base.php:380
 msgid "Key Disciple in Stream"
-msgstr "Disciple clé dans le flux"
+msgstr "Mwanafunzi muhimu katika Mkondo"
 
 #: post-type/module-base.php:381
 msgctxt "Optional Documentation"
 msgid "Disciple in a stream."
-msgstr "Disciple dans un ruisseau."
+msgstr "Mwanafunzi katika kijito."
 
 #: post-type/module-base.php:536
 msgid "Connections"
-msgstr "Connexions"
+msgstr "Miunganisho"
 
 #: post-type/module-reports.php:432
 msgid "Add Report"
-msgstr "Ajouter un rapport"
+msgstr "Ongeza Ripoti"
 
 #. Plugin Name of the plugin/theme
 #: 
 msgid "Disciple Tools - Streams"
-msgstr "Outils de disciple - Streams"
+msgstr "Zana za Wanafunzi - Mito"
 
 #: logging/log-generations.php:11
 msgid "Pre-Group Generations"
-msgstr "Générations pré-groupe"
+msgstr "Vizazi vya kabla ya Kikundi"
 
 #: logging/log-generations.php:17
 msgid "Group Generations"
-msgstr "Générations de groupe"
+msgstr "Vizazi vya Kikundi"
 
 #: logging/log-generations.php:23
 msgid "Church Generations"
-msgstr "Générations d'église"
+msgstr "Vizazi vya Kanisa"
 
 #: logging/log-generations.php:29
 msgid "Team Generations"
-msgstr "Générations d'équipe"
+msgstr "Vizazi vya Timu"
 
 #: logging/log-generations.php:76
 msgid "%s is reporting a new pre-group generation."
-msgstr "% s signale une nouvelle génération pré-groupe."
+msgstr "% s inaripoti kizazi kipya cha kabla ya kikundi."
 
 #: logging/log-generations.php:81
 msgid "%s is reporting a new group generation."
-msgstr "% s signale une nouvelle génération de groupe."
+msgstr "% s inaripoti kizazi kipya cha kikundi."
 
 #: logging/log-generations.php:86
 msgid "%s is reporting a new church generation."
-msgstr "% s rapporte une nouvelle génération d'églises."
+msgstr "% s inaripoti kizazi kipya cha kanisa."
 
 #: logging/log-generations.php:91
 msgid "%s is reporting a new leadership team generation."
-msgstr "% s rapporte une nouvelle génération d'équipe de direction."
+msgstr "% s inaripoti kizazi kipya cha timu ya uongozi."
 
 #: logging/log-new-posts.php:11
 msgid "New Contact"
-msgstr "Nouveau contact"
+msgstr "Mawasiliano mpya"
 
 #: logging/log-new-posts.php:16
 msgid "New Pre-Group"
-msgstr "Nouveau pré-groupe"
+msgstr "Kikundi kipya cha mapema"
 
 #: logging/log-new-posts.php:21
 msgid "New Group"
-msgstr "Nouveau groupe"
+msgstr "Kikundi kipya"
 
 #: logging/log-new-posts.php:26
 msgid "New Church"
-msgstr "Nouvelle église"
+msgstr "Kanisa Jipya"
 
 #: logging/log-new-posts.php:31
 msgid "New Team"
-msgstr "Nouvelle équipe"
+msgstr "Timu mpya"
 
 #: logging/log-new-posts.php:36
 msgid "New Baptism"
-msgstr "Nouveau baptême"
+msgstr "Ubatizo Mpya"
 
 #: logging/log-new-posts.php:41
 msgid "New Coaching"
-msgstr "Nouveau coaching"
+msgstr "Kufundisha mpya"
 
 #: logging/log-new-posts.php:164
 msgid "%s is reporting a new contact."
-msgstr "% s signale un nouveau contact."
+msgstr "% s inaripoti anwani mpya."
 
 #: logging/log-new-posts.php:169
 msgid "%s is reporting a new pre-group formed."
-msgstr "% s signale la formation d'un nouveau pré-groupe."
+msgstr "% s inaripoti kikundi kipya cha mapema kilichoundwa."
 
 #: logging/log-new-posts.php:174
 msgid "%s is reporting a new group formed."
-msgstr "% s signale la formation d'un nouveau groupe."
+msgstr "% s inaripoti kikundi kipya kilichoundwa."
 
 #: logging/log-new-posts.php:179
 msgid "%s is reporting a new church."
-msgstr "% s signale une nouvelle église."
+msgstr "% s inaripoti kanisa jipya."
 
 #: logging/log-new-posts.php:184
 msgid "%s is reporting a new leadership team formed."
-msgstr "% s signale la formation d'une nouvelle équipe de direction."
+msgstr "% s inaripoti timu mpya ya uongozi iliyoundwa."
 
 #: logging/log-new-posts.php:189
 msgid "%s is reporting a new baptism."
-msgstr "% s signale un nouveau baptême."
+msgstr "% s inaripoti ubatizo mpya."
 
 #: logging/log-new-posts.php:194
 msgid "%s is reporting an coaching relationship."
-msgstr "% s signale une relation de coaching."
+msgstr "% s inaripoti uhusiano wa ukocha."
 
 #: metrics/network-maps-area.php:74 metrics/network-maps-area.php:83
 #: metrics/network-maps-area.php:91 metrics/network-maps-area.php:99
 msgid "Active"
-msgstr "actif"
+msgstr "Inatumika"
 
 #: metrics/network-maps-area.php:75
 msgid "Paused"
-msgstr "En pause"
+msgstr "Imesitishwa"
 
 #: metrics/network-maps-area.php:76
 msgid "Closed"
-msgstr "Fermé"
+msgstr "Imefungwa"
 
 #: metrics/network-maps-area.php:84 metrics/network-maps-area.php:92
 #: metrics/network-maps-area.php:100
 msgid "Inactive"
-msgstr "Inactif"
+msgstr "Haifanyi kazi"
 
 #. Plugin URI of the plugin/theme
 #: 
@@ -1151,7 +1150,7 @@ msgstr "https://github.com/DiscipleTools/disciple-tools-network-dashboard"
 #. Description of the plugin/theme
 #: 
 msgid "Connect this Disciple Tools site to a larger network of sites. Adds security sensitive totals, mapping, activity logging."
-msgstr "Connectez ce site Disciple Tools à un plus grand réseau de sites. Ajoute les totaux sensibles à la sécurité, le mappage, la journalisation des activités."
+msgstr "Unganisha tovuti hii ya Zana za Wanafunzi kwenye mtandao mkubwa wa tovuti. Inaongeza jumla nyeti za usalama, ramani, ukataji shughuli."
 
 #. Author URI of the plugin/theme
 #: 
@@ -1166,15 +1165,15 @@ msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
 #. Description of the plugin/theme
 #: 
 msgid "Disciple Tools Streams Extension adds recording of streams and cross reference them with contacts, groups, and locations."
-msgstr "Disciple Tools Streams Extension ajoute l'enregistrement des flux et les renvoie avec des contacts, des groupes et des emplacements."
+msgstr "Vifaa vya Wanafunzi Mitiririko Ugani huongeza kurekodi mito na kuirejelea kwa anwani, vikundi, na maeneo."
 
 #: disciple-tools-training.php:297
 msgid "'Disciple Tools - Training' plugin requires 'Disciple Tools' theme to work. Please activate 'Disciple Tools' theme or make sure it is latest version."
-msgstr "Le plugin «Disciple Tools - Training» nécessite le thème «Disciple Tools» pour fonctionner. Veuillez activer le thème «Disciple Tools» ou assurez-vous qu'il s'agit de la dernière version."
+msgstr "Zana za Wanafunzi - Plugin ya Mafunzo inahitaji mandhari ya 'Zana za Wanafunzi' kufanya kazi. Tafadhali washa mada ya 'Zana za Wanafunzi' au hakikisha ni toleo la hivi karibuni."
 
 #: disciple-tools-training.php:299
 msgid "Current Disciple Tools version: %1$s, required version: %2$s"
-msgstr "Version actuelle de Disciple Tools:% 1 $ s, version requise:% 2 $ s"
+msgstr "Toleo la Sasa la Zana za Wanafunzi:% 1 $ s, toleo linalohitajika:% 2 $ s"
 
 #. Plugin URI of the plugin/theme
 #: 
@@ -1184,148 +1183,148 @@ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
 #. Description of the plugin/theme
 #: 
 msgid "Disciple Tools Training Extension adds recording of trainings and cross reference them with contacts, groups, and locations."
-msgstr "Disciple Tools Training Extension ajoute l'enregistrement des formations et les renvoie avec des contacts, des groupes et des lieux."
+msgstr "Ugani wa Mafunzo ya Zana za Wanafunzi huongeza kurekodi mafunzo na kuirejelea kwa anwani, vikundi, na maeneo"
 
 #: post-type/module-base.php:128
 msgid "Duplicates"
-msgstr "Doublons"
+msgstr "Marudio"
 
 #: post-type/module-base.php:185
 msgid "Coach"
-msgstr "Entraîneur"
+msgstr "Kocha"
 
 #: post-type/module-base.php:253
 msgid "Leaders Total"
-msgstr "Leaders Total"
+msgstr "Jumla ya Viongozi"
 
 #: post-type/module-base.php:271
 msgid "Disciples Total"
-msgstr "Total de disciples"
+msgstr "Jumla ya Wanafunzi"
 
 #: post-type/module-base.php:277
 msgid "Key Disciples"
-msgstr "Disciples clés"
+msgstr "Wanafunzi muhimu"
 
 #: post-type/module-base.php:288
 msgid "Groups Total"
-msgstr "Total des groupes"
+msgstr "Vikundi Jumla"
 
 #: post-type/module-base.php:348
 msgid "Trainings Total"
-msgstr "Total des formations"
+msgstr "Jumla ya Mafunzo"
 
 #: includes/admin/admin-menu-and-tabs.php:63
 msgid "Dashboard Plugin"
-msgstr "Plugin de tableau de bord"
+msgstr "Programu-jalizi ya Dashibodi"
 
 #: includes/admin/admin-menu-and-tabs.php:84 includes/functions.php:84
 msgid "Dashboard"
-msgstr "Tableau de bord"
+msgstr "Dashibodi"
 
 #: includes/rest-api.php:80
 msgid "%s days since last update"
-msgstr "% s jours depuis la dernière mise à jour"
+msgstr "Siku% s tangu sasisho la mwisho"
 
 #: includes/rest-api.php:416
 msgid "Accept"
-msgstr "J'accepte"
+msgstr "Kubali"
 
 #: includes/rest-api.php:417
 msgid "Decline"
-msgstr "Déclin"
+msgstr "Kushuka"
 
 #: includes/rest-api.php:418
 msgid "# Contacts Assigned"
-msgstr "# Contacts attribués"
+msgstr "# Anwani Zilizopewa"
 
 #: includes/rest-api.php:419
 msgid "# First Meetings"
-msgstr "# Premières réunions"
+msgstr "# Mikutano ya Kwanza"
 
 #: includes/rest-api.php:420
 msgid "# Faith milestones"
-msgstr "# Jalons de foi"
+msgstr "# Hatua za Imani"
 
 #: includes/rest-api.php:421
 msgid "Hurray! You are caught up."
-msgstr "Hourra! Vous êtes rattrapé."
+msgstr "Harakisha! Umenyakuliwa."
 
 #: includes/rest-api.php:422
 msgid "remove"
-msgstr "retirer"
+msgstr "ondoa"
 
 #: includes/rest-api.php:423
 msgid "mark as complete"
-msgstr "marquer comme terminé"
+msgstr "weka alama kuwa imekamilika"
 
 #: includes/rest-api.php:424
 msgid "No task created"
-msgstr "Aucune tâche créée"
+msgstr "Hakuna kazi iliyoundwa"
 
 #: includes/rest-api.php:425
 msgid "Reminder"
-msgstr "Rappel"
+msgstr "Kikumbusho"
 
 #: includes/rest-api.php:426
 msgid "No note set"
-msgstr "Aucun jeu de notes"
+msgstr "Hakuna maandishi yaliyowekwa"
 
 #: includes/template-dashboard.php:30
 msgid "Add a contact"
-msgstr "Ajouter un contact"
+msgstr "Ongeza anwani"
 
 #: includes/template-dashboard.php:33
 msgid "View Contacts List"
-msgstr "Afficher la liste des contacts"
+msgstr "Angalia Orodha ya Anwani"
 
 #: includes/template-dashboard.php:47
 msgid "Pending Contacts"
-msgstr "Contacts en attente"
+msgstr "Anwani zinazosubiri"
 
 #: includes/template-dashboard.php:52 includes/template-dashboard.php:70
 msgid "View All"
-msgstr "Voir tout"
+msgstr "Tazama zote"
 
 #: includes/template-dashboard.php:65
 msgid "Update Needed"
-msgstr "Mise à jour nécessaire"
+msgstr "Sasisho Inahitajika"
 
 #: includes/template-dashboard.php:79
 msgid "Contact Workload"
-msgstr "Charge de travail de contact"
+msgstr "Wasiliana na mzigo wa kazi"
 
 #: includes/template-dashboard.php:83
 msgid "Choose an option to let the dispatcher(s) know if you are ready for new contacts"
-msgstr "Choisissez une option pour informer le (s) répartiteur (s) si vous êtes prêt pour de nouveaux contacts"
+msgstr "Chagua chaguo kuruhusu watumaji kujua ikiwa uko tayari kwa anwani mpya"
 
 #: includes/template-dashboard.php:93
 msgid "Set travel or dates unavailable"
-msgstr "Définir le voyage ou les dates indisponibles"
+msgstr "Weka safari au tarehe hazipatikani"
 
 #: includes/template-dashboard.php:106
 msgid "Personal Benchmarks"
-msgstr "Benchmarks personnels"
+msgstr "Viashiria vya kibinafsi"
 
 #: includes/template-dashboard.php:135
 msgid "Faith Milestone Totals"
-msgstr "Totaux des jalons de foi"
+msgstr "Jumla ya Tukio la Imani"
 
 #: includes/template-dashboard.php:138
 msgid "Milestones on your active contacts"
-msgstr "Jalons sur vos contacts actifs"
+msgstr "Hatua kuu kwenye anwani zako zinazotumika"
 
 #: includes/template-dashboard.php:149
 msgid "Seeker Path Progress"
-msgstr "Progression du chemin du chercheur"
+msgstr "Maendeleo ya Njia ya Mtafuta"
 
 #: includes/template-dashboard.php:152
 msgid "No data to show yet. You have no active contacts"
-msgstr "Aucune donnée à afficher pour le moment. Vous n'avez aucun contact actif"
+msgstr "Hakuna data ya kuonyesha bado. Huna anwani zinazotumika"
 
 #. Plugin Name of the plugin/theme
 #: 
 msgid "Disciple Tools - Dashboard"
-msgstr "Outils de disciple - Tableau de bord"
+msgstr "Zana za Wanafunzi - Dashibodi"
 
 #. Plugin URI of the plugin/theme
 #: 
@@ -1335,5 +1334,5 @@ msgstr "https://github.com/DiscipleTools/disciple-tools-dashboard"
 #. Description of the plugin/theme
 #: 
 msgid "The multiplier dashboard upgrades the multipliers experience as soon as they log into the system giving them a landing page with stats."
-msgstr "Le tableau de bord du multiplicateur améliore l'expérience des multiplicateurs dès qu'ils se connectent au système en leur donnant une page de destination avec des statistiques"
+msgstr "Dashibodi ya kuzidisha huboresha uzoefu wa kuzidisha mara tu wanapoingia kwenye mfumo kuwapa ukurasa wa kutua na takwimu"
 
