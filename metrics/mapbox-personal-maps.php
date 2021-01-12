@@ -27,8 +27,8 @@ class DT_Metrics_Mapbox_Personal_Streams_Maps extends DT_Metrics_Chart_Base
         if ( !$this->has_permission() ){
             return;
         }
-        $this->title = __( 'Streams Maps', 'disciple_tools' );
-        $this->base_title = __( 'Streams', 'disciple_tools' );
+        $this->title = __( 'Streams Maps', 'disciple-tools-streams' );
+        $this->base_title = __( 'Streams', 'disciple-tools-streams' );
 
         $url_path = dt_get_url_path();
         if ( "metrics/$this->base_slug/$this->slug" === $url_path ) {

@@ -82,7 +82,7 @@ class DT_Stream_Reports extends DT_Module_Base
 
     public function dt_details_additional_tiles( $tiles, $post_type = "" ){
         if ( $post_type === 'streams' ){
-            $tiles["reports"] = [ "label" => __( "Reports", 'disciple_tools' ) ];
+            $tiles["reports"] = [ "label" => __( "Reports", 'disciple-tools-streams' ) ];
         }
         return $tiles;
     }
@@ -118,11 +118,11 @@ class DT_Stream_Reports extends DT_Module_Base
                             </div>
                             <div class="reports-for-<?php echo esc_html( $year ) ?>">
                                 <div class="grid-x">
-                                    <div class="cell small-6"><?php echo esc_html__( 'Total Groups', 'disciple-tools' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_groups'] ) ?></div>
-                                    <div class="cell small-6"><?php echo esc_html__( 'Total Baptisms', 'disciple-tools' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_baptisms'] ) ?></div>
-                                    <div class="cell small-6"><?php echo esc_html__( 'Countries', 'disciple-tools' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_countries'] ) ?></div>
-                                    <div class="cell small-6"><?php echo esc_html__( 'States', 'disciple-tools' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_states'] ) ?></div>
-                                    <div class="cell small-6"><?php echo esc_html__( 'Counties', 'disciple-tools' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_counties'] ) ?></div>
+                                    <div class="cell small-6"><?php echo esc_html__( 'Total Groups', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_groups'] ) ?></div>
+                                    <div class="cell small-6"><?php echo esc_html__( 'Total Baptisms', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_baptisms'] ) ?></div>
+                                    <div class="cell small-6"><?php echo esc_html__( 'Countries', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_countries'] ) ?></div>
+                                    <div class="cell small-6"><?php echo esc_html__( 'States', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_states'] ) ?></div>
+                                    <div class="cell small-6"><?php echo esc_html__( 'Counties', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_counties'] ) ?></div>
                                 </div>
                             </div>
                             <div><hr>
@@ -429,7 +429,7 @@ class DT_Stream_Reports extends DT_Module_Base
                 'parts' => $this->parts,
                 'name' => get_the_title( $this->parts['post_id'] ),
                 'translations' => [
-                    'add' => __( 'Add Report', 'disciple-tools' ),
+                    'add' => __( 'Add Report', 'disciple-tools-streams' ),
                     'search_location' => 'Search for Location'
                 ],
             ]) ?>][0]

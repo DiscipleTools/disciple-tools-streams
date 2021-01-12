@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
 // Adds the type of network connection to the site link system
 add_filter( 'site_link_type', 'dt_streams_site_link_type', 10, 1 );
 function dt_streams_site_link_type( $type ) {
-    $type['streams'] = __( 'Streams' );
+    $type['streams'] = __( 'Streams', 'disciple-tools-streams' );
     return $type;
 }
 

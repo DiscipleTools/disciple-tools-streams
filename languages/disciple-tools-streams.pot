@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Disciple Tools - Streams\n"
-"POT-Creation-Date: 2021-01-11 14:59-0700\n"
+"POT-Creation-Date: 2021-01-11 19:20-0700\n"
 "PO-Revision-Date: 2021-01-11 10:42-0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,8 +24,9 @@ msgstr ""
 
 #: admin/customize-site-linking.php:10 metrics/mapbox-maps.php:31
 #: metrics/mapbox-personal-maps.php:31 post-type/module-base.php:393
-#: post-type/module-base.php:449 post-type/module-base.php:466
-#: post-type/module-base.php:483 post-type/module-base.php:520
+#: post-type/module-base.php:405 post-type/module-base.php:449
+#: post-type/module-base.php:466 post-type/module-base.php:483
+#: post-type/module-base.php:520
 msgid "Streams"
 msgstr ""
 
@@ -83,6 +84,14 @@ msgstr ""
 
 #: post-type/module-base.php:124
 msgid "Tasks"
+msgstr ""
+
+#: post-type/module-base.php:128
+msgid "Duplicates"
+msgstr ""
+
+#: post-type/module-base.php:133
+msgid "Status"
 msgstr ""
 
 #: post-type/module-base.php:138
@@ -166,7 +175,7 @@ msgid "Select the main person who is responsible for reporting on this stream."
 msgstr ""
 
 #: post-type/module-base.php:185
-msgid "Training Coach / Church Planter"
+msgid "Coach"
 msgstr ""
 
 #: post-type/module-base.php:186
@@ -203,8 +212,24 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
+#: post-type/module-base.php:253
+msgid "Leaders Total"
+msgstr ""
+
 #: post-type/module-base.php:259 post-type/module-base.php:467
 msgid "Leaders"
+msgstr ""
+
+#: post-type/module-base.php:271
+msgid "Disciples Total"
+msgstr ""
+
+#: post-type/module-base.php:277
+msgid "Key Disciples"
+msgstr ""
+
+#: post-type/module-base.php:288
+msgid "Groups Total"
 msgstr ""
 
 #: post-type/module-base.php:294 post-type/module-base.php:450
@@ -238,6 +263,14 @@ msgstr ""
 #: post-type/module-base.php:334
 msgctxt "Optional Documentation"
 msgid "A stream that has been birthed out of this stream."
+msgstr ""
+
+#: post-type/module-base.php:348
+msgid "Trainings Total"
+msgstr ""
+
+#: post-type/module-base.php:354
+msgid "Trainings"
 msgstr ""
 
 #: post-type/module-base.php:369

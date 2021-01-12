@@ -56,27 +56,27 @@ class DT_Stream_Base extends DT_Module_Base {
     public function dt_set_roles_and_permissions( $expected_roles ){
         if ( !isset( $expected_roles["multiplier"] ) ){
             $expected_roles["multiplier"] = [
-                "label" => __( 'Multiplier', 'disciple_tools' ),
+                "label" => __( 'Multiplier', 'disciple-tools-streams' ),
                 "permissions" => []
             ];
         }
         if ( !isset( $expected_roles["dispatcher"] ) ){
             $expected_roles["dispatcher"] = [
-                "label" => __( 'Dispatcher', 'disciple_tools' ),
+                "label" => __( 'Dispatcher', 'disciple-tools-streams' ),
                 "description" => "All D.T permissions",
                 "permissions" => []
             ];
         }
         if ( !isset( $expected_roles["dt_admin"] ) ){
             $expected_roles["dt_admin"] = [
-                "label" => __( 'Disciple.Tools Admin', 'disciple_tools' ),
+                "label" => __( 'Disciple.Tools Admin', 'disciple-tools-streams' ),
                 "description" => "All D.T permissions",
                 "permissions" => []
             ];
         }
         if ( !isset( $expected_roles["administrator"] ) ){
             $expected_roles["administrator"] = [
-                "label" => __( 'Administrator', 'disciple_tools' ),
+                "label" => __( 'Administrator', 'disciple-tools-streams' ),
                 "description" => "All D.T permissions plus the ability to manage plugins.",
                 "permissions" => []
             ];
@@ -99,8 +99,8 @@ class DT_Stream_Base extends DT_Module_Base {
         if ( $post_type === 'streams' ){
             // framework fields
             $fields['tags'] = [
-                'name'        => __( 'Tags', 'disciple_tools' ),
-                'description' => _x( 'A useful way to stream related items and can help stream contacts associated with noteworthy characteristics. e.g. business owner, sports lover. The contacts can also be filtered using these tags.', 'Optional Documentation', 'disciple_tools' ),
+                'name'        => __( 'Tags', 'disciple-tools-streams' ),
+                'description' => _x( 'A useful way to stream related items and can help stream contacts associated with noteworthy characteristics. e.g. business owner, sports lover. The contacts can also be filtered using these tags.', 'Optional Documentation', 'disciple-tools-streams' ),
                 'type'        => 'multi_select',
                 'default'     => [],
                 'tile'        => 'other',
@@ -108,73 +108,73 @@ class DT_Stream_Base extends DT_Module_Base {
                 'icon' => get_template_directory_uri() . "/dt-assets/images/tag.svg",
             ];
             $fields["follow"] = [
-                'name'        => __( 'Follow', 'disciple_tools' ),
+                'name'        => __( 'Follow', 'disciple-tools-streams' ),
                 'type'        => 'multi_select',
                 'default'     => [],
                 'section'     => 'misc',
                 'hidden'      => true
             ];
             $fields["unfollow"] = [
-                'name'        => __( 'Un-Follow', 'disciple_tools' ),
+                'name'        => __( 'Un-Follow', 'disciple-tools-streams' ),
                 'type'        => 'multi_select',
                 'default'     => [],
                 'hidden'      => true
             ];
             $fields['tasks'] = [
-                'name' => __( 'Tasks', 'disciple_tools' ),
+                'name' => __( 'Tasks', 'disciple-tools-streams' ),
                 'type' => 'post_user_meta',
             ];
             $fields["duplicate_data"] = [
-                "name" => 'Duplicates', //system string does not need translation
+                "name" => __('Duplicates', 'disciple-tools-streams'), //system string does not need translation
                 'type' => 'array',
                 'default' => [],
             ];
             $fields["status"] = [
-                'name' => "Status",
+                'name' => __("Status", 'disciple-tools-streams'),
                 'type' => 'key_select',
                 "tile" => "",
                 'default' => [
                     'new'   => [
-                        "label" => _x( 'New', 'Stream Status label', 'disciple_tools' ),
-                        "description" => _x( "New stream added to the system", "Stream Status field description", 'disciple_tools' ),
+                        "label" => _x( 'New', 'Stream Status label', 'disciple-tools-streams' ),
+                        "description" => _x( "New stream added to the system", "Stream Status field description", 'disciple-tools-streams' ),
                         'color' => "#ff9800"
                     ],
                     'model'   => [
-                        "label" => _x( 'Model', 'Stream Status label', 'disciple_tools' ),
-                        "description" => _x( "This stream has been proposed and is in initial conversations", "Stream Status field description", 'disciple_tools' ),
+                        "label" => _x( 'Model', 'Stream Status label', 'disciple-tools-streams' ),
+                        "description" => _x( "This stream has been proposed and is in initial conversations", "Stream Status field description", 'disciple-tools-streams' ),
                         'color' => "#ff9800"
                     ],
                     'assist' => [
-                        "label" => _x( 'Assist', 'Stream Status label', 'disciple_tools' ),
-                        "description" => _x( "This stream is confirmed, on the calendar.", "Stream Status field description", 'disciple_tools' ),
+                        "label" => _x( 'Assist', 'Stream Status label', 'disciple-tools-streams' ),
+                        "description" => _x( "This stream is confirmed, on the calendar.", "Stream Status field description", 'disciple-tools-streams' ),
                         'color' => "#4CAF50"
                     ],
                     'watch' => [
-                        "label" => _x( 'Watch', 'Stream Status label', 'disciple_tools' ),
-                        "description" => _x( "This stream is confirmed, on the calendar, or currently active.", "Stream Status field description", 'disciple_tools' ),
+                        "label" => _x( 'Watch', 'Stream Status label', 'disciple-tools-streams' ),
+                        "description" => _x( "This stream is confirmed, on the calendar, or currently active.", "Stream Status field description", 'disciple-tools-streams' ),
                         'color' => "#4CAF50"
                     ],
                     'leave'     => [
-                        "label" => _x( "Leave", 'Stream Status label', 'disciple_tools' ),
-                        "description" => _x( "This stream has successfully completed", "Stream Status field description", 'disciple_tools' ),
+                        "label" => _x( "Leave", 'Stream Status label', 'disciple-tools-streams' ),
+                        "description" => _x( "This stream has successfully completed", "Stream Status field description", 'disciple-tools-streams' ),
                         'color' => "#4CAF50"
                     ],
                     'paused'       => [
-                        "label" => _x( 'Paused', 'Stream Status label', 'disciple_tools' ),
-                        "description" => _x( "This contact is currently on hold. It has potential of getting scheduled in the future.", "Stream Status field description", 'disciple_tools' ),
+                        "label" => _x( 'Paused', 'Stream Status label', 'disciple-tools-streams' ),
+                        "description" => _x( "This contact is currently on hold. It has potential of getting scheduled in the future.", "Stream Status field description", 'disciple-tools-streams' ),
                         'color' => "#ff9800"
                     ],
                     'closed'       => [
-                        "label" => _x( 'Closed', 'Stream Status label', 'disciple_tools' ),
-                        "description" => _x( "This stream is no longer going to happen.", "Stream Status field description", 'disciple_tools' ),
+                        "label" => _x( 'Closed', 'Stream Status label', 'disciple-tools-streams' ),
+                        "description" => _x( "This stream is no longer going to happen.", "Stream Status field description", 'disciple-tools-streams' ),
                         "color" => "#366184",
                     ],
                 ],
                 "default_color" => "#366184",
             ];
             $fields['assigned_to'] = [
-                'name'        => __( 'Assigned To', 'disciple_tools' ),
-                'description' => __( "Select the main person who is responsible for reporting on this stream.", 'disciple_tools' ),
+                'name'        => __( 'Assigned To', 'disciple-tools-streams' ),
+                'description' => __( "Select the main person who is responsible for reporting on this stream.", 'disciple-tools-streams' ),
                 'type'        => 'user_select',
                 'default'     => '',
                 'tile' => 'status',
@@ -182,8 +182,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 'custom_display' => true,
             ];
             $fields["coaches"] = [
-                "name" => __( 'Training Coach / Church Planter', 'disciple_tools' ),
-                'description' => _x( 'The person who planted and/or is coaching this stream. Only one person can be assigned to a stream while multiple people can be coaches / church planters of this stream.', 'Optional Documentation', 'disciple_tools' ),
+                "name" => __( 'Coach', 'disciple-tools-streams' ),
+                'description' => _x( 'The person who planted and/or is coaching this stream. Only one person can be assigned to a stream while multiple people can be coaches / church planters of this stream.', 'Optional Documentation', 'disciple-tools-streams' ),
                 "type" => "connection",
                 "post_type" => "contacts",
                 "p2p_direction" => "from",
@@ -193,15 +193,15 @@ class DT_Stream_Base extends DT_Module_Base {
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-contact.svg',
             ];
             $fields["requires_update"] = [
-                'name'        => __( 'Requires Update', 'disciple_tools' ),
+                'name'        => __( 'Requires Update', 'disciple-tools-streams' ),
                 'description' => '',
                 'type'        => 'boolean',
                 'default'     => false,
             ];
 
             $fields["peoplegroups"] = [
-                "name" => __( 'People Groups', 'disciple_tools' ),
-                'description' => _x( 'The people streams represented by this stream.', 'Optional Documentation', 'disciple_tools' ),
+                "name" => __( 'People Groups', 'disciple-tools-streams' ),
+                'description' => _x( 'The people streams represented by this stream.', 'Optional Documentation', 'disciple-tools-streams' ),
                 "type" => "connection",
                 'tile' => 'details',
                 "post_type" => "peoplegroups",
@@ -216,8 +216,8 @@ class DT_Stream_Base extends DT_Module_Base {
 
             // location
             $fields['location_grid'] = [
-                'name'        => __( 'Locations', 'disciple_tools' ),
-                'description' => _x( 'The general location where this contact is located.', 'Optional Documentation', 'disciple_tools' ),
+                'name'        => __( 'Locations', 'disciple-tools-streams' ),
+                'description' => _x( 'The general location where this contact is located.', 'Optional Documentation', 'disciple-tools-streams' ),
                 'type'        => 'location',
                 'mapbox'    => false,
                 "in_create_form" => true,
@@ -225,15 +225,15 @@ class DT_Stream_Base extends DT_Module_Base {
                 "icon" => get_template_directory_uri() . "/dt-assets/images/location.svg",
             ];
             $fields['location_grid_meta'] = [
-                'name'        => __( 'Locations', 'disciple_tools' ), //system string does not need translation
-                'description' => _x( 'The general location where this contact is located.', 'Optional Documentation', 'disciple_tools' ),
+                'name'        => __( 'Locations', 'disciple-tools-streams' ), //system string does not need translation
+                'description' => _x( 'The general location where this contact is located.', 'Optional Documentation', 'disciple-tools-streams' ),
                 'type'        => 'location_meta',
                 "tile"      => "details",
                 'mapbox'    => false,
                 'hidden' => true
             ];
             $fields["contact_address"] = [
-                "name" => __( 'Address', 'disciple_tools' ),
+                "name" => __( 'Address', 'disciple-tools-streams' ),
                 "icon" => get_template_directory_uri() . "/dt-assets/images/house.svg",
                 "type" => "communication_channel",
                 "tile" => "details",
@@ -250,13 +250,13 @@ class DT_Stream_Base extends DT_Module_Base {
 
             // connection fields
             $fields['leader_total'] = [
-                'name' => "Leaders Total",
+                'name' => __("Leaders Total", 'disciple-tools-streams'),
                 'type' => 'number',
                 'default' => '0',
                 'show_in_table' => true
             ];
             $fields["leaders"] = [
-                "name" => __( 'Leaders', 'disciple_tools' ),
+                "name" => __( 'Leaders', 'disciple-tools-streams' ),
                 'description' => '',
                 "type" => "connection",
                 "post_type" => "contacts",
@@ -268,13 +268,13 @@ class DT_Stream_Base extends DT_Module_Base {
                 "in_create_form" => true,
             ];
             $fields['disciple_total'] = [
-                'name' => "Disciples Total",
+                'name' => __("Disciples Total", 'disciple-tools-streams'),
                 'type' => 'number',
                 'default' => '0',
                 'show_in_table' => true
             ];
             $fields['disciples'] = [
-                'name' => "Key Disciples",
+                'name' => __("Key Disciples", 'disciple-tools-streams'),
                 'type' => 'connection',
                 "post_type" => 'contacts',
                 'tile' => 'connections',
@@ -285,13 +285,13 @@ class DT_Stream_Base extends DT_Module_Base {
                 "in_create_form" => true,
             ];
             $fields['group_total'] = [
-                'name' => "Groups Total",
+                'name' => __("Groups Total", 'disciple-tools-streams'),
                 'type' => 'number',
                 'default' => '0',
                 'show_in_table' => true
             ];
             $fields['groups'] = [
-                'name' => __( "Groups", 'disciple_tools' ),
+                'name' => __( "Groups", 'disciple-tools-streams' ),
                 'type' => 'connection',
                 "post_type" => 'groups',
                 "p2p_direction" => "from",
@@ -306,8 +306,8 @@ class DT_Stream_Base extends DT_Module_Base {
 
             // parent child fields
             $fields["parent_streams"] = [
-                "name" => __( 'Parent Stream', 'disciple_tools' ),
-                'description' => _x( 'A stream that launched this stream.', 'Optional Documentation', 'disciple_tools' ),
+                "name" => __( 'Parent Stream', 'disciple-tools-streams' ),
+                'description' => _x( 'A stream that launched this stream.', 'Optional Documentation', 'disciple-tools-streams' ),
                 "type" => "connection",
                 "post_type" => "streams",
                 "p2p_direction" => "from",
@@ -318,8 +318,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 "in_create_form" => true,
             ];
             $fields["peer_streams"] = [
-                "name" => __( 'Peer Streams', 'disciple_tools' ),
-                'description' => _x( "A related stream that isn't a parent/child in relationship. It might indicate streams that collaborate, are about to merge, recently split, etc.", 'Optional Documentation', 'disciple_tools' ),
+                "name" => __( 'Peer Streams', 'disciple-tools-streams' ),
+                'description' => _x( "A related stream that isn't a parent/child in relationship. It might indicate streams that collaborate, are about to merge, recently split, etc.", 'Optional Documentation', 'disciple-tools-streams' ),
                 "type" => "connection",
                 "post_type" => "streams",
                 "p2p_direction" => "any",
@@ -330,8 +330,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 "in_create_form" => true,
             ];
             $fields["child_streams"] = [
-                "name" => __( 'Child Streams', 'disciple_tools' ),
-                'description' => _x( 'A stream that has been birthed out of this stream.', 'Optional Documentation', 'disciple_tools' ),
+                "name" => __( 'Child Streams', 'disciple-tools-streams' ),
+                'description' => _x( 'A stream that has been birthed out of this stream.', 'Optional Documentation', 'disciple-tools-streams' ),
                 "type" => "connection",
                 "post_type" => "streams",
                 "p2p_direction" => "to",
@@ -345,13 +345,13 @@ class DT_Stream_Base extends DT_Module_Base {
 
             if ( $this->trainings ) {
                 $fields['training_total'] = [
-                    'name' => "Trainings Total",
+                    'name' => __("Trainings Total", 'disciple-tools-streams'),
                     'type' => 'number',
                     'default' => '0',
                     'show_in_table' => false
                 ];
                 $fields['trainings'] = [
-                    'name' => "Trainings",
+                    'name' => __("Trainings", 'disciple-tools-streams'),
                     'type' => 'connection',
                     "post_type" => 'trainings',
                     'tile' => 'connections',
@@ -366,8 +366,8 @@ class DT_Stream_Base extends DT_Module_Base {
 
         if ( $post_type === 'contacts' ){
             $fields['stream_leader'] = [
-                'name' => __( "Leader in Stream", 'disciple_tools' ),
-                'description' => _x( 'Leader of a stream', 'Optional Documentation', 'disciple_tools' ),
+                'name' => __( "Leader in Stream", 'disciple-tools-streams' ),
+                'description' => _x( 'Leader of a stream', 'Optional Documentation', 'disciple-tools-streams' ),
                 'type' => 'connection',
                 "post_type" => $this->post_type,
                 "p2p_direction" => "to",
@@ -377,8 +377,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 'create-icon' => get_template_directory_uri() . "/dt-assets/images/add.svg",
             ];
             $fields['stream_disciple'] = [
-                'name' => __( "Key Disciple in Stream", 'disciple_tools' ),
-                'description' => _x( 'Disciple in a stream.', 'Optional Documentation', 'disciple_tools' ),
+                'name' => __( "Key Disciple in Stream", 'disciple-tools-streams' ),
+                'description' => _x( 'Disciple in a stream.', 'Optional Documentation', 'disciple-tools-streams' ),
                 'type' => 'connection',
                 "post_type" => $this->post_type,
                 "p2p_direction" => "to",
@@ -390,7 +390,7 @@ class DT_Stream_Base extends DT_Module_Base {
         }
         if ( $post_type === 'groups' ){
             $fields[$this->post_type] = [
-                'name' => __( "Streams", 'disciple_tools' ),
+                'name' => __( "Streams", 'disciple-tools-streams' ),
                 'type' => 'connection',
                 "post_type" => $this->post_type,
                 "p2p_direction" => "to",
@@ -402,7 +402,7 @@ class DT_Stream_Base extends DT_Module_Base {
         }
         if ( $post_type === 'trainings' ){
             $fields['streams'] = [
-                'name' => "Streams",
+                'name' => __("Streams", 'disciple-tools-streams'),
                 'type' => 'connection',
                 "post_type" => 'streams',
                 "p2p_direction" => "to",
@@ -429,8 +429,8 @@ class DT_Stream_Base extends DT_Module_Base {
                     'show' => false,
                 ],
                 'title'          => [
-                    'from' => __( 'Members', 'disciple_tools' ),
-                    'to'   => __( 'Contacts', 'disciple_tools' ),
+                    'from' => __( 'Members', 'disciple-tools-streams' ),
+                    'to'   => __( 'Contacts', 'disciple-tools-streams' ),
                 ]
             ]
         );
@@ -446,8 +446,8 @@ class DT_Stream_Base extends DT_Module_Base {
                     'show' => false,
                 ],
                 'title'          => [
-                    'from' => __( 'Streams', 'disciple_tools' ),
-                    'to'   => __( 'Groups', 'disciple_tools' ),
+                    'from' => __( 'Streams', 'disciple-tools-streams' ),
+                    'to'   => __( 'Groups', 'disciple-tools-streams' ),
                 ]
             ]
         );
@@ -463,8 +463,8 @@ class DT_Stream_Base extends DT_Module_Base {
                     'show' => false,
                 ],
                 'title'          => [
-                    'from' => __( 'Streams', 'disciple_tools' ),
-                    'to'   => __( 'Leaders', 'disciple_tools' ),
+                    'from' => __( 'Streams', 'disciple-tools-streams' ),
+                    'to'   => __( 'Leaders', 'disciple-tools-streams' ),
                 ]
             ]
         );
@@ -480,8 +480,8 @@ class DT_Stream_Base extends DT_Module_Base {
                     'show' => false,
                 ],
                 'title'          => [
-                    'from' => __( 'Streams', 'disciple_tools' ),
-                    'to'   => __( 'Coaches', 'disciple_tools' ),
+                    'from' => __( 'Streams', 'disciple-tools-streams' ),
+                    'to'   => __( 'Coaches', 'disciple-tools-streams' ),
                 ]
             ]
         );
@@ -494,8 +494,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 'from'         => 'streams',
                 'to'           => 'streams',
                 'title'        => [
-                    'from' => __( 'Planted by', 'disciple_tools' ),
-                    'to'   => __( 'Planting', 'disciple_tools' ),
+                    'from' => __( 'Planted by', 'disciple-tools-streams' ),
+                    'to'   => __( 'Planting', 'disciple-tools-streams' ),
                 ],
             ]
         );
@@ -516,8 +516,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 'from'        => 'streams',
                 'to'          => 'peoplegroups',
                 'title'       => [
-                    'from' => __( 'People Groups', 'disciple_tools' ),
-                    'to'   => __( 'Streams', 'disciple_tools' ),
+                    'from' => __( 'People Groups', 'disciple-tools-streams' ),
+                    'to'   => __( 'Streams', 'disciple-tools-streams' ),
                 ]
             ]
         );
@@ -533,8 +533,8 @@ class DT_Stream_Base extends DT_Module_Base {
 
     public function dt_details_additional_tiles( $tiles, $post_type = "" ){
         if ( $post_type === "streams" ){
-            $tiles["connections"] = [ "label" => __( "Connections", 'disciple_tools' ) ];
-            $tiles["other"] = [ "label" => __( "Other", 'disciple_tools' ) ];
+            $tiles["connections"] = [ "label" => __( "Connections", 'disciple-tools-streams' ) ];
+            $tiles["other"] = [ "label" => __( "Other", 'disciple-tools-streams' ) ];
         }
         return $tiles;
     }
@@ -565,7 +565,7 @@ class DT_Stream_Base extends DT_Module_Base {
                             <div class="typeahead__field">
                                     <span class="typeahead__query">
                                         <input class="js-typeahead-assigned_to input-height"
-                                               name="assigned_to[query]" placeholder="<?php echo esc_html_x( "Search Users", 'input field placeholder', 'disciple_tools' ) ?>"
+                                               name="assigned_to[query]" placeholder="<?php echo esc_html_x( "Search Users", 'input field placeholder', 'disciple-tools-streams' ) ?>"
                                                autocomplete="off">
                                     </span>
                                 <span class="typeahead__button">
@@ -598,7 +598,7 @@ class DT_Stream_Base extends DT_Module_Base {
                             <span class="typeahead__query">
                                 <input class="js-typeahead-tags input-height"
                                        name="tags[query]"
-                                       placeholder="<?php echo esc_html( sprintf( _x( "Search %s", "Search 'something'", 'disciple_tools' ), $fields["tags"]['name'] ) )?>"
+                                       placeholder="<?php echo esc_html( sprintf( _x( "Search %s", "Search 'something'", 'disciple-tools-streams' ), $fields["tags"]['name'] ) )?>"
                                        autocomplete="off">
                             </span>
                             <span class="typeahead__button">
@@ -939,7 +939,7 @@ class DT_Stream_Base extends DT_Module_Base {
 
             $filters["tabs"][] = [
                 "key" => "assigned_to_me",
-                "label" => _x( "Assigned to me", 'List Filters', 'disciple_tools' ),
+                "label" => _x( "Assigned to me", 'List Filters', 'disciple-tools-streams' ),
                 "count" => $total_my,
                 "order" => 20
             ];
@@ -947,7 +947,7 @@ class DT_Stream_Base extends DT_Module_Base {
             $filters["filters"][] = [
                 'ID' => 'my_all',
                 'tab' => 'assigned_to_me',
-                'name' => _x( "All", 'List Filters', 'disciple_tools' ),
+                'name' => _x( "All", 'List Filters', 'disciple-tools-streams' ),
                 'query' => [
                     'assigned_to' => [ 'me' ],
                     'sort' => '-post_date'
@@ -1004,7 +1004,7 @@ class DT_Stream_Base extends DT_Module_Base {
             }
             $filters["tabs"][] = [
                 "key" => "all",
-                "label" => _x( "All", 'List Filters', 'disciple_tools' ),
+                "label" => _x( "All", 'List Filters', 'disciple-tools-streams' ),
                 "count" => $total_all,
                 "order" => 10
             ];
@@ -1012,7 +1012,7 @@ class DT_Stream_Base extends DT_Module_Base {
             $filters["filters"][] = [
                 'ID' => 'all',
                 'tab' => 'all',
-                'name' => _x( "All", 'List Filters', 'disciple_tools' ),
+                'name' => _x( "All", 'List Filters', 'disciple-tools-streams' ),
                 'query' => [
                     'sort' => '-post_date'
                 ],
