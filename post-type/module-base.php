@@ -125,12 +125,12 @@ class DT_Stream_Base extends DT_Module_Base {
                 'type' => 'post_user_meta',
             ];
             $fields["duplicate_data"] = [
-                "name" => __('Duplicates', 'disciple-tools-streams'), //system string does not need translation
+                "name" => __( 'Duplicates', 'disciple-tools-streams' ), //system string does not need translation
                 'type' => 'array',
                 'default' => [],
             ];
             $fields["status"] = [
-                'name' => __("Status", 'disciple-tools-streams'),
+                'name' => __( "Status", 'disciple-tools-streams' ),
                 'type' => 'key_select',
                 "tile" => "",
                 'default' => [
@@ -250,7 +250,7 @@ class DT_Stream_Base extends DT_Module_Base {
 
             // connection fields
             $fields['leader_total'] = [
-                'name' => __("Leaders Total", 'disciple-tools-streams'),
+                'name' => __( "Leaders Total", 'disciple-tools-streams' ),
                 'type' => 'number',
                 'default' => '0',
                 'show_in_table' => true
@@ -268,13 +268,13 @@ class DT_Stream_Base extends DT_Module_Base {
                 "in_create_form" => true,
             ];
             $fields['disciple_total'] = [
-                'name' => __("Disciples Total", 'disciple-tools-streams'),
+                'name' => __( "Disciples Total", 'disciple-tools-streams' ),
                 'type' => 'number',
                 'default' => '0',
                 'show_in_table' => true
             ];
             $fields['disciples'] = [
-                'name' => __("Key Disciples", 'disciple-tools-streams'),
+                'name' => __( "Key Disciples", 'disciple-tools-streams' ),
                 'type' => 'connection',
                 "post_type" => 'contacts',
                 'tile' => 'connections',
@@ -285,7 +285,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 "in_create_form" => true,
             ];
             $fields['group_total'] = [
-                'name' => __("Groups Total", 'disciple-tools-streams'),
+                'name' => __( "Groups Total", 'disciple-tools-streams' ),
                 'type' => 'number',
                 'default' => '0',
                 'show_in_table' => true
@@ -345,13 +345,13 @@ class DT_Stream_Base extends DT_Module_Base {
 
             if ( $this->trainings ) {
                 $fields['training_total'] = [
-                    'name' => __("Trainings Total", 'disciple-tools-streams'),
+                    'name' => __( "Trainings Total", 'disciple-tools-streams' ),
                     'type' => 'number',
                     'default' => '0',
                     'show_in_table' => false
                 ];
                 $fields['trainings'] = [
-                    'name' => __("Trainings", 'disciple-tools-streams'),
+                    'name' => __( "Trainings", 'disciple-tools-streams' ),
                     'type' => 'connection',
                     "post_type" => 'trainings',
                     'tile' => 'connections',
@@ -402,7 +402,7 @@ class DT_Stream_Base extends DT_Module_Base {
         }
         if ( $post_type === 'trainings' ){
             $fields['streams'] = [
-                'name' => __("Streams", 'disciple-tools-streams'),
+                'name' => __( "Streams", 'disciple-tools-streams' ),
                 'type' => 'connection',
                 "post_type" => 'streams',
                 "p2p_direction" => "to",
