@@ -50,7 +50,7 @@ class DT_Stream_Base extends DT_Module_Base {
 
     public function after_setup_theme(){
         if ( class_exists( 'Disciple_Tools_Post_Type_Template' )) {
-            new Disciple_Tools_Post_Type_Template( "streams", 'Stream', 'Streams' );
+            new Disciple_Tools_Post_Type_Template( "streams", __( 'Stream', 'disciple-tools-streams' ), __( 'Streams', 'disciple-tools-streams' ) );
         }
     }
     public function dt_set_roles_and_permissions( $expected_roles ){
