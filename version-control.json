@@ -1,0 +1,29 @@
+{
+  "name": "Disciple Tools - Streams",
+  "version": "2.0",
+  "last_updated": "2021-01",
+  "author": "Disciple Tools",
+  "author_homepage": "https://disciple.tools",
+  "git_owner": "DiscipleTools",
+  "git_repo": "disciple-tools-streams",
+  "download_url": "https://github.com/DiscipleTools/disciple-tools-streams/releases/latest/download/disciple-tools-streams.zip",
+  "homepage": "https://github.com/DiscipleTools/disciple-tools-streams",
+  "issues_url": "https://github.com/DiscipleTools/disciple-tools-streams/issues",
+  "projects_url": "https://github.com/DiscipleTools/disciple-tools-streams/projects",
+  "discussions_url": "https://github.com/DiscipleTools/disciple-tools-streams/discussions",
+  "wiki_url": "https://github.com/DiscipleTools/disciple-tools-streams/wiki",
+  "license_url": "https://raw.githubusercontent.com/DiscipleTools/disciple-tools-streams/master/LICENSE",
+  "readme_url": "https://raw.githubusercontent.com/DiscipleTools/disciple-tools-streams/master/README.md",
+  "requires": "4.7",
+  "tested": "5.6",
+  "upgrade_notice": "Here's why you should upgrade...",
+  "banners": {
+    "low": "https://raw.githubusercontent.com/DiscipleTools/disciple-tools-version-control/master/images/dt-placeholder-772x250.jpg",
+    "high": "https://raw.githubusercontent.com/DiscipleTools/disciple-tools-version-control/master/images/dt-placeholder-1544x500.jpg"
+  },
+  "sections": {
+    "description": "Disciple Tools - Streams",
+    "installation": "(Required) You must have Disciple.Tools Theme installed before using this plugin. Once Disciple.Tools is installed, you can use the normal Plugin system to install the plugin.",
+    "changelog": ""
+  }
+}
