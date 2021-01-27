@@ -55,3 +55,11 @@ system for git. For a more details on contribution see the
 
 ## Screenshots
 
+details page
+![details](https://raw.githubusercontent.com/DiscipleTools/disciple-tools-streams/master/documentation/details-screen.png)
+
+list page
+![list page](https://raw.githubusercontent.com/DiscipleTools/disciple-tools-streams/master/documentation/home-screen.png)
+
+census reports magic collection page
+![reports](https://raw.githubusercontent.com/DiscipleTools/disciple-tools-streams/master/documentation/census-report-add.png)
