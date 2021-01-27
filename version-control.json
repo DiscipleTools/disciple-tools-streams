@@ -22,7 +22,7 @@
     "high": "https://raw.githubusercontent.com/DiscipleTools/disciple-tools-version-control/master/images/dt-placeholder-1544x500.jpg"
   },
   "sections": {
-    "description": "Disciple Tools - Streams. A stream is a collection of work, large or small. The streams plugin interconnects leaders, disciples, groups, churches, trainings, and other elements with census style reporting. A stream can be a large organization, movement, or a few groups started from a single training. It is a named effort that needs to be tracked for good stewardship.",
+    "description": "A stream is a collection of work, large or small. The streams plugin interconnects leaders, disciples, groups, churches, trainings, and other elements with census style reporting. A stream can be a large organization, movement, or a few groups started from a single training. It is a named effort that needs to be tracked for good stewardship.",
     "installation": "(Required) You must have Disciple.Tools Theme installed before using this plugin. Once Disciple.Tools is installed, you can use the normal Plugin system to install the plugin.",
     "changelog": ""
   }
