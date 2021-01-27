@@ -53,6 +53,5 @@ code contributions are welcome using the [Pull Request](https://github.com/Disci
 system for git. For a more details on contribution see the
 [contribution guidelines](https://github.com/DiscipleTools/disciple-tools-streams/blob/master/CONTRIBUTING.md).
 
-
 ## Screenshots
 
