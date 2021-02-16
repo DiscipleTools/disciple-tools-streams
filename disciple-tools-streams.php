@@ -162,27 +162,6 @@ class DT_Streams {
      */
     private function setup_actions() {
 
-        if ( is_admin() ){
-            // Check for plugin updates
-            if ( ! class_exists( 'Puc_v4_Factory' ) ) {
-                require( get_template_directory() . '/dt-core/libraries/plugin-update-checker/plugin-update-checker.php' );
-            }
-            /**
-             * Below is the publicly hosted .json file that carries the version information. This file can be hosted
-             * anywhere as long as it is publicly accessible. You can download the version file listed below and use it as
-             * a template.
-             * Also, see the instructions for version updating to understand the steps involved.
-             * @see https://github.com/DiscipleTools/disciple-tools-version-control/wiki/How-to-Update-the-Starter-Plugin
-             */
-
-            $hosted_json = "https://raw.githubusercontent.com/DiscipleTools/disciple-tools-version-control/master/disciple-tools-streams-version-control.json";
-            Puc_v4_Factory::buildUpdateChecker(
-                $hosted_json,
-                __FILE__,
-                'disciple-tools-streams'
-            );
-        }
-
         // Internationalize the text strings used.
         add_action( 'after_setup_theme', array( $this, 'i18n' ), 50 );
     }
@@ -335,3 +314,33 @@ if ( !function_exists( "dt_hook_ajax_notice_handler" )){
         }
     }
 }
+
+
+/**
+ * Check for plugin updates even when the active theme is not Disciple.Tools
+ *
+ * Below is the publicly hosted .json file that carries the version information. This file can be hosted
+ * anywhere as long as it is publicly accessible. You can download the version file listed below and use it as
+ * a template.
+ * Also, see the instructions for version updating to understand the steps involved.
+ * @see https://github.com/DiscipleTools/disciple-tools-version-control/wiki/How-to-Update-the-Starter-Plugin
+ */
+add_action( 'plugins_loaded', function (){
+    if ( is_admin() ){
+        // Check for plugin updates
+        if ( ! class_exists( 'Puc_v4_Factory' ) ) {
+            if ( file_exists( get_template_directory() . '/dt-core/libraries/plugin-update-checker/plugin-update-checker.php' )){
+                require( get_template_directory() . '/dt-core/libraries/plugin-update-checker/plugin-update-checker.php' );
+            }
+        }
+        if ( class_exists( 'Puc_v4_Factory' ) ){
+            $hosted_json = "https://raw.githubusercontent.com/DiscipleTools/disciple-tools-version-control/master/disciple-tools-streams-version-control.json";
+            Puc_v4_Factory::buildUpdateChecker(
+                $hosted_json,
+                __FILE__,
+                'disciple-tools-streams'
+            );
+
+        }
+    }
+} );
