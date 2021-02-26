@@ -2,11 +2,11 @@
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
 class DT_Stream_Base extends DT_Module_Base {
-    private static $_instance = null;
     public $post_type = "streams";
     public $module = "streams_base";
     public $trainings = false;
 
+    private static $_instance = null;
     public static function instance() {
         if ( is_null( self::$_instance ) ) {
             self::$_instance = new self();
@@ -54,6 +54,14 @@ class DT_Stream_Base extends DT_Module_Base {
         }
     }
     public function dt_set_roles_and_permissions( $expected_roles ){
+        $expected_roles["streams_admin"] = [
+            "label" => __( 'Streams Admin', 'disciple-tools-streams' ),
+            "description" => "Has all permissions for streams",
+            "permissions" => [
+                'view_any_' . $this->post_type = true,
+                'dt_all_admin_' . $this->post_type = true,
+            ]
+        ];
         if ( !isset( $expected_roles["multiplier"] ) ){
             $expected_roles["multiplier"] = [
                 "label" => __( 'Multiplier', 'disciple-tools-streams' ),
@@ -89,6 +97,7 @@ class DT_Stream_Base extends DT_Module_Base {
             }
             if ( in_array( $role, [ 'administrator', 'dispatcher', 'dt_admin' ] ) ) {
                 $expected_roles[$role]["permissions"]['view_any_' . $this->post_type] = true;
+                $expected_roles[$role]["permissions"]['dt_all_admin_' . $this->post_type] = true;
             }
         }
 
@@ -987,6 +996,9 @@ class DT_Stream_Base extends DT_Module_Base {
                 }
             }
 
+            if ( current_user_can( 'view_all_streams')) {
+
+            }
             $totals = self::get_all_streams_status_type();
             $active_totals = [];
             $update_needed = 0;
