@@ -22,22 +22,22 @@ jQuery(document).ready(function($) {
             return `<div class="assigned-to-row" dir="auto">
         <span>
             <span class="avatar"><img style="vertical-align: text-bottom" src="{{avatar}}"/></span>
-            ${_.escape( item.name )}
+            ${window.lodash.escape( item.name )}
         </span>
-        ${ item.status_color ? `<span class="status-square" style="background-color: ${_.escape(item.status_color)};">&nbsp;</span>` : '' }
+        ${ item.status_color ? `<span class="status-square" style="background-color: ${window.lodash.escape(item.status_color)};">&nbsp;</span>` : '' }
         ${ item.update_needed && item.update_needed > 0 ? `<span>
-          <img style="height: 12px;" src="${_.escape( window.wpApiShare.template_dir )}/dt-assets/images/broken.svg"/>
-          <span style="font-size: 14px">${_.escape(item.update_needed)}</span>
+          <img style="height: 12px;" src="${window.lodash.escape( window.wpApiShare.template_dir )}/dt-assets/images/broken.svg"/>
+          <span style="font-size: 14px">${window.lodash.escape(item.update_needed)}</span>
         </span>` : '' }
       </div>`
         },
         dynamic: true,
         hint: true,
-        emptyTemplate: _.escape(window.wpApiShare.translations.no_records_found),
+        emptyTemplate: window.lodash.escape(window.wpApiShare.translations.no_records_found),
         callback: {
             onClick: function(node, a, item){
                 API.update_post( post_type, post_id, {assigned_to: 'user-' + item.ID}).then(function (response) {
-                    _.set(post, "assigned_to", response.assigned_to)
+                    window.lodash.set(post, "assigned_to", response.assigned_to)
                     assigned_to_input.val(post.assigned_to.display)
                     assigned_to_input.blur()
                 }).catch(err => { console.error(err) })
@@ -50,7 +50,7 @@ jQuery(document).ready(function($) {
                 $('.assigned_to-result-container').html("");
             },
             onReady: function () {
-                if (_.get(post,  "assigned_to.display")){
+                if (window.lodash.get(post,  "assigned_to.display")){
                     $('.js-typeahead-assigned_to').val(post.assigned_to.display)
                 }
             }
@@ -148,14 +148,14 @@ jQuery(document).ready(function($) {
                         $.each(data.reports, function(i,v){
                             list.prepend(`
                                  <div class="cell">
-                                     <div class="section-subheader"><span class="title-year">${_.escape( i )}</span> </div>
-                                     <table class="hover"><tbody id="report-list-${_.escape( i )}"></tbody></table>
+                                     <div class="section-subheader"><span class="title-year">${window.lodash.escape( i )}</span> </div>
+                                     <table class="hover"><tbody id="report-list-${window.lodash.escape( i )}"></tbody></table>
                                  </div>
                              `)
-                            let inner_list = $('#report-list-'+_.escape( i ))
+                            let inner_list = $('#report-list-'+window.lodash.escape( i ))
                             $.each(v, function(ii,vv){
                                 inner_list.append(`
-                                <tr><td>${_.escape( vv.value )} total ${_.escape( vv.payload.type )} in ${_.escape( vv.label )}</td><td style="vertical-align: middle;"></td></tr>
+                                <tr><td>${window.lodash.escape( vv.value )} total ${window.lodash.escape( vv.payload.type )} in ${window.lodash.escape( vv.label )}</td><td style="vertical-align: middle;"></td></tr>
                             `)
                             })
                         })
