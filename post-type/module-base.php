@@ -1068,7 +1068,7 @@ class DT_Stream_Base extends DT_Module_Base {
     }
 
     public function scripts(){
-        if ( is_singular( "streams" ) ){
+        if ( is_singular( "streams" ) && get_the_ID() && DT_Posts::can_view( $this->post_type, get_the_ID() ) ){
             wp_enqueue_script( 'dt_streams', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'streams-post-type.js', [
                 'jquery',
                 'details',
