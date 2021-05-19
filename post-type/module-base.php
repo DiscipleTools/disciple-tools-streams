@@ -58,8 +58,8 @@ class DT_Stream_Base extends DT_Module_Base {
             "label" => __( 'Streams Admin', 'disciple-tools-streams' ),
             "description" => "Has all permissions for streams",
             "permissions" => [
-                'view_any_' . $this->post_type = true,
-                'dt_all_admin_' . $this->post_type = true,
+                'view_any_' . $this->post_type => true,
+                'dt_all_admin_' . $this->post_type => true,
             ]
         ];
         if ( !isset( $expected_roles["multiplier"] ) ){
@@ -999,66 +999,65 @@ class DT_Stream_Base extends DT_Module_Base {
                 }
             }
 
-            if ( current_user_can( 'view_all_streams')) {
-
-            }
-            $totals = self::get_all_streams_status_type();
-            $active_totals = [];
-            $update_needed = 0;
-            $status_totals = [];
-            $total_all = 0;
-            foreach ( $totals as $total ){
-                $total_all += $total["count"];
-                dt_increment( $status_totals[$total["status"]], $total["count"] );
-                if ( $total["status"] === "new" ){
-                    if ( isset( $total["update_needed"] ) ) {
-                        $update_needed += (int) $total["update_needed"];
+            if ( current_user_can( 'view_all_streams' ) ){
+                $totals = self::get_all_streams_status_type();
+                $active_totals = [];
+                $update_needed = 0;
+                $status_totals = [];
+                $total_all = 0;
+                foreach ( $totals as $total ){
+                    $total_all += $total["count"];
+                    dt_increment( $status_totals[$total["status"]], $total["count"] );
+                    if ( $total["status"] === "new" ){
+                        if ( isset( $total["update_needed"] ) ){
+                            $update_needed += (int) $total["update_needed"];
+                        }
+                        dt_increment( $active_totals[$total["status"]], $total["count"] );
                     }
-                    dt_increment( $active_totals[$total["status"]], $total["count"] );
                 }
-            }
-            $filters["tabs"][] = [
-                "key" => "all",
-                "label" => _x( "All", 'List Filters', 'disciple-tools-streams' ),
-                "count" => $total_all,
-                "order" => 10
-            ];
-            // add assigned to me filters
-            $filters["filters"][] = [
-                'ID' => 'all',
-                'tab' => 'all',
-                'name' => _x( "All", 'List Filters', 'disciple-tools-streams' ),
-                'query' => [
-                    'sort' => '-post_date'
-                ],
-                "count" => $total_all
-            ];
+                $filters["tabs"][] = [
+                    "key" => "all",
+                    "label" => _x( "All", 'List Filters', 'disciple-tools-streams' ),
+                    "count" => $total_all,
+                    "order" => 10
+                ];
+                // add assigned to me filters
+                $filters["filters"][] = [
+                    'ID' => 'all',
+                    'tab' => 'all',
+                    'name' => _x( "All", 'List Filters', 'disciple-tools-streams' ),
+                    'query' => [
+                        'sort' => '-post_date'
+                    ],
+                    "count" => $total_all
+                ];
 
-            foreach ( $fields["status"]["default"] as $status_key => $status_value ) {
-                if ( isset( $status_totals[$status_key] ) ){
-                    $filters["filters"][] = [
-                        "ID" => 'all_' . $status_key,
-                        "tab" => 'all',
-                        "name" => $status_value["label"],
-                        "query" => [
-                            'status' => [ $status_key ],
-                            'sort' => '-post_date'
-                        ],
-                        "count" => $status_totals[$status_key]
-                    ];
-                    if ( $status_key === "new" ){
-                        if ( $update_needed > 0 ){
-                            $filters["filters"][] = [
-                                "ID" => 'all_update_needed',
-                                "tab" => 'all',
-                                "name" => $fields["requires_update"]["name"],
-                                "query" => [
-                                    'status' => [ 'new' ],
-                                    'requires_update' => [ true ],
-                                ],
-                                "count" => $update_needed,
-                                'subfilter' => true
-                            ];
+                foreach ( $fields["status"]["default"] as $status_key => $status_value ){
+                    if ( isset( $status_totals[$status_key] ) ){
+                        $filters["filters"][] = [
+                            "ID" => 'all_' . $status_key,
+                            "tab" => 'all',
+                            "name" => $status_value["label"],
+                            "query" => [
+                                'status' => [ $status_key ],
+                                'sort' => '-post_date'
+                            ],
+                            "count" => $status_totals[$status_key]
+                        ];
+                        if ( $status_key === "new" ){
+                            if ( $update_needed > 0 ){
+                                $filters["filters"][] = [
+                                    "ID" => 'all_update_needed',
+                                    "tab" => 'all',
+                                    "name" => $fields["requires_update"]["name"],
+                                    "query" => [
+                                        'status' => [ 'new' ],
+                                        'requires_update' => [ true ],
+                                    ],
+                                    "count" => $update_needed,
+                                    'subfilter' => true
+                                ];
+                            }
                         }
                     }
                 }
