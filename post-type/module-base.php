@@ -424,6 +424,18 @@ class DT_Stream_Base extends DT_Module_Base {
                 'create-icon' => get_template_directory_uri() . "/dt-assets/images/add.svg",
             ];
         }
+        if ( $post_type === 'peoplegroups' ){
+            $fields['peoplegroups'] = [
+                'name' => __( "Streams", 'disciple-tools-streams' ),
+                'type' => 'connection',
+                "post_type" => 'peoplegroups',
+                "p2p_direction" => "to",
+                "tile" => 'other',
+                "p2p_key" => "streams_to_peoplegroups",
+                'icon' => get_template_directory_uri() . "/dt-assets/images/stream.svg",
+                'create-icon' => get_template_directory_uri() . "/dt-assets/images/add.svg",
+            ];
+        }
 
         return $fields;
     }
