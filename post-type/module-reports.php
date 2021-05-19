@@ -116,7 +116,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base {
 
                 // types
                 if ( isset( $types['report'], $types['report']['root'], $types['report']['type'] ) ) {
-                    $types['report']['new_key'] = $magic->create_unique_key();
+                    $types['report']['new_key'] = dt_create_unique_key();
 
                     $reports = self::instance()->statistics_reports( get_the_ID() );
                     /**
@@ -169,7 +169,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base {
             $magic = new DT_Magic_URL( 'streams_app' );
             $types = $magic->list_types();
             $report = $types['report'] ?? [];
-            $report['new_key'] = $magic->create_unique_key();
+            $report['new_key'] = dt_create_unique_key();
 
             wp_localize_script( // add object to streams-post-type.js
                 'dt_streams', 'streams_report_module', [
