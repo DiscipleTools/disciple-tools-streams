@@ -16,7 +16,7 @@ class DT_Metrics_Mapbox_Streams_Maps extends DT_Metrics_Chart_Base
     public $js_object_name = 'wp_js_object'; // This object will be loaded into the metrics.js file by the wp_localize_script.
     public $js_file_name = '/dt-metrics/common/maps_library.js'; // should be full file name plus extension
     public $permissions = [ 'view_any_streams', 'view_project_metrics' ];
-    public $namespace = 'dt-metrics/streams/';
+    public $namespace = 'dt-metrics/streams';
     public $base_filter = [];
 
     public function __construct() {
@@ -62,10 +62,10 @@ class DT_Metrics_Mapbox_Streams_Maps extends DT_Metrics_Chart_Base
                     'geocoder_url' => trailingslashit( get_stylesheet_directory_uri() ),
                     'geocoder_nonce' => wp_create_nonce( 'wp_rest' ),
                     'rest_base_url' => $this->namespace,
-                    'rest_url' => 'cluster_geojson',
-                    'totals_rest_url' => 'get_grid_totals',
-                    'list_by_grid_rest_url' => 'get_list_by_grid_id',
-                    'points_rest_url' => 'points_geojson',
+                    'rest_url' => '/cluster_geojson',
+                    'totals_rest_url' => '/get_grid_totals',
+                    'list_by_grid_rest_url' => '/get_list_by_grid_id',
+                    'points_rest_url' => '/points_geojson',
 
                     'split_by' => [ "group_status" => $field_settings["group_status"] ],
                 ],
@@ -75,7 +75,7 @@ class DT_Metrics_Mapbox_Streams_Maps extends DT_Metrics_Chart_Base
 
     public function add_api_routes() {
         register_rest_route(
-            $this->namespace, 'cluster_geojson', [
+            $this->namespace, '/cluster_geojson', [
                 [
                     'methods'  => WP_REST_Server::CREATABLE,
                     'callback' => [ $this, 'cluster_geojson' ],
@@ -84,7 +84,7 @@ class DT_Metrics_Mapbox_Streams_Maps extends DT_Metrics_Chart_Base
             ]
         );
         register_rest_route(
-            $this->namespace, 'get_grid_totals', [
+            $this->namespace, '/get_grid_totals', [
                 [
                     'methods'  => WP_REST_Server::CREATABLE,
                     'callback' => [ $this, 'get_grid_totals' ],
@@ -93,7 +93,7 @@ class DT_Metrics_Mapbox_Streams_Maps extends DT_Metrics_Chart_Base
             ]
         );
         register_rest_route(
-            $this->namespace, 'get_list_by_grid_id', [
+            $this->namespace, '/get_list_by_grid_id', [
                 [
                     'methods'  => WP_REST_Server::CREATABLE,
                     'callback' => [ $this, 'get_list_by_grid_id' ],
@@ -102,7 +102,7 @@ class DT_Metrics_Mapbox_Streams_Maps extends DT_Metrics_Chart_Base
             ]
         );
         register_rest_route(
-            $this->namespace, 'points_geojson', [
+            $this->namespace, '/points_geojson', [
                 [
                     'methods'  => WP_REST_Server::CREATABLE,
                     'callback' => [ $this, 'points_geojson' ],
