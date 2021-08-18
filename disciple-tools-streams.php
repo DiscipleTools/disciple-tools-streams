@@ -5,12 +5,12 @@
  * Description: Disciple Tools Streams Extension adds recording of streams and cross reference them with contacts, groups, and locations.
  * Text Domain: disciple-tools-streams
  * Domain Path: /languages
- * Version:  2.3
+ * Version:  2.3.1
  * Author URI: https://github.com/DiscipleTools
  * GitHub Plugin URI: https://github.com/DiscipleTools/disciple-tools-streams
  * Requires at least: 4.7.0
  * (Requires 4.7+ because of the integration of the REST API at 4.7 and the security requirements of this milestone version.)
- * Tested up to: 5.6
+ * Tested up to: 5.8
  *
  * @package Disciple_Tools
  * @link    https://github.com/DiscipleTools
