@@ -58,6 +58,7 @@ class DT_Stream_Base extends DT_Module_Base {
             "label" => __( 'Streams Admin', 'disciple-tools-streams' ),
             "description" => "Has all permissions for streams",
             "permissions" => [
+                'access_disciple_tools' => true,
                 'view_any_' . $this->post_type => true,
                 'dt_all_admin_' . $this->post_type => true,
             ]
