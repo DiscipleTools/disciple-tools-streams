@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/DiscipleTools/disciple-tools-streams.svg?branch=master)](https://travis-ci.com/DiscipleTools/disciple-tools-streams)
 
+![Streams](https://raw.githubusercontent.com/DiscipleTools/disciple-tools-streams/master/documentation/streams-banner.png)
 # Disciple Tools - Streams
 
 A stream is a collection of work, large or small. The streams plugin interconnects leaders, disciples, 
