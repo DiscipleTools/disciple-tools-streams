@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Disciple Tools - Streams
+ *Plugin Name: Disciple.Tools - Streams
  * Plugin URI: https://github.com/DiscipleTools/disciple-tools-streams
  * Description: Disciple Tools Streams Extension adds recording of streams and cross reference them with contacts, groups, and locations.
  * Text Domain: disciple-tools-streams
