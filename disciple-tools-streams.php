@@ -2,7 +2,7 @@
 /**
  *Plugin Name: Disciple.Tools - Streams
  * Plugin URI: https://github.com/DiscipleTools/disciple-tools-streams
- * Description: Disciple Tools Streams Extension adds recording of streams and cross reference them with contacts, groups, and locations.
+ * Description: Disciple.Tools Streams Extension adds recording of streams and cross reference them with contacts, groups, and locations.
  * Text Domain: disciple-tools-streams
  * Domain Path: /languages
  * Version:  2.3.1
@@ -176,7 +176,7 @@ class DT_Streams {
     public static function activation() {
 
         // Confirm 'Administrator' has 'manage_dt' privilege. This is key in 'remote' configuration when
-        // Disciple Tools theme is not installed, otherwise this will already have been installed by the Disciple Tools Theme
+        // Disciple.Tools theme is not installed, otherwise this will already have been installed by the Disciple.Tools Theme
         $role = get_role( 'administrator' );
         if ( !empty( $role ) ) {
             $role->add_cap( 'manage_dt' ); // gives access to dt plugin options
@@ -275,9 +275,9 @@ function dt_streams_hook_admin_notice() {
     global $dt_streams_required_dt_theme_version;
     $wp_theme = wp_get_theme();
     $current_version = $wp_theme->version;
-    $message = "'Disciple Tools - Streams' plugin requires 'Disciple Tools' theme to work. Please activate 'Disciple Tools' theme or make sure it is latest version.";
+    $message = "'Disciple.Tools - Streams' plugin requires 'Disciple.Tools' theme to work. Please activate 'Disciple.Tools' theme or make sure it is latest version.";
     if ( $wp_theme->get_template() === "disciple-tools-theme" ){
-        $message .= ' ' . sprintf( esc_html( 'Current Disciple Tools version: %1$s, required version: %2$s' ), esc_html( $current_version ), esc_html( $dt_streams_required_dt_theme_version ) );
+        $message .= ' ' . sprintf( esc_html( 'Current Disciple.Tools version: %1$s, required version: %2$s' ), esc_html( $current_version ), esc_html( $dt_streams_required_dt_theme_version ) );
     }
     // Check if it's been dismissed...
     if ( ! get_option( 'dismissed-dt-events', false ) ) { ?>

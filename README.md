@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/DiscipleTools/disciple-tools-streams.svg?branch=master)](https://travis-ci.com/DiscipleTools/disciple-tools-streams)
 
 ![Streams](https://raw.githubusercontent.com/DiscipleTools/disciple-tools-streams/master/documentation/streams-banner.png)
-# Disciple Tools - Streams
+# Disciple.Tools - Streams
 
 A stream is a collection of work, large or small. The streams plugin interconnects leaders, disciples, 
 groups, churches, trainings, and other elements with census style reporting. A stream can be a large 
@@ -38,7 +38,7 @@ key groups/churches, and key training efforts in those areas.
 
 ## Requirements
 
-- Disciple Tools Theme installed on a Wordpress Server
+- Disciple.Tools Theme installed on a Wordpress Server
 
 ## Installing
 
