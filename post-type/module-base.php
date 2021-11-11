@@ -230,11 +230,12 @@ class DT_Stream_Base extends DT_Module_Base {
 
             // connection fields
             $fields['leader_total'] = [
-                'name' => __( "Leaders Total", 'disciple-tools-streams' ),
+                'name' => __( "Number of Leaders", 'disciple-tools-streams' ),
                 'type' => 'number',
                 'default' => '0',
-                'tile' => 'totals',
-                'show_in_table' => true
+                'tile' => 'stats',
+                'show_in_table' => true,
+                'icon' => get_template_directory_uri() . "/dt-assets/images/contact-generation.svg",
             ];
             $fields["leaders"] = [
                 "name" => __( 'Leaders', 'disciple-tools-streams' ),
@@ -249,10 +250,11 @@ class DT_Stream_Base extends DT_Module_Base {
                 "in_create_form" => true,
             ];
             $fields['disciple_total'] = [
-                'name' => __( "Disciples Total", 'disciple-tools-streams' ),
+                'name' => __( "Number of Disciples", 'disciple-tools-streams' ),
                 'type' => 'number',
                 'default' => '0',
-                'tile' => 'totals',
+                'tile' => 'stats',
+                'icon' => get_template_directory_uri() . "/dt-assets/images/contact-generation.svg",
                 'show_in_table' => true
             ];
             $fields['disciples'] = [
@@ -267,10 +269,11 @@ class DT_Stream_Base extends DT_Module_Base {
                 "in_create_form" => true,
             ];
             $fields['group_total'] = [
-                'name' => __( "Groups Total", 'disciple-tools-streams' ),
+                'name' => __( "Number of Churches", 'disciple-tools-streams' ),
                 'type' => 'number',
                 'default' => '0',
-                'tile' => 'totals',
+                'tile' => 'stats',
+                'icon' => get_template_directory_uri() . "/dt-assets/images/groups.svg",
                 'show_in_table' => true
             ];
             $fields['groups'] = [
@@ -283,6 +286,14 @@ class DT_Stream_Base extends DT_Module_Base {
                 'icon' => get_template_directory_uri() . "/dt-assets/images/groups.svg",
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-group.svg',
                 "in_create_form" => true,
+            ];
+            $fields['generations_total'] = [
+                'name' => __( "Highest Generation", 'disciple-tools-streams' ),
+                'type' => 'number',
+                'default' => '0',
+                'tile' => 'stats',
+                'icon' => get_template_directory_uri() . "/dt-assets/images/groups.svg",
+                'show_in_table' => true
             ];
 
 
@@ -529,7 +540,7 @@ class DT_Stream_Base extends DT_Module_Base {
 
     public function dt_details_additional_tiles( $tiles, $post_type = "" ){
         if ( $post_type === "streams" ){
-            $tiles["totals"] = [ "label" => __( "Totals", 'disciple-tools-streams' ) ];
+            $tiles["stats"] = [ "label" => __( "Stats", 'disciple-tools-streams' ) ];
             $tiles["connections"] = [ "label" => __( "Connections", 'disciple-tools-streams' ) ];
             $tiles["other"] = [ "label" => __( "Other", 'disciple-tools-streams' ) ];
         }
@@ -537,35 +548,6 @@ class DT_Stream_Base extends DT_Module_Base {
     }
 
     public function dt_details_additional_section( $section, $post_type ){
-
-//        if ( $post_type === "streams" && $section === "other" ) :
-//            $fields = DT_Posts::get_post_field_settings( $post_type );
-//            ?>
-<!--            <div class="section-subheader">-->
-<!--                --><?php //echo esc_html( $fields["tags"]["name"] ) ?>
-<!--            </div>-->
-<!--            <div class="tags">-->
-<!--                <var id="tags-result-container" class="result-container"></var>-->
-<!--                <div id="tags_t" name="form-tags" class="scrollable-typeahead typeahead-margin-when-active">-->
-<!--                    <div class="typeahead__container">-->
-<!--                        <div class="typeahead__field">-->
-<!--                            <span class="typeahead__query">-->
-<!--                                <input class="js-typeahead-tags input-height"-->
-<!--                                       name="tags[query]"-->
-<!--                                       placeholder="--><?php //echo esc_html( sprintf( _x( "Search %s", "Search 'something'", 'disciple-tools-streams' ), $fields["tags"]['name'] ) )?><!--"-->
-<!--                                       autocomplete="off">-->
-<!--                            </span>-->
-<!--                            <span class="typeahead__button">-->
-<!--                                <button type="button" data-open="create-tag-modal" class="create-new-tag typeahead__image_button input-height">-->
-<!--                                    <img src="--><?php //echo esc_html( get_template_directory_uri() . '/dt-assets/images/tag-add.svg' ) ?><!--"/>-->
-<!--                                </button>-->
-<!--                            </span>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        --><?php //endif;
-
 
     }
 

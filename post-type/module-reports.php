@@ -26,8 +26,8 @@ class DT_Stream_Reports extends DT_Module_Base
             return;
         }
         // register tiles if on details page
-        add_filter( 'dt_details_additional_tiles', [ $this, 'dt_details_additional_tiles' ], 5, 2 );
-        add_action( 'dt_details_additional_section', [ $this, 'dt_details_additional_section' ], 10, 2 );
+        add_filter( 'dt_details_additional_tiles', [ $this, 'dt_details_additional_tiles' ], 50, 2 );
+        add_action( 'dt_details_additional_section', [ $this, 'dt_details_additional_section' ], 30, 2 );
         add_action( 'wp_enqueue_scripts', [ $this, 'tile_scripts' ], 100 );
 
 
