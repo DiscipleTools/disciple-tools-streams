@@ -31,7 +31,7 @@ class DT_Stream_Base extends DT_Module_Base {
         add_action( 'p2p_init', [ $this, 'p2p_init' ] );
         add_filter( 'dt_custom_fields_settings', [ $this, 'dt_custom_fields_settings' ], 10, 2 );
         add_filter( 'dt_details_additional_tiles', [ $this, 'dt_details_additional_tiles' ], 50, 2 );
-        add_action( 'dt_details_additional_section', [ $this, 'dt_details_additional_section' ], 50, 2 );
+        add_action( 'dt_details_additional_section', [ $this, 'dt_details_additional_section' ], 20, 2 );
         add_action( 'wp_enqueue_scripts', [ $this, 'scripts' ], 99 );
 
         // hooks
@@ -108,41 +108,11 @@ class DT_Stream_Base extends DT_Module_Base {
     public function dt_custom_fields_settings( $fields, $post_type ){
         if ( $post_type === 'streams' ){
             // framework fields
-            $fields['tags'] = [
-                'name'        => __( 'Tags', 'disciple-tools-streams' ),
-                'description' => _x( 'A useful way to stream related items and can help stream contacts associated with noteworthy characteristics. e.g. business owner, sports lover. The contacts can also be filtered using these tags.', 'Optional Documentation', 'disciple-tools-streams' ),
-                'type'        => 'multi_select',
-                'default'     => [],
-                'tile'        => 'other',
-                'custom_display' => true,
-                'icon' => get_template_directory_uri() . "/dt-assets/images/tag.svg",
-            ];
-            $fields["follow"] = [
-                'name'        => __( 'Follow', 'disciple-tools-streams' ),
-                'type'        => 'multi_select',
-                'default'     => [],
-                'section'     => 'misc',
-                'hidden'      => true
-            ];
-            $fields["unfollow"] = [
-                'name'        => __( 'Un-Follow', 'disciple-tools-streams' ),
-                'type'        => 'multi_select',
-                'default'     => [],
-                'hidden'      => true
-            ];
-            $fields['tasks'] = [
-                'name' => __( 'Tasks', 'disciple-tools-streams' ),
-                'type' => 'post_user_meta',
-            ];
-            $fields["duplicate_data"] = [
-                "name" => __( 'Duplicates', 'disciple-tools-streams' ), //system string does not need translation
-                'type' => 'array',
-                'default' => [],
-            ];
+
             $fields["status"] = [
                 'name' => __( "Status", 'disciple-tools-streams' ),
                 'type' => 'key_select',
-                "tile" => "",
+                "tile" => "status",
                 'default' => [
                     'new'   => [
                         "label" => _x( 'New', 'Stream Status label', 'disciple-tools-streams' ),
@@ -151,23 +121,28 @@ class DT_Stream_Base extends DT_Module_Base {
                     ],
                     'model'   => [
                         "label" => _x( 'Model', 'Stream Status label', 'disciple-tools-streams' ),
-                        "description" => _x( "This stream has been proposed and is in initial conversations", "Stream Status field description", 'disciple-tools-streams' ),
+                        "description" => _x( "This stream is being actively coached and is still in the modelling stage.", "Stream Status field description", 'disciple-tools-streams' ),
                         'color' => "#ff9800"
                     ],
                     'assist' => [
                         "label" => _x( 'Assist', 'Stream Status label', 'disciple-tools-streams' ),
-                        "description" => _x( "This stream is confirmed, on the calendar.", "Stream Status field description", 'disciple-tools-streams' ),
+                        "description" => _x( "This stream is being actively coached and is still in the assist stage.", "Stream Status field description", 'disciple-tools-streams' ),
                         'color' => "#4CAF50"
                     ],
                     'watch' => [
                         "label" => _x( 'Watch', 'Stream Status label', 'disciple-tools-streams' ),
-                        "description" => _x( "This stream is confirmed, on the calendar, or currently active.", "Stream Status field description", 'disciple-tools-streams' ),
+                        "description" => _x( "This stream is being actively coached and is still in the watch stage.", "Stream Status field description", 'disciple-tools-streams' ),
                         'color' => "#4CAF50"
                     ],
                     'leave'     => [
-                        "label" => _x( "Leave", 'Stream Status label', 'disciple-tools-streams' ),
-                        "description" => _x( "This stream has successfully completed", "Stream Status field description", 'disciple-tools-streams' ),
+                        "label" => _x( "Leave/Launch", 'Stream Status label', 'disciple-tools-streams' ),
+                        "description" => _x( "This stream is being actively coached and is still in the leave/launch stage.", "Stream Status field description", 'disciple-tools-streams' ),
                         'color' => "#4CAF50"
+                    ],
+                    'active'   => [
+                        "label" => _x( 'Active', 'Stream Status label', 'disciple-tools-streams' ),
+                        "description" => _x( "This is an active stream in no specific stage.", "Stream Status field description", 'disciple-tools-streams' ),
+                        'color' => "#ff9800"
                     ],
                     'paused'       => [
                         "label" => _x( 'Paused', 'Stream Status label', 'disciple-tools-streams' ),
@@ -190,7 +165,6 @@ class DT_Stream_Base extends DT_Module_Base {
                 'default'     => '',
                 'tile' => 'status',
                 'icon' => get_template_directory_uri() . '/dt-assets/images/assigned-to.svg',
-                'custom_display' => true,
             ];
             $fields["coaches"] = [
                 "name" => __( 'Coach', 'disciple-tools-streams' ),
@@ -199,15 +173,9 @@ class DT_Stream_Base extends DT_Module_Base {
                 "post_type" => "contacts",
                 "p2p_direction" => "from",
                 "p2p_key" => "streams_to_coaches",
-                'tile' => '',
+                'tile' => 'status',
                 'icon' => get_template_directory_uri() . '/dt-assets/images/coach.svg',
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-contact.svg',
-            ];
-            $fields["requires_update"] = [
-                'name'        => __( 'Requires Update', 'disciple-tools-streams' ),
-                'description' => '',
-                'type'        => 'boolean',
-                'default'     => false,
             ];
 
             $fields["peoplegroups"] = [
@@ -221,8 +189,6 @@ class DT_Stream_Base extends DT_Module_Base {
                 'icon' => get_template_directory_uri() . "/dt-assets/images/people-group.svg",
                 "in_create_form" => false,
             ];
-
-
 
 
             // location
@@ -267,6 +233,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'name' => __( "Leaders Total", 'disciple-tools-streams' ),
                 'type' => 'number',
                 'default' => '0',
+                'tile' => 'totals',
                 'show_in_table' => true
             ];
             $fields["leaders"] = [
@@ -285,6 +252,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'name' => __( "Disciples Total", 'disciple-tools-streams' ),
                 'type' => 'number',
                 'default' => '0',
+                'tile' => 'totals',
                 'show_in_table' => true
             ];
             $fields['disciples'] = [
@@ -302,6 +270,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'name' => __( "Groups Total", 'disciple-tools-streams' ),
                 'type' => 'number',
                 'default' => '0',
+                'tile' => 'totals',
                 'show_in_table' => true
             ];
             $fields['groups'] = [
@@ -362,6 +331,7 @@ class DT_Stream_Base extends DT_Module_Base {
                     'name' => __( "Trainings Total", 'disciple-tools-streams' ),
                     'type' => 'number',
                     'default' => '0',
+                    'tile' => 'totals',
                     'show_in_table' => false
                 ];
                 $fields['trainings'] = [
@@ -559,6 +529,7 @@ class DT_Stream_Base extends DT_Module_Base {
 
     public function dt_details_additional_tiles( $tiles, $post_type = "" ){
         if ( $post_type === "streams" ){
+            $tiles["totals"] = [ "label" => __( "Totals", 'disciple-tools-streams' ) ];
             $tiles["connections"] = [ "label" => __( "Connections", 'disciple-tools-streams' ) ];
             $tiles["other"] = [ "label" => __( "Other", 'disciple-tools-streams' ) ];
         }
@@ -567,76 +538,33 @@ class DT_Stream_Base extends DT_Module_Base {
 
     public function dt_details_additional_section( $section, $post_type ){
 
-        if ( $post_type === "streams" && $section === "status" ){
-            $stream = DT_Posts::get_post( $post_type, get_the_ID() );
-            $stream_fields = DT_Posts::get_post_field_settings( $post_type );
-            ?>
-
-            <div class="cell small-12 medium-4">
-                <?php render_field_for_display( "status", $stream_fields, $stream, true ); ?>
-            </div>
-            <div class="cell small-12 medium-4">
-                <div class="section-subheader">
-                    <img src="<?php echo esc_url( get_template_directory_uri() ) . '/dt-assets/images/assigned-to.svg' ?>">
-                    <?php echo esc_html( $stream_fields["assigned_to"]["name"] )?>
-                    <button class="help-button" data-section="assigned-to-help-text">
-                        <img class="help-icon" src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/help.svg' ) ?>"/>
-                    </button>
-                </div>
-
-                <div class="assigned_to details">
-                    <var id="assigned_to-result-container" class="result-container assigned_to-result-container"></var>
-                    <div id="assigned_to_t" name="form-assigned_to" class="scrollable-typeahead">
-                        <div class="typeahead__container">
-                            <div class="typeahead__field">
-                                    <span class="typeahead__query">
-                                        <input class="js-typeahead-assigned_to input-height"
-                                               name="assigned_to[query]" placeholder="<?php echo esc_html_x( "Search Users", 'input field placeholder', 'disciple-tools-streams' ) ?>"
-                                               autocomplete="off">
-                                    </span>
-                                <span class="typeahead__button">
-                                        <button type="button" class="search_assigned_to typeahead__image_button input-height" data-id="assigned_to_t">
-                                            <img src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/chevron_down.svg' ) ?>"/>
-                                        </button>
-                                    </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="cell small-12 medium-4">
-                <?php render_field_for_display( "coaches", $stream_fields, $stream, true ); ?>
-            </div>
-        <?php }
-
-
-        if ( $post_type === "streams" && $section === "other" ) :
-            $fields = DT_Posts::get_post_field_settings( $post_type );
-            ?>
-            <div class="section-subheader">
-                <?php echo esc_html( $fields["tags"]["name"] ) ?>
-            </div>
-            <div class="tags">
-                <var id="tags-result-container" class="result-container"></var>
-                <div id="tags_t" name="form-tags" class="scrollable-typeahead typeahead-margin-when-active">
-                    <div class="typeahead__container">
-                        <div class="typeahead__field">
-                            <span class="typeahead__query">
-                                <input class="js-typeahead-tags input-height"
-                                       name="tags[query]"
-                                       placeholder="<?php echo esc_html( sprintf( _x( "Search %s", "Search 'something'", 'disciple-tools-streams' ), $fields["tags"]['name'] ) )?>"
-                                       autocomplete="off">
-                            </span>
-                            <span class="typeahead__button">
-                                <button type="button" data-open="create-tag-modal" class="create-new-tag typeahead__image_button input-height">
-                                    <img src="<?php echo esc_html( get_template_directory_uri() . '/dt-assets/images/tag-add.svg' ) ?>"/>
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php endif;
+//        if ( $post_type === "streams" && $section === "other" ) :
+//            $fields = DT_Posts::get_post_field_settings( $post_type );
+//            ?>
+<!--            <div class="section-subheader">-->
+<!--                --><?php //echo esc_html( $fields["tags"]["name"] ) ?>
+<!--            </div>-->
+<!--            <div class="tags">-->
+<!--                <var id="tags-result-container" class="result-container"></var>-->
+<!--                <div id="tags_t" name="form-tags" class="scrollable-typeahead typeahead-margin-when-active">-->
+<!--                    <div class="typeahead__container">-->
+<!--                        <div class="typeahead__field">-->
+<!--                            <span class="typeahead__query">-->
+<!--                                <input class="js-typeahead-tags input-height"-->
+<!--                                       name="tags[query]"-->
+<!--                                       placeholder="--><?php //echo esc_html( sprintf( _x( "Search %s", "Search 'something'", 'disciple-tools-streams' ), $fields["tags"]['name'] ) )?><!--"-->
+<!--                                       autocomplete="off">-->
+<!--                            </span>-->
+<!--                            <span class="typeahead__button">-->
+<!--                                <button type="button" data-open="create-tag-modal" class="create-new-tag typeahead__image_button input-height">-->
+<!--                                    <img src="--><?php //echo esc_html( get_template_directory_uri() . '/dt-assets/images/tag-add.svg' ) ?><!--"/>-->
+<!--                                </button>-->
+<!--                            </span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        --><?php //endif;
 
 
     }
