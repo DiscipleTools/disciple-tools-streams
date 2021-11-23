@@ -21,12 +21,13 @@ class DT_Stream_Reports extends DT_Module_Base
     } // End instance()
 
     public function __construct() {
+
         parent::__construct();
         if ( !self::check_enabled_and_prerequisites() ){
             return;
         }
         // register tiles if on details page
-        add_filter( 'dt_details_additional_tiles', [ $this, 'dt_details_additional_tiles' ], 50, 2 );
+        add_filter( 'dt_details_additional_tiles', [ $this, 'dt_details_additional_tiles' ], 20, 2 );
         add_action( 'dt_details_additional_section', [ $this, 'dt_details_additional_section' ], 30, 2 );
         add_action( 'wp_enqueue_scripts', [ $this, 'tile_scripts' ], 100 );
 
@@ -93,6 +94,7 @@ class DT_Stream_Reports extends DT_Module_Base
 
             // reports tile
             if ( $section === "reports" ){
+
                 $magic = new DT_Magic_URL( 'streams_app' );
                 $types = $magic->list_types();
 
