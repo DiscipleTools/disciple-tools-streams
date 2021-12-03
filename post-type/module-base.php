@@ -177,6 +177,24 @@ class DT_Stream_Base extends DT_Module_Base {
                 'icon' => get_template_directory_uri() . '/dt-assets/images/coach.svg',
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-contact.svg',
             ];
+            $fields["reporter"] = [
+                "name" => __( 'Reporter', 'disciple-tools-streams' ),
+                'description' => _x( 'The person who is the responsible reporter for this stream.', 'Optional Documentation', 'disciple-tools-streams' ),
+                "type" => "connection",
+                "post_type" => "contacts",
+                "p2p_direction" => "from",
+                "p2p_key" => "streams_to_reporter",
+                'tile' => 'status',
+                'icon' => get_template_directory_uri() . '/dt-assets/images/coach.svg',
+                'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-contact.svg',
+            ];
+            $fields['description'] = [
+                'name' => __( "Description", 'disciple-tools-streams' ),
+                'type' => 'textarea',
+                'default' => '',
+                'tile' => 'details',
+//                'show_in_table' => false
+            ];
 
             $fields["peoplegroups"] = [
                 "name" => __( 'People Groups', 'disciple-tools-streams' ),
@@ -234,7 +252,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'name' => __( "Number of Leaders", 'disciple-tools-streams' ),
                 'type' => 'number',
                 'default' => '0',
-                'tile' => 'stats',
+                'tile' => '',
                 'show_in_table' => true,
                 'icon' => get_template_directory_uri() . "/dt-assets/images/contact-generation.svg",
             ];
@@ -254,7 +272,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'name' => __( "Number of Disciples", 'disciple-tools-streams' ),
                 'type' => 'number',
                 'default' => '0',
-                'tile' => 'stats',
+                'tile' => '',
                 'icon' => get_template_directory_uri() . "/dt-assets/images/contact-generation.svg",
                 'show_in_table' => true
             ];
@@ -273,7 +291,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'name' => __( "Number of Churches", 'disciple-tools-streams' ),
                 'type' => 'number',
                 'default' => '0',
-                'tile' => 'stats',
+                'tile' => '',
                 'icon' => get_template_directory_uri() . "/dt-assets/images/groups.svg",
                 'show_in_table' => true
             ];
@@ -288,14 +306,14 @@ class DT_Stream_Base extends DT_Module_Base {
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-group.svg',
                 "in_create_form" => true,
             ];
-            $fields['generations_total'] = [
-                'name' => __( "Highest Generation", 'disciple-tools-streams' ),
-                'type' => 'number',
-                'default' => '0',
-                'tile' => 'stats',
-                'icon' => get_template_directory_uri() . "/dt-assets/images/groups.svg",
-                'show_in_table' => true
-            ];
+//            $fields['generations_total'] = [
+//                'name' => __( "Highest Generation", 'disciple-tools-streams' ),
+//                'type' => 'number',
+//                'default' => '0',
+//                'tile' => 'stats',
+//                'icon' => get_template_directory_uri() . "/dt-assets/images/groups.svg",
+//                'show_in_table' => true
+//            ];
 
 
 
@@ -529,6 +547,20 @@ class DT_Stream_Base extends DT_Module_Base {
                 ]
             ]
         );
+        p2p_register_connection_type(
+            [
+                'name'           => 'streams_to_reporter',
+                'from'           => 'streams',
+                'to'             => 'contacts',
+                'admin_box' => [
+                    'show' => false,
+                ],
+                'title'          => [
+                    'from' => __( 'Reporter', 'disciple-tools-streams' ),
+                    'to'   => __( 'Reporter', 'disciple-tools-streams' ),
+                ]
+            ]
+        );
 
         if ( $this->trainings ) {
             p2p_register_connection_type([
@@ -541,7 +573,7 @@ class DT_Stream_Base extends DT_Module_Base {
 
     public function dt_details_additional_tiles( $tiles, $post_type = "" ){
         if ( $post_type === "streams" ){
-            $tiles["stats"] = [ "label" => __( "Stats", 'disciple-tools-streams' ) ];
+//            $tiles["stats"] = [ "label" => __( "Stats", 'disciple-tools-streams' ) ];
             $tiles["connections"] = [ "label" => __( "Connections", 'disciple-tools-streams' ) ];
             $tiles["other"] = [ "label" => __( "Other", 'disciple-tools-streams' ) ];
         }
