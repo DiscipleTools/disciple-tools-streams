@@ -676,7 +676,7 @@ class DT_Stream_Base extends DT_Module_Base {
                     strpos( $fields["assigned_to"], "user" ) === false ){
                     $fields["assigned_to"] = "user-" . $fields["assigned_to"];
                 }
-                $user_id = explode( '-', $fields["assigned_to"] )[1];
+                $user_id = dt_get_user_id_from_assigned_to( $fields["assigned_to"] );
                 if ( $user_id ){
                     DT_Posts::add_shared( "streams", $post_id, $user_id, null, false, true, false );
                 }
