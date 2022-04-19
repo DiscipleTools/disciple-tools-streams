@@ -4,6 +4,8 @@ if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 class DT_Stream_Base extends DT_Module_Base {
     public $post_type = "streams";
     public $module = "streams_base";
+    public $single_name = 'Stream';
+    public $plural_name = 'Streams';
     public $trainings = false;
 
     private static $_instance = null;
@@ -890,6 +892,7 @@ class DT_Stream_Base extends DT_Module_Base {
         if ( $post_type === 'streams' ){
             $totals = self::get_my_streams_status_type();
             $fields = DT_Posts::get_post_field_settings( $post_type );
+            $post_label_plural = DT_Posts::get_post_settings( $post_type )['label_plural'];
             /**
              * Setup my stream filters
              */
@@ -919,7 +922,7 @@ class DT_Stream_Base extends DT_Module_Base {
             $filters["filters"][] = [
                 'ID' => 'my_all',
                 'tab' => 'assigned_to_me',
-                'name' => _x( "All", 'List Filters', 'disciple-tools-streams' ),
+                'name' => sprintf( _x( "All %s", 'All records', 'disciple-tools-streams' ), $post_label_plural ),
                 'query' => [
                     'assigned_to' => [ 'me' ],
                     'sort' => '-post_date'
@@ -985,7 +988,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 $filters["filters"][] = [
                     'ID' => 'all',
                     'tab' => 'all',
-                    'name' => _x( "All", 'List Filters', 'disciple-tools-streams' ),
+                    'name' => sprintf( _x( "All %s", 'All records', 'disciple-tools-streams' ), $post_label_plural ),
                     'query' => [
                         'sort' => '-post_date'
                     ],
