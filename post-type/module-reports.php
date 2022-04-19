@@ -234,6 +234,7 @@ class DT_Stream_Reports extends DT_Module_Base
             $fields['report_last_modified'] = [
                 'name'   => 'Last Report',
                 'description' => 'Stores the time of the last insert or delete performed on reports.',
+                'icon' => get_template_directory_uri() . "/dt-assets/icons/file-chart.svg",
                 'type' => 'date',
                 'default' => '',
                 'show_in_table' => true

@@ -113,6 +113,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'name' => __( "Status", 'disciple-tools-streams' ),
                 'type' => 'key_select',
                 "tile" => "status",
+                'icon' => get_template_directory_uri() . '/dt-assets/icons/traffic-light.svg?v=2',
                 'default' => [
                     'new'   => [
                         "label" => _x( 'New', 'Stream Status label', 'disciple-tools-streams' ),
@@ -193,6 +194,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'type' => 'textarea',
                 'default' => '',
                 'tile' => 'details',
+                'icon' => get_template_directory_uri() . '/dt-assets/icons/note-text.svg',
 //                'show_in_table' => false
             ];
 
@@ -362,6 +364,7 @@ class DT_Stream_Base extends DT_Module_Base {
                     'type' => 'number',
                     'default' => '0',
                     'tile' => 'totals',
+                    'icon' => get_template_directory_uri() . '/dt-assets/icons/pound.svg',
                     'show_in_table' => false
                 ];
                 $fields['trainings'] = [
