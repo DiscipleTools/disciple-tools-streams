@@ -4,6 +4,8 @@ if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 class DT_Stream_Base extends DT_Module_Base {
     public $post_type = "streams";
     public $module = "streams_base";
+    public $single_name = 'Stream';
+    public $plural_name = 'Streams';
     public $trainings = false;
 
     private static $_instance = null;
@@ -113,6 +115,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'name' => __( "Status", 'disciple-tools-streams' ),
                 'type' => 'key_select',
                 "tile" => "status",
+                'icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/traffic-light.svg?v=2',
                 'default' => [
                     'new'   => [
                         "label" => _x( 'New', 'Stream Status label', 'disciple-tools-streams' ),
@@ -164,7 +167,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'type'        => 'user_select',
                 'default'     => '',
                 'tile' => 'status',
-                'icon' => get_template_directory_uri() . '/dt-assets/images/assigned-to.svg',
+                'icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/briefcase-account.svg',
             ];
             $fields["coaches"] = [
                 "name" => __( 'Coach', 'disciple-tools-streams' ),
@@ -174,8 +177,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 "p2p_direction" => "from",
                 "p2p_key" => "streams_to_coaches",
                 'tile' => 'status',
-                'icon' => get_template_directory_uri() . '/dt-assets/images/coach.svg',
-                'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-contact.svg',
+                'icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/human-male-board.svg',
+                'create-icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/add-contact.svg',
             ];
             $fields["reporter"] = [
                 "name" => __( 'Reporter', 'disciple-tools-streams' ),
@@ -185,14 +188,15 @@ class DT_Stream_Base extends DT_Module_Base {
                 "p2p_direction" => "from",
                 "p2p_key" => "streams_to_reporter",
                 'tile' => 'status',
-                'icon' => get_template_directory_uri() . '/dt-assets/images/coach.svg',
-                'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-contact.svg',
+                'icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/human-male-board-poll.svg',
+                'create-icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/add-contact.svg',
             ];
             $fields['description'] = [
                 'name' => __( "Description", 'disciple-tools-streams' ),
                 'type' => 'textarea',
                 'default' => '',
                 'tile' => 'details',
+                'icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/note-text.svg',
 //                'show_in_table' => false
             ];
 
@@ -204,7 +208,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 "post_type" => "peoplegroups",
                 "p2p_direction" => "from",
                 "p2p_key" => "streams_to_peoplegroups",
-                'icon' => get_template_directory_uri() . "/dt-assets/images/people-group.svg",
+                'icon' => plugin_dir_url( __DIR__ ) . "/assets/icons/people-groups.svg",
                 "in_create_form" => false,
             ];
 
@@ -217,7 +221,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'mapbox'    => false,
                 "in_create_form" => true,
                 "tile" => "details",
-                "icon" => get_template_directory_uri() . "/dt-assets/images/location.svg",
+                "icon" => plugin_dir_url( __DIR__ ) . "/assets/icons/map-marker.svg?v=2",
             ];
             $fields['location_grid_meta'] = [
                 'name'        => __( 'Locations', 'disciple-tools-streams' ), //system string does not need translation
@@ -226,11 +230,11 @@ class DT_Stream_Base extends DT_Module_Base {
                 "tile"      => "details",
                 'mapbox'    => false,
                 'hidden' => true,
-                "icon" => get_template_directory_uri() . "/dt-assets/images/location.svg?v=2",
+                "icon" => plugin_dir_url( __DIR__ ) . "/assets/icons/map-marker-multiple.svg?v=2",
             ];
             $fields["contact_address"] = [
                 "name" => __( 'Address', 'disciple-tools-streams' ),
-                "icon" => get_template_directory_uri() . "/dt-assets/images/house.svg",
+                "icon" => plugin_dir_url( __DIR__ ) . "/assets/icons/map-marker-outline.svg?v=2",
                 "type" => "communication_channel",
                 "tile" => "details",
                 'mapbox'    => false,
@@ -254,7 +258,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'default' => '0',
                 'tile' => '',
                 'show_in_table' => true,
-                'icon' => get_template_directory_uri() . "/dt-assets/images/contact-generation.svg",
+                'icon' => plugin_dir_url( __DIR__ ) . "/assets/icons/pound-box.svg",
             ];
             $fields["leaders"] = [
                 "name" => __( 'Leaders', 'disciple-tools-streams' ),
@@ -264,8 +268,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 'tile' => 'connections',
                 "p2p_direction" => "from",
                 "p2p_key" => "streams_to_leaders",
-                'icon' => get_template_directory_uri() . "/dt-assets/images/contact-generation.svg",
-                'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-contact.svg',
+                'icon' => plugin_dir_url( __DIR__ ) . "/assets/icons/foot-print.svg",
+                'create-icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/add-contact.svg',
                 "in_create_form" => true,
             ];
             $fields['disciple_total'] = [
@@ -273,7 +277,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'type' => 'number',
                 'default' => '0',
                 'tile' => '',
-                'icon' => get_template_directory_uri() . "/dt-assets/images/contact-generation.svg",
+                'icon' => plugin_dir_url( __DIR__ ) . "/assets/icons/pound-box-outline.svg",
                 'show_in_table' => true
             ];
             $fields['disciples'] = [
@@ -283,8 +287,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 'tile' => 'connections',
                 "p2p_direction" => "from",
                 "p2p_key" => "streams_to_disciples",
-                'icon' => get_template_directory_uri() . "/dt-assets/images/contact-generation.svg",
-                'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-contact.svg',
+                'icon' => plugin_dir_url( __DIR__ ) . "/assets/icons/account-star-outline.svg",
+                'create-icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/add-contact.svg',
                 "in_create_form" => true,
             ];
             $fields['group_total'] = [
@@ -292,7 +296,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'type' => 'number',
                 'default' => '0',
                 'tile' => '',
-                'icon' => get_template_directory_uri() . "/dt-assets/images/groups.svg",
+                'icon' => plugin_dir_url( __DIR__ ) . "/assets/icons/pound.svg",
                 'show_in_table' => true
             ];
             $fields['groups'] = [
@@ -302,8 +306,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 "p2p_direction" => "from",
                 "p2p_key" => "streams_to_groups",
                 "tile" => "connections",
-                'icon' => get_template_directory_uri() . "/dt-assets/images/groups.svg",
-                'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-group.svg',
+                'icon' => plugin_dir_url( __DIR__ ) . "/assets/icons/account-group.svg",
+                'create-icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/add-group.svg',
                 "in_create_form" => true,
             ];
 //            $fields['generations_total'] = [
@@ -326,8 +330,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 "p2p_direction" => "from",
                 "p2p_key" => "streams_to_streams",
                 'tile' => 'connections',
-                'icon' => get_template_directory_uri() . '/dt-assets/images/group-parent.svg',
-                'create-icon' => get_template_directory_uri() . '/dt-assets/images/add.svg',
+                'icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/parent.svg',
+                'create-icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/add.svg',
                 "in_create_form" => true,
             ];
             $fields["peer_streams"] = [
@@ -338,8 +342,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 "p2p_direction" => "any",
                 "p2p_key" => "streams_to_peers",
                 'tile' => 'connections',
-                'icon' => get_template_directory_uri() . '/dt-assets/images/group-peer.svg',
-                'create-icon' => get_template_directory_uri() . '/dt-assets/images/add.svg',
+                'icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/peer.svg',
+                'create-icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/add.svg',
                 "in_create_form" => true,
             ];
             $fields["child_streams"] = [
@@ -350,8 +354,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 "p2p_direction" => "to",
                 "p2p_key" => "streams_to_streams",
                 'tile' => 'connections',
-                'icon' => get_template_directory_uri() . '/dt-assets/images/group-child.svg',
-                'create-icon' => get_template_directory_uri() . '/dt-assets/images/add.svg',
+                'icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/child.svg',
+                'create-icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/add.svg',
                 "in_create_form" => true,
             ];
 
@@ -362,6 +366,7 @@ class DT_Stream_Base extends DT_Module_Base {
                     'type' => 'number',
                     'default' => '0',
                     'tile' => 'totals',
+                    'icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/pound.svg',
                     'show_in_table' => false
                 ];
                 $fields['trainings'] = [
@@ -371,8 +376,8 @@ class DT_Stream_Base extends DT_Module_Base {
                     'tile' => 'connections',
                     "p2p_direction" => "from",
                     "p2p_key" => "streams_to_trainings",
-                    'icon' => get_template_directory_uri() . '/dt-assets/images/trainings.svg',
-                    'create-icon' => get_template_directory_uri() . '/dt-assets/images/trainings-hollow.svg',
+                    'icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/school.svg',
+                    'create-icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/add.svg',
                     "in_create_form" => true,
                 ];
             }
@@ -387,8 +392,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 "p2p_direction" => "to",
                 "p2p_key" => "streams_to_leaders",
                 "tile" => "other",
-                'icon' => get_template_directory_uri() . "/dt-assets/images/stream.svg",
-                'create-icon' => get_template_directory_uri() . "/dt-assets/images/add.svg",
+                'icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/shoe-print.svg',
+                'create-icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/add.svg',
             ];
             $fields['stream_disciple'] = [
                 'name' => __( "Key Disciple in Stream", 'disciple-tools-streams' ),
@@ -398,8 +403,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 "p2p_direction" => "to",
                 "p2p_key" => "streams_to_disciples",
                 "tile" => "other",
-                'icon' => get_template_directory_uri() . "/dt-assets/images/stream.svg",
-                'create-icon' => get_template_directory_uri() . "/dt-assets/images/add.svg",
+                'icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/account-star-outline.svg',
+                'create-icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/add.svg',
             ];
         }
         if ( $post_type === 'groups' ){
@@ -410,8 +415,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 "p2p_direction" => "to",
                 "p2p_key" => "streams_to_groups",
                 "tile" => "other",
-                'icon' => get_template_directory_uri() . "/dt-assets/images/stream.svg",
-                'create-icon' => get_template_directory_uri() . "/dt-assets/images/add.svg",
+                'icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/axis-arrow.svg',
+                'create-icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/add.svg',
             ];
         }
         if ( $post_type === 'trainings' ){
@@ -422,8 +427,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 "p2p_direction" => "to",
                 "tile" => 'other',
                 "p2p_key" => "streams_to_trainings",
-                'icon' => get_template_directory_uri() . "/dt-assets/images/stream.svg",
-                'create-icon' => get_template_directory_uri() . "/dt-assets/images/add.svg",
+                'icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/axis-arrow.svg',
+                'create-icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/add.svg',
             ];
         }
         if ( $post_type === 'peoplegroups' ){
@@ -434,8 +439,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 "p2p_direction" => "to",
                 "tile" => 'other',
                 "p2p_key" => "streams_to_peoplegroups",
-                'icon' => get_template_directory_uri() . "/dt-assets/images/stream.svg",
-                'create-icon' => get_template_directory_uri() . "/dt-assets/images/add.svg",
+                'icon' => plugin_dir_url( __DIR__ ) . '/assets/images/axis-arrow.svg',
+                'create-icon' => plugin_dir_url( __DIR__ ) . '/assets/icons/add.svg',
             ];
         }
 
@@ -887,6 +892,7 @@ class DT_Stream_Base extends DT_Module_Base {
         if ( $post_type === 'streams' ){
             $totals = self::get_my_streams_status_type();
             $fields = DT_Posts::get_post_field_settings( $post_type );
+            $post_label_plural = DT_Posts::get_post_settings( $post_type )['label_plural'];
             /**
              * Setup my stream filters
              */
@@ -916,7 +922,7 @@ class DT_Stream_Base extends DT_Module_Base {
             $filters["filters"][] = [
                 'ID' => 'my_all',
                 'tab' => 'assigned_to_me',
-                'name' => _x( "All", 'List Filters', 'disciple-tools-streams' ),
+                'name' => sprintf( _x( "All %s", 'All records', 'disciple-tools-streams' ), $post_label_plural ),
                 'query' => [
                     'assigned_to' => [ 'me' ],
                     'sort' => '-post_date'
@@ -982,7 +988,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 $filters["filters"][] = [
                     'ID' => 'all',
                     'tab' => 'all',
-                    'name' => _x( "All", 'List Filters', 'disciple-tools-streams' ),
+                    'name' => sprintf( _x( "All %s", 'All records', 'disciple-tools-streams' ), $post_label_plural ),
                     'query' => [
                         'sort' => '-post_date'
                     ],
