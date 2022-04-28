@@ -700,10 +700,6 @@ class DT_Stream_Base extends DT_Module_Base {
                     DT_Posts::add_shared( "streams", $post_id, $user_id, null, false, true, false );
                 }
             }
-            $existing_stream = DT_Posts::get_post( 'streams', $post_id, true, false );
-            if ( isset( $fields["status"] ) && empty( $fields["end_date"] ) && empty( $existing_stream["end_date"] ) && $fields["status"] === 'closed' ){
-                $fields["end_date"] = time();
-            }
         }
         return $fields;
     }
