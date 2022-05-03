@@ -30,6 +30,7 @@ class DT_Stream_Base extends DT_Module_Base {
         //setup tiles and fields
         add_action( 'p2p_init', [ $this, 'p2p_init' ] );
         add_filter( 'dt_custom_fields_settings', [ $this, 'dt_custom_fields_settings' ], 10, 2 );
+        add_filter( 'dt_get_post_type_settings', [ $this, 'dt_get_post_type_settings' ], 20, 2 );
         add_filter( 'dt_details_additional_tiles', [ $this, 'dt_details_additional_tiles' ], 50, 2 );
         add_action( 'dt_details_additional_section', [ $this, 'dt_details_additional_section' ], 20, 2 );
         add_action( 'wp_enqueue_scripts', [ $this, 'scripts' ], 99 );
@@ -442,6 +443,24 @@ class DT_Stream_Base extends DT_Module_Base {
         return $fields;
     }
 
+    /**
+     * Set the singular and plural translations for this post types settings
+     * The add_filter is set onto a higher priority than the one in Disciple_tools_Post_Type_Template
+     * so as to enable localisation changes. Otherwise the system translation passed in to the custom post type
+     * will prevail.
+     */
+    public function dt_get_post_type_settings( $settings, $post_type ){
+        if ( $post_type === $this->post_type ){
+            $settings['label_singular'] = __( 'Stream', 'disciple-tools-streams' );
+            $settings['label_plural'] = __( 'Streams', 'disciple-tools-streams' );
+            $settings['status_field'] = [
+                "status_key" => "status",
+                "archived_key" => "closed",
+            ];
+        }
+        return $settings;
+    }
+
     public function p2p_init(){
         /**
          * Stream contacts field
@@ -681,10 +700,6 @@ class DT_Stream_Base extends DT_Module_Base {
                     DT_Posts::add_shared( "streams", $post_id, $user_id, null, false, true, false );
                 }
             }
-            $existing_stream = DT_Posts::get_post( 'streams', $post_id, true, false );
-            if ( isset( $fields["status"] ) && empty( $fields["end_date"] ) && empty( $existing_stream["end_date"] ) && $fields["status"] === 'closed' ){
-                $fields["end_date"] = time();
-            }
         }
         return $fields;
     }
@@ -919,7 +934,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 'name' => _x( "All", 'List Filters', 'disciple-tools-streams' ),
                 'query' => [
                     'assigned_to' => [ 'me' ],
-                    'sort' => '-post_date'
+                    'sort' => '-post_date',
+                    'status' => [ '-closed' ]
                 ],
                 "count" => $total_my,
             ];
@@ -984,7 +1000,8 @@ class DT_Stream_Base extends DT_Module_Base {
                     'tab' => 'all',
                     'name' => _x( "All", 'List Filters', 'disciple-tools-streams' ),
                     'query' => [
-                        'sort' => '-post_date'
+                        'sort' => '-post_date',
+                        'status' => [ '-closed' ]
                     ],
                     "count" => $total_all
                 ];
