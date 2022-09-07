@@ -124,6 +124,8 @@ class DT_Streams {
         /* post type */
         require_once( 'post-type/loader.php' );
 
+        require_once( 'sending/bulk-list-extension.php' );
+
         /* site linking */
         require_once( 'admin/customize-site-linking.php' );
         require_once( 'post-type/enqueue.php' );

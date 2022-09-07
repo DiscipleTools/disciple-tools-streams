@@ -1,15 +1,26 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
-class DT_Stream_Reports extends DT_Module_Base
+class DT_Stream_Reports extends DT_Magic_Url_Base
 {
-    public $module = "streams_report_module";
+//    public $module = "streams_report_module";
     public $post_type = 'streams';
 
     public $magic = false;
     public $parts = false;
+    public $page_title = 'Stream Report';
+    public $page_description = 'Stream Report';
     public $root = "streams_app"; // define the root of the url {yoursite}/root/type/key/action
     public $type = 'report'; // define the type
+    public $type_name = 'Stream Report';
+    private $meta_key = '';
+    public $show_bulk_send = true;
+    public $show_app_tile = true; // show this magic link in the Apps tile on the post record
+    public $type_actions = [
+        '' => 'Add Report',
+        'stats' => 'Summary',
+        'maps' => 'Maps'
+    ];
 
 
     private static $_instance = null;
@@ -21,27 +32,18 @@ class DT_Stream_Reports extends DT_Module_Base
     } // End instance()
 
     public function __construct() {
+        $this->meta_key = $this->root . '_' . $this->type . '_magic_key';
 
         parent::__construct();
-        if ( !self::check_enabled_and_prerequisites() ){
-            return;
-        }
         // register tiles if on details page
         add_filter( 'dt_details_additional_tiles', [ $this, 'dt_details_additional_tiles' ], 20, 2 );
         add_action( 'dt_details_additional_section', [ $this, 'dt_details_additional_section' ], 30, 2 );
         add_action( 'wp_enqueue_scripts', [ $this, 'tile_scripts' ], 100 );
 
-
-        // register type
-        $this->magic = new DT_Magic_URL( $this->root );
-        add_filter( 'dt_magic_url_register_types', [ $this, 'register_type' ], 10, 1 );
-
-
         // register REST and REST access
         add_filter( 'dt_allow_rest_access', [ $this, 'authorize_url' ], 10, 1 );
         add_action( 'rest_api_init', [ $this, 'add_api_routes' ] );
         add_filter( 'dt_custom_fields_settings', [ $this, 'custom_fields' ], 10, 2 );
-
 
 
         // fail if not valid url

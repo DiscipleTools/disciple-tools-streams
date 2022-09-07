@@ -10,14 +10,6 @@ add_filter( 'dt_post_type_modules', function( $modules ){
         "post_type" => "streams",
         "description" => "Default Streams Module"
     ];
-    $modules["streams_report_module"] = [
-        "name" => "Streams - Report Module",
-        "enabled" => true,
-        "locked" => false,
-        "prerequisites" => [ "streams_base" ],
-        "post_type" => "streams",
-        "description" => "Add Reports for Streams"
-    ];
     return $modules;
 }, 20, 1 );
 
