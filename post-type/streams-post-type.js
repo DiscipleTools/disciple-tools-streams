@@ -125,7 +125,15 @@ jQuery(document).ready(function($) {
                     <div class="grid-x grid-padding-x" ">
                         <div class="cell medium-4" id="reports-list" style="height:${window.innerHeight - 80}px;overflow-y:scroll;"></div>
                         <div class="cell medium-3" id="reports-stats" style="height:${window.innerHeight - 80}px;overflow-y:scroll;"></div>
-                        <div class="cell medium-5" id="reports-map"></div>
+                         <div class="cell medium-5 center">
+                            <div class="center">
+                                <button class="button-small button" style="background-color: royalblue;" id="baptisms_report">Baptisms</button>
+                                <button class="button-small button" style="background-color: orange;" id="disciples_report">Disciples</button>
+                                <button class="button-small button" style="background-color: green;" id="groups_report">Churches</button>
+                                <button class="button-small button hollow" id="all">All</button>
+                            </div>
+                            <div id="reports-map" style="width:100%;height:${window.innerHeight - 140}px;"></div>
+                        </div>
                     </div>
                 `)
 
@@ -175,25 +183,29 @@ jQuery(document).ready(function($) {
                                  <div class="cell section-subheader">
                                     ${i}
                                 </div>
+                                <div class="cell ">
+                                    <span class="stat-heading">Total Baptisms</span>: 
+                                    <span id="total_baptisms" class="stat-number">${v.total_baptisms}</span>
+                                </div>
+                                <div class="cell ">
+                                    <span class="stat-heading">Total Disciples</span>: 
+                                    <span id="total_disciples" class="stat-number">${v.total_disciples}</span>
+                                </div>
                                 <div class="cell">
                                     <span class="stat-heading">Total Groups</span>: 
                                     <span id="total_groups" class="stat-number">${v.total_groups}</span>
                                 </div>
                                 <div class="cell ">
-                                    <span class="stat-heading">Total Baptisms</span>: 
-                                    <span id="total_groups" class="stat-number">${v.total_baptisms}</span>
-                                </div>
-                                <div class="cell ">
                                     <span class="stat-heading">Engaged Countries</span>: 
-                                    <span id="total_groups" class="stat-number">${v.total_countries}</span>
+                                    <span class="stat-number">${v.total_countries}</span>
                                 </div>
                                 <div class="cell ">
                                     <span class="stat-heading">Engaged States</span>: 
-                                    <span id="total_groups" class="stat-number">${v.total_states}</span>
+                                    <span class="stat-number">${v.total_states}</span>
                                 </div>
                                 <div class="cell ">
                                     <span class="stat-heading">Engaged Counties</span>: 
-                                    <span id="total_groups" class="stat-number">${v.total_counties}</span>
+                                    <span class="stat-number">${v.total_counties}</span>
                                 </div>
                             </div>
                             <hr>
@@ -213,7 +225,7 @@ jQuery(document).ready(function($) {
                         map.dragRotate.disable();
                         map.touchZoomRotate.disableRotation();
 
-                        map.on('load', function() {
+                        map.on('load', function () {
                             map.addSource('layer-source-reports', {
                                 type: 'geojson',
                                 data: data.geojson,
@@ -225,12 +237,14 @@ jQuery(document).ready(function($) {
                                 type: 'circle',
                                 source: 'layer-source-reports',
                                 paint: {
-                                    'circle-color': '#90C741',
-                                    'circle-radius': 22,
+                                    'circle-color': 'green',
+                                    'circle-radius': {
+                                        stops: [[8, 22], [11, 27], [16, 35]]
+                                    },
                                     'circle-stroke-width': 0.5,
                                     'circle-stroke-color': '#fff'
                                 },
-                                filter: ['==', 'groups', ['get', 'type'] ]
+                                filter: ['==', 'groups', ['get', 'type']]
                             });
                             map.addLayer({
                                 id: 'layer-groups-count',
@@ -239,7 +253,38 @@ jQuery(document).ready(function($) {
                                 layout: {
                                     "text-field": ['get', 'value']
                                 },
-                                filter: ['==', 'groups', ['get', 'type'] ]
+                                paint: {
+                                    "text-color": "#ffffff"
+                                },
+                                filter: ['==', 'groups', ['get', 'type']]
+                            });
+
+                            /* disciples */
+                            map.addLayer({
+                                id: 'layer-disciples-circle',
+                                type: 'circle',
+                                source: 'layer-source-reports',
+                                paint: {
+                                    'circle-color': 'orange',
+                                    'circle-radius': {
+                                        stops: [[8, 20], [11, 25], [16, 28]]
+                                    },
+                                    'circle-stroke-width': 0.2,
+                                    'circle-stroke-color': '#fff'
+                                },
+                                filter: ['==', 'disciples', ['get', 'type']]
+                            });
+                            map.addLayer({
+                                id: 'layer-disciples-count',
+                                type: 'symbol',
+                                source: 'layer-source-reports',
+                                layout: {
+                                    "text-field": ['get', 'value']
+                                },
+                                paint: {
+                                    "text-color": "#ffffff"
+                                },
+                                filter: ['==', 'disciples', ['get', 'type']]
                             });
 
                             /* baptism */
@@ -248,12 +293,14 @@ jQuery(document).ready(function($) {
                                 type: 'circle',
                                 source: 'layer-source-reports',
                                 paint: {
-                                    'circle-color': '#51bbd6',
-                                    'circle-radius': 22,
+                                    'circle-color': 'royalblue',
+                                    'circle-radius': {
+                                        stops: [[8, 12], [11, 17], [16, 22]]
+                                    },
                                     'circle-stroke-width': 0.5,
                                     'circle-stroke-color': '#fff'
                                 },
-                                filter: ['==', 'baptisms', ['get', 'type'] ]
+                                filter: ['==', 'baptisms', ['get', 'type']]
                             });
                             map.addLayer({
                                 id: 'layer-baptisms-count',
@@ -262,25 +309,68 @@ jQuery(document).ready(function($) {
                                 layout: {
                                     "text-field": ['get', 'value']
                                 },
-                                filter: ['==', 'baptisms', ['get', 'type'] ]
+                                paint: {
+                                    "text-color": "#ffffff"
+                                },
+                                filter: ['==', 'baptisms', ['get', 'type']]
                             });
 
+                            map.setLayoutProperty('layer-baptisms-count', 'visibility', 'none');
+                            map.setLayoutProperty('layer-disciples-count', 'visibility', 'none');
+                            map.setLayoutProperty('layer-groups-count', 'visibility', 'none');
                             spinner.removeClass('active')
 
                             // SET BOUNDS
                             window.map_bounds_token = 'report_activity_map'
-                            window.map_start = get_map_start( window.map_bounds_token )
-                            if ( window.map_start ) {
-                                map.fitBounds( window.map_start, {duration: 0});
+                            window.map_start = get_map_start(window.map_bounds_token)
+                            if (window.map_start) {
+                                map.fitBounds(window.map_start, {duration: 0});
                             }
-                            map.on('zoomend', function() {
-                                set_map_start( window.map_bounds_token, map.getBounds() )
+                            map.on('zoomend', function () {
+                                set_map_start(window.map_bounds_token, map.getBounds())
                             })
-                            map.on('dragend', function() {
-                                set_map_start( window.map_bounds_token, map.getBounds() )
+                            map.on('dragend', function () {
+                                set_map_start(window.map_bounds_token, map.getBounds())
                             })
                             // end set bounds
+
+
+                            jQuery('#baptisms_report').on('click', () => {
+                                console.log('click')
+                                hide_all()
+                                map.setLayoutProperty('layer-baptisms-circle', 'visibility', 'visible');
+                                map.setLayoutProperty('layer-baptisms-count', 'visibility', 'visible');
+                            })
+                            jQuery('#disciples_report').on('click', () => {
+                                console.log('click')
+                                hide_all()
+                                map.setLayoutProperty('layer-disciples-circle', 'visibility', 'visible');
+                                map.setLayoutProperty('layer-disciples-count', 'visibility', 'visible');
+                            })
+                            jQuery('#groups_report').on('click', () => {
+                                console.log('click')
+                                hide_all()
+                                map.setLayoutProperty('layer-groups-circle', 'visibility', 'visible');
+                                map.setLayoutProperty('layer-groups-count', 'visibility', 'visible');
+                            })
+                            jQuery('#all').on('click', () => {
+                                show_all()
+                            })
                         });
+
+                        function hide_all() {
+                            const layers = ['layer-baptisms-circle', 'layer-baptisms-count', 'layer-disciples-circle', 'layer-disciples-count','layer-groups-circle', 'layer-groups-count' ]
+                            for( const layer_id of layers) {
+                                map.setLayoutProperty( layer_id, 'visibility', 'none');
+                            }
+                        }
+                        function show_all() {
+                            hide_all()
+                            const layers = ['layer-baptisms-circle', 'layer-disciples-circle', 'layer-groups-circle' ]
+                            for( const layer_id of layers) {
+                                map.setLayoutProperty( layer_id, 'visibility', 'visible');
+                            }
+                        }
 
                         $('.loading-spinner').removeClass('active')
 

@@ -120,8 +120,9 @@ class DT_Stream_Reports extends DT_Module_Base
                             </div>
                             <div class="reports-for-<?php echo esc_html( $year ) ?>">
                                 <div class="grid-x">
-                                    <div class="cell small-6"><?php echo esc_html__( 'Total Groups', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_groups'] ) ?></div>
                                     <div class="cell small-6"><?php echo esc_html__( 'Total Baptisms', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_baptisms'] ) ?></div>
+                                    <div class="cell small-6"><?php echo esc_html__( 'Total Disciples', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_disciples'] ) ?></div>
+                                    <div class="cell small-6"><?php echo esc_html__( 'Total Groups', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_groups'] ) ?></div>
                                     <div class="cell small-6"><?php echo esc_html__( 'Countries', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_countries'] ) ?></div>
                                     <div class="cell small-6"><?php echo esc_html__( 'States', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_states'] ) ?></div>
                                     <div class="cell small-6"><?php echo esc_html__( 'Counties', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_counties'] ) ?></div>
@@ -323,21 +324,16 @@ class DT_Stream_Reports extends DT_Module_Base
                 padding: .5em;
                 background-color: white;
             }
-            #value {
+            .add-number-input {
                 width:50px;
-                display:inline;
-            }
-            #type {
-                width:75px;
-                padding:5px 10px;
                 display:inline;
             }
             #mapbox-search {
                 padding:5px 10px;
                 border-bottom-color: rgb(138, 138, 138);
             }
-            #year {
-                width:75px;
+            .year-input {
+                width:100px;
                 display:inline;
             }
             #new-report-form {
@@ -432,7 +428,7 @@ class DT_Stream_Reports extends DT_Module_Base
                 'name' => get_the_title( $this->parts['post_id'] ),
                 'translations' => [
                     'add' => __( 'Add Report', 'disciple-tools-streams' ),
-                    'search_location' => 'Search for Location'
+                    'search_location' => 'Search city or neighborhood'
                 ],
             ]) ?>][0]
 
@@ -496,10 +492,10 @@ class DT_Stream_Reports extends DT_Module_Base
                         })
                 }
 
-                window.get_geojson = () => {
+                window.get_geojson = ( year ) => {
                     return $.ajax({
                         type: "POST",
-                        data: JSON.stringify({ action: 'geojson', parts: postReport.parts }),
+                        data: JSON.stringify({ action: 'geojson', parts: postReport.parts, data: year }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         url: postReport.root + postReport.parts.root + '/v1/' + postReport.parts.type,
@@ -537,20 +533,25 @@ class DT_Stream_Reports extends DT_Module_Base
                     let ten_years = ''
                     for(var i = n; i>=e; i--){
                         ten_years += `<option value="${window.lodash.escape( i )}-12-31 23:59:59">${window.lodash.escape( i )}</option>`.toString()
+                        // ten_years += `<option value="${window.lodash.escape( i )}-09-30 23:59:59">${window.lodash.escape( i )} (Q3-Sept)</option>`.toString()
+                        // ten_years += `<option value="${window.lodash.escape( i )}-06-30 23:59:59">${window.lodash.escape( i )} (Q2-June)</option>`.toString()
+                        // ten_years += `<option value="${window.lodash.escape( i )}-03-31 23:59:59">${window.lodash.escape( i )} (Q1-Mar)</option>`.toString()
                     }
 
                     $('#add-report-button').on('click', function(e){
                         $('#add-report-button').hide()
                         $('#add-form-wrapper').empty().append(`
                             <div class="grid-x grid-x-padding" id="new-report-form">
-                                <div class="cell center">
-                                    There are <input type="number" id="value" class="number-input" placeholder="#" value="1" />&nbsp;
-                                    total&nbsp;
-                                    <select id="type" class="select-input">
-                                        <option value="groups">groups</option>
-                                        <option value="baptisms">baptisms</option>
+                                <div class="cell center">At the end of&nbsp;
+                                    <select id="year" class="select-input year-input">
+                                        ${ten_years}
                                     </select>
-                                    in
+                                    &nbsp;there were
+                                </div>
+                                <div class="cell center">
+                                    <input type="number" id="baptisms_value" class="number-input add-number-input" placeholder="#" value="0" />&nbsp;baptisms,
+                                    <input type="number" id="disciples_value" class="number-input add-number-input" placeholder="#" value="0" />&nbsp;disciples,
+                                    <input type="number" id="groups_value" class="number-input add-number-input" placeholder="#" value="0" />&nbsp;churches in
                                 </div>
                                 <div class="cell">
                                     <div id="mapbox-wrapper">
@@ -566,11 +567,6 @@ class DT_Stream_Reports extends DT_Module_Base
                                         </div>
                                     </div>
                                 </div>
-                                <div class="cell center">at the end of&nbsp;
-                                    <select id="year" class="select-input">
-                                        ${ten_years}
-                                    </select>
-                                </div>
                                 <div class="cell center" >
                                     <button class="button large save-report" type="button" id="save_new_report" disabled="disabled">Save</button>
                                     <button class="button large save-report" type="button" id="save_and_add_new_report" disabled="disabled">Save and Add</button>
@@ -583,7 +579,7 @@ class DT_Stream_Reports extends DT_Module_Base
 
                         $('.number-input').focus(function(e){
                             window.currentEvent = e
-                            if ( e.currentTarget.value === '1' ){
+                            if ( e.currentTarget.value === '0' ){
                                 e.currentTarget.value = ''
                             }
                         })
@@ -619,16 +615,28 @@ class DT_Stream_Reports extends DT_Module_Base
                     spinner.addClass('active')
 
                     let year = $('#year').val()
-                    let value = $('#value').val()
-                    let type = $('#type').val()
+                    let data = []
+                    let baptisms_value = $('#baptisms_value').val()
+                    if ( 0 < baptisms_value ) {
+                        data.push({ type: 'baptisms', value: baptisms_value })
+                    }
+                    let disciples_value = $('#disciples_value').val()
+                    if ( 0 < disciples_value ) {
+                        data.push({ type: 'disciples', value: disciples_value })
+                    }
+                    let groups_value = $('#groups_value').val()
+                    if ( 0 < groups_value ) {
+                        data.push({ type: 'groups', value: groups_value })
+                    }
+                   if ( 0 == baptisms_value && 0 == disciples_value && 0 == groups_value ) {
+                       return
+                   }
 
                     let report = {
                         action: 'insert',
                         parts: postReport.parts,
-                        type: type,
-                        subtype: type,
-                        value: value,
-                        time_end: year
+                        time_end: year,
+                        data: data
                     }
 
                     if ( typeof window.selected_location_grid_meta !== 'undefined' && ( typeof window.selected_location_grid_meta.location_grid_meta !== 'undefined' || window.selected_location_grid_meta.location_grid_meta !== '' ) ) {
@@ -774,25 +782,30 @@ class DT_Stream_Reports extends DT_Module_Base
                             <div class="cell center">
                                 <span class="stat-year">${i}</span><br>
                             </div>
-                            <div class="cell center">
-                                <span class="stat-heading">Total Groups</span><br>
-                                <span id="total_groups" class="stat-number">${v.total_groups}</span>
-                            </div>
+
                             <div class="cell center">
                                 <span class="stat-heading">Total Baptisms</span><br>
                                 <span id="total_groups" class="stat-number">${v.total_baptisms}</span>
                             </div>
                             <div class="cell center">
-                                <span class="stat-heading">Engaged Countries</span><br>
-                                <span id="total_groups" class="stat-number">${v.total_countries}</span>
+                                <span class="stat-heading">Total Disciples</span><br>
+                                <span id="total_disciples" class="stat-number">${v.total_disciples}</span>
+                            </div>
+                            <div class="cell center">
+                                <span class="stat-heading">Total Churches</span><br>
+                                <span id="total_groups" class="stat-number">${v.total_groups}</span>
+                            </div>
+                            <div class="cell center">
+                                <span class="stat-heading">Engaged Counties</span><br>
+                                <span id="total_groups" class="stat-number">${v.total_counties}</span>
                             </div>
                             <div class="cell center">
                                 <span class="stat-heading">Engaged States</span><br>
                                 <span id="total_groups" class="stat-number">${v.total_states}</span>
                             </div>
                             <div class="cell center">
-                                <span class="stat-heading">Engaged Counties</span><br>
-                                <span id="total_groups" class="stat-number">${v.total_counties}</span>
+                                <span class="stat-heading">Engaged Countries</span><br>
+                                <span id="total_groups" class="stat-number">${v.total_countries}</span>
                             </div>
                         </div>
                         <hr>
@@ -814,8 +827,18 @@ class DT_Stream_Reports extends DT_Module_Base
         // FORM BODY
         ?>
         <div id="custom-style"></div>
+        <style>
+            #wrapper {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            #content {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+        </style>
         <div id="wrapper">
-            <div class="grid-x ">
+            <div class="grid-x">
                 <div class="cell center">
                     <?php
                     foreach ( $actions as $action => $label ) {
@@ -826,6 +849,13 @@ class DT_Stream_Reports extends DT_Module_Base
                     ?>
                 </div>
                 <div class="cell center" id="title"></div>
+                <div class="cell center">click to reveal counts</div>
+                <div class="cell center" style="padding:1em;">
+                    <button class="button-small button" style="background-color: royalblue;" id="baptisms">Baptisms</button>
+                    <button class="button-small button" style="background-color: orange;" id="disciples">Disciples</button>
+                    <button class="button-small button" style="background-color: green;" id="groups">Churches</button>
+                    <button class="button-small button hollow" id="all">All</button>
+                </div>
             </div>
             <div class="grid-x grid-padding-x">
                 <div class="cell center" id="bottom-spinner"><span class="loading-spinner active"></span></div>
@@ -838,14 +868,12 @@ class DT_Stream_Reports extends DT_Module_Base
             </div>
         </div> <!-- form wrapper -->
         <script>
-            jQuery(document).ready(function($){
+            jQuery(document).ready(function($) {
                 clearInterval(window.fiveMinuteTimer)
 
                 /* LOAD */
                 let spinner = $('.loading-spinner')
                 let title = $('#title')
-
-                /* set title */
                 title.html( postReport.translations.title )
 
                 /* set vertical size the form column*/
@@ -855,15 +883,15 @@ class DT_Stream_Reports extends DT_Module_Base
                             height: ${window.innerHeight}px !important;
                         }
                         #map-wrapper {
-                            height: ${window.innerHeight-100}px !important;
+                            height: ${window.innerHeight - 100}px !important;
                         }
                         #map {
-                            height: ${window.innerHeight-100}px !important;
+                            height: ${window.innerHeight - 100}px !important;
                         }
                     </style>`)
 
 
-                window.get_geojson().then(function(data){
+                window.get_geojson().then(function (data) {
                     mapboxgl.accessToken = postReport.map_key;
                     var map = new mapboxgl.Map({
                         container: 'map',
@@ -879,7 +907,7 @@ class DT_Stream_Reports extends DT_Module_Base
                     // disable map rotation using touch rotation gesture
                     map.touchZoomRotate.disableRotation();
 
-                    map.on('load', function() {
+                    map.on('load', function () {
                         map.addSource('layer-source-reports', {
                             type: 'geojson',
                             data: data,
@@ -891,12 +919,14 @@ class DT_Stream_Reports extends DT_Module_Base
                             type: 'circle',
                             source: 'layer-source-reports',
                             paint: {
-                                'circle-color': '#90C741',
-                                'circle-radius': 22,
+                                'circle-color': 'green',
+                                'circle-radius': {
+                                    stops: [[8, 22], [11, 27], [16, 35]]
+                                },
                                 'circle-stroke-width': 0.5,
                                 'circle-stroke-color': '#fff'
                             },
-                            filter: ['==', 'groups', ['get', 'type'] ]
+                            filter: ['==', 'groups', ['get', 'type']]
                         });
                         map.addLayer({
                             id: 'layer-groups-count',
@@ -905,7 +935,38 @@ class DT_Stream_Reports extends DT_Module_Base
                             layout: {
                                 "text-field": ['get', 'value']
                             },
-                            filter: ['==', 'groups', ['get', 'type'] ]
+                            paint: {
+                                "text-color": "#ffffff"
+                            },
+                            filter: ['==', 'groups', ['get', 'type']]
+                        });
+
+                        /* disciples */
+                        map.addLayer({
+                            id: 'layer-disciples-circle',
+                            type: 'circle',
+                            source: 'layer-source-reports',
+                            paint: {
+                                'circle-color': 'orange',
+                                'circle-radius': {
+                                    stops: [[8, 20], [11, 25], [16, 28]]
+                                },
+                                'circle-stroke-width': 0.2,
+                                'circle-stroke-color': '#fff'
+                            },
+                            filter: ['==', 'disciples', ['get', 'type']]
+                        });
+                        map.addLayer({
+                            id: 'layer-disciples-count',
+                            type: 'symbol',
+                            source: 'layer-source-reports',
+                            layout: {
+                                "text-field": ['get', 'value']
+                            },
+                            paint: {
+                                "text-color": "#ffffff"
+                            },
+                            filter: ['==', 'disciples', ['get', 'type']]
                         });
 
                         /* baptism */
@@ -914,12 +975,14 @@ class DT_Stream_Reports extends DT_Module_Base
                             type: 'circle',
                             source: 'layer-source-reports',
                             paint: {
-                                'circle-color': '#51bbd6',
-                                'circle-radius': 22,
+                                'circle-color': 'royalblue',
+                                'circle-radius': {
+                                    stops: [[8, 12], [11, 17], [16, 22]]
+                                },
                                 'circle-stroke-width': 0.5,
                                 'circle-stroke-color': '#fff'
                             },
-                            filter: ['==', 'baptisms', ['get', 'type'] ]
+                            filter: ['==', 'baptisms', ['get', 'type']]
                         });
                         map.addLayer({
                             id: 'layer-baptisms-count',
@@ -928,27 +991,70 @@ class DT_Stream_Reports extends DT_Module_Base
                             layout: {
                                 "text-field": ['get', 'value']
                             },
-                            filter: ['==', 'baptisms', ['get', 'type'] ]
+                            paint: {
+                                "text-color": "#ffffff"
+                            },
+                            filter: ['==', 'baptisms', ['get', 'type']]
                         });
 
+                        map.setLayoutProperty('layer-baptisms-count', 'visibility', 'none');
+                        map.setLayoutProperty('layer-disciples-count', 'visibility', 'none');
+                        map.setLayoutProperty('layer-groups-count', 'visibility', 'none');
                         spinner.removeClass('active')
 
                         // SET BOUNDS
                         window.map_bounds_token = 'report_activity_map'
-                        window.map_start = get_map_start( window.map_bounds_token )
-                        if ( window.map_start ) {
-                            map.fitBounds( window.map_start, {duration: 0});
+                        window.map_start = get_map_start(window.map_bounds_token)
+                        if (window.map_start) {
+                            map.fitBounds(window.map_start, {duration: 0});
                         }
-                        map.on('zoomend', function() {
-                            set_map_start( window.map_bounds_token, map.getBounds() )
+                        map.on('zoomend', function () {
+                            set_map_start(window.map_bounds_token, map.getBounds())
                         })
-                        map.on('dragend', function() {
-                            set_map_start( window.map_bounds_token, map.getBounds() )
+                        map.on('dragend', function () {
+                            set_map_start(window.map_bounds_token, map.getBounds())
                         })
                         // end set bounds
+
+
+                        jQuery('#baptisms').on('click', () => {
+                            console.log('click')
+                            hide_all()
+                            map.setLayoutProperty('layer-baptisms-circle', 'visibility', 'visible');
+                            map.setLayoutProperty('layer-baptisms-count', 'visibility', 'visible');
+                        })
+                        jQuery('#disciples').on('click', () => {
+                            console.log('click')
+                            hide_all()
+                            map.setLayoutProperty('layer-disciples-circle', 'visibility', 'visible');
+                            map.setLayoutProperty('layer-disciples-count', 'visibility', 'visible');
+                        })
+                        jQuery('#groups').on('click', () => {
+                            console.log('click')
+                            hide_all()
+                            map.setLayoutProperty('layer-groups-circle', 'visibility', 'visible');
+                            map.setLayoutProperty('layer-groups-count', 'visibility', 'visible');
+                        })
+                        jQuery('#all').on('click', () => {
+                            show_all()
+                        })
                     });
 
+                    function hide_all() {
+                        const layers = ['layer-baptisms-circle', 'layer-baptisms-count', 'layer-disciples-circle', 'layer-disciples-count','layer-groups-circle', 'layer-groups-count' ]
+                        for( const layer_id of layers) {
+                            map.setLayoutProperty( layer_id, 'visibility', 'none');
+                        }
+                    }
+                    function show_all() {
+                        hide_all()
+                        const layers = ['layer-baptisms-circle', 'layer-disciples-circle', 'layer-groups-circle' ]
+                        for( const layer_id of layers) {
+                            map.setLayoutProperty( layer_id, 'visibility', 'visible');
+                        }
+                    }
                 })
+
             })
         </script>
         <?php
@@ -1011,8 +1117,6 @@ class DT_Stream_Reports extends DT_Module_Base
 
         $action = sanitize_text_field( wp_unslash( $params['action'] ) );
 
-        $params = dt_recursive_sanitize_array( $params );
-
         switch ( $action ) {
             case 'insert':
                 return $this->insert_report( $params, $post_id );
@@ -1056,51 +1160,54 @@ class DT_Stream_Reports extends DT_Module_Base
 
     public function insert_report( $params, $post_id ) {
 
-        if ( ! isset( $params['parts']['root'], $params['parts']['type'], $params['type'], $post_id ) ){
-            return new WP_Error( __METHOD__, "Missing params", [ 'status' => 400 ] );
+        if ( ! isset( $params['parts']['root'], $params['parts']['type'], $params['data'], $post_id ) ){
+            return new WP_Error( __METHOD__, "Missing params in insert report", [ 'status' => 400 ] );
         }
 
-        $params = dt_recursive_sanitize_array( $params );
-
-        // run your function here
-        $args = [
-            'parent_id' => null,
-            'post_id' => $post_id,
-            'post_type' => 'streams',
-            'type' => $params['parts']['root'],
-            'subtype' => $params['parts']['type'],
-            'payload' => [
-                'type' => $params['type'] // groups or baptisms
-            ],
-            'value' => 1,
-            'time_begin' => empty( $params['time_begin'] ) ? null : strtotime( $params['time_begin'] ),
-            'time_end' => empty( $params['time_end'] ) ? time() : strtotime( $params['time_end'] ),
-            'timestamp' => time(),
-        ];
-
-        if ( ! empty( $params['value'] ) ){
-            $args['value'] = $params['value'];
+        if ( ! is_array( $params['data'] ) ) {
+            return new WP_Error( __METHOD__, "Subtype must be an array", [ 'status' => 400 ] );
         }
 
-        if ( isset( $params['location_grid_meta'] ) ){
-            $args['lng'] = $params['location_grid_meta']['values'][0]['lng'];
-            $args['lat'] = $params['location_grid_meta']['values'][0]['lat'];
-            $args['level'] = $params['location_grid_meta']['values'][0]['level'];
-            $args['label'] = $params['location_grid_meta']['values'][0]['label'];
+        foreach( $params['data'] as $data ) {
+            $args = [
+                'parent_id' => null,
+                'post_id' => $post_id,
+                'post_type' => 'streams',
+                'type' => $params['parts']['root'],
+                'subtype' => $params['parts']['type'],
+                'payload' => [
+                    'type' => $data['type'] // groups or baptisms
+                ],
+                'value' => $data['value'],
+                'time_begin' => empty( $params['time_begin'] ) ? null : strtotime( $params['time_begin'] ),
+                'time_end' => empty( $params['time_end'] ) ? time() : strtotime( $params['time_end'] ),
+                'timestamp' => time(),
+            ];
 
-            $geocoder = new Location_Grid_Geocoder();
-            $grid_row = $geocoder->get_grid_id_by_lnglat( $args['lng'], $args['lat'] );
-            if ( ! empty( $grid_row ) ){
-                $args['grid_id'] = $grid_row['grid_id'];
+            if ( ! empty( $params['value'] ) ){
+                $args['value'] = $params['value'];
             }
-        } else if ( isset( $params['address'] ) ) {
-            $args['label'] = $params['address'];
-        }
 
-        $report_id = dt_report_insert( $args );
+            if ( isset( $params['location_grid_meta'] ) ){
+                $args['lng'] = $params['location_grid_meta']['values'][0]['lng'];
+                $args['lat'] = $params['location_grid_meta']['values'][0]['lat'];
+                $args['level'] = $params['location_grid_meta']['values'][0]['level'];
+                $args['label'] = $params['location_grid_meta']['values'][0]['label'];
 
-        if ( is_wp_error( $report_id ) || empty( $report_id ) ){
-            return new WP_Error( __METHOD__, "Failed to create report.", [ 'status' => 400 ] );
+                $geocoder = new Location_Grid_Geocoder();
+                $grid_row = $geocoder->get_grid_id_by_lnglat( $args['lng'], $args['lat'] );
+                if ( ! empty( $grid_row ) ){
+                    $args['grid_id'] = $grid_row['grid_id'];
+                }
+            } else if ( isset( $params['address'] ) ) {
+                $args['label'] = $params['address'];
+            }
+
+            $report_id = dt_report_insert( $args );
+
+            if ( is_wp_error( $report_id ) || empty( $report_id ) ){
+                return new WP_Error( __METHOD__, "Failed to create report.", [ 'status' => 400 ] );
+            }
         }
 
         update_post_meta( $post_id, 'report_last_modified', time() );
@@ -1173,8 +1280,9 @@ class DT_Stream_Reports extends DT_Module_Base
             $year = gmdate( 'Y', $time );
             if ( ! isset( $data[$year] ) ) {
                 $data[$year] = [
-                    'total_groups' => 0,
                     'total_baptisms' => 0,
+                    'total_disciples' => 0,
+                    'total_groups' => 0,
                     'total_countries' => 0,
                     'total_states' => 0,
                     'total_counties' => 0,
@@ -1193,6 +1301,7 @@ class DT_Stream_Reports extends DT_Module_Base
             if ( ! isset( $countries[$result['admin0_grid_id'] ] ) ) {
                 $countries[ $result['admin0_grid_id'] ] = [
                     'groups' => 0,
+                    'disciples' => 0,
                     'baptisms' => 0,
                     'name' => $result['country']
                 ];
@@ -1200,6 +1309,7 @@ class DT_Stream_Reports extends DT_Module_Base
             if ( ! isset( $states[$result['admin1_grid_id'] ] ) ) {
                 $states[$result['admin1_grid_id'] ] = [
                     'groups' => 0,
+                    'disciples' => 0,
                     'baptisms' => 0,
                     'name' => $result['state'] . ', ' . $result['country']
                 ];
@@ -1207,6 +1317,7 @@ class DT_Stream_Reports extends DT_Module_Base
             if ( ! isset( $counties[$result['admin2_grid_id'] ] ) ) {
                 $counties[$result['admin2_grid_id'] ] = [
                     'groups' => 0,
+                    'disciples' => 0,
                     'baptisms' => 0,
                     'name' => $result['county'] . ', ' . $result['state'] . ', ' . $result['country']
                 ];
@@ -1224,6 +1335,11 @@ class DT_Stream_Reports extends DT_Module_Base
                 $countries[$result['admin0_grid_id']]['baptisms'] = $countries[$result['admin0_grid_id']]['baptisms'] + intval( $result['value'] );
                 $states[$result['admin1_grid_id']]['baptisms'] = $states[$result['admin1_grid_id']]['baptisms'] + intval( $result['value'] );
                 $counties[$result['admin2_grid_id']]['baptisms'] = $counties[$result['admin2_grid_id']]['baptisms'] + intval( $result['value'] );
+            } else if ( isset( $result['payload']['type'] ) && $result['payload']['type'] === 'disciples' ) {
+                $data[$year]['total_disciples'] = $data[$year]['total_disciples'] + intval( $result['value'] );
+                $countries[$result['admin0_grid_id']]['disciples'] = $countries[$result['admin0_grid_id']]['disciples'] + intval( $result['value'] );
+                $states[$result['admin1_grid_id']]['disciples'] = $states[$result['admin1_grid_id']]['disciples'] + intval( $result['value'] );
+                $counties[$result['admin2_grid_id']]['disciples'] = $counties[$result['admin2_grid_id']]['disciples'] + intval( $result['value'] );
             }
 
             $data[$year]['total_countries'] = count( $countries );
@@ -1250,7 +1366,7 @@ class DT_Stream_Reports extends DT_Module_Base
         return $this->retrieve_reports( $post_id );
     }
 
-    public function geojson_reports( $post_id ) {
+    public function geojson_reports( $post_id ) { // @todo add filter by year.
         global $wpdb;
         $results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->dt_reports WHERE post_id = %s ORDER BY time_end DESC", $post_id ), ARRAY_A );
 
