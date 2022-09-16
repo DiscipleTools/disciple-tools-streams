@@ -288,7 +288,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-contact.svg',
                 "in_create_form" => true,
             ];
-            $fields['group_total'] = [
+            $fields['church_total'] = [
                 'name' => __( "Number of Churches", 'disciple-tools-streams' ),
                 'type' => 'number',
                 'default' => '0',
@@ -296,12 +296,12 @@ class DT_Stream_Base extends DT_Module_Base {
                 'icon' => get_template_directory_uri() . "/dt-assets/images/groups.svg",
                 'show_in_table' => true
             ];
-            $fields['groups'] = [
+            $fields['churches'] = [
                 'name' => __( "Groups", 'disciple-tools-streams' ),
                 'type' => 'connection',
-                "post_type" => 'groups',
+                "post_type" => 'churches',
                 "p2p_direction" => "from",
-                "p2p_key" => "streams_to_groups",
+                "p2p_key" => "streams_to_churches",
                 "tile" => "connections",
                 'icon' => get_template_directory_uri() . "/dt-assets/images/groups.svg",
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-group.svg',
@@ -403,13 +403,13 @@ class DT_Stream_Base extends DT_Module_Base {
                 'create-icon' => get_template_directory_uri() . "/dt-assets/images/add.svg",
             ];
         }
-        if ( $post_type === 'groups' ){
+        if ( $post_type === 'churches' ){
             $fields[$this->post_type] = [
                 'name' => __( "Streams", 'disciple-tools-streams' ),
                 'type' => 'connection',
                 "post_type" => $this->post_type,
                 "p2p_direction" => "to",
-                "p2p_key" => "streams_to_groups",
+                "p2p_key" => "streams_to_churches",
                 "tile" => "other",
                 'icon' => get_template_directory_uri() . "/dt-assets/images/stream.svg",
                 'create-icon' => get_template_directory_uri() . "/dt-assets/images/add.svg",
@@ -480,13 +480,13 @@ class DT_Stream_Base extends DT_Module_Base {
             ]
         );
         /**
-         * Stream to groups
+         * Stream to churches
          */
         p2p_register_connection_type(
             [
-                'name'           => 'streams_to_groups',
+                'name'           => 'streams_to_churches',
                 'from'           => 'streams',
-                'to'             => 'groups',
+                'to'             => 'churches',
                 'admin_box' => [
                     'show' => false,
                 ],
@@ -606,7 +606,7 @@ class DT_Stream_Base extends DT_Module_Base {
     //action when a post connection is added during create or update
     public function post_connection_added( $post_type, $post_id, $field_key, $value ){
         if ( $post_type === "streams" ){
-            if ( $field_key === "leaders" || $field_key === "disciples" || $field_key === "groups" ){
+            if ( $field_key === "leaders" || $field_key === "disciples" || $field_key === "churches" ){
 
                 // share the stream with the owner of the contact when a disciple is added to a stream
                 $assigned_to = get_post_meta( $value, "assigned_to", true );
@@ -623,8 +623,8 @@ class DT_Stream_Base extends DT_Module_Base {
                 if ( $field_key === "disciples" ){
                     self::update_stream_disciple_total( $post_id );
                 }
-                if ( $field_key === "groups" ){
-                    self::update_stream_group_total( $post_id );
+                if ( $field_key === "churches" ){
+                    self::update_stream_church_total( $post_id );
                 }
             }
 
@@ -741,21 +741,21 @@ class DT_Stream_Base extends DT_Module_Base {
         }
     }
 
-    private static function update_stream_group_total( $id, $action = "added" ){
+    private static function update_stream_church_total( $id, $action = "added" ){
         $this_post = get_post( $id );
         $args = [
-            'connected_type'   => "streams_to_groups",
+            'connected_type'   => "streams_to_churches",
             'connected_direction' => 'from',
             'connected_items'  => $this_post,
             'nopaging'         => true,
             'suppress_filters' => false,
         ];
         $posts_list = get_posts( $args );
-        $total = get_post_meta( $id, 'group_total', true );
+        $total = get_post_meta( $id, 'church_total', true );
         if ( sizeof( $posts_list ) > intval( $total ) ){
-            update_post_meta( $id, 'group_total', sizeof( $posts_list ) );
+            update_post_meta( $id, 'church_total', sizeof( $posts_list ) );
         } elseif ( $action === "removed" ){
-            update_post_meta( $id, 'group_total', intval( $total - 1 ) );
+            update_post_meta( $id, 'church_total', intval( $total - 1 ) );
         }
     }
 

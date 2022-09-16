@@ -79,8 +79,6 @@ jQuery(document).ready(function($) {
 
             if ( typeof detailsSettings.post_fields[type_settings.meta_key] !== 'undefined' && detailsSettings.post_fields[type_settings.meta_key] !== '' ){
                 wrapper.append(`
-                    <a class="button hollow" target="_blank" href="${wpApiShare.site_url}/${type_settings.root}/${type_settings.type}/${detailsSettings.post_fields[type_settings.meta_key]}">go to link</a>
-                    <a class="button hollow deactivate-magic-form" data-meta_key_name="${type_settings.meta_key}">delete link</a>
                 `)
             }
             else {
@@ -129,7 +127,7 @@ jQuery(document).ready(function($) {
                             <div class="center">
                                 <button class="button-small button" style="background-color: royalblue;" id="baptisms_report">Baptisms</button>
                                 <button class="button-small button" style="background-color: orange;" id="disciples_report">Disciples</button>
-                                <button class="button-small button" style="background-color: green;" id="groups_report">Churches</button>
+                                <button class="button-small button" style="background-color: green;" id="churches_report">Churches</button>
                                 <button class="button-small button hollow" id="all">All</button>
                             </div>
                             <div id="reports-map" style="width:100%;height:${window.innerHeight - 140}px;"></div>
@@ -192,8 +190,8 @@ jQuery(document).ready(function($) {
                                     <span id="total_disciples" class="stat-number">${v.total_disciples}</span>
                                 </div>
                                 <div class="cell">
-                                    <span class="stat-heading">Total Groups</span>: 
-                                    <span id="total_groups" class="stat-number">${v.total_groups}</span>
+                                    <span class="stat-heading">Total Churches</span>: 
+                                    <span id="total_churches" class="stat-number">${v.total_churches}</span>
                                 </div>
                                 <div class="cell ">
                                     <span class="stat-heading">Engaged Countries</span>: 
@@ -231,9 +229,9 @@ jQuery(document).ready(function($) {
                                 data: data.geojson,
                             });
 
-                            /* groups */
+                            /* churches */
                             map.addLayer({
-                                id: 'layer-groups-circle',
+                                id: 'layer-churches-circle',
                                 type: 'circle',
                                 source: 'layer-source-reports',
                                 paint: {
@@ -247,7 +245,7 @@ jQuery(document).ready(function($) {
                                 filter: ['==', 'groups', ['get', 'type']]
                             });
                             map.addLayer({
-                                id: 'layer-groups-count',
+                                id: 'layer-churches-count',
                                 type: 'symbol',
                                 source: 'layer-source-reports',
                                 layout: {
@@ -317,7 +315,7 @@ jQuery(document).ready(function($) {
 
                             map.setLayoutProperty('layer-baptisms-count', 'visibility', 'none');
                             map.setLayoutProperty('layer-disciples-count', 'visibility', 'none');
-                            map.setLayoutProperty('layer-groups-count', 'visibility', 'none');
+                            map.setLayoutProperty('layer-churches-count', 'visibility', 'none');
                             spinner.removeClass('active')
 
                             // SET BOUNDS
@@ -347,11 +345,11 @@ jQuery(document).ready(function($) {
                                 map.setLayoutProperty('layer-disciples-circle', 'visibility', 'visible');
                                 map.setLayoutProperty('layer-disciples-count', 'visibility', 'visible');
                             })
-                            jQuery('#groups_report').on('click', () => {
+                            jQuery('#churches_report').on('click', () => {
                                 console.log('click')
                                 hide_all()
-                                map.setLayoutProperty('layer-groups-circle', 'visibility', 'visible');
-                                map.setLayoutProperty('layer-groups-count', 'visibility', 'visible');
+                                map.setLayoutProperty('layer-churches-circle', 'visibility', 'visible');
+                                map.setLayoutProperty('layer-churches-count', 'visibility', 'visible');
                             })
                             jQuery('#all').on('click', () => {
                                 show_all()
@@ -359,14 +357,14 @@ jQuery(document).ready(function($) {
                         });
 
                         function hide_all() {
-                            const layers = ['layer-baptisms-circle', 'layer-baptisms-count', 'layer-disciples-circle', 'layer-disciples-count','layer-groups-circle', 'layer-groups-count' ]
+                            const layers = ['layer-baptisms-circle', 'layer-baptisms-count', 'layer-disciples-circle', 'layer-disciples-count','layer-churches-circle', 'layer-churches-count' ]
                             for( const layer_id of layers) {
                                 map.setLayoutProperty( layer_id, 'visibility', 'none');
                             }
                         }
                         function show_all() {
                             hide_all()
-                            const layers = ['layer-baptisms-circle', 'layer-disciples-circle', 'layer-groups-circle' ]
+                            const layers = ['layer-baptisms-circle', 'layer-disciples-circle', 'layer-churches-circle' ]
                             for( const layer_id of layers) {
                                 map.setLayoutProperty( layer_id, 'visibility', 'visible');
                             }

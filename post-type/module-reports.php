@@ -14,14 +14,15 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     public $type = 'report'; // define the type
     public $type_name = 'Stream Report';
     private $meta_key = '';
+    public $root_url;
     public $show_bulk_send = true;
     public $show_app_tile = true; // show this magic link in the Apps tile on the post record
     public $type_actions = [
-        '' => 'Add Report',
+        '' => 'Home',
+        'manage' => 'Add / Manage',
         'stats' => 'Summary',
         'maps' => 'Maps'
     ];
-
 
     private static $_instance = null;
     public static function instance() {
@@ -57,6 +58,8 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             return;
         }
 
+        $this->root_url = site_url() . '/' . $this->parts['root'] . '/' . $this->parts['type'] . '/' . $this->parts['public_key'] . '/';
+
         // load if valid url
         add_action( 'dt_blank_head', [ $this, 'form_head' ] );
         if ( $this->magic->is_valid_key_url( $this->type ) && 'stats' === $this->parts['action'] ) {
@@ -64,6 +67,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         }
         else if ( $this->magic->is_valid_key_url( $this->type ) && 'maps' === $this->parts['action'] ) {
             add_action( 'dt_blank_body', [ $this, 'maps_body' ] );
+        }
+        else if ( $this->magic->is_valid_key_url( $this->type ) && 'manage' === $this->parts['action'] ) {
+            add_action( 'dt_blank_body', [ $this, 'manage_body' ] );
         }
         else if ( $this->magic->is_valid_key_url( $this->type ) && '' === $this->parts['action'] ) {
             add_action( 'dt_blank_body', [ $this, 'home_body' ] );
@@ -124,7 +130,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                                 <div class="grid-x">
                                     <div class="cell small-6"><?php echo esc_html__( 'Total Baptisms', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_baptisms'] ) ?></div>
                                     <div class="cell small-6"><?php echo esc_html__( 'Total Disciples', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_disciples'] ) ?></div>
-                                    <div class="cell small-6"><?php echo esc_html__( 'Total Groups', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_groups'] ) ?></div>
+                                    <div class="cell small-6"><?php echo esc_html__( 'Total Churches', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_churches'] ) ?></div>
                                     <div class="cell small-6"><?php echo esc_html__( 'Countries', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_countries'] ) ?></div>
                                     <div class="cell small-6"><?php echo esc_html__( 'States', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_states'] ) ?></div>
                                     <div class="cell small-6"><?php echo esc_html__( 'Counties', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_counties'] ) ?></div>
@@ -174,7 +180,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             'name' => 'Stream Report',
             'root' => $this->root,
             'type' => $this->type,
-            'meta_key' => $this->root . '_' . $this->type . '_public_key', // coaching-magic_c_key
+            'meta_key' => $this->root . '_' . $this->type . '_magic_key', // coaching-magic_c_key
             'actions' => [
                 '' => 'Add Report',
                 'stats' => 'Summary',
@@ -228,7 +234,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     public function custom_fields( $fields, $post_type ){
         if ( $post_type === 'streams' ){
             // do action
-            $fields[$this->root . '_' . $this->type . '_public_key'] = [
+            $fields[$this->root . '_' . $this->type . '_magic_key'] = [
                 'name'   => 'Private Report Key',
                 'description' => '',
                 'type'   => 'hash',
@@ -270,9 +276,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 }
             }
         }
-        unset( $wp_scripts->registered['mapbox-search-widget']->extra['group'] );
-//        dt_write_log($wp_scripts->queue);
-//        dt_write_log($wp_scripts);
+        unset( $wp_scripts->registered['mapbox-search-widget']->extra['church'] );
     }
 
     public function print_styles(){
@@ -304,6 +308,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     public function report_styles_header(){
         ?>
         <style>
+            body {
+                background: white;
+            }
             #title {
                 font-size:1.7rem;
                 font-weight: 100;
@@ -385,7 +392,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             select::-ms-expand {
                 display: none;
             }
-            .input-group-field {
+            .input-church-field {
                 border-top: 0;
                 border-left: 0;
                 border-right: 0;
@@ -399,6 +406,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 font-weight: 100;
                 color: #0a0a0a;
             }
+
 
             /* size specific style section */
             @media screen and (max-width: 991px) {
@@ -415,6 +423,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                     background-color: white;
                 }
             }
+
         </style>
         <?php
     }
@@ -535,9 +544,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                     let ten_years = ''
                     for(var i = n; i>=e; i--){
                         ten_years += `<option value="${window.lodash.escape( i )}-12-31 23:59:59">${window.lodash.escape( i )}</option>`.toString()
-                        // ten_years += `<option value="${window.lodash.escape( i )}-09-30 23:59:59">${window.lodash.escape( i )} (Q3-Sept)</option>`.toString()
-                        // ten_years += `<option value="${window.lodash.escape( i )}-06-30 23:59:59">${window.lodash.escape( i )} (Q2-June)</option>`.toString()
-                        // ten_years += `<option value="${window.lodash.escape( i )}-03-31 23:59:59">${window.lodash.escape( i )} (Q1-Mar)</option>`.toString()
                     }
 
                     $('#add-report-button').on('click', function(e){
@@ -553,13 +559,13 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                                 <div class="cell center">
                                     <input type="number" id="baptisms_value" class="number-input add-number-input" placeholder="#" value="0" />&nbsp;baptisms,
                                     <input type="number" id="disciples_value" class="number-input add-number-input" placeholder="#" value="0" />&nbsp;disciples,
-                                    <input type="number" id="groups_value" class="number-input add-number-input" placeholder="#" value="0" />&nbsp;churches in
+                                    <input type="number" id="churches_value" class="number-input add-number-input" placeholder="#" value="0" />&nbsp;churches in
                                 </div>
                                 <div class="cell">
                                     <div id="mapbox-wrapper">
-                                        <div id="mapbox-autocomplete" class="mapbox-autocomplete input-group" data-autosubmit="false" data-add-address="true">
-                                            <input id="mapbox-search" type="text" name="mapbox_search" class="input-group-field" autocomplete="off" placeholder="${ window.lodash.escape( postReport.translations.search_location ) /*Search Location*/ }" />
-                                            <div class="input-group-button">
+                                        <div id="mapbox-autocomplete" class="mapbox-autocomplete input-church" data-autosubmit="false" data-add-address="true">
+                                            <input id="mapbox-search" type="text" name="mapbox_search" class="input-church-field" autocomplete="off" placeholder="${ window.lodash.escape( postReport.translations.search_location ) /*Search Location*/ }" />
+                                            <div class="input-church-button">
                                                 <button id="mapbox-spinner-button" class="button hollow" style="display:none;border-color:lightgrey;">
                                                     <span class="" style="border-radius: 50%;width: 24px;height: 24px;border: 0.25rem solid lightgrey;border-top-color: black;animation: spin 1s infinite linear;display: inline-block;"></span>
                                                 </button>
@@ -626,11 +632,11 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                     if ( 0 < disciples_value ) {
                         data.push({ type: 'disciples', value: disciples_value })
                     }
-                    let groups_value = $('#groups_value').val()
-                    if ( 0 < groups_value ) {
-                        data.push({ type: 'groups', value: groups_value })
+                    let churches_value = $('#churches_value').val()
+                    if ( 0 < churches_value ) {
+                        data.push({ type: 'churches', value: churches_value })
                     }
-                   if ( 0 == baptisms_value && 0 == disciples_value && 0 == groups_value ) {
+                   if ( 0 == baptisms_value && 0 == disciples_value && 0 == churches_value ) {
                        return
                    }
 
@@ -694,25 +700,129 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         <?php
     }
 
+    public function nav() {
+        $dt_st_actions = $this->magic->list_actions( $this->type );
+        ?>
+        <style>
+            .fi-list {
+                position: absolute;
+                left: 15px;
+                top: 15px;
+                font-size:2.5em;
+                color:black;
+            }
+            .menu-list-item {
+                border-top: 1px solid lightgrey;
+                border-bottom: 1px solid lightgrey;
+                padding-top: 1em;
+                padding-bottom: 1em;
+            }
+            .menu-list-item:hover {
+                background-color: WhiteSmoke;
+            }
+            #bottom-login {
+                position: absolute;
+                bottom: 10px;
+                width:100%;
+            }
+            .float-right {
+                float:right;
+            }
+        </style>
+        <!-- off canvas menus -->
+        <div class="off-canvas-wrapper">
+            <!-- Left Canvas -->
+            <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas data-transition="push">
+                <button class="close-button" aria-label="Close alert" type="button" data-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="grid-x grid-padding-x menu-list" style="padding:1em">
+                    <div class="cell"><br><br></div>
+                    <?php
+                    foreach ( $dt_st_actions as $action => $label ) {
+                        ?>
+                        <div class="cell menu-list-item"><a href="<?php echo esc_url( $this->root_url . $action ) ?>"><h3><?php echo $label ?></h3></a></div>
+                        <?php
+                    }
+                    ?>
+                    <br><br>
+                </div>
+                <div class="grid-x grid-padding-x menu-list" id="bottom-login">
+                    <div class="cell menu-list-item center">
+                        <a href="<?php echo esc_url( site_url() . '/contacts' ) ?>">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid-x">
+            <div class="cell padding-1" >
+                <button type="button" style="margin:1em .5em 1em; color: black;" id="menu-icon" data-open="offCanvasLeft"><i class="fi-list"></i></button>
+                <span class="cell center float-right" id="title"></span>
+            </div>
+        </div>
+        <?php
+    }
+
     public function home_body(){
+        $actions = $this->magic->list_actions( $this->type );
+
+        if ( empty( $this->post ) ) {
+            $this->post_id = $this->parts["post_id"];
+            $this->post = DT_Posts::get_post( $this->post_type, $this->parts["post_id"], true, false );
+            if ( is_wp_error( $this->post ) ){
+                return;
+            }
+        }
+        $post = $this->post;
+        ?>
+        <!-- title -->
+        <div class="grid-x">
+            <div class="cell padding-1" >
+                <button type="button" style="margin:1em .5em 1em; color: black;" id="menu-icon" data-open="offCanvasLeft"><i class="fi-list"></i></button>
+            </div>
+        </div>
+
+        <!-- nav -->
+        <?php $this->nav(); ?>
+
+        <?php if ( isset( $post['title'] ) ) : ?>
+            <div class="grid-x center">
+                <div class="cell">
+                    <h1 style="margin-bottom:0;"><?php echo esc_html__( 'Welcome' ) ?> <?php echo esc_html( $post['title'] ) ?></h1>
+                    <a style="font-size: .8rem;" href="<?php echo esc_url( site_url() . '/' . $this->root . '/access/' ) ?>">Not <?php echo esc_html( $post['title'] ) ?>?</a>
+                </div>
+            </div>
+            <hr>
+        <?php endif; ?>
+
+        <div id="wrapper">
+            <div class="grid-x">
+                <div class="cell top-message"></div>
+                <div class="cell">
+                    <a class="button large expanded intro-profile" data-intro='Hello step one!' href="<?php echo esc_url( $this->root_url . 'profile' ) ?>"><i class="fi-torso"></i> <?php echo esc_html__( 'COMMUNITY PROFILE' ) ?></a>
+                </div>
+                <div class="cell">
+                    <a class="button large expanded intro-church-list" data-intro='Hello step two!' href="<?php echo esc_url( $this->root_url . 'list' ) ?>"><i class="fi-list-thumbnails"></i> <?php echo esc_html__( 'EDIT CHURCH LIST' ) ?></a>
+                </div>
+                <div class="cell">
+                    <a class="button large expanded intro-map" data-intro='Hello step three!' href="<?php echo esc_url( $this->root_url . 'map' ) ?>"><i class="fi-map"></i> <?php echo esc_html__( 'MAP' ) ?></a>
+                </div>
+            </div>
+        </div>
+
+        <?php
+    }
+
+    public function manage_body(){
         $actions = $this->magic->list_actions( $this->type );
 
         // FORM BODY
         ?>
+        <?php $this->nav(); ?>
+
         <div id="custom-style"></div>
         <div id="wrapper">
-            <div class="grid-x ">
-                <div class="cell center">
-                    <?php
-                    foreach ( $actions as $action => $label ) {
-                        ?>
-                        <a href="<?php echo esc_url( trailingslashit( site_url() ) .  esc_attr( $this->parts['root'] ) . '/' . esc_attr( $this->parts['type'] ) . '/'. esc_attr( $this->parts['public_key'] ) . '/'. esc_html( $action ) ) ?>" class="button small hollow"><?php echo esc_html( $label ) ?></a>
-                        <?php
-                    }
-                    ?>
-                </div>
-                <div class="cell center" id="title"></div>
-            </div>
+
             <div class="grid-x" id="add-new">
                 <div class="cell center"><button type="button" id="add-report-button" class="button large" style="min-width:200px;">Add Report</button></div>
                 <div id="add-form-wrapper"></div>
@@ -734,22 +844,14 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     }
 
     public function stats_body(){
-        $actions = $this->magic->list_actions( $this->type );
-
         // FORM BODY
         ?>
+        <!-- nav -->
+        <?php $this->nav(); ?>
+
         <div id="custom-style"></div>
         <div id="wrapper">
             <div class="grid-x ">
-                <div class="cell center">
-                    <?php
-                    foreach ( $actions as $action => $label ) {
-                        ?>
-                        <a href="<?php echo esc_url( trailingslashit( site_url() ) .  esc_attr( $this->parts['root'] ) . '/' . esc_attr( $this->parts['type'] ) . '/'. esc_attr( $this->parts['public_key'] ) . '/'. esc_html( $action ) ) ?>" class="button small hollow"><?php echo esc_html( $label ) ?></a>
-                        <?php
-                    }
-                    ?>
-                </div>
                 <div class="cell center" id="title"></div>
             </div>
             <hr>
@@ -787,7 +889,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
                             <div class="cell center">
                                 <span class="stat-heading">Total Baptisms</span><br>
-                                <span id="total_groups" class="stat-number">${v.total_baptisms}</span>
+                                <span id="total_churches" class="stat-number">${v.total_baptisms}</span>
                             </div>
                             <div class="cell center">
                                 <span class="stat-heading">Total Disciples</span><br>
@@ -795,19 +897,19 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                             </div>
                             <div class="cell center">
                                 <span class="stat-heading">Total Churches</span><br>
-                                <span id="total_groups" class="stat-number">${v.total_groups}</span>
+                                <span id="total_churches" class="stat-number">${v.total_churches}</span>
                             </div>
                             <div class="cell center">
                                 <span class="stat-heading">Engaged Counties</span><br>
-                                <span id="total_groups" class="stat-number">${v.total_counties}</span>
+                                <span id="total_churches" class="stat-number">${v.total_counties}</span>
                             </div>
                             <div class="cell center">
                                 <span class="stat-heading">Engaged States</span><br>
-                                <span id="total_groups" class="stat-number">${v.total_states}</span>
+                                <span id="total_churches" class="stat-number">${v.total_states}</span>
                             </div>
                             <div class="cell center">
                                 <span class="stat-heading">Engaged Countries</span><br>
-                                <span id="total_groups" class="stat-number">${v.total_countries}</span>
+                                <span id="total_churches" class="stat-number">${v.total_countries}</span>
                             </div>
                         </div>
                         <hr>
@@ -824,10 +926,10 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     }
 
     public function maps_body(){
-        $actions = $this->magic->list_actions( $this->type );
-
-        // FORM BODY
         ?>
+        <!-- nav -->
+        <?php $this->nav(); ?>
+
         <div id="custom-style"></div>
         <style>
             #wrapper {
@@ -841,23 +943,14 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         </style>
         <div id="wrapper">
             <div class="grid-x">
-                <div class="cell center">
-                    <?php
-                    foreach ( $actions as $action => $label ) {
-                        ?>
-                        <a href="<?php echo esc_url( trailingslashit( site_url() ) .  esc_attr( $this->parts['root'] ) . '/' . esc_attr( $this->parts['type'] ) . '/'. esc_attr( $this->parts['public_key'] ) . '/'. esc_html( $action ) ) ?>" class="button small hollow"><?php echo esc_html( $label ) ?></a>
-                        <?php
-                    }
-                    ?>
-                </div>
                 <div class="cell center" id="title"></div>
-                <div class="cell center">click to reveal counts</div>
-                <div class="cell center" style="padding:1em;">
+                <div class="cell center">
                     <button class="button-small button" style="background-color: royalblue;" id="baptisms">Baptisms</button>
                     <button class="button-small button" style="background-color: orange;" id="disciples">Disciples</button>
-                    <button class="button-small button" style="background-color: green;" id="groups">Churches</button>
+                    <button class="button-small button" style="background-color: green;" id="churches">Churches</button>
                     <button class="button-small button hollow" id="all">All</button>
                 </div>
+                <div class="cell center">click to reveal counts</div>
             </div>
             <div class="grid-x grid-padding-x">
                 <div class="cell center" id="bottom-spinner"><span class="loading-spinner active"></span></div>
@@ -915,9 +1008,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                             data: data,
                         });
 
-                        /* groups */
+                        /* churches */
                         map.addLayer({
-                            id: 'layer-groups-circle',
+                            id: 'layer-churches-circle',
                             type: 'circle',
                             source: 'layer-source-reports',
                             paint: {
@@ -928,10 +1021,10 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                                 'circle-stroke-width': 0.5,
                                 'circle-stroke-color': '#fff'
                             },
-                            filter: ['==', 'groups', ['get', 'type']]
+                            filter: ['==', 'churches', ['get', 'type']]
                         });
                         map.addLayer({
-                            id: 'layer-groups-count',
+                            id: 'layer-churches-count',
                             type: 'symbol',
                             source: 'layer-source-reports',
                             layout: {
@@ -940,7 +1033,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                             paint: {
                                 "text-color": "#ffffff"
                             },
-                            filter: ['==', 'groups', ['get', 'type']]
+                            filter: ['==', 'churches', ['get', 'type']]
                         });
 
                         /* disciples */
@@ -1001,7 +1094,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
                         map.setLayoutProperty('layer-baptisms-count', 'visibility', 'none');
                         map.setLayoutProperty('layer-disciples-count', 'visibility', 'none');
-                        map.setLayoutProperty('layer-groups-count', 'visibility', 'none');
+                        map.setLayoutProperty('layer-churches-count', 'visibility', 'none');
                         spinner.removeClass('active')
 
                         // SET BOUNDS
@@ -1031,11 +1124,11 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                             map.setLayoutProperty('layer-disciples-circle', 'visibility', 'visible');
                             map.setLayoutProperty('layer-disciples-count', 'visibility', 'visible');
                         })
-                        jQuery('#groups').on('click', () => {
+                        jQuery('#churches').on('click', () => {
                             console.log('click')
                             hide_all()
-                            map.setLayoutProperty('layer-groups-circle', 'visibility', 'visible');
-                            map.setLayoutProperty('layer-groups-count', 'visibility', 'visible');
+                            map.setLayoutProperty('layer-churches-circle', 'visibility', 'visible');
+                            map.setLayoutProperty('layer-churches-count', 'visibility', 'visible');
                         })
                         jQuery('#all').on('click', () => {
                             show_all()
@@ -1043,14 +1136,14 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                     });
 
                     function hide_all() {
-                        const layers = ['layer-baptisms-circle', 'layer-baptisms-count', 'layer-disciples-circle', 'layer-disciples-count','layer-groups-circle', 'layer-groups-count' ]
+                        const layers = ['layer-baptisms-circle', 'layer-baptisms-count', 'layer-disciples-circle', 'layer-disciples-count','layer-churches-circle', 'layer-churches-count' ]
                         for( const layer_id of layers) {
                             map.setLayoutProperty( layer_id, 'visibility', 'none');
                         }
                     }
                     function show_all() {
                         hide_all()
-                        const layers = ['layer-baptisms-circle', 'layer-disciples-circle', 'layer-groups-circle' ]
+                        const layers = ['layer-baptisms-circle', 'layer-disciples-circle', 'layer-churches-circle' ]
                         for( const layer_id of layers) {
                             map.setLayoutProperty( layer_id, 'visibility', 'visible');
                         }
@@ -1178,7 +1271,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 'type' => $params['parts']['root'],
                 'subtype' => $params['parts']['type'],
                 'payload' => [
-                    'type' => $data['type'] // groups or baptisms
+                    'type' => $data['type'] // churches or baptisms
                 ],
                 'value' => $data['value'],
                 'time_begin' => empty( $params['time_begin'] ) ? null : strtotime( $params['time_begin'] ),
@@ -1284,7 +1377,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 $data[$year] = [
                     'total_baptisms' => 0,
                     'total_disciples' => 0,
-                    'total_groups' => 0,
+                    'total_churches' => 0,
                     'total_countries' => 0,
                     'total_states' => 0,
                     'total_counties' => 0,
@@ -1302,7 +1395,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             // set levels
             if ( ! isset( $countries[$result['admin0_grid_id'] ] ) ) {
                 $countries[ $result['admin0_grid_id'] ] = [
-                    'groups' => 0,
+                    'churches' => 0,
                     'disciples' => 0,
                     'baptisms' => 0,
                     'name' => $result['country']
@@ -1310,7 +1403,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             }
             if ( ! isset( $states[$result['admin1_grid_id'] ] ) ) {
                 $states[$result['admin1_grid_id'] ] = [
-                    'groups' => 0,
+                    'churches' => 0,
                     'disciples' => 0,
                     'baptisms' => 0,
                     'name' => $result['state'] . ', ' . $result['country']
@@ -1318,19 +1411,19 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             }
             if ( ! isset( $counties[$result['admin2_grid_id'] ] ) ) {
                 $counties[$result['admin2_grid_id'] ] = [
-                    'groups' => 0,
+                    'churches' => 0,
                     'disciples' => 0,
                     'baptisms' => 0,
                     'name' => $result['county'] . ', ' . $result['state'] . ', ' . $result['country']
                 ];
             }
 
-            // add groups and baptisms
-            if ( isset( $result['payload']['type'] ) && $result['payload']['type'] === 'groups' ) {
-                $data[$year]['total_groups'] = $data[$year]['total_groups'] + intval( $result['value'] ); // total
-                $countries[$result['admin0_grid_id']]['groups'] = $countries[$result['admin0_grid_id']]['groups'] + intval( $result['value'] ); // country
-                $states[$result['admin1_grid_id']]['groups'] = $states[$result['admin1_grid_id']]['groups'] + intval( $result['value'] ); // state
-                $counties[$result['admin2_grid_id']]['groups'] = $counties[$result['admin2_grid_id']]['groups'] + intval( $result['value'] ); // counties
+            // add churches and baptisms
+            if ( isset( $result['payload']['type'] ) && $result['payload']['type'] === 'churches' ) {
+                $data[$year]['total_churches'] = $data[$year]['total_churches'] + intval( $result['value'] ); // total
+                $countries[$result['admin0_grid_id']]['churches'] = $countries[$result['admin0_grid_id']]['churches'] + intval( $result['value'] ); // country
+                $states[$result['admin1_grid_id']]['churches'] = $states[$result['admin1_grid_id']]['churches'] + intval( $result['value'] ); // state
+                $counties[$result['admin2_grid_id']]['churches'] = $counties[$result['admin2_grid_id']]['churches'] + intval( $result['value'] ); // counties
             }
             else if ( isset( $result['payload']['type'] ) && $result['payload']['type'] === 'baptisms' ) {
                 $data[$year]['total_baptisms'] = $data[$year]['total_baptisms'] + intval( $result['value'] );

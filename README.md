@@ -4,19 +4,19 @@
 # Disciple.Tools - Streams
 
 A stream is a collection of work, large or small. The streams plugin interconnects leaders, disciples, 
-groups, churches, trainings, and other elements with census style reporting. A stream can be a large 
-organization, movement, or a few groups started from a single training. It is a named effort that needs 
+churches, churches, trainings, and other elements with census style reporting. A stream can be a large 
+organization, movement, or a few churches started from a single training. It is a named effort that needs 
 to be tracked for good stewardship.
 
 ## Purpose
 
 The movement of the kingdom is not clean and organized. Streams is an effort to provide a container that 
-allows a disciple maker to track area of work which might be a collection of leaders, trainings, and groups.
+allows a disciple maker to track area of work which might be a collection of leaders, trainings, and churches.
 Often the reporting from these efforts can lack detail, so the census reporting allows those leaders and key
-disciples to report on the numbers of baptisms and groups with locations. 
+disciples to report on the numbers of baptisms and churches with locations. 
 
 Organizing collections of work this way, allows leaders to go to one place and understand key leadership,
-key groups/churches, and key training efforts in those areas.
+key churches/churches, and key training efforts in those areas.
 
 ## Usage
 
@@ -25,7 +25,7 @@ key groups/churches, and key training efforts in those areas.
 - Track parent, child, and peer streams of work
 - Track key leaders connected as contacts
 - Track key disciples as contacts
-- Track key groups in the movement stream
+- Track key churches in the movement stream
 - Track comments and notes
 - (with the Trainings plugin installed) Track trainings in the stream
 - Track comments about the stream
@@ -34,7 +34,7 @@ key groups/churches, and key training efforts in those areas.
 
 #### Will Not Do
 
-- Currently, reports do not create groups or contacts. 
+- Currently, reports do not create churches or contacts. 
 
 ## Requirements
 

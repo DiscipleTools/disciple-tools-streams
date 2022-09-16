@@ -78,10 +78,10 @@ msgstr "رابطے"
 #: metrics/base.php:252
 #: metrics/network-maps-area.php:81
 #: metrics/network-maps-area.php:121
-#: metrics/network-statistics-groups.php:12
-#: metrics/network-statistics-groups.php:13
-#: metrics/network-statistics-groups.php:14
-#: metrics/network-statistics-groups.php:50
+#: metrics/network-statistics-churches.php:12
+#: metrics/network-statistics-churches.php:13
+#: metrics/network-statistics-churches.php:14
+#: metrics/network-statistics-churches.php:50
 msgid "Groups"
 msgstr "گروہ"
 
@@ -1141,11 +1141,11 @@ msgid "Team Generations"
 msgstr "ٹیم نسلیں"
 
 #: logging/log-generations.php:76
-msgid "%s is reporting a new pre-group generation."
+msgid "%s is reporting a new pre-church generation."
 msgstr "٪ s نئی گروپ سے پہلے کی نسل کی اطلاع دے رہا ہے۔"
 
 #: logging/log-generations.php:81
-msgid "%s is reporting a new group generation."
+msgid "%s is reporting a new church generation."
 msgstr "٪ s ایک نئی گروپ نسل کی اطلاع دے رہا ہے۔"
 
 #: logging/log-generations.php:86
@@ -1189,11 +1189,11 @@ msgid "%s is reporting a new contact."
 msgstr "٪ s ایک نئے رابطے کی اطلاع دے رہا ہے۔"
 
 #: logging/log-new-posts.php:169
-msgid "%s is reporting a new pre-group formed."
+msgid "%s is reporting a new pre-church formed."
 msgstr "٪ s تشکیل شدہ ایک نئے پری گروپ کی اطلاع دے رہا ہے۔"
 
 #: logging/log-new-posts.php:174
-msgid "%s is reporting a new group formed."
+msgid "%s is reporting a new church formed."
 msgstr "٪ s بنائے ہوئے ایک نئے گروپ کی اطلاع دے رہا ہے۔"
 
 #: logging/log-new-posts.php:179
@@ -1255,7 +1255,7 @@ msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
 
 #. Description of the plugin/theme
 #: 
-msgid "Disciple Tools Streams Extension adds recording of streams and cross reference them with contacts, groups, and locations."
+msgid "Disciple Tools Streams Extension adds recording of streams and cross reference them with contacts, churches, and locations."
 msgstr "شاگرد کے ٹولز اسٹریمز ایکسٹینشن میں دھاروں کی ریکارڈنگ شامل ہوتی ہے اور رابطوں ، گروپوں اور مقامات کے ساتھ ان کا حوالہ دیتے ہیں۔"
 
 #: disciple-tools-training.php:297
@@ -1273,7 +1273,7 @@ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
 
 #. Description of the plugin/theme
 #: 
-msgid "Disciple Tools Training Extension adds recording of trainings and cross reference them with contacts, groups, and locations."
+msgid "Disciple Tools Training Extension adds recording of trainings and cross reference them with contacts, churches, and locations."
 msgstr "شاگرد ٹولز ٹریننگ ایکسٹینشن میں تربیت کی ریکارڈنگ شامل ہوتی ہے اور رابطوں ، گروپوں اور مقامات کے ساتھ ان کا حوالہ دیا جاتا ہے۔"
 
 #: post-type/module-base.php:128
@@ -1547,20 +1547,20 @@ msgid "Search for a specific contact or multiplier"
 msgstr ""
 
 #: includes/charts/baptisms.php:80
-#: includes/charts/groups.php:79
+#: includes/charts/churches.php:79
 msgid "Reset"
 msgstr ""
 
-#: includes/charts/groups.php:76
+#: includes/charts/churches.php:76
 msgid "Group Generation Tree"
 msgstr ""
 
-#: includes/charts/groups.php:77
-msgid "This tree only shows First Generation groups that have multiplied."
+#: includes/charts/churches.php:77
+msgid "This tree only shows First Generation churches that have multiplied."
 msgstr ""
 
-#: includes/charts/groups.php:78
-msgid "See descendants of a specific group"
+#: includes/charts/churches.php:78
+msgid "See descendants of a specific church"
 msgstr ""
 
 #: includes/export-action.php:9

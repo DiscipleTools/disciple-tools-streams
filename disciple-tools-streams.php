@@ -2,7 +2,7 @@
 /**
  *Plugin Name: Disciple.Tools - Streams
  * Plugin URI: https://github.com/DiscipleTools/disciple-tools-streams
- * Description: Disciple.Tools Streams Extension adds recording of streams and cross reference them with contacts, groups, and locations.
+ * Description: Disciple.Tools Streams Extension adds recording of streams and cross reference them with contacts, churches, and locations.
  * Text Domain: disciple-tools-streams
  * Domain Path: /languages
  * Version:  2.6
@@ -134,6 +134,12 @@ class DT_Streams {
         /* metrics */
         require_once( 'metrics/mapbox-maps.php' );
         require_once( 'metrics/mapbox-personal-maps.php' );
+
+        /* magic links */
+        require_once( 'magic-link/magic-map.php' );
+        require_once( 'magic-link/magic-registration.php' );
+        require_once( 'magic-link/magic-retrieve-link.php' );
+        require_once( 'magic-link/access.php' );
     }
 
     /**
