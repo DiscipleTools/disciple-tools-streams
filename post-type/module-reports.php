@@ -21,7 +21,8 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         '' => 'Home',
         'manage' => 'Add / Manage',
         'stats' => 'Summary',
-        'maps' => 'Maps'
+        'maps' => 'Maps',
+        'invite' => 'Send Invite',
     ];
 
     private static $_instance = null;
@@ -42,7 +43,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         add_action( 'wp_enqueue_scripts', [ $this, 'tile_scripts' ], 100 );
 
         // register REST and REST access
-        add_filter( 'dt_allow_rest_access', [ $this, 'authorize_url' ], 10, 1 );
+//        add_filter( 'dt_allow_rest_access', [ $this, 'authorize_url' ], 10, 1 );
         add_action( 'rest_api_init', [ $this, 'add_api_routes' ] );
         add_filter( 'dt_custom_fields_settings', [ $this, 'custom_fields' ], 10, 2 );
 
@@ -61,7 +62,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         $this->root_url = site_url() . '/' . $this->parts['root'] . '/' . $this->parts['type'] . '/' . $this->parts['public_key'] . '/';
 
         // load if valid url
-        add_action( 'dt_blank_head', [ $this, 'form_head' ] );
+
         if ( $this->magic->is_valid_key_url( $this->type ) && 'stats' === $this->parts['action'] ) {
             add_action( 'dt_blank_body', [ $this, 'stats_body' ] );
         }
@@ -71,6 +72,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         else if ( $this->magic->is_valid_key_url( $this->type ) && 'manage' === $this->parts['action'] ) {
             add_action( 'dt_blank_body', [ $this, 'manage_body' ] );
         }
+        else if ( $this->magic->is_valid_key_url( $this->type ) && 'invite' === $this->parts['action'] ) {
+            add_action( 'dt_blank_body', [ $this, 'invite_body' ] );
+        }
         else if ( $this->magic->is_valid_key_url( $this->type ) && '' === $this->parts['action'] ) {
             add_action( 'dt_blank_body', [ $this, 'home_body' ] );
         } else {
@@ -78,20 +82,18 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             return;
         }
 
-        // load page elements
-        add_action( 'wp_print_scripts', [ $this, 'print_scripts' ], 1500 );
-        add_action( 'wp_print_styles', [ $this, 'print_styles' ], 1500 );
+        add_action( 'dt_blank_head', [ $this, '_header' ] );
+        add_action( 'dt_blank_footer', [ $this, '_footer' ] );
 
-        // register url and access
-        add_filter( 'dt_templates_for_urls', [ $this, 'register_url' ], 199, 1 );
-        add_filter( 'dt_blank_access', [ $this, '_has_access' ] );
-        add_filter( 'dt_allow_non_login_access', function(){ return true;
-        }, 100, 1 );
+        add_filter( 'dt_magic_url_base_allowed_css', [ $this, 'dt_magic_url_base_allowed_css' ], 10, 1 );
+        add_filter( 'dt_magic_url_base_allowed_js', [ $this, 'dt_magic_url_base_allowed_js' ], 10, 1 );
+        add_action( 'wp_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ], 100 );
     }
 
     public function dt_details_additional_tiles( $tiles, $post_type = "" ){
         if ( $post_type === 'streams' ){
             $tiles["reports"] = [ "label" => __( "Reports", 'disciple-tools-streams' ) ];
+            $tiles["child_reports"] = [ "label" => __( "Child Reports", 'disciple-tools-streams' ) ];
         }
         return $tiles;
     }
@@ -154,6 +156,60 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 }
             } /* end stream/app if*/
 
+            // reports tile
+            if ( $section === "child_reports" ){
+
+                $magic = new DT_Magic_URL( 'streams_app' );
+                $types = $magic->list_types();
+
+                // types
+                if ( isset( $types['report'], $types['report']['root'], $types['report']['type'] ) ) {
+                    $types['report']['new_key'] = $magic->create_unique_key();
+
+                    $reports = self::instance()->child_statistics_reports( get_the_ID() );
+                    /**
+                     * Button Controls
+                     */
+                    ?>
+                    <div class="cell" id="<?php echo esc_attr( $types['report']['root'] ) ?>-<?php echo esc_attr( $types['report']['type'] ) ?>-wrapper"></div>
+                    <?php
+                    /**
+                     * List Reports
+                     */
+                    if ( ! empty( $reports ) ) {
+                        foreach ( $reports as $year => $report ){
+                            ?>
+                            <div class="section-subheader">
+                                Reports in <?php echo esc_html( $year ) ?>
+                            </div>
+                            <div class="reports-for-<?php echo esc_html( $year ) ?>">
+                                <div class="grid-x">
+                                    <div class="cell small-6"><?php echo esc_html__( 'Total Baptisms', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_baptisms'] ) ?></div>
+                                    <div class="cell small-6"><?php echo esc_html__( 'Total Disciples', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_disciples'] ) ?></div>
+                                    <div class="cell small-6"><?php echo esc_html__( 'Total Churches', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_churches'] ) ?></div>
+                                    <div class="cell small-6"><?php echo esc_html__( 'Countries', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_countries'] ) ?></div>
+                                    <div class="cell small-6"><?php echo esc_html__( 'States', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_states'] ) ?></div>
+                                    <div class="cell small-6"><?php echo esc_html__( 'Counties', 'disciple-tools-streams' ) ?></div><div class="cell small-6"><?php echo esc_html( $report['total_counties'] ) ?></div>
+                                </div>
+                            </div>
+                            <div><hr>
+                                <a class="button hollow" id="<?php echo esc_attr( $types['report']['root'] ) ?>-<?php echo esc_attr( $types['report']['type'] ) ?>-manage-reports">manage reports</a>
+                            </div>
+                            <?php
+                            break; // loop only the most recent year
+                        }
+                    } else {
+                        ?>
+                        <div class="section-subheader">
+                            No Reports
+                        </div>
+                        <?php
+                    }
+                    ?>
+                    <?php
+                }
+            } /* end stream/app if*/
+
         } // end if streams and enabled
     }
 
@@ -170,65 +226,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 ]
             );
         }
-    }
-
-    public function register_type( array $types ) : array {
-        if ( ! isset( $types[$this->root] ) ) {
-            $types[$this->root] = [];
-        }
-        $types[$this->root][$this->type] = [
-            'name' => 'Stream Report',
-            'root' => $this->root,
-            'type' => $this->type,
-            'meta_key' => $this->root . '_' . $this->type . '_magic_key', // coaching-magic_c_key
-            'actions' => [
-                '' => 'Add Report',
-                'stats' => 'Summary',
-                'maps' => 'Maps'
-            ],
-            'post_type' => $this->post_type,
-        ];
-        return $types;
-    }
-
-    public function register_url( $template_for_url ){
-        $parts = $this->parts;
-
-        // test 1 : correct url root and type
-        if ( ! $parts ){ // parts returns false
-            return $template_for_url;
-        }
-
-        // test 2 : only base url requested
-        if ( empty( $parts['public_key'] ) ){ // no public key present
-            $template_for_url[ $parts['root'] . '/'. $parts['type'] ] = 'template-blank.php';
-            return $template_for_url;
-        }
-
-        // test 3 : no specific action requested
-        if ( empty( $parts['action'] ) ){ // only root public key requested
-            $template_for_url[ $parts['root'] . '/'. $parts['type'] . '/' . $parts['public_key'] ] = 'template-blank.php';
-            return $template_for_url;
-        }
-
-        // test 4 : valid action requested
-        $actions = $this->magic->list_actions( $parts['type'] );
-        if ( isset( $actions[ $parts['action'] ] ) ){
-            $template_for_url[ $parts['root'] . '/'. $parts['type'] . '/' . $parts['public_key'] . '/' . $parts['action'] ] = 'template-blank.php';
-        }
-
-        return $template_for_url;
-    }
-
-    public function _has_access() : bool {
-        $parts = $this->parts;
-
-        // test 1 : correct url root and type
-        if ( $parts ){ // parts returns false
-            return true;
-        }
-
-        return false;
     }
 
     public function custom_fields( $fields, $post_type ){
@@ -251,61 +248,21 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         return $fields;
     }
 
-    public function print_scripts(){
-        // @link /disciple-tools-theme/dt-assets/functions/enqueue-scripts.php
-        $allowed_js = [
-            'jquery',
-            'lodash',
-            'moment',
-            'datepicker',
-            'site-js',
-            'shared-functions',
-            'mapbox-gl',
-            'mapbox-cookie',
-            'mapbox-search-widget',
-            'google-search-widget',
-            'jquery-cookie',
-        ];
-
-        global $wp_scripts;
-
-        if ( isset( $wp_scripts ) ){
-            foreach ( $wp_scripts->queue as $key => $item ){
-                if ( ! in_array( $item, $allowed_js ) ){
-                    unset( $wp_scripts->queue[$key] );
-                }
-            }
-        }
-        unset( $wp_scripts->registered['mapbox-search-widget']->extra['church'] );
+    public function dt_magic_url_base_allowed_js( $allowed_js ) {
+        $allowed_js[] = 'mapbox-gl';
+        $allowed_js[] = 'mapbox-cookie';
+        $allowed_js[] = 'mapbox-search-widget';
+        $allowed_js[] = 'google-search-widget';
+        $allowed_js[] = 'jquery-cookie';
+        return $allowed_js;
     }
 
-    public function print_styles(){
-        // @link /disciple-tools-theme/dt-assets/functions/enqueue-scripts.php
-        $allowed_css = [
-            'foundation-css',
-            'jquery-ui-site-css',
-            'site-css',
-            'datepicker-css',
-            'mapbox-gl-css'
-        ];
-
-        global $wp_styles;
-        if ( isset( $wp_styles ) ) {
-            foreach ($wp_styles->queue as $key => $item) {
-                if ( !in_array( $item, $allowed_css )) {
-                    unset( $wp_styles->queue[$key] );
-                }
-            }
-        }
+    public function dt_magic_url_base_allowed_css( $allowed_css ) {
+        $allowed_css[] = 'mapbox-gl-css';
+        return $allowed_css;
     }
 
-    public function form_head(){
-        wp_head(); // styles controlled by wp_print_styles and wp_print_scripts actions
-        $this->report_styles_header();
-        $this->report_javascript_header();
-    }
-
-    public function report_styles_header(){
+    public function header_style(){
         ?>
         <style>
             body {
@@ -406,6 +363,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 font-weight: 100;
                 color: #0a0a0a;
             }
+            .padding-1 {
+                padding:1em;
+            }
 
 
             /* size specific style section */
@@ -428,10 +388,11 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         <?php
     }
 
-    public function report_javascript_header(){
+    public function header_javascript(){
+        DT_Mapbox_API::load_mapbox_header_scripts();
         ?>
         <script>
-            var postReport = [<?php echo json_encode([
+            var jsObject = [<?php echo json_encode([
                 'map_key' => DT_Mapbox_API::get_key(),
                 'root' => esc_url_raw( rest_url() ),
                 'nonce' => wp_create_nonce( 'wp_rest' ),
@@ -446,16 +407,36 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             jQuery(document).ready(function($){
                 clearInterval(window.fiveMinuteTimer)
 
-
                 /* LOAD */
                 let spinner = $('.loading-spinner')
                 let title = $('#title')
                 let content = $('#content')
 
                 /* set title */
-                title.html( window.lodash.escape( postReport.name ) )
+                title.html( window.lodash.escape( jsObject.name ) )
 
-                /* FUNCTIONS */
+                /* post */
+                window.api_post = ( action, data ) => {
+                    return jQuery.ajax({
+                        type: "POST",
+                        data: JSON.stringify({ action: action, parts: jsObject.parts, data: data }),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        url: jsObject.root + jsObject.parts.root + '/v1/' + jsObject.parts.type,
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader('X-WP-Nonce', jsObject.nonce )
+                        }
+                    })
+                        .fail(function(e) {
+                            console.log(e)
+                        })
+                }
+
+                /* INVITATION FUNCTIONS */
+
+
+
+                /* REPORT FUNCTIONS */
                 window.load_reports = ( data ) => {
                     content.empty()
                     $.each(data, function(i,v){
@@ -486,12 +467,12 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 window.get_reports = () => {
                     $.ajax({
                         type: "POST",
-                        data: JSON.stringify({ action: 'get', parts: postReport.parts }),
+                        data: JSON.stringify({ action: 'get', parts: jsObject.parts }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
-                        url: postReport.root + postReport.parts.root + '/v1/' + postReport.parts.type,
+                        url: jsObject.root + jsObject.parts.root + '/v1/' + jsObject.parts.type,
                         beforeSend: function (xhr) {
-                            xhr.setRequestHeader('X-WP-Nonce', postReport.nonce )
+                            xhr.setRequestHeader('X-WP-Nonce', jsObject.nonce )
                         }
                     })
                         .done(function(data){
@@ -506,12 +487,12 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 window.get_geojson = ( year ) => {
                     return $.ajax({
                         type: "POST",
-                        data: JSON.stringify({ action: 'geojson', parts: postReport.parts, data: year }),
+                        data: JSON.stringify({ action: 'geojson', parts: jsObject.parts, data: year }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
-                        url: postReport.root + postReport.parts.root + '/v1/' + postReport.parts.type,
+                        url: jsObject.root + jsObject.parts.root + '/v1/' + jsObject.parts.type,
                         beforeSend: function (xhr) {
-                            xhr.setRequestHeader('X-WP-Nonce', postReport.nonce )
+                            xhr.setRequestHeader('X-WP-Nonce', jsObject.nonce )
                         }
                     })
                         .fail(function(e) {
@@ -523,12 +504,12 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 window.get_statistics = () => {
                     return $.ajax({
                         type: "POST",
-                        data: JSON.stringify({ action: 'statistics', parts: postReport.parts }),
+                        data: JSON.stringify({ action: 'statistics', parts: jsObject.parts }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
-                        url: postReport.root + postReport.parts.root + '/v1/' + postReport.parts.type,
+                        url: jsObject.root + jsObject.parts.root + '/v1/' + jsObject.parts.type,
                         beforeSend: function (xhr) {
-                            xhr.setRequestHeader('X-WP-Nonce', postReport.nonce )
+                            xhr.setRequestHeader('X-WP-Nonce', jsObject.nonce )
                         }
                     })
                         .fail(function(e) {
@@ -564,18 +545,18 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                                 <div class="cell">
                                     <div id="mapbox-wrapper">
                                         <div id="mapbox-autocomplete" class="mapbox-autocomplete input-church" data-autosubmit="false" data-add-address="true">
-                                            <input id="mapbox-search" type="text" name="mapbox_search" class="input-church-field" autocomplete="off" placeholder="${ window.lodash.escape( postReport.translations.search_location ) /*Search Location*/ }" />
+                                            <input id="mapbox-search" type="text" name="mapbox_search" class="input-church-field" autocomplete="off" placeholder="${ window.lodash.escape( jsObject.translations.search_location ) /*Search Location*/ }" />
                                             <div class="input-church-button">
                                                 <button id="mapbox-spinner-button" class="button hollow" style="display:none;border-color:lightgrey;">
                                                     <span class="" style="border-radius: 50%;width: 24px;height: 24px;border: 0.25rem solid lightgrey;border-top-color: black;animation: spin 1s infinite linear;display: inline-block;"></span>
                                                 </button>
-                                                <button id="mapbox-clear-autocomplete" class="button alert input-height delete-button-style mapbox-delete-button" type="button" title="${ window.lodash.escape( postReport.translations.clear ) /*Delete Location*/}" style="display:none;">&times;</button>
+                                                <button id="mapbox-clear-autocomplete" class="button alert input-height delete-button-style mapbox-delete-button" type="button" title="${ window.lodash.escape( jsObject.translations.clear ) /*Delete Location*/}" style="display:none;">&times;</button>
                                             </div>
                                             <div id="mapbox-autocomplete-list" class="mapbox-autocomplete-items"></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="cell center" >
+                                <div class="cell center padding-1" >
                                     <button class="button large save-report" type="button" id="save_new_report" disabled="disabled">Save</button>
                                     <button class="button large save-report" type="button" id="save_and_add_new_report" disabled="disabled">Save and Add</button>
                                     <button class="button large alert" type="button" id="cancel_new_report">&times;</button>
@@ -642,7 +623,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
                     let report = {
                         action: 'insert',
-                        parts: postReport.parts,
+                        parts: jsObject.parts,
                         time_end: year,
                         data: data
                     }
@@ -659,9 +640,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                         data: JSON.stringify(report),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
-                        url: postReport.root + postReport.parts.root + '/v1/' + postReport.parts.type,
+                        url: jsObject.root + jsObject.parts.root + '/v1/' + jsObject.parts.type,
                         beforeSend: function (xhr) {
-                            xhr.setRequestHeader('X-WP-Nonce', postReport.nonce )
+                            xhr.setRequestHeader('X-WP-Nonce', jsObject.nonce )
                         }
                     })
                         .done(function(data){
@@ -678,12 +659,12 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
                     jQuery.ajax({
                         type: "POST",
-                        data: JSON.stringify({ action: 'delete', parts: postReport.parts, report_id: id }),
+                        data: JSON.stringify({ action: 'delete', parts: jsObject.parts, report_id: id }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
-                        url: postReport.root + postReport.parts.root + '/v1/' + postReport.parts.type,
+                        url: jsObject.root + jsObject.parts.root + '/v1/' + jsObject.parts.type,
                         beforeSend: function (xhr) {
-                            xhr.setRequestHeader('X-WP-Nonce', postReport.nonce )
+                            xhr.setRequestHeader('X-WP-Nonce', jsObject.nonce )
                         }
                     })
                         .done(function(data){
@@ -700,8 +681,12 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         <?php
     }
 
-    public function nav() {
-        $dt_st_actions = $this->magic->list_actions( $this->type );
+    public static function _wp_enqueue_scripts(){
+        DT_Mapbox_API::load_mapbox_header_scripts();
+    }
+
+    public function nav( ) {
+        $actions = $this->magic->list_actions( $this->type );
         ?>
         <style>
             .fi-list {
@@ -739,9 +724,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 <div class="grid-x grid-padding-x menu-list" style="padding:1em">
                     <div class="cell"><br><br></div>
                     <?php
-                    foreach ( $dt_st_actions as $action => $label ) {
+                    foreach ( $actions as $action => $label ) {
                         ?>
-                        <div class="cell menu-list-item"><a href="<?php echo esc_url( $this->root_url . $action ) ?>"><h3><?php echo $label ?></h3></a></div>
+                        <div class="cell menu-list-item"><a href="<?php echo esc_url( $this->root_url . $action ) ?>"><h3><i class="<?php echo esc_attr( $this->action_icons( $action ) ) ?>"></i> <?php echo esc_html( $label ) ?></h3></a></div>
                         <?php
                     }
                     ?>
@@ -749,7 +734,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 </div>
                 <div class="grid-x grid-padding-x menu-list" id="bottom-login">
                     <div class="cell menu-list-item center">
-                        <a href="<?php echo esc_url( site_url() . '/contacts' ) ?>">Login</a>
+                        <a href="<?php echo esc_url( site_url() . '/settings' ) ?>">Login</a>
                     </div>
                 </div>
             </div>
@@ -763,6 +748,17 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         <?php
     }
 
+    public function action_icons( $action ) {
+        $icons = [
+            '' => 'fi-home',
+            'manage' => 'fi-pencil',
+            'stats' => 'fi-list-thumbnails',
+            'maps' => 'fi-map',
+            'invite' => 'fi-at-sign',
+        ];
+        return $icons[$action] ?? '';
+    }
+
     public function home_body(){
         $actions = $this->magic->list_actions( $this->type );
 
@@ -774,21 +770,13 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             }
         }
         $post = $this->post;
+        
+        $this->nav();
         ?>
-        <!-- title -->
-        <div class="grid-x">
-            <div class="cell padding-1" >
-                <button type="button" style="margin:1em .5em 1em; color: black;" id="menu-icon" data-open="offCanvasLeft"><i class="fi-list"></i></button>
-            </div>
-        </div>
-
-        <!-- nav -->
-        <?php $this->nav(); ?>
 
         <?php if ( isset( $post['title'] ) ) : ?>
             <div class="grid-x center">
                 <div class="cell">
-                    <h1 style="margin-bottom:0;"><?php echo esc_html__( 'Welcome' ) ?> <?php echo esc_html( $post['title'] ) ?></h1>
                     <a style="font-size: .8rem;" href="<?php echo esc_url( site_url() . '/' . $this->root . '/access/' ) ?>">Not <?php echo esc_html( $post['title'] ) ?>?</a>
                 </div>
             </div>
@@ -798,15 +786,18 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         <div id="wrapper">
             <div class="grid-x">
                 <div class="cell top-message"></div>
-                <div class="cell">
-                    <a class="button large expanded intro-profile" data-intro='Hello step one!' href="<?php echo esc_url( $this->root_url . 'profile' ) ?>"><i class="fi-torso"></i> <?php echo esc_html__( 'COMMUNITY PROFILE' ) ?></a>
-                </div>
-                <div class="cell">
-                    <a class="button large expanded intro-church-list" data-intro='Hello step two!' href="<?php echo esc_url( $this->root_url . 'list' ) ?>"><i class="fi-list-thumbnails"></i> <?php echo esc_html__( 'EDIT CHURCH LIST' ) ?></a>
-                </div>
-                <div class="cell">
-                    <a class="button large expanded intro-map" data-intro='Hello step three!' href="<?php echo esc_url( $this->root_url . 'map' ) ?>"><i class="fi-map"></i> <?php echo esc_html__( 'MAP' ) ?></a>
-                </div>
+                <?php
+                foreach ( $actions as $action => $label ) {
+                    if( empty( $action ) ) {
+                        continue;
+                    }
+                    ?>
+                    <div class="cell">
+                        <a class="button large expanded intro-profile" href="<?php echo esc_url( $this->root_url . $action ) ?>"><span class="uppercase"><?php echo esc_html( $label ) ?></span></a>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
         </div>
 
@@ -814,11 +805,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     }
 
     public function manage_body(){
-        $actions = $this->magic->list_actions( $this->type );
-
-        // FORM BODY
+        DT_Mapbox_API::geocoder_scripts();
+        $this->nav();
         ?>
-        <?php $this->nav(); ?>
 
         <div id="custom-style"></div>
         <div id="wrapper">
@@ -844,10 +833,8 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     }
 
     public function stats_body(){
-        // FORM BODY
+        $this->nav();
         ?>
-        <!-- nav -->
-        <?php $this->nav(); ?>
 
         <div id="custom-style"></div>
         <div id="wrapper">
@@ -872,7 +859,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 let content = $('#content')
 
                 /* set title */
-                title.html( postReport.translations.title )
+                title.html( jsObject.translations.title )
 
                 /* set vertical size the form column*/
                 $('#custom-style').append(`<style>#wrapper { height: inherit !important; }</style>`)
@@ -925,10 +912,176 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         <?php
     }
 
-    public function maps_body(){
+
+    public function invite_body(){
+        $this->nav();
         ?>
-        <!-- nav -->
-        <?php $this->nav(); ?>
+        <div id="custom-style"></div>
+        <div id="wrapper">
+            <hr>
+            <div class="grid-x grid-padding-x" id="send-options">
+                <div class="cell">
+                    <h1>Collaborative Reporting</h1>
+                    <p>Invite someone to assist you in reporting movement data in this stream. This person will see and edit any reports you have created in this stream like you do.</p>
+                    <div class="button-group">
+                        <a class="button hollow" id="collaborative_reporting_copy">Copy Link</a>
+                        <a class="button hollow" id="collaborative_reporting_email">Email Link</a>
+                        <a class="button hollow" id="collaborative_reporting_text">Text Link</a>
+                    </div>
+                    <div class="input-group input-field collaborative_reporting_email" style="display:none;">
+                        <span class="input-group-label">email</span>
+                        <input class="input-group-field" type="email" placeholder="email address">
+                        <div class="input-group-button">
+                            <input type="submit" class="button collaborative_reporting_email_submit" value="Submit">
+                        </div>
+                    </div>
+                    <div class="input-group input-field collaborative_reporting_text" style="display:none;">
+                        <span class="input-group-label">sms</span>
+                        <input class="input-group-field" type="tel" placeholder="phone number">
+                        <div class="input-group-button">
+                            <input type="submit" class="button collaborative_reporting_text_submit" value="Submit">
+                        </div>
+                    </div>
+                </div>
+                <div class="cell">
+                    <h1>New Child Stream</h1>
+                    <p>Invite someone to create a new child stream to this stream. This will link their stream in the system as a child to this stream. Child stream reports total up and are visible to parent streams.</p>
+                    <div class="button-group">
+                        <a class="button hollow" id="child_stream_copy">Copy Link</a>
+                        <a class="button hollow" id="child_stream_email">Email Link</a>
+                        <a class="button hollow" id="child_stream_text">Text Link</a>
+                    </div>
+                    <div class="input-group input-field child_stream_email" style="display:none;">
+                        <span class="input-group-label">email</span>
+                        <input class="input-group-field" type="email" placeholder="email address">
+                        <div class="input-group-button">
+                            <input type="submit" class="button child_stream_email_submit" value="Submit">
+                        </div>
+                    </div>
+                    <div class="input-group input-field child_stream_text" style="display:none;">
+                        <span class="input-group-label">sms</span>
+                        <input class="input-group-field" type="tel" placeholder="phone number">
+                        <div class="input-group-button">
+                            <input type="submit" class="button child_stream_text_submit" value="Submit">
+                        </div>
+                    </div>
+                </div>
+                <div class="cell">
+                    <h1>New Stream</h1>
+                    <p>Invite someone to start a new independent stream.</p>
+                    <div class="button-group">
+                        <a class="button hollow" id="new_stream_copy">Copy Link</a>
+                        <a class="button hollow" id="new_stream_email">Email Link</a>
+                        <a class="button hollow" id="new_stream_text">Text Link</a>
+                    </div>
+                    <div class="input-group input-field new_stream_email" style="display:none;">
+                        <span class="input-group-label">email</span>
+                        <input class="input-group-field" type="email" placeholder="email address">
+                        <div class="input-group-button">
+                            <input type="submit" class="button new_stream_email_submit" value="Submit">
+                        </div>
+                    </div>
+                    <div class="input-group input-field new_stream_text" style="display:none;">
+                        <span class="input-group-label">sms</span>
+                        <input class="input-group-field" type="tel" placeholder="phone number">
+                        <div class="input-group-button">
+                            <input type="submit" class="button new_stream_text_submit" value="Submit">
+                        </div>
+                    </div>
+                </div>
+                <div class="cell center" id="bottom-spinner"><span class="loading-spinner active"></span></div>
+                <div class="cell grid" id="error"></div>
+            </div>
+        </div> <!-- form wrapper -->
+        <script>
+            jQuery(document).ready(function($){
+                window.add_invite_listener = () => {
+
+                    jQuery('.loading-spinner').removeClass('active')
+
+                    jQuery('#collaborative_reporting_copy').on('click', function(e){
+                        alert('copy')
+                    })
+                    jQuery('#collaborative_reporting_email').on('click', function(e){
+                        jQuery('.input-field').hide()
+                        jQuery('.collaborative_reporting_email').show()
+                    })
+                    jQuery('#collaborative_reporting_text').on('click', function(e){
+                        jQuery('.input-field').hide()
+                        jQuery('.collaborative_reporting_text').show()
+                    })
+                    jQuery('.collaborative_reporting_email_submit').on('click', function(e){
+                        // process
+                        success_send()
+                    })
+                    jQuery('.collaborative_reporting_text_submit').on('click', function(e){
+                        // process
+                        success_send()
+                    })
+
+
+                    jQuery('#child_stream_copy').on('click', function(e){
+                        alert('copy')
+                    })
+                    jQuery('#child_stream_email').on('click', function(e){
+                        jQuery('.input-field').hide()
+                        jQuery('.child_stream_email').show()
+                    })
+                    jQuery('#child_stream_text').on('click', function(e){
+                        jQuery('.input-field').hide()
+                        jQuery('.child_stream_text').show()
+                    })
+                    jQuery('.child_stream_email_submit').on('click', function(e){
+                        // process
+                        success_send()
+
+                    })
+                    jQuery('.child_stream_text_submit').on('click', function(e){
+                        // process
+                        success_send()
+                    })
+
+
+                    jQuery('#new_stream_copy').on('click', function(e){
+                        alert('copy')
+                    })
+                    jQuery('#new_stream_email').on('click', function(e){
+                        jQuery('.input-field').hide()
+                        jQuery('.new_stream_email').show()
+                    })
+                    jQuery('#new_stream_text').on('click', function(e){
+                        jQuery('.input-field').hide()
+                        jQuery('.new_stream_text').show()
+                    })
+                    jQuery('.new_stream_email_submit').on('click', function(e){
+                        // process
+                        success_send()
+                    })
+                    jQuery('.new_stream_text_submit').on('click', function(e){
+                        // process
+                        success_send()
+                    })
+
+                }
+                window.add_invite_listener()
+
+                function success_send( ) {
+                    let send_options = jQuery('#send-options')
+                    send_options.empty().html(`
+                    <div class="cell">
+                        <h1>Private link sent!</h1>
+                    </div>
+                    `)
+                }
+            })
+        </script>
+        <?php
+    }
+
+    public function maps_body(){
+        DT_Mapbox_API::geocoder_scripts();
+        $this->nav();
+        ?>
 
         <div id="custom-style"></div>
         <style>
@@ -969,7 +1122,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 /* LOAD */
                 let spinner = $('.loading-spinner')
                 let title = $('#title')
-                title.html( postReport.translations.title )
+                title.html( jsObject.translations.title )
 
                 /* set vertical size the form column*/
                 $('#custom-style').append(`
@@ -987,13 +1140,13 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
 
                 window.get_geojson().then(function (data) {
-                    mapboxgl.accessToken = postReport.map_key;
+                    mapboxgl.accessToken = jsObject.map_key;
                     var map = new mapboxgl.Map({
                         container: 'map',
                         style: 'mapbox://styles/mapbox/light-v10',
                         center: [-98, 38.88],
                         minZoom: 0,
-                        zoom: 0
+                        zoom: 3
                     });
 
                     // disable map rotation using right click + drag
@@ -1153,18 +1306,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             })
         </script>
         <?php
-    }
-
-    /**
-     * Open default restrictions for access to registered endpoints
-     * @param $authorized
-     * @return bool
-     */
-    public function authorize_url( $authorized ){
-        if ( isset( $_SERVER['REQUEST_URI'] ) && strpos( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ), $this->root . '/v1/'.$this->type ) !== false ) {
-            $authorized = true;
-        }
-        return $authorized;
     }
 
     /**
@@ -1339,6 +1480,123 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     public function statistics_reports( $post_id ) : array {
         global $wpdb;
         $data = [];
+
+        $results = $wpdb->get_results( $wpdb->prepare( "
+            SELECT r.*,  lg.level_name, lg.name, lg.admin0_grid_id, lg0.name as country, lg.admin1_grid_id, lg1.name as state, lg.admin2_grid_id, lg2.name as county
+            FROM $wpdb->dt_reports as r
+            LEFT JOIN $wpdb->dt_location_grid as lg
+            ON r.grid_id= lg.grid_id
+            LEFT JOIN $wpdb->dt_location_grid as lg0
+            ON lg.admin0_grid_id=lg0.grid_id
+            LEFT JOIN $wpdb->dt_location_grid as lg1
+            ON lg.admin1_grid_id=lg1.grid_id
+            LEFT JOIN $wpdb->dt_location_grid as lg2
+            ON lg.admin2_grid_id=lg2.grid_id
+            WHERE post_id = %s
+            ORDER BY time_end DESC
+            ", $post_id ), ARRAY_A );
+
+        if ( empty( $results ) ){
+            return [];
+        }
+
+        $countries = [];
+        $states = [];
+        $counties = [];
+
+        foreach ( $results as $index => $result ){
+            /*time*/
+            $time = $result['time_end'];
+            if ( empty( $time ) ) {
+                $time = $result['time_begin'];
+            }
+            if ( empty( $time ) ) {
+                continue;
+            }
+            $year = gmdate( 'Y', $time );
+            if ( ! isset( $data[$year] ) ) {
+                $data[$year] = [
+                    'total_baptisms' => 0,
+                    'total_disciples' => 0,
+                    'total_churches' => 0,
+                    'total_countries' => 0,
+                    'total_states' => 0,
+                    'total_counties' => 0,
+                    'countries' => [],
+                    'states' => [],
+                    'counties' => []
+                ];
+            }
+            $result['payload'] = maybe_unserialize( $result['payload'] );
+
+            if ( empty( $result['grid_id'] ) ) {
+                continue;
+            }
+
+            // set levels
+            if ( ! isset( $countries[$result['admin0_grid_id'] ] ) ) {
+                $countries[ $result['admin0_grid_id'] ] = [
+                    'churches' => 0,
+                    'disciples' => 0,
+                    'baptisms' => 0,
+                    'name' => $result['country']
+                ];
+            }
+            if ( ! isset( $states[$result['admin1_grid_id'] ] ) ) {
+                $states[$result['admin1_grid_id'] ] = [
+                    'churches' => 0,
+                    'disciples' => 0,
+                    'baptisms' => 0,
+                    'name' => $result['state'] . ', ' . $result['country']
+                ];
+            }
+            if ( ! isset( $counties[$result['admin2_grid_id'] ] ) ) {
+                $counties[$result['admin2_grid_id'] ] = [
+                    'churches' => 0,
+                    'disciples' => 0,
+                    'baptisms' => 0,
+                    'name' => $result['county'] . ', ' . $result['state'] . ', ' . $result['country']
+                ];
+            }
+
+            // add churches and baptisms
+            if ( isset( $result['payload']['type'] ) && $result['payload']['type'] === 'churches' ) {
+                $data[$year]['total_churches'] = $data[$year]['total_churches'] + intval( $result['value'] ); // total
+                $countries[$result['admin0_grid_id']]['churches'] = $countries[$result['admin0_grid_id']]['churches'] + intval( $result['value'] ); // country
+                $states[$result['admin1_grid_id']]['churches'] = $states[$result['admin1_grid_id']]['churches'] + intval( $result['value'] ); // state
+                $counties[$result['admin2_grid_id']]['churches'] = $counties[$result['admin2_grid_id']]['churches'] + intval( $result['value'] ); // counties
+            }
+            else if ( isset( $result['payload']['type'] ) && $result['payload']['type'] === 'baptisms' ) {
+                $data[$year]['total_baptisms'] = $data[$year]['total_baptisms'] + intval( $result['value'] );
+                $countries[$result['admin0_grid_id']]['baptisms'] = $countries[$result['admin0_grid_id']]['baptisms'] + intval( $result['value'] );
+                $states[$result['admin1_grid_id']]['baptisms'] = $states[$result['admin1_grid_id']]['baptisms'] + intval( $result['value'] );
+                $counties[$result['admin2_grid_id']]['baptisms'] = $counties[$result['admin2_grid_id']]['baptisms'] + intval( $result['value'] );
+            } else if ( isset( $result['payload']['type'] ) && $result['payload']['type'] === 'disciples' ) {
+                $data[$year]['total_disciples'] = $data[$year]['total_disciples'] + intval( $result['value'] );
+                $countries[$result['admin0_grid_id']]['disciples'] = $countries[$result['admin0_grid_id']]['disciples'] + intval( $result['value'] );
+                $states[$result['admin1_grid_id']]['disciples'] = $states[$result['admin1_grid_id']]['disciples'] + intval( $result['value'] );
+                $counties[$result['admin2_grid_id']]['disciples'] = $counties[$result['admin2_grid_id']]['disciples'] + intval( $result['value'] );
+            }
+
+            $data[$year]['total_countries'] = count( $countries );
+            $data[$year]['total_states'] = count( $states );
+            $data[$year]['total_counties'] = count( $counties );
+
+            $data[$year]['countries'] = $countries;
+            $data[$year]['states'] = $states;
+            $data[$year]['counties'] = $counties;
+
+        }
+
+        return $data;
+    }
+
+    public function child_statistics_reports( $post_id ) : array {
+        global $wpdb;
+        $data = [];
+
+        // @todo get list of children post_ids
+        // setup for WHERE found in
 
         $results = $wpdb->get_results( $wpdb->prepare( "
             SELECT r.*,  lg.level_name, lg.name, lg.admin0_grid_id, lg0.name as country, lg.admin1_grid_id, lg1.name as state, lg.admin2_grid_id, lg2.name as county
