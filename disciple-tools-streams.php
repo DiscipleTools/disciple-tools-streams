@@ -130,16 +130,15 @@ class DT_Streams {
         require_once( 'admin/customize-site-linking.php' );
         require_once( 'post-type/enqueue.php' );
 
-
         /* metrics */
         require_once( 'metrics/mapbox-maps.php' );
         require_once( 'metrics/mapbox-personal-maps.php' );
 
         /* magic links */
-        require_once( 'magic-link/magic-map.php' );
-        require_once( 'magic-link/magic-registration.php' );
-        require_once( 'magic-link/magic-retrieve-link.php' );
-        require_once( 'magic-link/access.php' );
+        require_once( 'public-map/magic-map.php' );
+        require_once( 'access/magic-registration.php' );
+        require_once( 'access/magic-retrieve-link.php' );
+        require_once( 'access/access.php' );
     }
 
     /**

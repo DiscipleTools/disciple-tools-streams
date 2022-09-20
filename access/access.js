@@ -1,8 +1,8 @@
 jQuery(document).ready(function($){
-  window.new_report = ( action, form_data ) => {
+  window.new_stream = ( action, data ) => {
     return $.ajax({
       type: "POST",
-      data: JSON.stringify({ action: action, parts: jsObject.parts, data: form_data }),
+      data: JSON.stringify({ action: action, parts: jsObject.parts, data: data }),
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       url: jsObject.root + jsObject.parts.root + '/v1/' + jsObject.parts.type,
@@ -17,15 +17,15 @@ jQuery(document).ready(function($){
 
   function build_modal(){
     // add html
-    $('#report-content').empty().html(`
-        <input type="hidden" id="report-grid-id" />
+    $('#content').empty().html(`
+        <input type="hidden" id="stream-grid-id" />
         <div id="panel1" class="first not-new not-send">
             <div class="grid-x">
                 <div class="cell">
-                    <button type="button" class="button expanded show-new">I'm reporting for the first time</button>
+                    <button type="button" class="button expanded show-new">Register a New Stream</button>
                 </div>
                 <div class="cell">
-                    <button type="button" class="button expanded show-send">I've reported previously</button>
+                    <button type="button" class="button expanded show-send">Retrieve My Private Link</button>
                 </div>
             </div>
         </div>
@@ -49,7 +49,11 @@ jQuery(document).ready(function($){
                     <input type="tel" id="phone" name="phone" class="required" placeholder="Phone" />
                     <span id="phone-error" class="form-error">You're phone is required.</span>
                 </div>
-
+                <div class="cell">
+                    <label for="location">City or Address</label>
+                    <input type="text" id="location" name="location" placeholder="City or Address" />
+                    <span id="phone-error" class="form-error"></span>
+                </div>
                 <div class="cell center">
                     <button class="button" id="submit-new">Register</button> <span class="loading-spinner"></span><br>
                     <a class="show-first">back</a>
@@ -65,7 +69,6 @@ jQuery(document).ready(function($){
                     <input type="email" id="e2-send" name="email" class="required" placeholder="Email" />
                     <span id="email-error-send" class="form-error">You're email is required.</span>
                 </div>
-
                 <div class="cell center">
                     <button class="button" id="submit-send-link">Email me access link</button> <span class="loading-spinner"></span><br>
                     <a class="show-first">back</a>
@@ -100,20 +103,20 @@ jQuery(document).ready(function($){
 
     // listen to buttons
     $('#submit-new').on('click', function(){
-      create_reporter()
+      create_streamer()
     })
     $('#submit-send-link').on('click', function(){
-      send_link_to_reporter()
+      retrieve_link_to_streamer()
     })
   } // end function
   build_modal()
 
 
-  function create_reporter() {
+  function create_streamer() {
     let spinner = $('.loading-spinner')
     spinner.addClass('active')
 
-    let submit_button = $('#submit-report')
+    let submit_button = $('#submit-stream')
     submit_button.prop('disabled', true)
 
     let honey = $('#email').val()
@@ -161,26 +164,41 @@ jQuery(document).ready(function($){
       spinner.removeClass('active')
       return;
     }
+    
+    let location_input = $('#location')
+    let location = location_input.val()
+    // if ( ! location ) {
+    //   $('#location-error').show()
+    //   submit_button.removeClass('loading')
+    //   email_input.focus(function(){
+    //     $('#location-error').hide()
+    //   })
+    //   submit_button.prop('disabled', false)
+    //   spinner.removeClass('active')
+    //   return;
+    // }
 
 
     let form_data = {
       name: name,
       email: email,
-      phone: phone,
+      phone: phone, 
+      location: location
     }
+    console.log(form_data)
 
-    window.new_report( 'new_registration', form_data )
+    window.new_stream( 'new_registration', form_data )
       .done(function(response){
         console.log(response)
         let new_panel = $('#new-panel')
         if ( response.status === 'EMAILED' ) {
           new_panel.empty().html(`
-            Excellent! Check your email for a direct link to your reporting portal.<br><br>
+            Excellent! Check your email for a direct link to your stream portal.<br><br>
           `)
         }
         else if ( response.status === 'CREATED' ) {
           new_panel.empty().html(`
-            Excellent! You've been sent an email with your reporting link. Please, complete your remaining community profile.<br><br>
+            Excellent! You've been sent an email with your stream link. Please, complete your remaining community profile.<br><br>
             <a class="button" href="${response.link}" target="_parent">Open Reporting Portal</a>
           `)
         }
@@ -195,7 +213,7 @@ jQuery(document).ready(function($){
       })
   }
 
-  function send_link_to_reporter(){
+  function retrieve_link_to_streamer(){
     let spinner = $('.loading-spinner')
     spinner.addClass('active')
 
@@ -226,7 +244,7 @@ jQuery(document).ready(function($){
       email: email
     }
 
-    window.new_report( 'send_link', form_data )
+    window.new_stream( 'retrieve_link', form_data )
       .done(function(response){
         console.log(response)
         if ( response ) {
