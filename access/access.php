@@ -154,7 +154,6 @@ class DT_Streams_App_Access extends DT_Magic_Url_Base
         $user_email = sanitize_email( wp_unslash( $data['email'] ) );
 
         $identity = $this->_build_identity( $user_email );
-        dt_write_log($identity);
 
         // has user_id and has streams
         if ( isset( $identity['stream_ids'] ) && ! empty( $identity['stream_ids'] ) ) {
@@ -167,7 +166,6 @@ class DT_Streams_App_Access extends DT_Magic_Url_Base
 
         // has a user id, but does not have a contact_id. This should not happen.
         if( ! empty( $identity['user_id'] ) && empty( $identity['contact_ids'] ) ) {
-            dt_write_log('has a user id, but does not have a contact_id. This should not happen.');
             return [
                 'status' => 'FAIL',
                 'message' => 'User ID exists but contact has not been created'
@@ -177,9 +175,6 @@ class DT_Streams_App_Access extends DT_Magic_Url_Base
         // has user_id but has no streams
         if ( ! empty( $identity['user_id'] ) && empty( $identity['stream_ids'] ) ) {
             $new_stream = $this->_create_stream( $identity, $stream_name );
-            dt_write_log('has user_id but has no streams');
-            dt_write_log($new_stream);
-
             if ( is_wp_error( $new_stream ) ) {
                 return [
                     'status' => 'FAIL',
@@ -189,13 +184,10 @@ class DT_Streams_App_Access extends DT_Magic_Url_Base
             // rebuild identity
             $identity = $this->_build_identity( $user_email );
             $send_result = $this->_send_to_user( $identity );
-            dt_write_log($send_result);
             return [
                 'status' => 'EMAILED'
             ];
         }
-
-        return;
 
         if ( empty( $identity['user_id'] ) ) {
             $key = dt_create_unique_key();

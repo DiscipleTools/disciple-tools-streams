@@ -345,11 +345,12 @@ jQuery(document).ready(function($) {
                 $('#modal-full').foundation('open')
             })
 
+            /*CHILDREN*/
             $(`#${type_settings.root}-${type_settings.type}-manage-child-reports`).on('click', function(e){
                 let spinner = $('.loading-spinner')
                 let title = $('#modal-full-title')
                 let content = $('#modal-full-content')
-                title.empty().html(`<h2>Reports <a class="button hollow small" href="${wpApiShare.site_url}/${type_settings.root}/${type_settings.type}/${detailsSettings.post_fields[type_settings.meta_key]}">edit</a></h2>`)
+                title.empty().html(`<h2>Child Reports</h2>`)
                 content.empty().html(`
                     <span class="loading-spinner active"></span>
                     <div class="grid-x grid-padding-x" ">
@@ -393,7 +394,7 @@ jQuery(document).ready(function($) {
                             let inner_list = $('#report-list-'+window.lodash.escape( i ))
                             $.each(v, function(ii,vv){
                                 inner_list.append(`
-                                <tr><td>${window.lodash.escape( vv.value )} total ${window.lodash.escape( vv.payload.type )} in ${window.lodash.escape( vv.label )} (${vv.title})</td><td style="vertical-align: middle;"></td></tr>
+                                <tr><td>${window.lodash.escape( vv.value )} total ${window.lodash.escape( vv.payload.type )} in ${window.lodash.escape( vv.label )} (<a href="${wpApiShare.site_url}/streams/${vv.post_id}">${vv.title}</a>)</td><td style="vertical-align: middle;"></td></tr>
                             `)
                             })
                         })

@@ -55,15 +55,26 @@ class DT_Stream_Base extends DT_Module_Base {
         }
     }
     public function dt_set_roles_and_permissions( $expected_roles ){
-        $expected_roles["streams_admin"] = [
-            "label" => __( 'Streams Admin', 'disciple-tools-streams' ),
-            "description" => "Has all permissions for streams",
-            "permissions" => [
-                'access_disciple_tools' => true,
-                'view_any_' . $this->post_type => true,
-                'dt_all_admin_' . $this->post_type => true,
-            ]
-        ];
+
+        if ( !isset( $expected_roles["streams_admin"] ) ) {
+            $expected_roles["streams_admin"] = [
+                "label" => __('Streams Admin', 'disciple-tools-streams'),
+                "description" => "Has all permissions for streams",
+                "permissions" => [
+                    'access_disciple_tools' => true,
+                    'view_any_' . $this->post_type => true,
+                    'dt_all_admin_' . $this->post_type => true,
+                ]
+            ];
+        }
+        if ( !isset( $expected_roles["stream_reporter"] ) ){
+            $expected_roles["stream_reporter"] = [
+                "label" => __( 'Stream Reporter', 'disciple-tools-streams' ),
+                "description" => "Can report on streams through magic link.",
+                "permissions" => []
+            ];
+        }
+
         if ( !isset( $expected_roles["multiplier"] ) ){
             $expected_roles["multiplier"] = [
                 "label" => __( 'Multiplier', 'disciple-tools-streams' ),
@@ -92,6 +103,7 @@ class DT_Stream_Base extends DT_Module_Base {
             ];
         }
 
+
         foreach ( $expected_roles as $role => $role_value ){
             if ( isset( $expected_roles[$role]["permissions"]['access_contacts'] ) && $expected_roles[$role]["permissions"]['access_contacts'] ){
                 $expected_roles[$role]["permissions"]['access_' . $this->post_type] = true;
@@ -101,6 +113,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 $expected_roles[$role]["permissions"]['view_any_' . $this->post_type] = true;
                 $expected_roles[$role]["permissions"]['dt_all_admin_' . $this->post_type] = true;
             }
+
         }
 
         return $expected_roles;
@@ -307,14 +320,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-group.svg',
                 "in_create_form" => true,
             ];
-//            $fields['generations_total'] = [
-//                'name' => __( "Highest Generation", 'disciple-tools-streams' ),
-//                'type' => 'number',
-//                'default' => '0',
-//                'tile' => 'stats',
-//                'icon' => get_template_directory_uri() . "/dt-assets/images/groups.svg",
-//                'show_in_table' => true
-//            ];
+
 
 
 

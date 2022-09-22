@@ -43,6 +43,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         // register tiles if on details page
         add_filter( 'dt_details_additional_tiles', [ $this, 'dt_details_additional_tiles' ], 20, 2 );
         add_action( 'dt_details_additional_section', [ $this, 'dt_details_additional_section' ], 30, 2 );
+        add_filter( 'dt_custom_fields_settings', [ $this, 'dt_custom_fields_settings' ], 50, 2 );
         add_action( 'wp_enqueue_scripts', [ $this, 'tile_scripts' ], 100 );
 
         // register REST and REST access
@@ -99,6 +100,28 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         add_filter( 'dt_magic_url_base_allowed_css', [ $this, 'dt_magic_url_base_allowed_css' ], 10, 1 );
         add_filter( 'dt_magic_url_base_allowed_js', [ $this, 'dt_magic_url_base_allowed_js' ], 10, 1 );
         add_action( 'wp_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ], 100 );
+    }
+
+    public function dt_custom_fields_settings( $fields, $post_type ) {
+        if ( $post_type === "contacts" ) {
+            if (isset($fields["overall_status"]) && !isset($fields["overall_status"]["default"]["reporting_only"])) {
+                $fields["overall_status"]["default"]["reporting_only"] = [
+                    'label' => 'Reporting Only',
+                    'description' => 'Contact is a reporting practitioner.',
+                    'color' => '#F43636'
+                ];
+            }
+            if (isset($fields["sources"]) && !isset($fields["sources"]["default"]["self_registered_reporter"])) {
+                $fields["sources"]["default"]["self_registered_reporter"] = [
+                    'label' => 'Self-Registered Reporter',
+                    'key' => 'self_registered_reporter',
+                    'type' => 'other',
+                    'description' => 'Contact came from self-registration portal as a reporter.',
+                    'enabled' => 1
+                ];
+            }
+        }
+        return $fields;
     }
 
     public function dt_details_additional_tiles( $tiles, $post_type = "" ){
@@ -174,8 +197,8 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
                 // types
                 if ( isset( $types['report'], $types['report']['root'], $types['report']['type'] ) ) {
-
-                    $reports = self::instance()->child_statistics_reports( get_the_ID() );
+                    $post_id = get_the_ID();
+                    $reports = self::instance()->retrieve_reports( (string) $post_id , true );
                     /**
                      * Button Controls
                      */
@@ -1585,6 +1608,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
         if ( $children ) {
             $children = $this->_get_children( $post_id );
+            if ( ! $children ) {
+                return $data;
+            }
             $results = $wpdb->get_results( $wpdb->prepare( "
                     SELECT r.*, p.post_title as title
                     FROM $wpdb->dt_reports r
@@ -1626,7 +1652,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
         if ( $children ) {
             $children = $this->_get_children( $post_id );
-
+            if ( ! $children ) {
+                return $data;
+            }
             // @phpcs:disable
             $results = $wpdb->get_results( "
             SELECT r.*,  lg.level_name, lg.name, lg.admin0_grid_id, lg0.name as country, lg.admin1_grid_id, lg1.name as state, lg.admin2_grid_id, lg2.name as county
@@ -1787,124 +1815,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         return $data;
     }
 
-    public function child_statistics_reports( $post_id ) : array {
-        global $wpdb;
-        $data = [];
-
-        $children = $this->_get_children( $post_id );
-
-        // @phpcs:disable
-        $results = $wpdb->get_results( "
-            SELECT r.*,  lg.level_name, lg.name, lg.admin0_grid_id, lg0.name as country, lg.admin1_grid_id, lg1.name as state, lg.admin2_grid_id, lg2.name as county
-            FROM $wpdb->dt_reports as r
-            LEFT JOIN $wpdb->dt_location_grid as lg
-            ON r.grid_id= lg.grid_id
-            LEFT JOIN $wpdb->dt_location_grid as lg0
-            ON lg.admin0_grid_id=lg0.grid_id
-            LEFT JOIN $wpdb->dt_location_grid as lg1
-            ON lg.admin1_grid_id=lg1.grid_id
-            LEFT JOIN $wpdb->dt_location_grid as lg2
-            ON lg.admin2_grid_id=lg2.grid_id
-            WHERE post_id IN ($children)
-            ORDER BY time_end DESC
-            ", ARRAY_A );
-        // @phpcs:enable
-
-        if ( empty( $results ) ){
-            return [];
-        }
-
-        $countries = [];
-        $states = [];
-        $counties = [];
-
-        foreach ( $results as $index => $result ){
-            /*time*/
-            $time = $result['time_end'];
-            if ( empty( $time ) ) {
-                $time = $result['time_begin'];
-            }
-            if ( empty( $time ) ) {
-                continue;
-            }
-            $year = gmdate( 'Y', $time );
-            if ( ! isset( $data[$year] ) ) {
-                $data[$year] = [
-                    'total_baptisms' => 0,
-                    'total_disciples' => 0,
-                    'total_churches' => 0,
-                    'total_countries' => 0,
-                    'total_states' => 0,
-                    'total_counties' => 0,
-                    'countries' => [],
-                    'states' => [],
-                    'counties' => []
-                ];
-            }
-            $result['payload'] = maybe_unserialize( $result['payload'] );
-
-            if ( empty( $result['grid_id'] ) ) {
-                continue;
-            }
-
-            // set levels
-            if ( ! isset( $countries[$result['admin0_grid_id'] ] ) ) {
-                $countries[ $result['admin0_grid_id'] ] = [
-                    'churches' => 0,
-                    'disciples' => 0,
-                    'baptisms' => 0,
-                    'name' => $result['country']
-                ];
-            }
-            if ( ! isset( $states[$result['admin1_grid_id'] ] ) ) {
-                $states[$result['admin1_grid_id'] ] = [
-                    'churches' => 0,
-                    'disciples' => 0,
-                    'baptisms' => 0,
-                    'name' => $result['state'] . ', ' . $result['country']
-                ];
-            }
-            if ( ! isset( $counties[$result['admin2_grid_id'] ] ) ) {
-                $counties[$result['admin2_grid_id'] ] = [
-                    'churches' => 0,
-                    'disciples' => 0,
-                    'baptisms' => 0,
-                    'name' => $result['county'] . ', ' . $result['state'] . ', ' . $result['country']
-                ];
-            }
-
-            // add churches and baptisms
-            if ( isset( $result['payload']['type'] ) && $result['payload']['type'] === 'churches' ) {
-                $data[$year]['total_churches'] = $data[$year]['total_churches'] + intval( $result['value'] ); // total
-                $countries[$result['admin0_grid_id']]['churches'] = $countries[$result['admin0_grid_id']]['churches'] + intval( $result['value'] ); // country
-                $states[$result['admin1_grid_id']]['churches'] = $states[$result['admin1_grid_id']]['churches'] + intval( $result['value'] ); // state
-                $counties[$result['admin2_grid_id']]['churches'] = $counties[$result['admin2_grid_id']]['churches'] + intval( $result['value'] ); // counties
-            }
-            else if ( isset( $result['payload']['type'] ) && $result['payload']['type'] === 'baptisms' ) {
-                $data[$year]['total_baptisms'] = $data[$year]['total_baptisms'] + intval( $result['value'] );
-                $countries[$result['admin0_grid_id']]['baptisms'] = $countries[$result['admin0_grid_id']]['baptisms'] + intval( $result['value'] );
-                $states[$result['admin1_grid_id']]['baptisms'] = $states[$result['admin1_grid_id']]['baptisms'] + intval( $result['value'] );
-                $counties[$result['admin2_grid_id']]['baptisms'] = $counties[$result['admin2_grid_id']]['baptisms'] + intval( $result['value'] );
-            } else if ( isset( $result['payload']['type'] ) && $result['payload']['type'] === 'disciples' ) {
-                $data[$year]['total_disciples'] = $data[$year]['total_disciples'] + intval( $result['value'] );
-                $countries[$result['admin0_grid_id']]['disciples'] = $countries[$result['admin0_grid_id']]['disciples'] + intval( $result['value'] );
-                $states[$result['admin1_grid_id']]['disciples'] = $states[$result['admin1_grid_id']]['disciples'] + intval( $result['value'] );
-                $counties[$result['admin2_grid_id']]['disciples'] = $counties[$result['admin2_grid_id']]['disciples'] + intval( $result['value'] );
-            }
-
-            $data[$year]['total_countries'] = count( $countries );
-            $data[$year]['total_states'] = count( $states );
-            $data[$year]['total_counties'] = count( $counties );
-
-            $data[$year]['countries'] = $countries;
-            $data[$year]['states'] = $states;
-            $data[$year]['counties'] = $counties;
-
-        }
-
-        return $data;
-    }
-
     public function delete_report( $params, $post_id ) {
         $result = Disciple_Tools_Reports::delete( $params['report_id'] );
         if ( ! $result ) {
@@ -1921,11 +1831,13 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
         if ( $children ) {
             $children = $this->_get_children( $post_id );
+            if ( ! $children ) {
+                return $this->_empty_geojson();
+            }
             $results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->dt_reports WHERE post_id IN ($children) ORDER BY time_end DESC", $post_id ), ARRAY_A ); // @phpcs:ignore
         } else {
             $results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->dt_reports WHERE post_id = %s ORDER BY time_end DESC", $post_id ), ARRAY_A );
         }
-
 
         if ( empty( $results ) ) {
             return $this->_empty_geojson();
