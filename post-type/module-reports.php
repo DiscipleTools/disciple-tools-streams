@@ -121,7 +121,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
                 // types
                 if ( isset( $types['report'], $types['report']['root'], $types['report']['type'] ) ) {
-                    $types['report']['new_key'] = $magic->create_unique_key();
 
                     $reports = self::instance()->statistics_reports( get_the_ID() );
                     /**
@@ -150,7 +149,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                                 </div>
                             </div>
                             <div><hr>
-                                <a class="button hollow" id="<?php echo esc_attr( $types['report']['root'] ) ?>-<?php echo esc_attr( $types['report']['type'] ) ?>-manage-reports">manage reports</a>
+                                <a class="button hollow" id="<?php echo esc_attr( $types['report']['root'] ) ?>-<?php echo esc_attr( $types['report']['type'] ) ?>-manage-reports">full reports</a>
                             </div>
                             <?php
                             break; // loop only the most recent year
@@ -175,7 +174,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
                 // types
                 if ( isset( $types['report'], $types['report']['root'], $types['report']['type'] ) ) {
-                    $types['report']['new_key'] = $magic->create_unique_key();
 
                     $reports = self::instance()->child_statistics_reports( get_the_ID() );
                     /**
@@ -204,7 +202,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                                 </div>
                             </div>
                             <div><hr>
-                                <a class="button hollow" id="<?php echo esc_attr( $types['report']['root'] ) ?>-<?php echo esc_attr( $types['report']['type'] ) ?>-manage-reports">manage reports</a>
+                                <a class="button hollow" id="<?php echo esc_attr( $types['report']['root'] ) ?>-<?php echo esc_attr( $types['report']['type'] ) ?>-manage-child-reports">full reports</a>
                             </div>
                             <?php
                             break; // loop only the most recent year
@@ -411,8 +409,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 float:right;
             }
 
-
-
             /* size specific style section */
             @media screen and (max-width: 991px) {
                 /* start of large tablet styles */
@@ -589,9 +585,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                                 </div>
                                 <div class="cell">
                                     <div id="mapbox-wrapper">
-                                        <div id="mapbox-autocomplete" class="mapbox-autocomplete input-church" data-autosubmit="false" data-add-address="true">
-                                            <input id="mapbox-search" type="text" name="mapbox_search" class="input-church-field" autocomplete="off" placeholder="${ window.lodash.escape( jsObject.translations.search_location ) /*Search Location*/ }" />
-                                            <div class="input-church-button">
+                                        <div id="mapbox-autocomplete" class="mapbox-autocomplete input-group" data-autosubmit="false" data-add-address="true">
+                                            <input id="mapbox-search" type="text" name="mapbox_search" class="input-group-field" autocomplete="off" placeholder="${ window.lodash.escape( jsObject.translations.search_location ) /*Search Location*/ }" />
+                                            <div class="input-group-button">
                                                 <button id="mapbox-spinner-button" class="button hollow" style="display:none;border-color:lightgrey;">
                                                     <span class="" style="border-radius: 50%;width: 24px;height: 24px;border: 0.25rem solid lightgrey;border-top-color: black;animation: spin 1s infinite linear;display: inline-block;"></span>
                                                 </button>
@@ -1434,6 +1430,15 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 ],
             ]
         );
+        register_rest_route(
+            $namespace, '/'.$this->type.'/all_children', [
+                [
+                    'methods'  => WP_REST_Server::CREATABLE,
+                    'callback' => [ $this, 'endpoint_all_children' ],
+                    'permission_callback' => '__return_true',
+                ],
+            ]
+        );
     }
 
     public function endpoint( WP_REST_Request $request ) {
@@ -1483,7 +1488,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             return new WP_Error( __METHOD__, "Missing parameters", [ 'status' => 400 ] );
         }
 
-        $post_id =sanitize_text_field( wp_unslash( $params['post_id'] ) );
+        $post_id = sanitize_text_field( wp_unslash( $params['post_id'] ) );
 
         if ( ! Disciple_Tools_Posts::can_view( 'streams', $post_id ) ) {
             return new WP_Error( __METHOD__, "Do not have permission", [ 'status' => 401 ] );
@@ -1493,6 +1498,26 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         $data['reports'] = $this->retrieve_reports( $post_id );
         $data['stats'] = $this->statistics_reports( $post_id );
         $data['geojson'] = $this->geojson_reports( $post_id );
+        return $data;
+    }
+
+    public function endpoint_all_children( WP_REST_Request $request ) {
+        $params = $request->get_params();
+
+        if ( ! isset( $params['post_id'] ) ) {
+            return new WP_Error( __METHOD__, "Missing parameters", [ 'status' => 400 ] );
+        }
+
+        $post_id = sanitize_text_field( wp_unslash( $params['post_id'] ) );
+
+        if ( ! Disciple_Tools_Posts::can_view( 'streams', $post_id ) ) {
+            return new WP_Error( __METHOD__, "Do not have permission", [ 'status' => 401 ] );
+        }
+
+        $data = [];
+        $data['reports'] = $this->retrieve_reports( $post_id, true );
+        $data['stats'] = $this->statistics_reports( $post_id, true );
+        $data['geojson'] = $this->geojson_reports( $post_id, true );
         return $data;
     }
 
@@ -1554,11 +1579,27 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
     }
 
-    public function retrieve_reports( $post_id ) {
+    public function retrieve_reports( $post_id, $children = false ) {
         global $wpdb;
         $data = [];
 
-        $results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->dt_reports WHERE post_id = %s ORDER BY time_end DESC", $post_id ), ARRAY_A );
+        if ( $children ) {
+            $children = $this->_get_children( $post_id );
+            $results = $wpdb->get_results( $wpdb->prepare( "
+                    SELECT r.*, p.post_title as title
+                    FROM $wpdb->dt_reports r
+                    LEFT JOIN $wpdb->posts p ON p.ID=r.post_id
+                    WHERE r.post_id IN ($children) 
+                    ORDER BY r.time_end DESC", $post_id ), ARRAY_A ); // @phpcs:ignore
+        } else {
+            $results = $wpdb->get_results( $wpdb->prepare( "
+                    SELECT r.*, p.post_title as title
+                    FROM $wpdb->dt_reports r
+                    LEFT JOIN $wpdb->posts p ON p.ID=r.post_id
+                    WHERE r.post_id = %s 
+                    ORDER BY r.time_end DESC", $post_id ), ARRAY_A );
+        }
+
         if ( ! empty( $results ) ) {
             foreach ( $results as $index => $result ){
                 $time = $result['time_end'];
@@ -1579,11 +1620,31 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         return $data;
     }
 
-    public function statistics_reports( $post_id ) : array {
+    public function statistics_reports( $post_id, $children = false ) : array {
         global $wpdb;
         $data = [];
 
-        $results = $wpdb->get_results( $wpdb->prepare( "
+        if ( $children ) {
+            $children = $this->_get_children( $post_id );
+
+            // @phpcs:disable
+            $results = $wpdb->get_results( "
+            SELECT r.*,  lg.level_name, lg.name, lg.admin0_grid_id, lg0.name as country, lg.admin1_grid_id, lg1.name as state, lg.admin2_grid_id, lg2.name as county
+            FROM $wpdb->dt_reports as r
+            LEFT JOIN $wpdb->dt_location_grid as lg
+            ON r.grid_id= lg.grid_id
+            LEFT JOIN $wpdb->dt_location_grid as lg0
+            ON lg.admin0_grid_id=lg0.grid_id
+            LEFT JOIN $wpdb->dt_location_grid as lg1
+            ON lg.admin1_grid_id=lg1.grid_id
+            LEFT JOIN $wpdb->dt_location_grid as lg2
+            ON lg.admin2_grid_id=lg2.grid_id
+            WHERE post_id IN ($children)
+            ORDER BY time_end DESC
+            ", ARRAY_A );
+            // @phpcs:enable
+        } else {
+            $results = $wpdb->get_results( $wpdb->prepare( "
             SELECT r.*,  lg.level_name, lg.name, lg.admin0_grid_id, lg0.name as country, lg.admin1_grid_id, lg1.name as state, lg.admin2_grid_id, lg2.name as county
             FROM $wpdb->dt_reports as r
             LEFT JOIN $wpdb->dt_location_grid as lg
@@ -1597,6 +1658,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             WHERE post_id = %s
             ORDER BY time_end DESC
             ", $post_id ), ARRAY_A );
+        }
 
         if ( empty( $results ) ){
             return [];
@@ -1693,14 +1755,46 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         return $data;
     }
 
+    public function _get_children( $post_id ) {
+        global $wpdb;
+        $list = $wpdb->get_results("SELECT p2p_to as parent_id, p2p_from as child_id
+                                            FROM $wpdb->p2p
+                                            WHERE p2p_type = 'streams_to_streams';", ARRAY_A );
+        if ( ! empty( $list ) && ! is_wp_error( $list ) ) {
+            $children = $this->_build_children_list( $post_id, $list );
+            return implode(',', $children );
+        } else {
+            return '';
+        }
+
+    }
+
+    public function _build_children_list( $parent_id, $list, $children = [] ) {
+        foreach( $list as $node ) {
+            if ( (string) $parent_id === (string) $node['parent_id'] ){
+                $children[$node['child_id']] = $node['child_id'];
+                foreach( $list as $sub_node ) {
+                    if ( $node['child_id'] === $sub_node['parent_id'] ){
+                        $children = array_merge( $children,  $this->_build_children_list( $node['child_id'], $list ) );
+                    }
+                }
+            }
+        }
+        $data = [];
+        foreach($children as $child ){
+            $data[$child] = $child;
+        }
+        return $data;
+    }
+
     public function child_statistics_reports( $post_id ) : array {
         global $wpdb;
         $data = [];
 
-        // @todo get list of children post_ids
-        // setup for WHERE found in
+        $children = $this->_get_children( $post_id );
 
-        $results = $wpdb->get_results( $wpdb->prepare( "
+        // @phpcs:disable
+        $results = $wpdb->get_results( "
             SELECT r.*,  lg.level_name, lg.name, lg.admin0_grid_id, lg0.name as country, lg.admin1_grid_id, lg1.name as state, lg.admin2_grid_id, lg2.name as county
             FROM $wpdb->dt_reports as r
             LEFT JOIN $wpdb->dt_location_grid as lg
@@ -1711,9 +1805,10 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             ON lg.admin1_grid_id=lg1.grid_id
             LEFT JOIN $wpdb->dt_location_grid as lg2
             ON lg.admin2_grid_id=lg2.grid_id
-            WHERE post_id = %s
+            WHERE post_id IN ($children)
             ORDER BY time_end DESC
-            ", $post_id ), ARRAY_A );
+            ", ARRAY_A );
+        // @phpcs:enable
 
         if ( empty( $results ) ){
             return [];
@@ -1821,9 +1916,16 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         return $this->retrieve_reports( $post_id );
     }
 
-    public function geojson_reports( $post_id ) { // @todo add filter by year.
+    public function geojson_reports( $post_id, $children = false ) { // @todo add filter by year.
         global $wpdb;
-        $results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->dt_reports WHERE post_id = %s ORDER BY time_end DESC", $post_id ), ARRAY_A );
+
+        if ( $children ) {
+            $children = $this->_get_children( $post_id );
+            $results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->dt_reports WHERE post_id IN ($children) ORDER BY time_end DESC", $post_id ), ARRAY_A ); // @phpcs:ignore
+        } else {
+            $results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->dt_reports WHERE post_id = %s ORDER BY time_end DESC", $post_id ), ARRAY_A );
+        }
+
 
         if ( empty( $results ) ) {
             return $this->_empty_geojson();

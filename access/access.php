@@ -84,7 +84,7 @@ class DT_Streams_App_Access extends DT_Magic_Url_Base
 
         switch ( $action ) {
             case 'new_registration':
-                return $this->create_new_stream( $params['data'] );
+                return $this->register_to_report( $params['data'] );
             case 'retrieve_link':
                 return $this->retrieve_stream_link( $params['data'] );
 
@@ -138,107 +138,191 @@ class DT_Streams_App_Access extends DT_Magic_Url_Base
         <?php
     }
 
-    public function create_new_stream( $data ) {
+    public function register_to_report( $data ) {
 
-        if ( ! isset( $data['name'], $data['phone'], $data['email'] ) ) {
+        if ( ! isset( $data['name'], $data['phone'], $data['email'], $data['stream_name'] ) ) {
             return [
                 'status' => 'FAIL',
                 'error' => new WP_Error( __METHOD__, 'Missing parameter', [ 'status' => 400 ] )
             ];
         }
 
-        $data['email'] = sanitize_email( wp_unslash( $data['email'] ) );
+        $display_name = sanitize_text_field( wp_unslash( $data['name'] ) );
+        $phone = sanitize_text_field( wp_unslash( $data['phone'] ) );
 
+        $stream_name = sanitize_text_field( wp_unslash( $data['stream_name'] ) );
+        $user_email = sanitize_email( wp_unslash( $data['email'] ) );
 
+        $identity = $this->_build_identity( $user_email );
+        dt_write_log($identity);
 
-
-        $record_post_id = $this->_search_for_email( $data['email'] );
-        if ( $record_post_id ) {
-            $link = trailingslashit( site_url() ) . $this->portal_url . $record_post_id['magic_key'];
-            $subject = __( 'Stream Reporting MicroApp' );
-            $message_plain_text = __( 'Follow this link to access your stream reporting microapp' ) . '
-
-'           . $link;
-            dt_send_email( $data['email'], $subject, $message_plain_text );
-
+        // has user_id and has streams
+        if ( isset( $identity['stream_ids'] ) && ! empty( $identity['stream_ids'] ) ) {
+            $this->_send_to_user( $identity );
+            dt_write_log('has user_id and has streams');
             return [
                 'status' => 'EMAILED'
             ];
-        } else {
-            dt_write_log('no record found');
-
         }
 
-        // prepare contact for creation
-        $key = dt_create_unique_key();
-        $link = trailingslashit( site_url() ) . $this->portal_url . $key;
-
-        $fields = [
-            'title' => $data['name'],
-            "nickname" => $data['name'],
-            'overall_status' => 'reporting_only',
-            'type' => 'access',
-            'assigned_to' => 0,
-            "contact_phone" => [
-                [
-                    "value" => $data['phone']
-                ]
-            ],
-            "contact_email" => [
-                [
-                    "value" => $data['email']
-                ]
-            ],
-            "sources" => [
-                "values" => [
-                    [ "value" => 'self_registered_stream' ],
-                ]
-            ],
-            "leader_milestones" => [
-                "values" => [
-                    [ "value" => 'practicing' ],
-                ]
-            ],
-            "notes" => [
-                "Source" => "This contact was self-registered as a stream."
-            ],
-            'streams_app_portal_magic_key' => $key
-        ];
-
-        if ( class_exists( 'DT_Ipstack_API' ) && ! empty( DT_Ipstack_API::get_key() ) ) {
-            $ip_result = DT_Ipstack_API::geocode_current_visitor();
-            if ( ! empty( $ip_result ) ) {
-                $fields['location_grid_meta'] = [
-                    'values' => [
-                        [
-                            'lng' => DT_Ipstack_API::parse_raw_result( $ip_result, 'lng' ),
-                            'lat' => DT_Ipstack_API::parse_raw_result( $ip_result, 'lat' )
-                        ]
-                    ]
-                ];
-            }
-        }
-
-        // create contact
-        $new_post = DT_Posts::create_post( 'contacts', $fields, true, false );
-        if ( is_wp_error( $new_post ) ) {
+        // has a user id, but does not have a contact_id. This should not happen.
+        if( ! empty( $identity['user_id'] ) && empty( $identity['contact_ids'] ) ) {
+            dt_write_log('has a user id, but does not have a contact_id. This should not happen.');
             return [
                 'status' => 'FAIL',
-                'error' => $new_post
+                'message' => 'User ID exists but contact has not been created'
             ];
         }
+
+        // has user_id but has no streams
+        if ( ! empty( $identity['user_id'] ) && empty( $identity['stream_ids'] ) ) {
+            $new_stream = $this->_create_stream( $identity, $stream_name );
+            dt_write_log('has user_id but has no streams');
+            dt_write_log($new_stream);
+
+            if ( is_wp_error( $new_stream ) ) {
+                return [
+                    'status' => 'FAIL',
+                    'error' => $new_stream
+                ];
+            }
+            // rebuild identity
+            $identity = $this->_build_identity( $user_email );
+            $send_result = $this->_send_to_user( $identity );
+            dt_write_log($send_result);
+            return [
+                'status' => 'EMAILED'
+            ];
+        }
+
+        return;
+
+        if ( empty( $identity['user_id'] ) ) {
+            $key = dt_create_unique_key();
+            $link = trailingslashit( site_url() ) . $this->portal_url . $key;
+
+            $fields = [
+                'title' => $data['name'],
+                "nickname" => $data['name'],
+                'overall_status' => 'reporting_only',
+                'type' => 'access',
+                'assigned_to' => 0,
+                "contact_phone" => [
+                    [
+                        "value" => $data['phone']
+                    ]
+                ],
+                "contact_email" => [
+                    [
+                        "value" => $user_email
+                    ]
+                ],
+                "sources" => [
+                    "values" => [
+                        [ "value" => 'self_registered_stream' ],
+                    ]
+                ],
+                "notes" => [
+                    "Source" => "This contact was self-registered as a stream."
+                ]
+            ];
+
+            if ( class_exists( 'DT_Ipstack_API' ) && ! empty( DT_Ipstack_API::get_key() ) ) {
+                $ip_result = DT_Ipstack_API::geocode_current_visitor();
+                if ( ! empty( $ip_result ) ) {
+                    $fields['location_grid_meta'] = [
+                        'values' => [
+                            [
+                                'lng' => DT_Ipstack_API::parse_raw_result( $ip_result, 'lng' ),
+                                'lat' => DT_Ipstack_API::parse_raw_result( $ip_result, 'lat' )
+                            ]
+                        ]
+                    ];
+                }
+            }
+
+            // create contact
+            $new_post = DT_Posts::create_post( 'contacts', $fields, true, false );
+            if ( is_wp_error( $new_post ) ) {
+                return [
+                    'status' => 'FAIL',
+                    'error' => $new_post
+                ];
+            }
+
+            dt_write_log('$new_post');
+            dt_write_log($new_post);
+
+
+            // create user and contact_id
+
+            $exploded_email = explode( '@', $user_email );
+
+            $user_name_first = strtolower( $exploded_email[0] );
+            $user_name_last = dt_create_field_key( dt_create_unique_key() );
+            $user_name = $user_name_first . $user_name_last;
+            if ( username_exists( $user_name ) ) {
+                $user_name = $user_name_first . dt_create_field_key( dt_create_unique_key() );
+            }
+
+            $user_roles = [ 'reporting_only' ];
+
+            $current_user = wp_get_current_user();
+            $current_user->add_cap('create_users', true );
+            $current_user->add_cap('create_contacts', true );
+            $current_user->add_cap('update_any_contacts', true );
+
+            dt_write_log('$current_user');
+            dt_write_log($current_user);
+
+            $contact_id = Disciple_Tools_Users::create_user( $user_name, $user_email, $display_name, $user_roles, $new_post );
+            dt_write_log('$contact_id');
+            dt_write_log($contact_id);
+
+            // create stream
+            // assign contact as reporter
+
+        }
+
+        return;
+
+        // prepare contact for creation
+
 
         // email contact new magic link
         $subject = __( 'Church Reporting Link' );
         $message_plain_text = __( 'Follow this link to access your reporting portal. Please, complete your remaining community profile.' ) . '
 
 '      . $link;
-        dt_send_email( $data['email'], $subject, $message_plain_text );
+        dt_send_email( $email, $subject, $message_plain_text );
 
         return [
             'status' => 'CREATED',
             'link' => $link
         ];
+    }
+
+    public function _create_stream( $identity, $stream_name ) {
+        if ( isset( $identity['contact_ids'][0] ) ) {
+            $contact_id = $identity['contact_ids'][0];
+        } else {
+            return new WP_Error( __METHOD__, 'No contact id set', [ 'status' => 400 ] );
+        }
+        $magic = new DT_Magic_URL( 'streams_app' );
+        $fields = [
+            'title' => $stream_name,
+            'reporter' => [
+                'values' => [
+                    [ 'value' => $contact_id ]
+                ],
+            ],
+            'streams_app_report_magic_key' => $magic->create_unique_key(),
+            "notes" => [
+                "Source" => "This stream was self-registered."
+            ]
+        ];
+
+        return DT_Posts::create_post( 'streams', $fields, true, false );
     }
 
     public function retrieve_stream_link( $data ) {
@@ -250,15 +334,25 @@ class DT_Streams_App_Access extends DT_Magic_Url_Base
         $email = sanitize_email( wp_unslash( $data['email'] ) );
 
         $identity = $this->_build_identity( $email );
-        if ( empty( $identity['stream_ids'] ) ) {
-            dt_write_log('No streams reports found');
-            return false;
+        if ( isset( $identity['stream_ids'] ) && ! empty( $identity['stream_ids'] ) ) {
+            $this->_send_to_user( $identity );
+            return true;
         } else {
-            $message_plain_text = __( 'Follow this link to access your reporting portal. Please, complete your remaining community profile.' ) . '
+            dt_write_log('No identity found');
+            return false;
+        }
+    }
+
+    public function _send_to_user( $identity ) {
+        dt_write_log(__METHOD__);
+        dt_write_log( $identity );
+
+        if ( isset( $identity['stream_ids'], $identity['email'] ) ) {
+            $message_plain_text = __('Follow this link to access your reporting portal. Please, complete your remaining community profile.') . '
 
 ';
-            foreach( $identity['stream_ids'] as $stream ) {
-                $link = trailingslashit( site_url() ) . $this->portal_url . $stream['magic_key'];
+            foreach ($identity['stream_ids'] as $stream) {
+                $link = trailingslashit(site_url()) . $this->portal_url . $stream['magic_key'];
                 $message_plain_text .=
                     'Reporting Access for ' . $stream['name'] . ':' . '
 
@@ -267,14 +361,13 @@ class DT_Streams_App_Access extends DT_Magic_Url_Base
 ';
             }
 
-            $subject = __( 'Reports Access' );
-            dt_send_email( $email, $subject, $message_plain_text );
-            return true;
+            $subject = __('Reports Access');
+            return dt_send_email($identity['email'], $subject, $message_plain_text);
         }
-
     }
 
     public function _build_identity( $email ) {
+        dt_write_log(__METHOD__);
 
         $user_id = $this->_query_for_user_id( $email ); // int|false
 

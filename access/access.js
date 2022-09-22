@@ -34,10 +34,16 @@ jQuery(document).ready(function($){
             <div class="grid-x">
                 <div class="cell panel-note"></div>
                 <div class="cell">
-                    <label for="name">Name</label>
+                    <label for="stream_name">Name or nickname of your movement</label>
+                    <input type="text" id="stream_name" class="required" placeholder="stream name or nickname" />
+                    <span id="stream-name-error" class="form-error">You're name is required.</span>
+                </div>
+                <div class="cell">
+                    <label for="name">Your name</label>
                     <input type="text" id="name" class="required" placeholder="Name" />
                     <span id="name-error" class="form-error">You're name is required.</span>
                 </div>
+                 
                 <div class="cell">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Email" />
@@ -50,7 +56,7 @@ jQuery(document).ready(function($){
                     <span id="phone-error" class="form-error">You're phone is required.</span>
                 </div>
                 <div class="cell">
-                    <label for="location">City or Address</label>
+                    <label for="location">City or address</label>
                     <input type="text" id="location" name="location" placeholder="City or Address" />
                     <span id="phone-error" class="form-error"></span>
                 </div>
@@ -164,6 +170,19 @@ jQuery(document).ready(function($){
       spinner.removeClass('active')
       return;
     }
+
+    let stream_name_input = $('#stream_name')
+    let stream_name = stream_name_input.val()
+    if ( ! stream_name ) {
+      $('#stream-name-error').show()
+      submit_button.removeClass('loading')
+      email_input.focus(function(){
+        $('#stream-name-error').hide()
+      })
+      submit_button.prop('disabled', false)
+      spinner.removeClass('active')
+      return;
+    }
     
     let location_input = $('#location')
     let location = location_input.val()
@@ -182,7 +201,8 @@ jQuery(document).ready(function($){
     let form_data = {
       name: name,
       email: email,
-      phone: phone, 
+      phone: phone,
+      stream_name: stream_name,
       location: location
     }
     console.log(form_data)

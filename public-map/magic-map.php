@@ -111,10 +111,10 @@ class DT_Streams_Map extends DT_Magic_Url_Base
                 jQuery('#custom-style').append(`
                   <style>
                       #map-wrapper {
-                          height: ${window.innerHeight}px !important;
+                          height: ${window.innerHeight - 350}px !important;
                       }
                       #map {
-                          height: ${window.innerHeight}px !important;
+                          height: ${window.innerHeight - 350}px !important;
                       }
                   </style>`)
 
@@ -269,7 +269,7 @@ class DT_Streams_Map extends DT_Magic_Url_Base
         global $wpdb;
 
         $results = $wpdb->get_results(
-        "SELECT * FROM $wpdb->dt_location_grid WHERE level = 0", ARRAY_A );
+        "SELECT * FROM $wpdb->dt_reports WHERE type = 'streams_app' AND subtype = 'report';", ARRAY_A );
 
         if ( empty( $results ) ) {
             return $this->_empty_geojson();
@@ -281,14 +281,13 @@ class DT_Streams_Map extends DT_Magic_Url_Base
                 'type' => 'Feature',
                 'properties' => array(
                     'grid_id' => $result['grid_id'],
-                    'name' => $result['name'],
-                    'value' => rand( 1, 10 ) // random value
+                    'value' => $result['value'] // random value
                 ),
                 'geometry' => array(
                     'type' => 'Point',
                     'coordinates' => array(
-                        (float) $result['longitude'],
-                        (float) $result['latitude'],
+                        (float) $result['lng'],
+                        (float) $result['lat'],
                         1
                     ),
                 ),

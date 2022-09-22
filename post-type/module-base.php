@@ -288,20 +288,20 @@ class DT_Stream_Base extends DT_Module_Base {
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-contact.svg',
                 "in_create_form" => true,
             ];
-            $fields['church_total'] = [
-                'name' => __( "Number of Churches", 'disciple-tools-streams' ),
+            $fields['group_total'] = [
+                'name' => __( "Number of Groups", 'disciple-tools-streams' ),
                 'type' => 'number',
                 'default' => '0',
                 'tile' => '',
                 'icon' => get_template_directory_uri() . "/dt-assets/images/groups.svg",
                 'show_in_table' => true
             ];
-            $fields['churches'] = [
+            $fields['groups'] = [
                 'name' => __( "Groups", 'disciple-tools-streams' ),
                 'type' => 'connection',
-                "post_type" => 'churches',
+                "post_type" => 'groups',
                 "p2p_direction" => "from",
-                "p2p_key" => "streams_to_churches",
+                "p2p_key" => "streams_to_groups",
                 "tile" => "connections",
                 'icon' => get_template_directory_uri() . "/dt-assets/images/groups.svg",
                 'create-icon' => get_template_directory_uri() . '/dt-assets/images/add-group.svg',
@@ -402,14 +402,25 @@ class DT_Stream_Base extends DT_Module_Base {
                 'icon' => get_template_directory_uri() . "/dt-assets/images/stream.svg",
                 'create-icon' => get_template_directory_uri() . "/dt-assets/images/add.svg",
             ];
+            $fields['stream_reporter'] = [
+                'name' => __( "Reporter in Stream", 'disciple-tools-streams' ),
+                'description' => _x( 'Reporter for a stream.', 'Optional Documentation', 'disciple-tools-streams' ),
+                'type' => 'connection',
+                "post_type" => $this->post_type,
+                "p2p_direction" => "to",
+                "p2p_key" => "streams_to_reporter",
+                "tile" => "other",
+                'icon' => get_template_directory_uri() . "/dt-assets/images/stream.svg",
+                'create-icon' => get_template_directory_uri() . "/dt-assets/images/add.svg",
+            ];
         }
-        if ( $post_type === 'churches' ){
+        if ( $post_type === 'groups' ){
             $fields[$this->post_type] = [
                 'name' => __( "Streams", 'disciple-tools-streams' ),
                 'type' => 'connection',
                 "post_type" => $this->post_type,
                 "p2p_direction" => "to",
-                "p2p_key" => "streams_to_churches",
+                "p2p_key" => "streams_to_groups",
                 "tile" => "other",
                 'icon' => get_template_directory_uri() . "/dt-assets/images/stream.svg",
                 'create-icon' => get_template_directory_uri() . "/dt-assets/images/add.svg",
@@ -484,9 +495,9 @@ class DT_Stream_Base extends DT_Module_Base {
          */
         p2p_register_connection_type(
             [
-                'name'           => 'streams_to_churches',
+                'name'           => 'streams_to_groups',
                 'from'           => 'streams',
-                'to'             => 'churches',
+                'to'             => 'groups',
                 'admin_box' => [
                     'show' => false,
                 ],
@@ -606,7 +617,7 @@ class DT_Stream_Base extends DT_Module_Base {
     //action when a post connection is added during create or update
     public function post_connection_added( $post_type, $post_id, $field_key, $value ){
         if ( $post_type === "streams" ){
-            if ( $field_key === "leaders" || $field_key === "disciples" || $field_key === "churches" ){
+            if ( $field_key === "leaders" || $field_key === "disciples" || $field_key === "groups" ){
 
                 // share the stream with the owner of the contact when a disciple is added to a stream
                 $assigned_to = get_post_meta( $value, "assigned_to", true );
@@ -623,7 +634,7 @@ class DT_Stream_Base extends DT_Module_Base {
                 if ( $field_key === "disciples" ){
                     self::update_stream_disciple_total( $post_id );
                 }
-                if ( $field_key === "churches" ){
+                if ( $field_key === "groups" ){
                     self::update_stream_church_total( $post_id );
                 }
             }
