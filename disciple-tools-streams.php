@@ -138,7 +138,9 @@ class DT_Streams {
         require_once( 'public-map/magic-map.php' );
         require_once( 'access/magic-registration.php' );
         require_once( 'access/magic-retrieve-link.php' );
-        require_once( 'access/access.php' );
+
+        require_once( 'access/magic-url-self-register.php' );
+        require_once( 'access/streams-self-register.php' );
     }
 
     /**
