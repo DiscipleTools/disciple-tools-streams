@@ -3,9 +3,7 @@ if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
 class DT_Stream_Reports extends DT_Magic_Url_Base
 {
-//    public $module = "streams_report_module";
     public $post_type = 'streams';
-
     public $magic = false;
     public $parts = false;
     public $page_title = 'Stream Report';
@@ -23,9 +21,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         'stats' => 'Summary',
         'maps' => 'Maps',
         'invite' => 'Send Invite',
-        '_f9fc1b2fea59e689e' => 'Collaborative Invite',
-        '_131cd9d846b246ea4' => 'Child Stream Invite',
-        '_9t2e6ee5fa5cd9fr4' => 'New Stream Invite',
     ];
 
     private static $_instance = null;
@@ -77,15 +72,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         }
         else if ( $this->magic->is_valid_key_url( $this->type ) && 'invite' === $this->parts['action'] ) {
             add_action( 'dt_blank_body', [ $this, 'invite_body' ] );
-        }
-        else if ( $this->magic->is_valid_key_url( $this->type ) && '_f9fc1b2fea59e689e' === $this->parts['action'] ) {
-            add_action( 'dt_blank_body', [ $this, 'invitation_response_body' ] );
-        }
-        else if ( $this->magic->is_valid_key_url( $this->type ) && '_131cd9d846b246ea4' === $this->parts['action'] ) {
-            add_action( 'dt_blank_body', [ $this, 'invitation_response_body' ] );
-        }
-        else if ( $this->magic->is_valid_key_url( $this->type ) && '_9t2e6ee5fa5cd9fr4' === $this->parts['action'] ) {
-            add_action( 'dt_blank_body', [ $this, 'invitation_response_body' ] );
         }
         else if ( $this->magic->is_valid_key_url( $this->type ) && '' === $this->parts['action'] ) {
             add_action( 'dt_blank_body', [ $this, 'home_body' ] );
@@ -454,6 +440,19 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
     public function header_javascript(){
         DT_Mapbox_API::load_mapbox_header_scripts();
+        $parts = $this->parts;
+        $join_key = get_post_meta( $parts['post_id'], $parts['root'] . '_join_magic_key', true );
+        if ( empty( $join_key ) ) {
+            update_post_meta( $parts['post_id'], $parts['root'] . '_join_magic_key', dt_create_unique_key() );
+            $join_key = get_post_meta( $parts['post_id'], $parts['root'] . '_join_magic_key', true );
+        }
+        $create_child_key = get_post_meta(  $parts['post_id'], $parts['root'] . '_create_child_magic_key', true );
+        if ( empty( $create_child_key ) ) {
+            update_post_meta( $parts['post_id'], $parts['root'] . '_create_child_magic_key', dt_create_unique_key() );
+            $create_child_key = get_post_meta(  $parts['post_id'], $parts['root'] . '_create_child_magic_key', true );
+        }
+        $join_url = site_url() . '/' . $this->parts['root'] . '/join/' . $join_key;
+        $create_child_url = site_url() . '/' . $this->parts['root'] . '/create_child/' . $create_child_key;
         ?>
         <script>
             var jsObject = [<?php echo json_encode([
@@ -461,6 +460,8 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 'root' => esc_url_raw( rest_url() ),
                 'site_url' => esc_url_raw( trailingslashit( site_url() ) ),
                 'magic_url' => $this->magic_url,
+                'join_url' => $join_url,
+                'create_child_url' => $create_child_url,
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'parts' => $this->parts,
                 'name' => get_the_title( $this->parts['post_id'] ),
@@ -1200,19 +1201,36 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     }
 
     public function invite_body(){
+        $parts = $this->parts;
+        if ( empty( $parts ) ) {
+            return;
+        }
+        $join_key = get_post_meta( $parts['post_id'], $parts['root'] . '_join_magic_key' );
+        if ( empty( $join_key ) ) {
+            update_post_meta( $parts['post_id'], $parts['root'] . '_join_magic_key', dt_create_unique_key() );
+        }
+        $create_child_key = get_post_meta(  $parts['post_id'], $parts['root'] . '_create_child_magic_key' );
+        if ( empty( $create_child_key ) ) {
+            update_post_meta( $parts['post_id'], $parts['root'] . '_create_child_magic_key', dt_create_unique_key() );
+        }
+
+        $join_url = site_url() . '/' . $this->parts['root'] . '/join/' . $join_key;
+        $create_child_url = site_url() . '/' . $this->parts['root'] . '/create_child/' . $create_child_key;
+
         $this->nav();
+
         ?>
         <div id="custom-style"></div>
         <div id="wrapper">
             <hr>
             <div class="grid-x grid-padding-x" id="send-options">
                 <div class="cell">
-                    <h1>Collaborative Reporting</h1>
+                    <h1>Share Reporting for This Stream</h1>
                     <p>Invite someone to assist you in reporting movement data in this stream. This person will see and edit any reports you have created in this stream like you do.</p>
                     <div class="button-group">
                         <a class="button hollow copy_to_clipboard" id="collaborative_reporting_copy" data-value="">Copy Link</a>
-                        <a class="button hollow" id="collaborative_reporting_email">Send Email</a>
-                        <a class="button hollow" id="collaborative_reporting_sms">Send SMS</a>
+                        <a class="button hollow" style="display:none;" id="collaborative_reporting_email">Send Email</a>
+                        <a class="button hollow" style="display:none;" id="collaborative_reporting_sms">Send SMS</a>
                     </div>
                     <div class="input-group input-field collaborative_reporting_email" style="display:none;">
                         <span class="input-group-label">email</span>
@@ -1230,12 +1248,12 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                     </div>
                 </div>
                 <div class="cell">
-                    <h1>New Child Stream</h1>
+                    <h1>Invite to Start New Child Stream</h1>
                     <p>Invite someone to create a new child stream to this stream. This will link their stream in the system as a child to this stream. Child stream reports total up and are visible to parent streams.</p>
                     <div class="button-group">
                         <a class="button hollow copy_to_clipboard" id="child_stream_copy" data-value="">Copy Link</a>
-                        <a class="button hollow" id="child_stream_email">Send Email</a>
-                        <a class="button hollow" id="child_stream_sms">Send SMS</a>
+                        <a class="button hollow" style="display:none;" id="child_stream_email">Send Email</a>
+                        <a class="button hollow" style="display:none;" id="child_stream_sms">Send SMS</a>
                     </div>
                     <div class="input-group input-field child_stream_email" style="display:none;">
                         <span class="input-group-label">email</span>
@@ -1257,8 +1275,8 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                     <p>Invite someone to start a new independent stream.</p>
                     <div class="button-group">
                         <a class="button hollow copy_to_clipboard" id="new_stream_copy" data-value="">Copy Link</a>
-                        <a class="button hollow" id="new_stream_email">Send Email</a>
-                        <a class="button hollow" id="new_stream_sms">Send SMS</a>
+                        <a class="button hollow" style="display:none;" id="new_stream_email">Send Email</a>
+                        <a class="button hollow" style="display:none;" id="new_stream_sms">Send SMS</a>
                     </div>
                     <div class="input-group input-field new_stream_email" style="display:none;">
                         <span class="input-group-label">email</span>
@@ -1281,14 +1299,13 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         </div> <!-- form wrapper -->
         <script>
             jQuery(document).ready(function($){
-                jQuery('#collaborative_reporting_copy').data('value', jsObject.magic_url + '_f9fc1b2fea59e689e' )
-                jQuery('#child_stream_copy').data('value', jsObject.magic_url + '_131cd9d846b246ea4' )
+                jQuery('#collaborative_reporting_copy').data('value', jsObject.join_url )
+                jQuery('#child_stream_copy').data('value', jsObject.create_child_url )
                 jQuery('#new_stream_copy').data('value', jsObject.site_url + jsObject.parts.root + '/access/' )
+
                 window.add_invite_listener = () => {
 
                     jQuery('.loading-spinner').removeClass('active')
-
-
 
                     jQuery('#collaborative_reporting_email').on('click', function(e){
                         jQuery('.input-field').hide()
@@ -1343,91 +1360,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         <?php
     }
 
-    public function invitation_response_body(){
-        $parts = $this->parts;
-        $name = get_the_title( $this->parts['post_id'] );
-        
-        switch( $parts['action'] ) {
-            case '_f9fc1b2fea59e689e':
-                $label = 'Collaborative Reporting';
-                $message = 'You have been invited to participate in the reporting of the '.$name;
-                break;
-            case '_131cd9d846b246ea4':
-                $label = 'New Child Reporting';
-                $message = 'You have been invited to create a child stream to the '.$name;
-                break;
-            case '_9t2e6ee5fa5cd9fr4':
-                $label = 'New Stream Reporting';
-                $message = 'You have been invited to report on a new stream of gospel work.';
-                break;
-            default:
-                return;
-                break;
-        }
-        ?>
-        <div id="custom-style"></div>
-        <div id="wrapper">
-            <div class="grid-x grid-padding-x" id="send-options">
-                <div class="cell">
-                    <h1><?php echo esc_html( $label ) ?></h1>
-                    <p><?php echo esc_html( $message ) ?></p>
-                </div>
-                <div class="cell center" id="bottom-spinner"><span class="loading-spinner active"></span></div>
-                <div class="cell grid" id="error"></div>
-            </div>
 
-            <?php echo $this->register_as_reporter();  ?>
-
-        </div> <!-- form wrapper -->
-        <script>
-            jQuery(document).ready(function(){
-                jQuery('.loading-spinner').removeClass('active')
-            })
-        </script>
-        <?php
-    }
-
-    public function register_as_reporter() {
-        ?>
-        <hr>
-        <div class="grid-x grid-padding-x">
-            <div class="cell">
-                <p></p>
-                <button class="button" type="button">Join Reporting Team</button>
-            </div>
-        </div>
-        <hr>
-        <div class="grid-x grid-padding-x" id="send-options">
-            <div class="cell">
-                <input type="text" placeholder="Name" />
-            </div>
-            <div class="cell">
-                <input type="text" placeholder="Email" />
-            </div>
-            <div class="cell">
-                <input type="text" placeholder="Email" />
-            </div>
-            <div class="cell">
-                <input type="text" placeholder="Phone" />
-            </div>
-            <div class="cell">
-                <input type="text" placeholder="Location" />
-            </div>
-            <div class="cell">
-                <button class="button" type="button">Join Reporting Team</button>
-            </div>
-        </div>
-        <hr>
-        <div class="grid-x grid-padding-x" id="send-options">
-            <div class="cell">
-                <input type="text" placeholder="Name Stream" />
-            </div>
-            <div class="cell">
-                <button class="button" type="button">Create Child Stream</button>
-            </div>
-        </div>
-        <?php
-    }
 
 
     /**

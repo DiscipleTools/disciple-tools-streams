@@ -132,9 +132,10 @@ class DT_Streams {
 
         /* magic links */
         require_once( 'magic/magic-map.php' );
-        require_once( 'magic/reports-magic-link.php' );
+        require_once( 'magic/magic-reports.php' );
+        require_once( 'magic/magic-invite.php' );
         require_once( 'magic/magic-url-self-register.php' );
-        require_once( 'magic/streams-self-register.php' );
+        require_once( 'magic/magic-streams-self-register.php' );
     }
 
     /**

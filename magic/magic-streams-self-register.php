@@ -34,18 +34,7 @@ class DT_Streams_Self_Register extends DT_Magic_Url_Self_Register {
         }
 
         add_action( 'dt_blank_body', [ $this, 'body' ] );
-//        add_filter( 'dt_magic_url_base_allowed_css', [ $this, 'dt_magic_url_base_allowed_css' ], 10, 1 );
-//        add_filter( 'dt_magic_url_base_allowed_js', [ $this, 'dt_magic_url_base_allowed_js' ], 10, 1 );
-
     }
-
-//    public function dt_magic_url_base_allowed_js( $allowed_js ) {
-//        return $allowed_js;
-//    }
-//
-//    public function dt_magic_url_base_allowed_css( $allowed_css ) {
-//        return $allowed_css;
-//    }
 
     public function header_javascript(){
         $this->register_form_header_javascript();
