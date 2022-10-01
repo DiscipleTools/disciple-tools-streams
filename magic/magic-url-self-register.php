@@ -84,10 +84,10 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                         <div id="panel1" class="first not-new not-send">
                             <div class="grid-x">
                                 <div class="cell">
-                                    <button type="button" class="button expanded show-new">Register a New Stream</button>
+                                    <button type="button" class="button large expanded show-new">Register a New Stream</button>
                                 </div>
                                 <div class="cell">
-                                    <button type="button" class="button expanded show-send">Retrieve My Private Link</button>
+                                    <button type="button" class="button large expanded show-send">Retrieve My Private Link</button>
                                 </div>
                             </div>
                         </div>
@@ -457,7 +457,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
 //            }
 
                 $user_name = str_replace(' ', '_', strtolower($display_name));
-                $user_roles = ['registered'];
+                $user_roles = ['reporter'];
 
                 $current_user = wp_get_current_user();
                 $current_user->add_cap('create_users', true);
@@ -469,7 +469,6 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                 dt_write_log('$current_user');
                 dt_write_log($current_user);
                 dt_write_log($user_name);
-
 
                 $contact_id = Disciple_Tools_Users::create_user($user_name, $user_email, $display_name, $user_roles);
                 dt_write_log('$contact_id');

@@ -1,6 +1,19 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
+add_filter( 'dt_post_type_modules', function( $modules ){
+    $modules["streams_base"] = [
+        "name" => "Streams",
+        "enabled" => true,
+        "locked" => true,
+        "prerequisites" => [ "contacts_base" ],
+        "post_type" => "streams",
+        "description" => "Default Streams Module"
+    ];
+    return $modules;
+}, 20, 1 );
+
+
 class DT_Stream_Base extends DT_Module_Base {
     public $post_type = "streams";
     public $module = "streams_base";
@@ -48,7 +61,6 @@ class DT_Stream_Base extends DT_Module_Base {
         add_filter( "dt_filter_access_permissions", [ $this, "dt_filter_access_permissions" ], 20, 2 );
     }
 
-
     public function after_setup_theme(){
         if ( class_exists( 'Disciple_Tools_Post_Type_Template' )) {
             new Disciple_Tools_Post_Type_Template( "streams", __( 'Stream', 'disciple-tools-streams' ), __( 'Streams', 'disciple-tools-streams' ) );
@@ -67,9 +79,9 @@ class DT_Stream_Base extends DT_Module_Base {
                 ]
             ];
         }
-        if ( !isset( $expected_roles["stream_reporter"] ) ){
-            $expected_roles["stream_reporter"] = [
-                "label" => __( 'Stream Reporter', 'disciple-tools-streams' ),
+        if ( !isset( $expected_roles["reporter"] ) ){
+            $expected_roles["reporter"] = [
+                "label" => __( 'Reporter', 'disciple-tools-streams' ),
                 "description" => "Can report on streams through magic link.",
                 "permissions" => []
             ];
@@ -1077,3 +1089,4 @@ class DT_Stream_Base extends DT_Module_Base {
         return $permissions;
     }
 }
+DT_Stream_Base::instance();

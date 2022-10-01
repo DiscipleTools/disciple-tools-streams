@@ -105,7 +105,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     public function dt_custom_fields_settings( $fields, $post_type ) {
         if ( $post_type === "contacts" ) {
             if (isset($fields["overall_status"]) && !isset($fields["overall_status"]["default"]["reporting_only"])) {
-                $fields["overall_status"]["default"]["reporting_only"] = [
+                $fields["overall_status"]["default"]["reporter"] = [
                     'label' => 'Reporting Only',
                     'description' => 'Contact is a reporting practitioner.',
                     'color' => '#F43636'
@@ -747,6 +747,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
     public static function _wp_enqueue_scripts(){
         DT_Mapbox_API::load_mapbox_header_scripts();
+        DT_Mapbox_API::load_mapbox_search_widget();
     }
 
     public function nav() {
@@ -1896,3 +1897,4 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         );
     }
 }
+DT_Stream_Reports::instance();

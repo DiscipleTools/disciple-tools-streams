@@ -122,25 +122,19 @@ class DT_Streams {
     private function includes() {
 
         /* post type */
-        require_once( 'post-type/loader.php' );
-
+        require_once( 'post-type/streams-post-type.php' );
         require_once( 'sending/bulk-list-extension.php' );
-
-        /* site linking */
         require_once( 'admin/customize-site-linking.php' );
-        require_once( 'post-type/enqueue.php' );
 
         /* metrics */
         require_once( 'metrics/mapbox-maps.php' );
         require_once( 'metrics/mapbox-personal-maps.php' );
 
         /* magic links */
-        require_once( 'public-map/magic-map.php' );
-        require_once( 'access/magic-registration.php' );
-        require_once( 'access/magic-retrieve-link.php' );
-
-        require_once( 'access/magic-url-self-register.php' );
-        require_once( 'access/streams-self-register.php' );
+        require_once( 'magic/magic-map.php' );
+        require_once( 'magic/reports-magic-link.php' );
+        require_once( 'magic/magic-url-self-register.php' );
+        require_once( 'magic/streams-self-register.php' );
     }
 
     /**

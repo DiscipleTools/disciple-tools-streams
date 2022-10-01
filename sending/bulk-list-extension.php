@@ -278,7 +278,6 @@ if ( 'streams' === dt_get_post_type() ) {
                             console.log( e )
                         })
                 });
-
             })
         </script>
         <?php
