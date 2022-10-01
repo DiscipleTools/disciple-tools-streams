@@ -123,7 +123,7 @@ class DT_Streams {
 
         /* post type */
         require_once( 'post-type/streams-post-type.php' );
-        require_once( 'sending/bulk-list-extension.php' );
+        require_once( 'post-type/bulk-list-extension.php' );
         require_once( 'admin/customize-site-linking.php' );
 
         /* metrics */
