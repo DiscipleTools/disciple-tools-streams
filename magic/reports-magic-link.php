@@ -198,7 +198,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 // types
                 if ( isset( $types['report'], $types['report']['root'], $types['report']['type'] ) ) {
                     $post_id = get_the_ID();
-                    $reports = self::instance()->retrieve_reports( (string) $post_id , true );
+                    $reports = self::instance()->statistics_reports( (string) $post_id , true );
                     /**
                      * Button Controls
                      */
