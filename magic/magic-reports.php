@@ -961,9 +961,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     public function maps_body(){
         DT_Mapbox_API::geocoder_scripts();
         $this->nav();
-        $this_year = date('Y');
-        $dates = [];
-
         ?>
         <div id="custom-style"></div>
         <style>
@@ -1079,9 +1076,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                         paint: {
                             'circle-color': 'green',
                             'circle-radius': {
-                                stops: [[8, 22], [11, 27], [16, 35]]
+                                stops: [[8, 24], [11, 29], [16, 35]]
                             },
-                            'circle-stroke-width': 0.5,
+                            'circle-stroke-width': 0.2,
                             'circle-stroke-color': '#fff'
                         },
                         filter: [ "all", ['==', 'churches', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
@@ -1135,7 +1132,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                         paint: {
                             'circle-color': 'royalblue',
                             'circle-radius': {
-                                stops: [[8, 12], [11, 17], [16, 22]]
+                                stops: [[8, 16], [11, 20], [16, 23]]
                             },
                             'circle-stroke-width': 0.5,
                             'circle-stroke-color': '#fff'
@@ -1766,8 +1763,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         foreach ($results as $index => $result) {
             $results[$index]['payload'] = maybe_unserialize( $result['payload'] );
         }
-
-        // @todo sum multiple reports for same area
 
         $features = [];
         foreach ($results as $result) {

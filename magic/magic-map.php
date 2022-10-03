@@ -1,13 +1,6 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
-/**
- * Loading the Mapbox Mapping system into a Magic Link is a little tricky, so this starter class helps put in place
- * the key js and css resources needed to do that.
- *
- * @see https://zume.vision/maps/
- * These Zume maps are driven via a magic link from a Disciple Tools system.
- */
 class DT_Streams_Map extends DT_Magic_Url_Base
 {
     public $magic = false;
@@ -99,9 +92,9 @@ class DT_Streams_Map extends DT_Magic_Url_Base
                 ],
             ]) ?>][0]
 
-            jQuery(document).ready(function(){
-                window.load_map()
-            })
+            // jQuery(document).ready(function(){
+            //     window.load_map()
+            // })
 
 
             window.load_map = () => {
@@ -219,10 +212,259 @@ class DT_Streams_Map extends DT_Magic_Url_Base
     public function body(){
         DT_Mapbox_API::geocoder_scripts();
         ?>
+        <style>
+            #wrapper {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            #content {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            #top_bar {
+                position:absolute;
+                top:0;
+                z-index: 10;
+                background-color:white;
+                opacity: .9;
+                width:100%;
+            }
+        </style>
         <style id="custom-style"></style>
-        <div id="map-wrapper">
-            <div id='map'></div>
-        </div>
+        <div id="wrapper">
+            <div class="grid-x" id="top_bar">
+                <div class="cell center" id="title"></div>
+                <div class="cell center">
+                    <button class="button-small button" style="background-color: royalblue;margin-top:10px;" id="baptisms">Baptisms</button>
+                    <button class="button-small button" style="background-color: orange;margin-top:10px;" id="disciples">Disciples</button>
+                    <button class="button-small button" style="background-color: green;margin-top:10px;" id="churches">Churches</button>
+                    <button class="button-small button hollow" style="margin-top:10px;" id="all">All</button>
+                    <select style="width:150px;" id="year_filter"></select>
+                </div>
+            </div>
+            <div class="grid-x grid-padding-x">
+                <div class="cell center" id="bottom-spinner"><span class="loading-spinner active"></span></div>
+                <div class="cell" id="content">
+                    <div id="map-wrapper">
+                        <div id='map'></div>
+                    </div>
+                </div>
+                <div class="cell grid" id="error"></div>
+            </div>
+        </div> <!-- form wrapper -->
+        <script>
+            jQuery(document).ready(function($) {
+                clearInterval(window.fiveMinuteTimer)
+
+                let d = new Date()
+                let n = d.getFullYear()
+                let e = n - 11
+                let ten_years = ''
+                for(var i = n; i>=e; i--){
+                    ten_years += `<option value="${window.lodash.escape( i )}">${window.lodash.escape( i )}</option>`.toString()
+                }
+                let year_filter = jQuery('#year_filter')
+                year_filter.append(ten_years)
+
+
+                /* LOAD */
+                let spinner = $('.loading-spinner')
+                let title = $('#title')
+                title.html( jsObject.translations.title )
+
+                /* set vertical size the form column*/
+                $('#custom-style').append(`
+                    <style>
+                        #wrapper {
+                            height: ${window.innerHeight}px !important;
+                        }
+                        #map-wrapper {
+                            height: ${window.innerHeight}px !important;
+                        }
+                        #map {
+                            height: ${window.innerHeight}px !important;
+                        }
+                    </style>`)
+
+                window.get_geojson().then(function (data) {
+                    mapboxgl.accessToken = jsObject.map_key;
+                    var map = new mapboxgl.Map({
+                        container: 'map',
+                        style: 'mapbox://styles/mapbox/light-v10',
+                        center: [-98, 38.88],
+                        minZoom: 1,
+                        maxZoom: 14,
+                        zoom: 3
+                    });
+
+                    map.dragRotate.disable();
+                    map.touchZoomRotate.disableRotation();
+
+                    map.on('load', function () {
+                        window.build_layers(map, data, jQuery('#year_filter').val())
+
+                        year_filter.on('change', function(e){
+                            const layers = ['layer-baptisms-circle', 'layer-baptisms-count', 'layer-disciples-circle', 'layer-disciples-count','layer-churches-circle', 'layer-churches-count' ]
+                            let layer_var = 'churches'
+                            for( const layer_id of layers) {
+                                if ( layer_id.search('churches') !== -1 ) {
+                                    layer_var = 'churches'
+                                }
+                                else if ( layer_id.search('disciples') !== -1 ) {
+                                    layer_var = 'disciples'
+                                }
+                                else {
+                                    layer_var = 'baptisms'
+                                }
+                                map.setFilter(layer_id, [ "all", ['==', layer_var, ['get', 'type'] ], ["==", jQuery(this).val(), ['get', 'year']] ]);
+                            }
+                        })
+                    });
+                })
+
+
+                window.build_layers = ( map, data, year ) => {
+                    map.addSource('layer-source-reports', {
+                        type: 'geojson',
+                        data: data,
+                        cluster: false,
+                        clusterMaxZoom: 1,
+                        clusterRadius: 1
+                    });
+
+                    map.addLayer({
+                        id: 'layer-churches-circle',
+                        type: 'circle',
+                        source: 'layer-source-reports',
+                        paint: {
+                            'circle-color': 'green',
+                            'circle-radius': {
+                                stops: [[8, 24], [11, 29], [16, 35]]
+                            },
+                            'circle-stroke-width': 0.2,
+                            'circle-stroke-color': '#fff'
+                        },
+                        filter: [ "all", ['==', 'churches', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                    });
+                    map.addLayer({
+                        id: 'layer-churches-count',
+                        type: 'symbol',
+                        source: 'layer-source-reports',
+                        layout: {
+                            "text-field": ['get', 'value'],
+                            "icon-allow-overlap": true
+                        },
+                        paint: {
+                            "text-color": "#ffffff"
+                        },
+                        filter: [ "all", ['==', 'churches', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                    });
+
+                    /* disciples */
+                    map.addLayer({
+                        id: 'layer-disciples-circle',
+                        type: 'circle',
+                        source: 'layer-source-reports',
+                        paint: {
+                            'circle-color': 'orange',
+                            'circle-radius': {
+                                stops: [[8, 20], [11, 25], [16, 28]]
+                            },
+                            'circle-stroke-width': 0.2,
+                            'circle-stroke-color': '#fff'
+                        },
+                        filter: [ "all", ['==', 'disciples', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                    });
+                    map.addLayer({
+                        id: 'layer-disciples-count',
+                        type: 'symbol',
+                        source: 'layer-source-reports',
+                        layout: {
+                            "text-field": ['get', 'value'],
+                            "icon-allow-overlap": true
+                        },
+                        paint: {
+                            "text-color": "#ffffff"
+                        },
+                        filter: [ "all", ['==', 'disciples', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                    });
+
+                    /* baptism */
+                    map.addLayer({
+                        id: 'layer-baptisms-circle',
+                        type: 'circle',
+                        source: 'layer-source-reports',
+                        paint: {
+                            'circle-color': 'royalblue',
+                            'circle-radius': {
+                                stops: [[8, 16], [11, 20], [16, 23]]
+                            },
+                            'circle-stroke-width': 0.5,
+                            'circle-stroke-color': '#fff'
+                        },
+                        filter: [ "all", ['==', 'baptisms', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                    });
+                    map.addLayer({
+                        id: 'layer-baptisms-count',
+                        type: 'symbol',
+                        source: 'layer-source-reports',
+                        layout: {
+                            "text-field": ['get', 'value'],
+                            "icon-allow-overlap": true
+                        },
+                        paint: {
+                            "text-color": "#ffffff"
+                        },
+                        filter: [ "all", ['==', 'baptisms', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                    });
+
+                    map.setLayoutProperty('layer-baptisms-count', 'visibility', 'none');
+                    map.setLayoutProperty('layer-disciples-count', 'visibility', 'none');
+                    map.setLayoutProperty('layer-churches-count', 'visibility', 'none');
+                    spinner.removeClass('active')
+
+                    var bounds = new mapboxgl.LngLatBounds();
+                    data.features.forEach(function(feature) {
+                        bounds.extend(feature.geometry.coordinates);
+                    });
+                    map.fitBounds(bounds, {padding: 100});
+                    // end set bounds
+
+                    jQuery('#baptisms').on('click', () => {
+                        window.hide_all(map)
+                        map.setLayoutProperty('layer-baptisms-circle', 'visibility', 'visible');
+                        map.setLayoutProperty('layer-baptisms-count', 'visibility', 'visible');
+                    })
+                    jQuery('#disciples').on('click', () => {
+                        window.hide_all(map)
+                        map.setLayoutProperty('layer-disciples-circle', 'visibility', 'visible');
+                        map.setLayoutProperty('layer-disciples-count', 'visibility', 'visible');
+                    })
+                    jQuery('#churches').on('click', () => {
+                        window.hide_all(map)
+                        map.setLayoutProperty('layer-churches-circle', 'visibility', 'visible');
+                        map.setLayoutProperty('layer-churches-count', 'visibility', 'visible');
+                    })
+                    jQuery('#all').on('click', () => {
+                        window.show_all( map )
+                    })
+                }
+                window.hide_all = ( map ) => {
+                    const layers = ['layer-baptisms-circle', 'layer-baptisms-count', 'layer-disciples-circle', 'layer-disciples-count','layer-churches-circle', 'layer-churches-count' ]
+                    for( const layer_id of layers) {
+                        map.setLayoutProperty( layer_id, 'visibility', 'none');
+                    }
+                }
+                window.show_all = ( map ) => {
+                    window.hide_all( map )
+                    const layers = ['layer-baptisms-circle', 'layer-disciples-circle', 'layer-churches-circle' ]
+                    for( const layer_id of layers) {
+                        map.setLayoutProperty( layer_id, 'visibility', 'visible');
+                    }
+                }
+
+            })
+        </script>
         <?php
     }
 
@@ -278,13 +520,12 @@ class DT_Streams_Map extends DT_Magic_Url_Base
             dt_write_log($time_end);
         }
 
-        $results = $wpdb->get_results( $wpdb->prepare(
+        $results = $wpdb->get_results(
         "SELECT * 
                 FROM $wpdb->dt_reports 
                 WHERE type = 'streams_app' 
                   AND subtype = 'report' 
-                  AND time_end >= %s 
-                  AND time_end <= %s;", $time_start, $time_end), ARRAY_A );
+                  ;" , ARRAY_A );
 
         if ( empty( $results ) ) {
             return $this->_empty_geojson();
@@ -292,11 +533,23 @@ class DT_Streams_Map extends DT_Magic_Url_Base
 
         $features = [];
         foreach ( $results as $result ) {
+            $payload = maybe_unserialize( $result['payload'] );
+            $time = $result['time_end'];
+            if ( empty( $time ) ) {
+                $time = $result['time_begin'];
+            }
+            if ( empty( $time ) ) {
+                continue;
+            }
+            $year = gmdate( 'Y', $time );
             $features[] = array(
                 'type' => 'Feature',
                 'properties' => array(
-                    'grid_id' => $result['grid_id'],
-                    'value' => $result['value'] // random value
+                    'value' => $result['value'],
+                    'type' => $payload['type'] ?? '',
+                    'year' => $year,
+                    'label' => $result['label'],
+                    'grid_id' => $result['grid_id']
                 ),
                 'geometry' => array(
                     'type' => 'Point',
