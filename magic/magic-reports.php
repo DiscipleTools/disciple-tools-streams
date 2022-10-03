@@ -754,9 +754,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     public function nav() {
         $actions = $this->magic->list_actions( $this->type );
         ?>
-        <style>
-
-        </style>
         <!-- off canvas menus -->
         <div class="off-canvas-wrapper">
             <!-- Left Canvas -->
@@ -964,8 +961,10 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     public function maps_body(){
         DT_Mapbox_API::geocoder_scripts();
         $this->nav();
-        ?>
+        $this_year = date('Y');
+        $dates = [];
 
+        ?>
         <div id="custom-style"></div>
         <style>
             #wrapper {
@@ -984,9 +983,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                     <button class="button-small button" style="background-color: royalblue;" id="baptisms">Baptisms</button>
                     <button class="button-small button" style="background-color: orange;" id="disciples">Disciples</button>
                     <button class="button-small button" style="background-color: green;" id="churches">Churches</button>
-                    <button class="button-small button hollow" id="all">All</button>
+                    <button class="button-small button hollow" id="all">All</button><br>
+                    <select style="width:150px;" id="year_filter"></select>
                 </div>
-                <div class="cell center">click to reveal counts</div>
             </div>
             <div class="grid-x grid-padding-x">
                 <div class="cell center" id="bottom-spinner"><span class="loading-spinner active"></span></div>
@@ -1001,6 +1000,17 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         <script>
             jQuery(document).ready(function($) {
                 clearInterval(window.fiveMinuteTimer)
+
+                let d = new Date()
+                let n = d.getFullYear()
+                let e = n - 11
+                let ten_years = ''
+                for(var i = n; i>=e; i--){
+                    ten_years += `<option value="${window.lodash.escape( i )}">${window.lodash.escape( i )}</option>`.toString()
+                }
+                let year_filter = jQuery('#year_filter')
+                year_filter.append(ten_years)
+
 
                 /* LOAD */
                 let spinner = $('.loading-spinner')
@@ -1021,7 +1031,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                         }
                     </style>`)
 
-
                 window.get_geojson().then(function (data) {
                     mapboxgl.accessToken = jsObject.map_key;
                     var map = new mapboxgl.Map({
@@ -1033,167 +1042,163 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                         zoom: 3
                     });
 
-                    // disable map rotation using right click + drag
                     map.dragRotate.disable();
-
-                    // disable map rotation using touch rotation gesture
                     map.touchZoomRotate.disableRotation();
 
                     map.on('load', function () {
-                        map.addSource('layer-source-reports', {
-                            type: 'geojson',
-                            data: data,
-                        });
+                        window.build_layers(map, data, '2022')
 
-                        /* churches */
-                        map.addLayer({
-                            id: 'layer-churches-circle',
-                            type: 'circle',
-                            source: 'layer-source-reports',
-                            paint: {
-                                'circle-color': 'green',
-                                'circle-radius': {
-                                    stops: [[8, 22], [11, 27], [16, 35]]
-                                },
-                                'circle-stroke-width': 0.5,
-                                'circle-stroke-color': '#fff'
-                            },
-                            filter: ['==', 'churches', ['get', 'type']]
-                        });
-                        map.addLayer({
-                            id: 'layer-churches-count',
-                            type: 'symbol',
-                            source: 'layer-source-reports',
-                            layout: {
-                                "text-field": ['get', 'value']
-                            },
-                            paint: {
-                                "text-color": "#ffffff"
-                            },
-                            filter: ['==', 'churches', ['get', 'type']]
-                        });
-
-                        /* disciples */
-                        map.addLayer({
-                            id: 'layer-disciples-circle',
-                            type: 'circle',
-                            source: 'layer-source-reports',
-                            paint: {
-                                'circle-color': 'orange',
-                                'circle-radius': {
-                                    stops: [[8, 20], [11, 25], [16, 28]]
-                                },
-                                'circle-stroke-width': 0.2,
-                                'circle-stroke-color': '#fff'
-                            },
-                            filter: ['==', 'disciples', ['get', 'type']]
-                        });
-                        map.addLayer({
-                            id: 'layer-disciples-count',
-                            type: 'symbol',
-                            source: 'layer-source-reports',
-                            layout: {
-                                "text-field": ['get', 'value']
-                            },
-                            paint: {
-                                "text-color": "#ffffff"
-                            },
-                            filter: ['==', 'disciples', ['get', 'type']]
-                        });
-
-                        /* baptism */
-                        map.addLayer({
-                            id: 'layer-baptisms-circle',
-                            type: 'circle',
-                            source: 'layer-source-reports',
-                            paint: {
-                                'circle-color': 'royalblue',
-                                'circle-radius': {
-                                    stops: [[8, 12], [11, 17], [16, 22]]
-                                },
-                                'circle-stroke-width': 0.5,
-                                'circle-stroke-color': '#fff'
-                            },
-                            filter: ['==', 'baptisms', ['get', 'type']]
-                        });
-                        map.addLayer({
-                            id: 'layer-baptisms-count',
-                            type: 'symbol',
-                            source: 'layer-source-reports',
-                            layout: {
-                                "text-field": ['get', 'value']
-                            },
-                            paint: {
-                                "text-color": "#ffffff"
-                            },
-                            filter: ['==', 'baptisms', ['get', 'type']]
-                        });
-
-                        map.setLayoutProperty('layer-baptisms-count', 'visibility', 'none');
-                        map.setLayoutProperty('layer-disciples-count', 'visibility', 'none');
-                        map.setLayoutProperty('layer-churches-count', 'visibility', 'none');
-                        spinner.removeClass('active')
-
-                        // SET BOUNDS
-                        // window.map_bounds_token = 'report_activity_map'
-                        // window.map_start = get_map_start(window.map_bounds_token)
-                        // if (window.map_start) {
-                        //     map.fitBounds(window.map_start, {duration: 0});
-                        // } else {
-                        //
-                        // }
-                        // map.on('zoomend', function () {
-                        //     set_map_start(window.map_bounds_token, map.getBounds())
-                        // })
-                        // map.on('dragend', function () {
-                        //     set_map_start(window.map_bounds_token, map.getBounds())
-                        // })
-                        var bounds = new mapboxgl.LngLatBounds();
-                        data.features.forEach(function(feature) {
-                            bounds.extend(feature.geometry.coordinates);
-                        });
-                        map.fitBounds(bounds, {padding: 100});
-
-                        // end set bounds
-
-
-                        jQuery('#baptisms').on('click', () => {
-                            console.log('click')
-                            hide_all()
-                            map.setLayoutProperty('layer-baptisms-circle', 'visibility', 'visible');
-                            map.setLayoutProperty('layer-baptisms-count', 'visibility', 'visible');
-                        })
-                        jQuery('#disciples').on('click', () => {
-                            console.log('click')
-                            hide_all()
-                            map.setLayoutProperty('layer-disciples-circle', 'visibility', 'visible');
-                            map.setLayoutProperty('layer-disciples-count', 'visibility', 'visible');
-                        })
-                        jQuery('#churches').on('click', () => {
-                            console.log('click')
-                            hide_all()
-                            map.setLayoutProperty('layer-churches-circle', 'visibility', 'visible');
-                            map.setLayoutProperty('layer-churches-count', 'visibility', 'visible');
-                        })
-                        jQuery('#all').on('click', () => {
-                            show_all()
+                        year_filter.on('change', function(e){
+                            const layers = ['layer-baptisms-circle', 'layer-baptisms-count', 'layer-disciples-circle', 'layer-disciples-count','layer-churches-circle', 'layer-churches-count' ]
+                            let layer_var = 'churches'
+                            for( const layer_id of layers) {
+                                if ( layer_id.search('churches') !== -1 ) {
+                                    layer_var = 'churches'
+                                } else if ( layer_id.search('disciples') !== -1 ) {
+                                    layer_var = 'disciples'
+                                } else {
+                                    layer_var = 'baptisms'
+                                }
+                                map.setFilter(layer_id, [ "all", ['==', layer_var, ['get', 'type'] ], ["==", jQuery(this).val(), ['get', 'year']] ]);
+                            }
                         })
                     });
-
-                    function hide_all() {
-                        const layers = ['layer-baptisms-circle', 'layer-baptisms-count', 'layer-disciples-circle', 'layer-disciples-count','layer-churches-circle', 'layer-churches-count' ]
-                        for( const layer_id of layers) {
-                            map.setLayoutProperty( layer_id, 'visibility', 'none');
-                        }
-                    }
-                    function show_all() {
-                        hide_all()
-                        const layers = ['layer-baptisms-circle', 'layer-disciples-circle', 'layer-churches-circle' ]
-                        for( const layer_id of layers) {
-                            map.setLayoutProperty( layer_id, 'visibility', 'visible');
-                        }
-                    }
                 })
+
+
+                window.build_layers = ( map, data, year ) => {
+                    map.addSource('layer-source-reports', {
+                        type: 'geojson',
+                        data: data,
+                    });
+
+                    map.addLayer({
+                        id: 'layer-churches-circle',
+                        type: 'circle',
+                        source: 'layer-source-reports',
+                        paint: {
+                            'circle-color': 'green',
+                            'circle-radius': {
+                                stops: [[8, 22], [11, 27], [16, 35]]
+                            },
+                            'circle-stroke-width': 0.5,
+                            'circle-stroke-color': '#fff'
+                        },
+                        filter: [ "all", ['==', 'churches', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                    });
+                    map.addLayer({
+                        id: 'layer-churches-count',
+                        type: 'symbol',
+                        source: 'layer-source-reports',
+                        layout: {
+                            "text-field": ['get', 'value']
+                        },
+                        paint: {
+                            "text-color": "#ffffff"
+                        },
+                        filter: [ "all", ['==', 'churches', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                    });
+
+                    /* disciples */
+                    map.addLayer({
+                        id: 'layer-disciples-circle',
+                        type: 'circle',
+                        source: 'layer-source-reports',
+                        paint: {
+                            'circle-color': 'orange',
+                            'circle-radius': {
+                                stops: [[8, 20], [11, 25], [16, 28]]
+                            },
+                            'circle-stroke-width': 0.2,
+                            'circle-stroke-color': '#fff'
+                        },
+                        filter: [ "all", ['==', 'disciples', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                    });
+                    map.addLayer({
+                        id: 'layer-disciples-count',
+                        type: 'symbol',
+                        source: 'layer-source-reports',
+                        layout: {
+                            "text-field": ['get', 'value']
+                        },
+                        paint: {
+                            "text-color": "#ffffff"
+                        },
+                        filter: [ "all", ['==', 'disciples', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                    });
+
+                    /* baptism */
+                    map.addLayer({
+                        id: 'layer-baptisms-circle',
+                        type: 'circle',
+                        source: 'layer-source-reports',
+                        paint: {
+                            'circle-color': 'royalblue',
+                            'circle-radius': {
+                                stops: [[8, 12], [11, 17], [16, 22]]
+                            },
+                            'circle-stroke-width': 0.5,
+                            'circle-stroke-color': '#fff'
+                        },
+                        filter: [ "all", ['==', 'baptisms', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                    });
+                    map.addLayer({
+                        id: 'layer-baptisms-count',
+                        type: 'symbol',
+                        source: 'layer-source-reports',
+                        layout: {
+                            "text-field": ['get', 'value']
+                        },
+                        paint: {
+                            "text-color": "#ffffff"
+                        },
+                        filter: [ "all", ['==', 'baptisms', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                    });
+
+                    map.setLayoutProperty('layer-baptisms-count', 'visibility', 'none');
+                    map.setLayoutProperty('layer-disciples-count', 'visibility', 'none');
+                    map.setLayoutProperty('layer-churches-count', 'visibility', 'none');
+                    spinner.removeClass('active')
+
+                    var bounds = new mapboxgl.LngLatBounds();
+                    data.features.forEach(function(feature) {
+                        bounds.extend(feature.geometry.coordinates);
+                    });
+                    map.fitBounds(bounds, {padding: 100});
+                    // end set bounds
+
+                    jQuery('#baptisms').on('click', () => {
+                        window.hide_all(map)
+                        map.setLayoutProperty('layer-baptisms-circle', 'visibility', 'visible');
+                        map.setLayoutProperty('layer-baptisms-count', 'visibility', 'visible');
+                    })
+                    jQuery('#disciples').on('click', () => {
+                        window.hide_all(map)
+                        map.setLayoutProperty('layer-disciples-circle', 'visibility', 'visible');
+                        map.setLayoutProperty('layer-disciples-count', 'visibility', 'visible');
+                    })
+                    jQuery('#churches').on('click', () => {
+                        window.hide_all(map)
+                        map.setLayoutProperty('layer-churches-circle', 'visibility', 'visible');
+                        map.setLayoutProperty('layer-churches-count', 'visibility', 'visible');
+                    })
+                    jQuery('#all').on('click', () => {
+                        window.show_all( map )
+                    })
+                }
+                window.hide_all = ( map ) => {
+                    const layers = ['layer-baptisms-circle', 'layer-baptisms-count', 'layer-disciples-circle', 'layer-disciples-count','layer-churches-circle', 'layer-churches-count' ]
+                    for( const layer_id of layers) {
+                        map.setLayoutProperty( layer_id, 'visibility', 'none');
+                    }
+                }
+                window.show_all = ( map ) => {
+                    window.hide_all( map )
+                    const layers = ['layer-baptisms-circle', 'layer-disciples-circle', 'layer-churches-circle' ]
+                    for( const layer_id of layers) {
+                        map.setLayoutProperty( layer_id, 'visibility', 'visible');
+                    }
+                }
 
             })
         </script>
@@ -1201,24 +1206,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     }
 
     public function invite_body(){
-        $parts = $this->parts;
-        if ( empty( $parts ) ) {
-            return;
-        }
-        $join_key = get_post_meta( $parts['post_id'], $parts['root'] . '_join_magic_key' );
-        if ( empty( $join_key ) ) {
-            update_post_meta( $parts['post_id'], $parts['root'] . '_join_magic_key', dt_create_unique_key() );
-        }
-        $create_child_key = get_post_meta(  $parts['post_id'], $parts['root'] . '_create_child_magic_key' );
-        if ( empty( $create_child_key ) ) {
-            update_post_meta( $parts['post_id'], $parts['root'] . '_create_child_magic_key', dt_create_unique_key() );
-        }
-
-        $join_url = site_url() . '/' . $this->parts['root'] . '/join/' . $join_key;
-        $create_child_url = site_url() . '/' . $this->parts['root'] . '/create_child/' . $create_child_key;
-
         $this->nav();
-
         ?>
         <div id="custom-style"></div>
         <div id="wrapper">
@@ -1359,8 +1347,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         </script>
         <?php
     }
-
-
 
 
     /**

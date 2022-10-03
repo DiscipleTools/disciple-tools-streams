@@ -123,7 +123,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                                     <span id="phone-error" class="form-error"></span>
                                 </div>
                                 <div class="cell center">
-                                    <button class="button" id="submit-new">Register</button> <span class="loading-spinner"></span><br>
+                                    <button class="button large" id="submit-new">Register</button> <span class="loading-spinner"></span><br>
                                     <a class="show-first">back</a>
                                 </div>
                             </div>
@@ -138,7 +138,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                                     <span id="email-error-send" class="form-error">You're email is required.</span>
                                 </div>
                                 <div class="cell center">
-                                    <button class="button" id="submit-send-link">Email me access link</button> <span class="loading-spinner"></span><br>
+                                    <button class="button large" id="submit-send-link">Email me access link</button> <span class="loading-spinner"></span><br>
                                     <a class="show-first">back</a>
                                 </div>
                             </div>

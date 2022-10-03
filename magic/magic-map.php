@@ -50,7 +50,6 @@ class DT_Streams_Map extends DT_Magic_Url_Base
             add_action( 'wp_print_scripts', [ $this, 'print_scripts' ], 1500 ); // authorizes scripts
             add_action( 'wp_print_styles', [ $this, 'print_styles' ], 1500 ); // authorizes styles
 
-
             // page content
             add_action( 'dt_blank_head', [ $this, '_header' ] );
             add_action( 'dt_blank_footer', [ $this, '_footer' ] );
@@ -92,6 +91,7 @@ class DT_Streams_Map extends DT_Magic_Url_Base
                 'ipstack' => DT_Ipstack_API::get_key(),
                 'mirror_url' => dt_get_location_grid_mirror( true ),
                 'root' => esc_url_raw( rest_url() ),
+                'years' => $this->get_years(),
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'parts' => $this->parts,
                 'translations' => [
@@ -119,15 +119,16 @@ class DT_Streams_Map extends DT_Magic_Url_Base
                   </style>`)
 
 
+
                 window.get_geojson().then(function(data){
 
                     mapboxgl.accessToken = jsObject.map_key;
                     var map = new mapboxgl.Map({
                         container: 'map',
                         style: 'mapbox://styles/mapbox/light-v10',
-                        center: [0, 0],
+                        center: [0, 30],
                         minZoom: 0,
-                        zoom: 0
+                        zoom: 1
                     });
 
                     map.dragRotate.disable();
@@ -152,7 +153,6 @@ class DT_Streams_Map extends DT_Magic_Url_Base
                         });
 
                        // @see https://docs.mapbox.com for all the capacity of mapbox mapping.
-
                         spinner.removeClass('active')
 
                         var bounds = new mapboxgl.LngLatBounds();
@@ -165,10 +165,10 @@ class DT_Streams_Map extends DT_Magic_Url_Base
                 })
             }
 
-            window.get_geojson = () => {
+            window.get_geojson = ( time_start, time_end ) => {
                 return jQuery.ajax({
                     type: "POST",
-                    data: JSON.stringify({ action: 'geojson', parts: jsObject.parts }),
+                    data: JSON.stringify({ action: 'geojson', parts: jsObject.parts, time_start: time_start, time_end: time_end }),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     url: jsObject.root + jsObject.parts.root + '/v1/' + jsObject.parts.type,
@@ -259,17 +259,32 @@ class DT_Streams_Map extends DT_Magic_Url_Base
 
         switch ( $params['action'] ) {
             case 'geojson':
-                return $this->endpoint_geojson( $params['parts'] );
+                return $this->endpoint_geojson( $params['parts'], $params['time_start'] ?? null, $params['time_end'] ?? null );
             default:
                 return new WP_Error( __METHOD__, 'Missing valid action parameters', [ 'status' => 400 ] );
         }
     }
 
-    public function endpoint_geojson( $parts ) {
+    public function endpoint_geojson( $parts, $time_start = null, $time_end = null ) {
         global $wpdb;
+        dt_write_log(__METHOD__);
 
-        $results = $wpdb->get_results(
-        "SELECT * FROM $wpdb->dt_reports WHERE type = 'streams_app' AND subtype = 'report';", ARRAY_A );
+        if ( empty( $time_start ) ) {
+            $time_start = strtotime( 'January 1, ' . date('Y' ) );
+            dt_write_log($time_start);
+        }
+        if ( empty( $time_end ) ) {
+            $time_end = strtotime( 'December 31,, ' . date('Y' ) . ' 23:59:59' );
+            dt_write_log($time_end);
+        }
+
+        $results = $wpdb->get_results( $wpdb->prepare(
+        "SELECT * 
+                FROM $wpdb->dt_reports 
+                WHERE type = 'streams_app' 
+                  AND subtype = 'report' 
+                  AND time_end >= %s 
+                  AND time_end <= %s;", $time_start, $time_end), ARRAY_A );
 
         if ( empty( $results ) ) {
             return $this->_empty_geojson();
@@ -307,6 +322,13 @@ class DT_Streams_Map extends DT_Magic_Url_Base
             'type' => 'FeatureCollection',
             'features' => array()
         );
+    }
+
+    public function get_years() {
+        $years = [];
+        $today = date('Y' );
+        dt_write_log($today);
+        return $years;
     }
 
 
