@@ -666,7 +666,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                     <div id="panel1" class="first not-new not-send">
                         <div class="grid-x">
                             <div class="cell">
-                                <button type="button" class="button large expanded show-new">Register a New Stream</button>
+                                <button type="button" class="button large expanded show-new">Create a New Stream</button>
                             </div>
                             <div class="cell">
                                 <button type="button" class="button large expanded show-send">Retrieve My Private Link</button>
@@ -678,7 +678,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                         <div class="grid-x">
                             <div class="cell panel-note"></div>
                             <div class="cell">
-                                <label for="post_type_name">Name or nickname of your movement</label>
+                                <label for="post_type_name">Name, Nickname, or City of your movement</label>
                                 <input type="text" id="post_type_name" class="required" placeholder="Name or nickname of your movement" />
                                 <span id="stream-name-error" class="form-error">You're name is required.</span>
                             </div>
@@ -695,7 +695,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                                 <span id="email-error" class="form-error">You're email is required.</span>
                             </div>
                             <div class="cell center">
-                                <button class="button large" id="submit-new">Register</button> <span class="loading-spinner"></span><br>
+                                <button class="button large" id="submit-new">Create a New Stream</button> <span class="loading-spinner"></span><br>
                                 <a class="show-first">back</a>
                             </div>
                         </div>
@@ -1030,9 +1030,9 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                     <div class="grid-x">
                         <div class="cell panel-note"></div>
                         <div class="cell">
-                            <label for="post_type_name">Name or nickname of your stream *</label>
+                            <label for="post_type_name">Name, Nickname, or City of your movement *</label>
                             <input type="text" id="post_type_name" class="required" placeholder="stream name or nickname" />
-                            <span id="post-name-error" class="form-error">You're name is required.</span>
+                            <span id="post-name-error" class="form-error">You're steam name is required.</span>
                         </div>
                         <div class="cell">
                             <label for="name">Name *</label>
