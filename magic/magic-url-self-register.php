@@ -38,7 +38,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
             case 'retrieve':
                 return $this->retrieve( $params['data'] );
             case 'register':
-                return $this->register( $params['data'] );
+                return $this->register( $params['parts'], $params['data'] );
             case 'join':
                 return $this->join( $params['parts'], $params['data'] );
             case 'create_child':
@@ -73,7 +73,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
         }
     }
 
-    public function register( $data )
+    public function register_old( $data )
     {
         if (!isset($data['email'] ) ) {
             return [
@@ -219,6 +219,67 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
             }
 
         }
+    }
+
+    public function register( $parts, $data ) {
+
+        if ( ! isset( $data['email'] ) ) {
+            return [
+                'status' => 'FAIL',
+                'error' => new WP_Error(__METHOD__, 'Missing parameter', ['status' => 400])
+            ];
+        }
+
+        $name = sanitize_text_field( wp_unslash( $data['name'] ) );
+        $email = sanitize_email( wp_unslash($data['email'] ) );
+        $post_type_name = sanitize_text_field( wp_unslash($data['post_type_name'] ) );
+
+        $identity = $this->build_identity( $email );
+
+        $contact_id = $this->_has_contact_id( $identity );
+        if ( ! $contact_id ) {
+            $user = $this->_create_user( $name, $email );
+            $contact_id = $user['corresponds_to_contact'];
+            if ( ! $contact_id ) {
+                return [
+                    'status' => 'FAIL',
+                    'error' => new WP_Error(__METHOD__, 'Failed to create a contact_id', ['status' => 400])
+                ];
+            }
+        }
+
+        $app_p2p_connection_field = $this->app_p2p_connection_field;
+        $app_meta_key = $this->app_meta_key;
+        $fields = [
+            'title' => $post_type_name,
+            $app_p2p_connection_field => [
+                'values' => [
+                    [ 'value' => $contact_id ]
+                ]
+            ],
+            $app_meta_key => dt_create_unique_key(),
+        ];
+        $new_post = DT_Posts::create_post( $parts['post_type'], $fields, true, false );
+        dt_write_log($new_post);
+
+        $identity = $this->build_identity($email);
+        $send_result = $this->_send_to_user($identity);
+        return [
+            'status' => 'EMAILED',
+            'message' => $send_result
+        ];
+
+        if ( is_wp_error( $new_post ) ) {
+            return [
+                'status' => 'FAIL',
+                'error' => new WP_Error(__METHOD__, $new_post)
+            ];
+        }
+        return [
+            'status' => 'EMAILED',
+            'url' => trailingslashit( site_url() ) . $this->app_url . $new_post[$app_meta_key],
+            'message' => $new_post
+        ];
     }
 
     public function join( $parts, $data ) {
@@ -618,12 +679,12 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                             <div class="cell panel-note"></div>
                             <div class="cell">
                                 <label for="post_type_name">Name or nickname of your movement</label>
-                                <input type="text" id="post_type_name" class="required" placeholder="stream name or nickname" />
+                                <input type="text" id="post_type_name" class="required" placeholder="Name or nickname of your movement" />
                                 <span id="stream-name-error" class="form-error">You're name is required.</span>
                             </div>
                             <div class="cell">
-                                <label for="name">Your name</label>
-                                <input type="text" id="name" class="required" placeholder="Name" />
+                                <label for="name">Name</label>
+                                <input type="text" id="name" class="required" placeholder="Your name" />
                                 <span id="name-error" class="form-error">You're name is required.</span>
                             </div>
 
@@ -632,16 +693,6 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                                 <input type="email" id="email" name="email" placeholder="Email" />
                                 <input type="email" id="e2" name="email" class="required" placeholder="Email" />
                                 <span id="email-error" class="form-error">You're email is required.</span>
-                            </div>
-                            <div class="cell">
-                                <label for="phone">Phone</label>
-                                <input type="tel" id="phone" name="phone" class="required" placeholder="Phone" />
-                                <span id="phone-error" class="form-error">You're phone is required.</span>
-                            </div>
-                            <div class="cell">
-                                <label for="location">City or address</label>
-                                <input type="text" id="location" name="location" placeholder="City or Address" />
-                                <span id="phone-error" class="form-error"></span>
                             </div>
                             <div class="cell center">
                                 <button class="button large" id="submit-new">Register</button> <span class="loading-spinner"></span><br>
@@ -742,29 +793,6 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                         return;
                     }
 
-                    let phone_input = jQuery('#phone')
-                    let phone = phone_input.val()
-                    if ( ! phone ) {
-                        jQuery('#phone-error').show()
-                        submit_button.removeClass('loading')
-                        email_input.focus(function(){
-                            jQuery('#phone-error').hide()
-                        })
-                        submit_button.prop('disabled', false)
-                        spinner.removeClass('active')
-                        return;
-                    }
-
-                    let location_input = jQuery('#location')
-                    let location = location_input.val()
-
-                    let form_data = {
-                        name: name,
-                        email: email,
-                        phone: phone,
-                        location: location
-                    }
-
                     let post_type_name_input = jQuery('#post_type_name')
                     let post_type_name = post_type_name_input.val()
                     if ( ! post_type_name ) {
@@ -777,7 +805,12 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                         spinner.removeClass('active')
                         return;
                     }
-                    form_data.post_type_name = post_type_name
+
+                    let form_data = {
+                        name: name,
+                        email: email,
+                        post_type_name: post_type_name
+                    }
 
                     console.log(form_data)
                     window.api_sr( 'register', form_data )
