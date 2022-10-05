@@ -33,13 +33,16 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
 
         $params = dt_recursive_sanitize_array( $params );
         $action = sanitize_text_field( wp_unslash( $params['action'] ) );
-        $post_type = sanitize_text_field( wp_unslash( $params['parts']['post_type'] ) );
 
         switch ( $action ) {
             case 'retrieve':
                 return $this->retrieve( $params['data'] );
             case 'register':
-                return $this->register( $params['data'], $post_type );
+                return $this->register( $params['data'] );
+            case 'join':
+                return $this->join( $params['parts'], $params['data'] );
+            case 'create_child':
+                return $this->create_child( $params['parts'], $params['data'] );
 
             default:
                 return new WP_Error( __METHOD__, "Missing valid action", [ 'status' => 400 ] );
@@ -70,24 +73,23 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
         }
     }
 
-    public function register( $data, $post_type )
+    public function register( $data )
     {
-
-        if (!isset($data['name'], $data['email'] ) ) {
+        if (!isset($data['email'] ) ) {
             return [
                 'status' => 'FAIL',
                 'error' => new WP_Error(__METHOD__, 'Missing parameter', ['status' => 400])
             ];
         }
 
-        $display_name = sanitize_text_field(wp_unslash($data['name']));
-        
-        $phone = sanitize_text_field(wp_unslash($data['phone']));
-
-        $post_type_name = sanitize_text_field(wp_unslash($data['post_type_name']));
         $user_email = sanitize_email(wp_unslash($data['email']));
-
         $identity = $this->build_identity($user_email);
+
+
+        $display_name = sanitize_text_field(wp_unslash($data['name']));
+        $phone = sanitize_text_field(wp_unslash($data['phone']));
+        $post_type_name = sanitize_text_field(wp_unslash($data['post_type_name']));
+
 
         // has user_id and has streams
         if (isset($identity['post_type_ids']) && !empty($identity['post_type_ids'])) {
@@ -216,8 +218,117 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                 add_user_to_blog(get_current_blog_id(), $user_id, 'subscriber'); // add user to site.
             }
 
-
         }
+    }
+
+    public function join( $parts, $data ) {
+        if ( ! isset( $data['email'] ) ) {
+            return [
+                'status' => 'FAIL',
+                'error' => new WP_Error(__METHOD__, 'Missing parameter', ['status' => 400])
+            ];
+        }
+
+        $name = sanitize_text_field( wp_unslash( $data['name'] ) );
+        $email = sanitize_email( wp_unslash($data['email'] ) );
+        $identity = $this->build_identity( $email );
+        $target_post_id = $parts['post_id'];
+
+        $contact_id = $this->_has_contact_id( $identity );
+        if ( ! $contact_id ) {
+
+            $contact_id = $this->_create_user( $name, $email );
+            if ( ! $contact_id ) {
+                return [
+                    'status' => 'FAIL',
+                    'error' => new WP_Error(__METHOD__, 'Failed to create a contact_id', ['status' => 400])
+                ];
+            }
+        }
+
+        $app_p2p_connection_field = $this->app_p2p_connection_field;
+        $fields = [
+            $app_p2p_connection_field => [
+                'values' => [
+                    [ 'value' => $contact_id ]
+                ]
+            ]
+        ];
+        $updated_post = DT_Posts::update_post( $parts['post_type'], $parts['post_id'], $fields, true, false );
+
+        $app_key = get_post_meta( $target_post_id, $this->app_meta_key, true );
+
+        if ( is_wp_error( $updated_post ) ) {
+            return [
+                'status' => 'FAIL',
+                'error' => new WP_Error(__METHOD__, $updated_post)
+            ];
+        }
+        return [
+            'status' => 'EMAILED',
+            'url' => trailingslashit( site_url() ) . $this->app_url . $app_key,
+            'message' => $updated_post
+        ];
+    }
+
+    public function create_child( $parts, $data ) {
+
+        if ( ! isset( $data['email'] ) ) {
+            return [
+                'status' => 'FAIL',
+                'error' => new WP_Error(__METHOD__, 'Missing parameter', ['status' => 400])
+            ];
+        }
+
+        $name = sanitize_text_field( wp_unslash( $data['name'] ) );
+        $email = sanitize_email( wp_unslash($data['email'] ) );
+        $post_type_name = sanitize_text_field( wp_unslash($data['post_type_name'] ) );
+
+        $identity = $this->build_identity( $email );
+
+        $target_post_id = $parts['post_id'];
+
+        $contact_id = $this->_has_contact_id( $identity );
+        if ( ! $contact_id ) {
+            $user = $this->_create_user( $name, $email );
+            $contact_id = $user['corresponds_to_contact'];
+            if ( ! $contact_id ) {
+                return [
+                    'status' => 'FAIL',
+                    'error' => new WP_Error(__METHOD__, 'Failed to create a contact_id', ['status' => 400])
+                ];
+            }
+        }
+
+        $app_p2p_connection_field = $this->app_p2p_connection_field;
+        $app_meta_key = $this->app_meta_key;
+        $fields = [
+            'title' => $post_type_name,
+            $app_p2p_connection_field => [
+                'values' => [
+                    [ 'value' => $contact_id ]
+                ]
+            ],
+            $app_meta_key => dt_create_unique_key(),
+            'parent_streams' => [
+                'values' => [
+                    [ 'value' => $target_post_id ]
+                ]
+            ],
+        ];
+        $new_post = DT_Posts::create_post( $parts['post_type'], $fields, true, false );
+
+        if ( is_wp_error( $new_post ) ) {
+            return [
+                'status' => 'FAIL',
+                'error' => new WP_Error(__METHOD__, $new_post)
+            ];
+        }
+        return [
+            'status' => 'EMAILED',
+            'url' => trailingslashit( site_url() ) . $this->app_url . $new_post[$app_meta_key],
+            'message' => $new_post
+        ];
     }
 
     public function build_identity( $email ) {
@@ -234,6 +345,34 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
             'contact_ids' => $contact_ids,
             'post_type_ids' => $post_type_ids,
         ];
+    }
+
+    public function _create_user( $name, $email ) {
+
+        $user_id = $this->_query_for_user_id( $email );
+        if ( $user_id ) {
+            // @todo create a contact for the user
+
+            // check the meta_key for contact_id
+            // create a contact_id for the user
+            $identity = $this->build_identity( $email );
+            return $identity['contact_ids'][0] ?? false;
+        }
+
+        $user_name = str_replace(' ', '_', strtolower( $name ) );
+        $user_roles = [ 'reporter' ];
+
+        $current_user = wp_get_current_user();
+        $current_user->add_cap('create_users', true);
+        $current_user->add_cap('access_contacts', true);
+        $current_user->add_cap('create_contacts', true);
+        $current_user->add_cap('update_any_contacts', true);
+
+        $user = Disciple_Tools_Users::create_user( $user_name, $email, $name, $user_roles, null, null, true  );
+        if ( is_wp_error( $user ) ) {
+            return false;
+        }
+        return $user;
     }
 
     /**
@@ -396,11 +535,18 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
             ],
             $this->app_meta_key => $magic->create_unique_key(),
             "notes" => [
-                "Source" => "This stream was self-registered."
+                "Source" => "This record was self-registered."
             ]
         ];
 
         return DT_Posts::create_post( 'streams', $fields, true, false );
+    }
+
+    public function _has_contact_id( $identity ) {
+        if ( isset( $identity['contact_ids'] ) && ! empty( $identity['contact_ids'] ) ) {
+            return $identity['contact_ids'][0] ?? false;
+        }
+        return false;
     }
 
     public function javascript_object() {
@@ -421,7 +567,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                 'app_url' => $this->app_url ?? '',
                 'title' => get_the_title( $this->parts['post_id'] ),
                 'trans' => [
-                    'add' => __( 'Zume', 'disciple-tools-reporting-app' ),
+                    'add' => __( 'Zume', 'disciple-tools' ),
                 ],
             ]) ?>][0]
             jQuery(document).ready(function() {
@@ -714,275 +860,6 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
         <?php
     }
 
-    public function body_register_child() {
-        $this->javascript_object();
-        DT_Mapbox_API::geocoder_scripts();
-        ?>
-        <style>
-            body { background-color:white; } #wrapper { max-width: 600px; margin: 1em auto; } #email { display:none !important; } #email-send { display:none !important; }
-        </style>
-        <div id="wrapper">
-            <div class="grid-x">
-                <div class="cell" id="content">
-                    <input type="hidden" id="stream-grid-id" />
-                    <div id="panel1" class="first not-new not-send">
-                        <div class="grid-x">
-                            <div class="cell">
-                                <button type="button" class="button large expanded show-new">Register a New Stream</button>
-                            </div>
-                            <div class="cell">
-                                <button type="button" class="button large expanded show-send">Retrieve My Private Link</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="new-panel" class="new not-first not-send" style="display:none;">
-                        <div class="grid-x">
-                            <div class="cell panel-note"></div>
-                            <div class="cell">
-                                <label for="post_type_name">Name or nickname of your movement</label>
-                                <input type="text" id="post_type_name" class="required" placeholder="stream name or nickname" />
-                                <span id="stream-name-error" class="form-error">You're name is required.</span>
-                            </div>
-                            <div class="cell">
-                                <label for="name">Your name</label>
-                                <input type="text" id="name" class="required" placeholder="Name" />
-                                <span id="name-error" class="form-error">You're name is required.</span>
-                            </div>
-
-                            <div class="cell">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="Email" />
-                                <input type="email" id="e2" name="email" class="required" placeholder="Email" />
-                                <span id="email-error" class="form-error">You're email is required.</span>
-                            </div>
-                            <div class="cell">
-                                <label for="phone">Phone</label>
-                                <input type="tel" id="phone" name="phone" class="required" placeholder="Phone" />
-                                <span id="phone-error" class="form-error">You're phone is required.</span>
-                            </div>
-                            <div class="cell">
-                                <label for="location">City or address</label>
-                                <input type="text" id="location" name="location" placeholder="City or Address" />
-                                <span id="phone-error" class="form-error"></span>
-                            </div>
-                            <div class="cell center">
-                                <button class="button large" id="submit-new">Register</button> <span class="loading-spinner"></span><br>
-                                <a class="show-first">back</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="send-panel" class="send not-new not-first" style="display:none;">
-                        <div class="grid-x">
-                            <div class="cell">
-                                <label for="email">Email</label>
-                                <input type="email" id="email-send" name="email" placeholder="Email" />
-                                <input type="email" id="e2-send" name="email" class="required" placeholder="Email" />
-                                <span id="email-error-send" class="form-error">You're email is required.</span>
-                            </div>
-                            <div class="cell center">
-                                <button class="button large" id="submit-send-link">Email me access link</button> <span class="loading-spinner"></span><br>
-                                <a class="show-first">back</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script>
-            jQuery(document).ready(function(){
-
-                // set listeners
-                let send = jQuery('.send')
-                let not_send = jQuery('.not-send')
-                let new_input = jQuery('.new')
-                let not_new = jQuery('.not-new')
-                let first = jQuery('.first')
-                let not_first = jQuery('.not-first')
-                let note = jQuery('.panel-note')
-                jQuery('.show-new').on('click', function() {
-                    new_input.show()
-                    not_new.hide()
-                    note.empty()
-                })
-                jQuery('.show-send').on('click', function() {
-                    send.show()
-                    not_send.hide()
-                    note.empty()
-                })
-                jQuery('.show-first').on('click', function() {
-                    first.show()
-                    not_first.hide()
-                    note.empty()
-                })
-
-                // listen to buttons
-                jQuery('#submit-new').on('click', function(){
-                    self_register()
-                })
-                jQuery('#submit-send-link').on('click', function(){
-                    retrieve()
-                })
-
-                function self_register() {
-                    let spinner = jQuery('.loading-spinner')
-                    spinner.addClass('active')
-
-                    let submit_button = jQuery('#submit-stream')
-                    submit_button.prop('disabled', true)
-
-                    let honey = jQuery('#email').val()
-                    if ( honey ) {
-                        submit_button.html('Shame, shame, shame. We know your name ... ROBOT!').prop('disabled', true )
-                        spinner.removeClass('active')
-                        return;
-                    }
-
-                    let name_input = jQuery('#name')
-                    let name = name_input.val()
-                    if ( ! name ) {
-                        jQuery('#name-error').show()
-                        submit_button.removeClass('loading')
-                        name_input.focus(function(){
-                            jQuery('#name-error').hide()
-                        })
-                        submit_button.prop('disabled', false)
-                        spinner.removeClass('active')
-                        return;
-                    }
-
-                    let email_input = jQuery('#e2')
-                    let email = email_input.val()
-                    if ( ! email ) {
-                        jQuery('#email-error').show()
-                        submit_button.removeClass('loading')
-                        email_input.focus(function(){
-                            jQuery('#email-error').hide()
-                        })
-                        submit_button.prop('disabled', false)
-                        spinner.removeClass('active')
-                        return;
-                    }
-
-                    let phone_input = jQuery('#phone')
-                    let phone = phone_input.val()
-                    if ( ! phone ) {
-                        jQuery('#phone-error').show()
-                        submit_button.removeClass('loading')
-                        email_input.focus(function(){
-                            jQuery('#phone-error').hide()
-                        })
-                        submit_button.prop('disabled', false)
-                        spinner.removeClass('active')
-                        return;
-                    }
-
-                    let location_input = jQuery('#location')
-                    let location = location_input.val()
-
-                    let form_data = {
-                        name: name,
-                        email: email,
-                        phone: phone,
-                        location: location
-                    }
-
-                    let post_type_name_input = jQuery('#post_type_name')
-                    let post_type_name = post_type_name_input.val()
-                    if ( ! post_type_name ) {
-                        jQuery('#stream-name-error').show()
-                        submit_button.removeClass('loading')
-                        email_input.focus(function(){
-                            jQuery('#stream-name-error').hide()
-                        })
-                        submit_button.prop('disabled', false)
-                        spinner.removeClass('active')
-                        return;
-                    }
-                    form_data.post_type_name = post_type_name
-
-                    console.log(form_data)
-                    window.api_sr( 'register', form_data )
-                        .done(function(response){
-                            console.log(response)
-
-                            let new_panel = jQuery('#new-panel')
-                            if ( response.status === 'EMAILED' ) {
-                                new_panel.empty().html(`
-                                Excellent! Check your email for a direct link to your stream portal.<br><br>
-                              `)
-                            }
-                            else if ( response.status === 'CREATED' ) {
-                                new_panel.empty().html(`
-                                Excellent! You've been sent an email with your stream link. Please, complete your remaining community profile.<br><br>
-                                <a class="button" href="${response.link}" target="_parent">Open Reporting Portal</a>
-                              `)
-                            }
-                            else if ( response.status === 'FAIL' ) {
-                                new_panel.empty().html(`
-                                    Oops. Something went wrong. Please, refresh and try again. <a onclick="location.reload();">reload</a>
-                                  `)
-                            }
-
-                            jQuery('.loading-spinner').removeClass('active')
-                            jQuery('.panel-note').empty()
-                        })
-                }
-
-                function retrieve(){
-                    let spinner = jQuery('.loading-spinner')
-                    spinner.addClass('active')
-
-                    let submit_button = jQuery('#submit-send-link')
-                    submit_button.prop('disabled', true)
-
-                    let honey = jQuery('#email-send').val()
-                    if ( honey ) {
-                        submit_button.html('Shame, shame, shame. We know your name ... ROBOT!').prop('disabled', true )
-                        spinner.removeClass('active')
-                        return;
-                    }
-
-                    let email_input = jQuery('#e2-send')
-                    let email = email_input.val()
-                    if ( ! email ) {
-                        jQuery('#email-error-send').show()
-                        submit_button.removeClass('loading')
-                        email_input.focus(function(){
-                            jQuery('#email-error-send').hide()
-                        })
-                        submit_button.prop('disabled', false)
-                        spinner.removeClass('active')
-                        return;
-                    }
-
-                    let form_data = {
-                        email: email
-                    }
-
-                    window.api_sr( 'retrieve', form_data )
-                        .done(function(response){
-                            console.log(response)
-                            if ( response ) {
-                                jQuery('#send-panel').empty().html(`
-                                    Excellent! Go to you email inbox and find your personal link.<br>
-                                  `)
-                                jQuery('.panel-note').empty()
-                            } else {
-                                jQuery('.new').show()
-                                jQuery('.not-new').hide()
-                                jQuery('.panel-note').html('Email not found. Please, register.')
-                            }
-                            jQuery('.loading-spinner').removeClass('active')
-
-                        })
-                }
-            })
-        </script>
-        <?php
-    }
-
     public function body_join() {
         $this->javascript_object();
         DT_Mapbox_API::geocoder_scripts();
@@ -1004,25 +881,15 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
 
                     <div class="grid-x">
                         <div class="cell">
-                            <label for="name">Your name *</label>
-                            <input type="text" id="name" class="required" placeholder="Name" />
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" class="required" placeholder="Your name" />
                             <span id="name-error" class="form-error">You're name is required.</span>
                         </div>
                         <div class="cell">
                             <label for="email">Email *</label>
                             <input type="email" id="email" name="email" placeholder="Email" />
-                            <input type="email" id="e2" name="email" class="required" placeholder="Email" />
+                            <input type="email" id="e2" name="email" class="required" placeholder="Your Email Address" />
                             <span id="email-error" class="form-error">You're email is required.</span>
-                        </div>
-                        <div class="cell">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone" class="required" placeholder="Phone" />
-                            <span id="phone-error" class="form-error">You're phone is required.</span>
-                        </div>
-                        <div class="cell">
-                            <label for="location">City or address</label>
-                            <input type="text" id="location" name="location" placeholder="City or Address" />
-                            <span id="phone-error" class="form-error"></span>
                         </div>
                         <div class="cell center">
                             <button class="button large" id="submit-new">Join as Reporter</button> <span class="loading-spinner"></span>
@@ -1036,10 +903,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
 
                 // listen to buttons
                 jQuery('#submit-new').on('click', function(){
-                    self_register()
-                })
 
-                function self_register() {
                     let spinner = jQuery('.loading-spinner')
                     spinner.addClass('active')
 
@@ -1079,54 +943,18 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                         return;
                     }
 
-                    let phone_input = jQuery('#phone')
-                    let phone = phone_input.val()
-                    if ( ! phone ) {
-                        jQuery('#phone-error').show()
-                        submit_button.removeClass('loading')
-                        email_input.focus(function(){
-                            jQuery('#phone-error').hide()
-                        })
-                        submit_button.prop('disabled', false)
-                        spinner.removeClass('active')
-                        return;
-                    }
-
-                    let location_input = jQuery('#location')
-                    let location = location_input.val()
-
                     let form_data = {
                         name: name,
-                        email: email,
-                        phone: phone,
-                        location: location
+                        email: email
                     }
 
-                    let post_type_name_input = jQuery('#post_type_name')
-                    let post_type_name = post_type_name_input.val()
-                    if ( ! post_type_name ) {
-                        jQuery('#stream-name-error').show()
-                        submit_button.removeClass('loading')
-                        email_input.focus(function(){
-                            jQuery('#stream-name-error').hide()
-                        })
-                        submit_button.prop('disabled', false)
-                        spinner.removeClass('active')
-                        return;
-                    }
-                    form_data.post_type_name = post_type_name
-
-                    console.log(form_data)
-                    
-                    window.api_sr( 'register', form_data )
+                    window.api_sr( 'join', form_data )
                         .done(function(response){
                             console.log(response)
 
                             let new_panel = jQuery('#new-panel')
                             if ( response.status === 'EMAILED' ) {
-                                new_panel.empty().html(`
-                                Excellent! Check your email for a direct link to your stream portal.<br><br>
-                              `)
+                                location.href = response.url
                             }
                             else if ( response.status === 'CREATED' ) {
                                 new_panel.empty().html(`
@@ -1143,29 +971,106 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                             jQuery('.loading-spinner').removeClass('active')
                             jQuery('.panel-note').empty()
                         })
-                }
+                })
+            })
+        </script>
+        <?php
+    }
 
-                function retrieve(){
+    public function body_new_child() {
+        $this->javascript_object();
+        DT_Mapbox_API::geocoder_scripts();
+        ?>
+        <style>
+            body { background-color:white; } #wrapper { max-width: 600px; margin: 1em auto; } #email { display:none !important; } #email-send { display:none !important; }
+        </style>
+        <div id="wrapper">
+            <div class="grid-x">
+                <div class="cell" id="content">
+                    <div class="grid-x center">
+                        <div class='cell'>
+                            <h1>Create a New Child Stream</h1><hr>
+                            <p>You've been invited to create a new movement report connected to <?php echo esc_html( get_the_title( $this->parts['post_id'] ) ) ?>.</p>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="grid-x">
+                        <div class="cell panel-note"></div>
+                        <div class="cell">
+                            <label for="post_type_name">Name or nickname of your stream *</label>
+                            <input type="text" id="post_type_name" class="required" placeholder="stream name or nickname" />
+                            <span id="post-name-error" class="form-error">You're name is required.</span>
+                        </div>
+                        <div class="cell">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" class="required" placeholder="Name" />
+                            <span id="name-error" class="form-error">You're name is required.</span>
+                        </div>
+                        <div class="cell">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" placeholder="Email" />
+                            <input type="email" id="e2" name="email" class="required" placeholder="Email" />
+                            <span id="email-error" class="form-error">You're email is required.</span>
+                        </div>
+
+                        <div class="cell center">
+                            <button class="button large" id="submit-new">Create New Stream</button> <span class="loading-spinner"></span><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            jQuery(document).ready(function(){
+
+                // listen to buttons
+                jQuery('#submit-new').on('click', function(){
+
                     let spinner = jQuery('.loading-spinner')
                     spinner.addClass('active')
 
-                    let submit_button = jQuery('#submit-send-link')
+                    let submit_button = jQuery('#submit-stream')
                     submit_button.prop('disabled', true)
 
-                    let honey = jQuery('#email-send').val()
+                    let honey = jQuery('#email').val()
                     if ( honey ) {
                         submit_button.html('Shame, shame, shame. We know your name ... ROBOT!').prop('disabled', true )
                         spinner.removeClass('active')
                         return;
                     }
 
-                    let email_input = jQuery('#e2-send')
+                    let name_input = jQuery('#name')
+                    let name = name_input.val()
+                    if ( ! name ) {
+                        jQuery('#name-error').show()
+                        submit_button.removeClass('loading')
+                        name_input.focus(function(){
+                            jQuery('#name-error').hide()
+                        })
+                        submit_button.prop('disabled', false)
+                        spinner.removeClass('active')
+                        return;
+                    }
+
+                    let email_input = jQuery('#e2')
                     let email = email_input.val()
                     if ( ! email ) {
-                        jQuery('#email-error-send').show()
+                        jQuery('#email-error').show()
                         submit_button.removeClass('loading')
                         email_input.focus(function(){
-                            jQuery('#email-error-send').hide()
+                            jQuery('#email-error').hide()
+                        })
+                        submit_button.prop('disabled', false)
+                        spinner.removeClass('active')
+                        return;
+                    }
+                    let post_type_name_input = jQuery('#post_type_name')
+                    let post_type_name = post_type_name_input.val()
+                    if ( ! post_type_name ) {
+                        jQuery('#post-name-error').show()
+                        submit_button.removeClass('loading')
+                        email_input.focus(function(){
+                            jQuery('#post-name-error').hide()
                         })
                         submit_button.prop('disabled', false)
                         spinner.removeClass('active')
@@ -1173,29 +1078,32 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                     }
 
                     let form_data = {
-                        email: email
+                        name: name,
+                        email: email,
+                        post_type_name: post_type_name
                     }
 
-                    window.api_sr( 'retrieve', form_data )
+                    console.log(form_data)
+                    window.api_sr( 'create_child', form_data )
                         .done(function(response){
                             console.log(response)
-                            if ( response ) {
-                                jQuery('#send-panel').empty().html(`
-                                    Excellent! Go to you email inbox and find your personal link.<br>
-                                  `)
-                                jQuery('.panel-note').empty()
-                            } else {
-                                jQuery('.new').show()
-                                jQuery('.not-new').hide()
-                                jQuery('.panel-note').html('Email not found. Please, register.')
-                            }
-                            jQuery('.loading-spinner').removeClass('active')
 
+                            let new_panel = jQuery('#new-panel')
+                            if ( response.status === 'EMAILED' ) {
+                                location.href = response.url
+                            }
+                            else if ( response.status === 'FAIL' ) {
+                                new_panel.empty().html(`
+                                    Oops. Something went wrong. Please, refresh and try again. <a onclick="location.reload();">reload</a>
+                                  `)
+                            }
+
+                            jQuery('.loading-spinner').removeClass('active')
+                            jQuery('.panel-note').empty()
                         })
-                }
+                })
             })
         </script>
         <?php
     }
-
 }

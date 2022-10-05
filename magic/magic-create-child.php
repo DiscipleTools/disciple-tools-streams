@@ -5,8 +5,8 @@ class DT_Streams_Invite_To_Create_Child_Stream extends DT_Magic_Url_Self_Registe
 
     public $magic = false;
     public $parts = false;
-    public $page_title = 'Invite to Create a Child Stream';
-    public $page_description = 'Invite to Create a Child Stream';
+    public $page_title = 'Create a Child Stream';
+    public $page_description = 'Create a Child Stream';
     public $root = 'streams_app';
     public $type = 'create_child';
     public $post_type = 'streams';
@@ -44,7 +44,7 @@ class DT_Streams_Invite_To_Create_Child_Stream extends DT_Magic_Url_Self_Registe
         }
 
         // load if valid url
-        add_action( 'dt_blank_body', [ $this, 'body_register_child' ] ); // body for no post key
+        add_action( 'dt_blank_body', [ $this, 'body_new_child' ] ); // body for no post key
     }
 }
 DT_Streams_Invite_To_Create_Child_Stream::instance();

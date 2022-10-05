@@ -5,8 +5,8 @@ class DT_Streams_Invite_To_Join_Stream extends DT_Magic_Url_Self_Register {
 
     public $magic = false;
     public $parts = false;
-    public $page_title = 'Invite to Join this Stream';
-    public $page_description = 'Invite to Join this Stream';
+    public $page_title = 'Invite to Report';
+    public $page_description = 'Invite to Report';
     public $root = 'streams_app';
     public $type = 'join';
     public $post_type = 'streams';

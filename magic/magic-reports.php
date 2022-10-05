@@ -1210,7 +1210,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             <hr>
             <div class="grid-x grid-padding-x" id="send-options">
                 <div class="cell">
-                    <h1>Share Reporting for This Stream</h1>
+                    <h1>Invite a Reporter to this Stream</h1>
                     <p>Invite someone to assist you in reporting movement data in this stream. This person will see and edit any reports you have created in this stream like you do.</p>
                     <div class="button-group">
                         <a class="button hollow copy_to_clipboard" id="collaborative_reporting_copy" data-value="">Copy Link</a>

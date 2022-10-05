@@ -2,7 +2,7 @@
 
 class DT_Streams_Self_Register extends DT_Magic_Url_Self_Register {
 
-    public $page_title = 'Reporter Manager';
+    public $page_title = 'Register and Retrieve Access';
     public $root = "streams_app";
     public $type = 'access';
     public $type_name = 'Access';
