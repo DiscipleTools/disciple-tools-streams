@@ -5,11 +5,15 @@ class DT_Streams_Self_Register extends DT_Magic_Url_Self_Register {
     public $page_title = 'Reporter Manager';
     public $root = "streams_app";
     public $type = 'access';
-    public $portal_key = 'streams_app_report_magic_key';
-    public $portal_url = 'streams_app/report/';
     public $type_name = 'Access';
     public $post_type = 'streams';
     public $page_description = '';
+
+    public $app_meta_key = 'streams_app_report_magic_key'; // target app this magic link is servicing
+    public $app_p2p_connection_field = 'reporter'; // field for reporter connection
+    public $app_p2p_connection_type = 'streams_to_reporter'; // found in the definition of the connection field, i.e. 'reporter'
+    public $app_p2p_connection_direction = 'from'; // connection direction which manages the columns to query
+    public $app_url = 'streams_app/report/'; // target app this magic link is servicing
 
     private static $_instance = null;
     public static function instance() {
@@ -33,12 +37,7 @@ class DT_Streams_Self_Register extends DT_Magic_Url_Self_Register {
             return;
         }
 
-        add_action( 'dt_blank_body', [ $this, 'body' ] );
+        add_action( 'dt_blank_body', [ $this, 'body_register_and_retrieve' ] );
     }
-
-    public function header_javascript(){
-        $this->register_form_header_javascript();
-    }
-
 }
 DT_Streams_Self_Register::instance();

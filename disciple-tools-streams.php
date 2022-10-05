@@ -124,6 +124,7 @@ class DT_Streams {
         /* post type */
         require_once( 'post-type/streams-post-type.php' );
         require_once( 'post-type/bulk-list-extension.php' );
+        require_once( 'magic/magic-url-self-register.php' );
         require_once( 'admin/customize-site-linking.php' );
 
         /* metrics */
@@ -133,9 +134,10 @@ class DT_Streams {
         /* magic links */
         require_once( 'magic/magic-map.php' );
         require_once( 'magic/magic-reports.php' );
-        require_once( 'magic/magic-invite.php' );
-        require_once( 'magic/magic-url-self-register.php' );
-        require_once( 'magic/magic-streams-self-register.php' );
+        
+        require_once( 'magic/magic-public-register.php' );
+        require_once( 'magic/magic-join.php' );
+        require_once( 'magic/magic-create-child.php' );
     }
 
     /**
