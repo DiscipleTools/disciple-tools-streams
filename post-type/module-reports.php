@@ -685,7 +685,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         DT_Mapbox_API::load_mapbox_header_scripts();
     }
 
-    public function nav( ) {
+    public function nav() {
         $actions = $this->magic->list_actions( $this->type );
         ?>
         <style>
@@ -770,7 +770,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             }
         }
         $post = $this->post;
-        
+
         $this->nav();
         ?>
 
@@ -788,7 +788,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 <div class="cell top-message"></div>
                 <?php
                 foreach ( $actions as $action => $label ) {
-                    if( empty( $action ) ) {
+                    if ( empty( $action ) ) {
                         continue;
                     }
                     ?>
@@ -1404,7 +1404,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             return new WP_Error( __METHOD__, "Subtype must be an array", [ 'status' => 400 ] );
         }
 
-        foreach( $params['data'] as $data ) {
+        foreach ( $params['data'] as $data ) {
             $args = [
                 'parent_id' => null,
                 'post_id' => $post_id,
