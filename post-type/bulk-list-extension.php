@@ -37,7 +37,7 @@ if ( 'streams' === dt_get_post_type() ) {
                 <div class="cell">
                     <label for="bulk_contact_messaging_method"><?php echo esc_html__( 'Method', 'disciple_tools' ); ?></label>
                     <span id="bulk_contact_messaging_method" style="display:none;color:red;"><?php echo esc_html__( 'You must select an app', 'disciple_tools' ); ?></span>
-                    <div class="bulk_contact_messaging_method dt-radio button-church toggle ">
+                    <div class="bulk_contact_messaging_method dt-radio button-group toggle ">
                         <?php
                         foreach ( $dt_message_methods as $type ) {
                             $checked = false;
@@ -61,7 +61,7 @@ if ( 'streams' === dt_get_post_type() ) {
                 <div class="cell email-specific">
                     <label for="bulk_contact_messaging_from_address"><?php echo esc_html__( 'From Name', 'disciple_tools' ); ?></label>
                     <span id="bulk_contact_messaging_from_address" style="display:none;color:red;"><?php echo esc_html__( 'You must select an email', 'disciple_tools' ); ?></span>
-                    <div class="bulk_contact_messaging_from_address dt-radio button-church toggle ">
+                    <div class="bulk_contact_messaging_from_address dt-radio button-group toggle ">
                         <input type="radio" id="bulk_contact_messaging_from_address_none" name="send_from" value="default" checked>
                         <label class="button" for="bulk_contact_messaging_from_address_none">System</label>
                         <?php if ( isset( $dt_user['nickname'][0] ) ) : ?>
@@ -85,7 +85,7 @@ if ( 'streams' === dt_get_post_type() ) {
                 <div class="cell">
                     <label for="bulk_contact_messaging_app_link"><?php echo esc_html__( 'Add app link to message', 'disciple_tools' ); ?></label>
                     <span id="bulk_contact_messaging_app_link" style="display:none;color:red;"><?php echo esc_html__( 'You must select an app', 'disciple_tools' ); ?></span>
-                    <div class="bulk_send_app dt-radio button-church toggle ">
+                    <div class="bulk_send_app dt-radio button-group toggle ">
                         <input type="radio" id="no_app" data-root="" data-type="" name="app_link" checked>
                         <label class="button" for="no_app">No Link</label>
                         <?php
@@ -138,7 +138,7 @@ if ( 'streams' === dt_get_post_type() ) {
 
                 jQuery('#bulk_contact_messaging_submit').on('click', function(e) {
 
-                    let method_input = jQuery('.bulk_contact_messaging_method.dt-radio.button-church input:checked')
+                    let method_input = jQuery('.bulk_contact_messaging_method.dt-radio.button-group input:checked')
                     if ( method_input.length < 1 ) {
                         jQuery("#bulk_contact_messaging_method").show()
                         return
@@ -146,7 +146,7 @@ if ( 'streams' === dt_get_post_type() ) {
                         jQuery("#bulk_contact_messaging_method").hide()
                     }
 
-                    let send_from_input = jQuery('.bulk_contact_messaging_from_address.dt-radio.button-church input:checked')
+                    let send_from_input = jQuery('.bulk_contact_messaging_from_address.dt-radio.button-group input:checked')
                     if ( send_from_input.length < 1 && 'email' === method_input ) {
                         jQuery("#bulk_contact_messaging_from_address").show()
                         return
@@ -158,7 +158,7 @@ if ( 'streams' === dt_get_post_type() ) {
 
                     let body = jQuery('#bulk_contact_messaging_body').val()
 
-                    let app_input = jQuery('.bulk_send_app.dt-radio.button-church input:checked')
+                    let app_input = jQuery('.bulk_send_app.dt-radio.button-group input:checked')
                     if ( app_input.length < 1 ) {
                         jQuery("#bulk_contact_messaging_app_link").show()
                         return
@@ -213,7 +213,6 @@ if ( 'streams' === dt_get_post_type() ) {
                             console.log( e )
                         })
                 });
-
             })
         </script>
         <?php

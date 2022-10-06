@@ -23,7 +23,7 @@ jobs:
       - name: Build project
         run: |
           mkdir disciple-tools-streams
-          cp -r disciple-tools-streams.php admin languages metrics post-type spinner.svg version-control.json LICENSE SECURITY.md disciple-tools-streams/
+          cp -r disciple-tools-streams.php admin languages metrics magic post-type spinner.svg version-control.json LICENSE SECURITY.md disciple-tools-streams/
           zip -r disciple-tools-streams.zip disciple-tools-streams
       - name: Create Release
         id: create_release
