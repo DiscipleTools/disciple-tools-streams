@@ -63,161 +63,13 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
         $email = sanitize_email( wp_unslash( $data['email'] ) );
 
         $identity = $this->build_identity( $email );
-        
+
         if ( isset( $identity['post_type_ids'] ) && ! empty( $identity['post_type_ids'] ) ) {
             $this->_send_to_user( $identity );
             return true;
         } else {
-            dt_write_log('No identity found');
+            dt_write_log( 'No identity found' );
             return false;
-        }
-    }
-
-    public function register_old( $data )
-    {
-        if (!isset($data['email'] ) ) {
-            return [
-                'status' => 'FAIL',
-                'error' => new WP_Error(__METHOD__, 'Missing parameter', ['status' => 400])
-            ];
-        }
-
-        $user_email = sanitize_email(wp_unslash($data['email']));
-        $identity = $this->build_identity($user_email);
-
-
-        $display_name = sanitize_text_field(wp_unslash($data['name']));
-        $phone = sanitize_text_field(wp_unslash($data['phone']));
-        $post_type_name = sanitize_text_field(wp_unslash($data['post_type_name']));
-
-
-        // has user_id and has streams
-        if (isset($identity['post_type_ids']) && !empty($identity['post_type_ids'])) {
-            $this->_send_to_user($identity);
-            dt_write_log('has user_id and has streams');
-            return [
-                'status' => 'EMAILED'
-            ];
-        }
-
-        // has a user id, but does not have a contact_id. This should not happen.
-        if (!empty($identity['user_id']) && empty($identity['contact_ids'])) {
-            return [
-                'status' => 'FAIL',
-                'message' => 'User ID exists but contact has not been created'
-            ];
-        }
-
-        // has user_id but has no streams
-        if (!empty($identity['user_id']) && empty($identity['post_type_ids'])) {
-            $new_stream = $this->_create_post($identity, $post_type_name);
-            if (is_wp_error($new_stream)) {
-                return [
-                    'status' => 'FAIL',
-                    'error' => $new_stream
-                ];
-            }
-            // rebuild identity
-            $identity = $this->build_identity($user_email);
-            $send_result = $this->_send_to_user($identity);
-            return [
-                'status' => 'EMAILED',
-                'message' => $send_result
-            ];
-        }
-
-        if (empty($identity['user_id'])) {
-
-//            $exploded_email = explode( '@', $user_email );
-
-//            $user_name = str_replace( ' ', '_', strtolower( $display_name ) );
-//            $user_name_last = dt_create_field_key( dt_create_unique_key() );
-//            $user_name = $user_name_first . $user_name_last;
-//            if ( username_exists( $user_name ) ) {
-//                $user_name = $user_name_first . dt_create_field_key( dt_create_unique_key() );
-//            }
-
-            $user_name = str_replace(' ', '_', strtolower($display_name));
-            $user_roles = ['reporter'];
-
-            $current_user = wp_get_current_user();
-            $current_user->add_cap('create_users', true);
-            $current_user->add_cap('access_contacts', true);
-            $current_user->add_cap('create_contacts', true);
-            $current_user->add_cap('update_any_contacts', true);
-            $current_user->add_cap('create_streams', true);
-
-            dt_write_log('$current_user');
-            dt_write_log($current_user);
-            dt_write_log($user_name);
-
-            $contact_id = Disciple_Tools_Users::create_user($user_name, $user_email, $display_name, $user_roles);
-            dt_write_log('$contact_id');
-            dt_write_log($contact_id);
-
-            $identity = $this->build_identity($user_email);
-            $new_stream = $this->_create_post($identity, $post_type_name);
-            if (is_wp_error($new_stream)) {
-                return [
-                    'status' => 'FAIL',
-                    'error' => $new_stream
-                ];
-            }
-            // rebuild identity
-            $identity = $this->build_identity($user_email);
-            $send_result = $this->_send_to_user($identity);
-            return [
-                'status' => 'EMAILED',
-                'message' => $send_result
-            ];
-
-
-            // sanitize user form input
-            $password = sanitize_text_field(wp_unslash($_POST['password']));
-            $email = sanitize_email(wp_unslash($_POST['email']));
-            $explode_email = explode('@', $email);
-            if (isset($explode_email[0])) {
-                $username = $explode_email[0];
-            } else {
-                $username = str_replace('@', '_', $email);
-                $username = str_replace('.', '_', $username);
-            }
-            $username = sanitize_user($username);
-
-
-            $display_name = $username;
-            if (isset($_POST['display_name'])) {
-                $display_name = trim(sanitize_text_field(wp_unslash($_POST['display_name'])));
-            }
-
-            if (email_exists($email)) {
-                $error->add(__METHOD__, __('Sorry. This email is already registered. Try re-setting your password', 'location_grid'));
-                return $error;
-            }
-
-            if (username_exists($username)) {
-                $username = $username . rand(0, 9);
-            }
-
-            $userdata = [
-                'user_email' => $email,
-                'user_login' => $username,
-                'display_name' => $display_name,
-                'user_pass' => $password,
-                'role' => $dt_custom_login['default_role'] ?? 'registered'
-            ];
-
-            $user_id = wp_insert_user($userdata);
-
-            if (is_wp_error($user_id)) {
-                $error->add(__METHOD__, __('Something went wrong. Sorry. Could you try again?', 'location_grid'));
-                return $error;
-            }
-
-            if (is_multisite()) {
-                add_user_to_blog(get_current_blog_id(), $user_id, 'subscriber'); // add user to site.
-            }
-
         }
     }
 
@@ -226,13 +78,13 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
         if ( ! isset( $data['email'] ) ) {
             return [
                 'status' => 'FAIL',
-                'error' => new WP_Error(__METHOD__, 'Missing parameter', ['status' => 400])
+                'error' => new WP_Error( __METHOD__, 'Missing parameter', [ 'status' => 400 ] )
             ];
         }
 
         $name = sanitize_text_field( wp_unslash( $data['name'] ) );
-        $email = sanitize_email( wp_unslash($data['email'] ) );
-        $post_type_name = sanitize_text_field( wp_unslash($data['post_type_name'] ) );
+        $email = sanitize_email( wp_unslash( $data['email'] ) );
+        $post_type_name = sanitize_text_field( wp_unslash( $data['post_type_name'] ) );
 
         $identity = $this->build_identity( $email );
 
@@ -243,7 +95,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
             if ( ! $contact_id ) {
                 return [
                     'status' => 'FAIL',
-                    'error' => new WP_Error(__METHOD__, 'Failed to create a contact_id', ['status' => 400])
+                    'error' => new WP_Error( __METHOD__, 'Failed to create a contact_id', [ 'status' => 400 ] )
                 ];
             }
         }
@@ -260,10 +112,10 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
             $app_meta_key => dt_create_unique_key(),
         ];
         $new_post = DT_Posts::create_post( $parts['post_type'], $fields, true, false );
-        dt_write_log($new_post);
+        dt_write_log( $new_post );
 
-        $identity = $this->build_identity($email);
-        $send_result = $this->_send_to_user($identity);
+        $identity = $this->build_identity( $email );
+        $send_result = $this->_send_to_user( $identity );
         return [
             'status' => 'EMAILED',
             'message' => $send_result
@@ -272,7 +124,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
         if ( is_wp_error( $new_post ) ) {
             return [
                 'status' => 'FAIL',
-                'error' => new WP_Error(__METHOD__, $new_post)
+                'error' => new WP_Error( __METHOD__, $new_post )
             ];
         }
         return [
@@ -286,12 +138,12 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
         if ( ! isset( $data['email'] ) ) {
             return [
                 'status' => 'FAIL',
-                'error' => new WP_Error(__METHOD__, 'Missing parameter', ['status' => 400])
+                'error' => new WP_Error( __METHOD__, 'Missing parameter', [ 'status' => 400 ] )
             ];
         }
 
         $name = sanitize_text_field( wp_unslash( $data['name'] ) );
-        $email = sanitize_email( wp_unslash($data['email'] ) );
+        $email = sanitize_email( wp_unslash( $data['email'] ) );
         $identity = $this->build_identity( $email );
         $target_post_id = $parts['post_id'];
 
@@ -302,7 +154,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
             if ( ! $contact_id ) {
                 return [
                     'status' => 'FAIL',
-                    'error' => new WP_Error(__METHOD__, 'Failed to create a contact_id', ['status' => 400])
+                    'error' => new WP_Error( __METHOD__, 'Failed to create a contact_id', [ 'status' => 400 ] )
                 ];
             }
         }
@@ -322,7 +174,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
         if ( is_wp_error( $updated_post ) ) {
             return [
                 'status' => 'FAIL',
-                'error' => new WP_Error(__METHOD__, $updated_post)
+                'error' => new WP_Error( __METHOD__, $updated_post )
             ];
         }
         return [
@@ -337,13 +189,13 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
         if ( ! isset( $data['email'] ) ) {
             return [
                 'status' => 'FAIL',
-                'error' => new WP_Error(__METHOD__, 'Missing parameter', ['status' => 400])
+                'error' => new WP_Error( __METHOD__, 'Missing parameter', [ 'status' => 400 ] )
             ];
         }
 
         $name = sanitize_text_field( wp_unslash( $data['name'] ) );
-        $email = sanitize_email( wp_unslash($data['email'] ) );
-        $post_type_name = sanitize_text_field( wp_unslash($data['post_type_name'] ) );
+        $email = sanitize_email( wp_unslash( $data['email'] ) );
+        $post_type_name = sanitize_text_field( wp_unslash( $data['post_type_name'] ) );
 
         $identity = $this->build_identity( $email );
 
@@ -356,7 +208,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
             if ( ! $contact_id ) {
                 return [
                     'status' => 'FAIL',
-                    'error' => new WP_Error(__METHOD__, 'Failed to create a contact_id', ['status' => 400])
+                    'error' => new WP_Error( __METHOD__, 'Failed to create a contact_id', [ 'status' => 400 ] )
                 ];
             }
         }
@@ -382,7 +234,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
         if ( is_wp_error( $new_post ) ) {
             return [
                 'status' => 'FAIL',
-                'error' => new WP_Error(__METHOD__, $new_post)
+                'error' => new WP_Error( __METHOD__, $new_post )
             ];
         }
         return [
@@ -420,16 +272,16 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
             return $identity['contact_ids'][0] ?? false;
         }
 
-        $user_name = str_replace(' ', '_', strtolower( $name ) );
+        $user_name = str_replace( ' ', '_', strtolower( $name ) );
         $user_roles = [ 'reporter' ];
 
         $current_user = wp_get_current_user();
-        $current_user->add_cap('create_users', true);
-        $current_user->add_cap('access_contacts', true);
-        $current_user->add_cap('create_contacts', true);
-        $current_user->add_cap('update_any_contacts', true);
+        $current_user->add_cap( 'create_users', true );
+        $current_user->add_cap( 'access_contacts', true );
+        $current_user->add_cap( 'create_contacts', true );
+        $current_user->add_cap( 'update_any_contacts', true );
 
-        $user = Disciple_Tools_Users::create_user( $user_name, $email, $name, $user_roles, null, null, true  );
+        $user = Disciple_Tools_Users::create_user( $user_name, $email, $name, $user_roles, null, null, true );
         if ( is_wp_error( $user ) ) {
             return false;
         }
@@ -485,13 +337,13 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                     FROM $wpdb->postmeta pm
                     JOIN $wpdb->posts p ON p.ID=pm.post_id AND p.post_type = 'contacts'
                     LEFT JOIN $wpdb->postmeta pms ON pms.post_id = pm.post_id AND pms.meta_key = 'overall_status'
-                    WHERE pm.meta_key LIKE 'contact_email%' AND pm.meta_value = %s
+                    WHERE pm.meta_key LIKE %s AND pm.meta_value = %s
                     ORDER BY pms.meta_value ASC;
-                ", $email ));
+                ", $wpdb->esc_like( 'contact_email' ) . '%', $email ) );
             if ( is_wp_error( $ids ) || empty( $ids ) ) {
                 return [];
             }
-            foreach( $ids as $id ) {
+            foreach ( $ids as $id ) {
                 $contact_ids[] = $id;
             }
             return $contact_ids;
@@ -519,11 +371,11 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
         $app_meta_key = $this->app_meta_key;
         $app_p2p_connection_type = $this->app_p2p_connection_type;
         $app_p2p_connection_direction = $this->app_p2p_connection_direction ?? 'from';
-        if ( ! isset( $app_meta_key, $app_p2p_connection_type ) || empty( $app_meta_key ) || empty( $app_p2p_connection_type )  ) {
+        if ( ! isset( $app_meta_key, $app_p2p_connection_type ) || empty( $app_meta_key ) || empty( $app_p2p_connection_type ) ) {
             return $post_objects;
         }
 
-        foreach( $contact_ids as $contact_id ) {
+        foreach ( $contact_ids as $contact_id ) {
             if ( 'to' === $app_p2p_connection_direction ) {
                 $results = $wpdb->get_results( $wpdb->prepare(
                     "SELECT %d as contact_id, p2.p2p_to as post_id, pm.meta_value as magic_key, p.post_title as name
@@ -551,7 +403,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
         }
         return $post_objects;
     }
-    
+
     private function _is_a_user( $identity ) : bool {
         if ( isset( $identity['user_id'] ) && ! empty( $identity['user_id'] ) ) {
             return true;
@@ -561,21 +413,21 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
 
     public function _send_to_user( $identity ) {
         if ( isset( $identity['post_type_ids'], $identity['email'] ) ) {
-            $message_plain_text = __('Follow this link to access your reporting portal.') . '
+            $message_plain_text = __( 'Follow this link to access your reporting portal.' ) . '
 
 ';
             foreach ($identity['post_type_ids'] as $post_object) {
-                $link = trailingslashit( site_url()) . $this->app_url . $post_object['magic_key'];
+                $link = trailingslashit( site_url() ) . $this->app_url . $post_object['magic_key'];
                 $message_plain_text .=
-                    'Reporting Access for ' . $post_object['name'] . ':' . '
+                    'Reporting Access for ' . $post_object['name'] . ':
 
 ' . $link . '
 
 ';
             }
 
-            $subject = __('Reports Access');
-            return dt_send_email($identity['email'], $subject, $message_plain_text);
+            $subject = __( 'Reports Access' );
+            return dt_send_email( $identity['email'], $subject, $message_plain_text );
         }
     }
 

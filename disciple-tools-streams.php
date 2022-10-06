@@ -2,15 +2,15 @@
 /**
  *Plugin Name: Disciple.Tools - Streams
  * Plugin URI: https://github.com/DiscipleTools/disciple-tools-streams
- * Description: Disciple.Tools Streams Extension adds recording of streams and cross reference them with contacts, churches, and locations.
+ * Description: Streams creates collections of work and a generational census reporting magic link system.
  * Text Domain: disciple-tools-streams
  * Domain Path: /languages
- * Version:  2.6
+ * Version:  3.0
  * Author URI: https://github.com/DiscipleTools
  * GitHub Plugin URI: https://github.com/DiscipleTools/disciple-tools-streams
  * Requires at least: 4.7.0
  * (Requires 4.7+ because of the integration of the REST API at 4.7 and the security requirements of this milestone version.)
- * Tested up to: 5.8
+ * Tested up to: 6.2
  *
  * @package Disciple_Tools
  * @link    https://github.com/DiscipleTools
@@ -133,7 +133,7 @@ class DT_Streams {
         /* magic links */
         require_once( 'magic/magic-map.php' );
         require_once( 'magic/magic-reports.php' );
-        
+
         require_once( 'magic/magic-public-register.php' );
         require_once( 'magic/magic-retrieve.php' );
         require_once( 'magic/magic-join.php' );

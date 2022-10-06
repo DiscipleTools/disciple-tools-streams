@@ -509,23 +509,23 @@ class DT_Streams_Map extends DT_Magic_Url_Base
 
     public function endpoint_geojson( $parts, $time_start = null, $time_end = null ) {
         global $wpdb;
-        dt_write_log(__METHOD__);
+        dt_write_log( __METHOD__ );
 
         if ( empty( $time_start ) ) {
-            $time_start = strtotime( 'January 1, ' . date('Y' ) );
-            dt_write_log($time_start);
+            $time_start = strtotime( 'January 1, ' . gmdate( 'Y' ) );
+            dt_write_log( $time_start );
         }
         if ( empty( $time_end ) ) {
-            $time_end = strtotime( 'December 31,, ' . date('Y' ) . ' 23:59:59' );
-            dt_write_log($time_end);
+            $time_end = strtotime( 'December 31,, ' . gmdate( 'Y' ) . ' 23:59:59' );
+            dt_write_log( $time_end );
         }
 
         $results = $wpdb->get_results(
-        "SELECT * 
+            "SELECT * 
                 FROM $wpdb->dt_reports 
                 WHERE type = 'streams_app' 
                   AND subtype = 'report' 
-                  ;" , ARRAY_A );
+                  ;", ARRAY_A );
 
         if ( empty( $results ) ) {
             return $this->_empty_geojson();
@@ -579,8 +579,8 @@ class DT_Streams_Map extends DT_Magic_Url_Base
 
     public function get_years() {
         $years = [];
-        $today = date('Y' );
-        dt_write_log($today);
+        $today = gmdate( 'Y' );
+        dt_write_log( $today );
         return $years;
     }
 

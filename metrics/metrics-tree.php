@@ -13,7 +13,7 @@ class DT_Metrics_Streams_Tree extends DT_Metrics_Chart_Base
     public $title;
     public $js_object_name = 'wp_js_object'; // This object will be loaded into the metrics.js file by the wp_localize_script.
     public $js_file_name = 'tree.js'; // should be full file name plus extension
-    public $permissions = [ 'view_any_streams', 'view_project_metrics'  ];
+    public $permissions = [ 'view_any_streams', 'view_project_metrics' ];
     public $namespace = null;
 
     public function __construct() {
@@ -57,10 +57,10 @@ class DT_Metrics_Streams_Tree extends DT_Metrics_Chart_Base
     }
 
     public function scripts() {
-        wp_enqueue_script( 'dt_metrics_project_script', plugin_dir_url(__FILE__) . $this->js_file_name, [
+        wp_enqueue_script( 'dt_metrics_project_script', plugin_dir_url( __FILE__ ) . $this->js_file_name, [
             'jquery',
             'lodash'
-        ], filemtime( plugin_dir_path(__FILE__)  . $this->js_file_name ), true );
+        ], filemtime( plugin_dir_path( __FILE__ )  . $this->js_file_name ), true );
 
         wp_localize_script(
             'dt_metrics_project_script', 'dtMetricsProject', [

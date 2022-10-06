@@ -70,7 +70,7 @@ class DT_Stream_Base extends DT_Module_Base {
 
         if ( !isset( $expected_roles["streams_admin"] ) ) {
             $expected_roles["streams_admin"] = [
-                "label" => __('Streams Admin', 'disciple-tools-streams'),
+                "label" => __( 'Streams Admin', 'disciple-tools-streams' ),
                 "description" => "Has all permissions for streams",
                 "permissions" => [
                     'access_disciple_tools' => true,
@@ -125,7 +125,6 @@ class DT_Stream_Base extends DT_Module_Base {
                 $expected_roles[$role]["permissions"]['view_any_' . $this->post_type] = true;
                 $expected_roles[$role]["permissions"]['dt_all_admin_' . $this->post_type] = true;
             }
-
         }
 
         return $expected_roles;

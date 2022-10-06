@@ -42,7 +42,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         add_action( 'wp_enqueue_scripts', [ $this, 'tile_scripts' ], 100 );
 
         // register REST and REST access
-//        add_filter( 'dt_allow_rest_access', [ $this, 'authorize_url' ], 10, 1 );
         add_action( 'rest_api_init', [ $this, 'add_api_routes' ] );
         add_filter( 'dt_custom_fields_settings', [ $this, 'custom_fields' ], 10, 2 );
 
@@ -90,14 +89,14 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
     public function dt_custom_fields_settings( $fields, $post_type ) {
         if ( $post_type === "contacts" ) {
-            if (isset($fields["overall_status"]) && !isset($fields["overall_status"]["default"]["reporting_only"])) {
+            if (isset( $fields["overall_status"] ) && !isset( $fields["overall_status"]["default"]["reporting_only"] )) {
                 $fields["overall_status"]["default"]["reporter"] = [
                     'label' => 'Reporting Only',
                     'description' => 'Contact is a reporting practitioner.',
                     'color' => '#F43636'
                 ];
             }
-            if (isset($fields["sources"]) && !isset($fields["sources"]["default"]["self_registered_reporter"])) {
+            if (isset( $fields["sources"] ) && !isset( $fields["sources"]["default"]["self_registered_reporter"] )) {
                 $fields["sources"]["default"]["self_registered_reporter"] = [
                     'label' => 'Self-Registered Reporter',
                     'key' => 'self_registered_reporter',
@@ -184,7 +183,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 // types
                 if ( isset( $types['report'], $types['report']['root'], $types['report']['type'] ) ) {
                     $post_id = get_the_ID();
-                    $reports = self::instance()->statistics_reports( (string) $post_id , true );
+                    $reports = self::instance()->statistics_reports( (string) $post_id, true );
                     /**
                      * Button Controls
                      */
@@ -446,10 +445,10 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             update_post_meta( $parts['post_id'], $parts['root'] . '_join_magic_key', dt_create_unique_key() );
             $join_key = get_post_meta( $parts['post_id'], $parts['root'] . '_join_magic_key', true );
         }
-        $create_child_key = get_post_meta(  $parts['post_id'], $parts['root'] . '_create_child_magic_key', true );
+        $create_child_key = get_post_meta( $parts['post_id'], $parts['root'] . '_create_child_magic_key', true );
         if ( empty( $create_child_key ) ) {
             update_post_meta( $parts['post_id'], $parts['root'] . '_create_child_magic_key', dt_create_unique_key() );
-            $create_child_key = get_post_meta(  $parts['post_id'], $parts['root'] . '_create_child_magic_key', true );
+            $create_child_key = get_post_meta( $parts['post_id'], $parts['root'] . '_create_child_magic_key', true );
         }
         $join_url = site_url() . '/' . $this->parts['root'] . '/join/' . $join_key;
         $create_child_url = site_url() . '/' . $this->parts['root'] . '/create_child/' . $create_child_key;
@@ -1530,12 +1529,14 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             if ( ! $children ) {
                 return $data;
             }
+            // @phpcs:disable
             $results = $wpdb->get_results( $wpdb->prepare( "
                     SELECT r.*, p.post_title as title
                     FROM $wpdb->dt_reports r
                     LEFT JOIN $wpdb->posts p ON p.ID=r.post_id
                     WHERE r.post_id IN ($children) 
-                    ORDER BY r.time_end DESC", $post_id ), ARRAY_A ); // @phpcs:ignore
+                    ORDER BY r.time_end DESC", $post_id ), ARRAY_A );
+            // @phpcs:enable
         } else {
             $results = $wpdb->get_results( $wpdb->prepare( "
                     SELECT r.*, p.post_title as title
@@ -1709,7 +1710,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                                             WHERE p2p_type = 'streams_to_streams';", ARRAY_A );
         if ( ! empty( $list ) && ! is_wp_error( $list ) ) {
             $children = $this->_build_children_list( $post_id, $list );
-            return implode(',', $children );
+            return implode( ',', $children );
         } else {
             return '';
         }
@@ -1717,18 +1718,18 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     }
 
     public function _build_children_list( $parent_id, $list, $children = [] ) {
-        foreach( $list as $node ) {
+        foreach ( $list as $node ) {
             if ( (string) $parent_id === (string) $node['parent_id'] ){
                 $children[$node['child_id']] = $node['child_id'];
-                foreach( $list as $sub_node ) {
+                foreach ( $list as $sub_node ) {
                     if ( $node['child_id'] === $sub_node['parent_id'] ){
-                        $children = array_merge( $children,  $this->_build_children_list( $node['child_id'], $list ) );
+                        $children = array_merge( $children, $this->_build_children_list( $node['child_id'], $list ) );
                     }
                 }
             }
         }
         $data = [];
-        foreach($children as $child ){
+        foreach ($children as $child ){
             $data[$child] = $child;
         }
         return $data;
