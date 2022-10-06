@@ -128,14 +128,14 @@ class DT_Streams {
         require_once( 'admin/customize-site-linking.php' );
 
         /* metrics */
-        require_once( 'metrics/mapbox-maps.php' );
-        require_once( 'metrics/mapbox-personal-maps.php' );
+        require_once( 'metrics/charts-loader.php' );
 
         /* magic links */
         require_once( 'magic/magic-map.php' );
         require_once( 'magic/magic-reports.php' );
         
         require_once( 'magic/magic-public-register.php' );
+        require_once( 'magic/magic-retrieve.php' );
         require_once( 'magic/magic-join.php' );
         require_once( 'magic/magic-create-child.php' );
     }

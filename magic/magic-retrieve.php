@@ -1,12 +1,12 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
-class DT_Streams_Self_Register extends DT_Magic_Url_Self_Register {
+class DT_Streams_Self_Retrieve extends DT_Magic_Url_Self_Register {
 
-    public $page_title = 'Register and Retrieve Access';
+    public $page_title = 'Retrieve Links';
     public $root = "streams_app";
-    public $type = 'access';
-    public $type_name = 'Access';
+    public $type = 'retrieve';
+    public $type_name = 'Retrieve';
     public $post_type = 'streams';
     public $page_description = '';
 
@@ -37,7 +37,7 @@ class DT_Streams_Self_Register extends DT_Magic_Url_Self_Register {
             return;
         }
 
-        add_action( 'dt_blank_body', [ $this, 'body_register_and_retrieve' ] );
+        add_action( 'dt_blank_body', [ $this, 'body_retrieve' ] );
     }
 }
-DT_Streams_Self_Register::instance();
+DT_Streams_Self_Retrieve::instance();

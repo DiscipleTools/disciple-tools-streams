@@ -893,6 +893,91 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
         <?php
     }
 
+    public function body_retrieve() {
+        $this->javascript_object();
+        DT_Mapbox_API::geocoder_scripts();
+        ?>
+        <style>
+            body { background-color:white; } #wrapper { max-width: 600px; margin: 1em auto; } #email { display:none !important; } #email-send { display:none !important; }
+        </style>
+        <div id="wrapper">
+            <div class="grid-x">
+                <div class="cell" id="content">
+                    <div class="grid-x">
+                        <div class="cell panel-note"></div>
+                        <div class="cell">
+                            <label for="email">Email</label>
+                            <input type="email" id="email-send" name="email" placeholder="Email" />
+                            <input type="email" id="e2-send" name="email" class="required" placeholder="Email" />
+                            <span id="email-error-send" class="form-error">You're email is required.</span>
+                        </div>
+                        <div class="cell center">
+                            <button class="button large" id="submit-send-link">Email me access link</button> <span class="loading-spinner"></span><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            jQuery(document).ready(function(){
+
+                // listen to buttons
+                jQuery('#submit-send-link').on('click', function(){
+                    retrieve()
+                })
+
+                function retrieve(){
+                    let spinner = jQuery('.loading-spinner')
+                    spinner.addClass('active')
+
+                    let submit_button = jQuery('#submit-send-link')
+                    submit_button.prop('disabled', true)
+
+                    let honey = jQuery('#email-send').val()
+                    if ( honey ) {
+                        submit_button.html('Shame, shame, shame. We know your name ... ROBOT!').prop('disabled', true )
+                        spinner.removeClass('active')
+                        return;
+                    }
+
+                    let email_input = jQuery('#e2-send')
+                    let email = email_input.val()
+                    if ( ! email ) {
+                        jQuery('#email-error-send').show()
+                        submit_button.removeClass('loading')
+                        email_input.focus(function(){
+                            jQuery('#email-error-send').hide()
+                        })
+                        submit_button.prop('disabled', false)
+                        spinner.removeClass('active')
+                        return;
+                    }
+
+                    let form_data = {
+                        email: email
+                    }
+
+                    window.api_sr( 'retrieve', form_data )
+                        .done(function(response){
+                            console.log(response)
+                            if ( response ) {
+                                jQuery('#send-panel').empty().html(`
+                                    Excellent! Go to you email inbox and find your personal link.<br>
+                                  `)
+                                jQuery('.panel-note').empty()
+                            } else {
+                                jQuery('.new').show()
+                                jQuery('.not-new').hide()
+                                jQuery('.panel-note').html('Email not found. Please, register.')
+                            }
+                            jQuery('.loading-spinner').removeClass('active')
+                        })
+                }
+            })
+        </script>
+        <?php
+    }
+
     public function body_join() {
         $this->javascript_object();
         DT_Mapbox_API::geocoder_scripts();

@@ -17,9 +17,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     public $show_app_tile = true; // show this magic link in the Apps tile on the post record
     public $type_actions = [
         '' => 'Home',
-        'manage' => 'Add / Manage',
+        'manage' => 'Add / Edit',
         'stats' => 'Summary',
-        'maps' => 'Maps',
+        'maps' => 'Map',
         'invite' => 'Send Invite',
     ];
 
@@ -1255,6 +1255,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                         </div>
                     </div>
                 </div>
+                <!--
                 <div class="cell">
                     <h1>New Stream</h1>
                     <p>Invite someone to start a new independent stream.</p>
@@ -1280,6 +1281,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 </div>
                 <div class="cell center" id="bottom-spinner"><span class="loading-spinner active"></span></div>
                 <div class="cell grid" id="error"></div>
+                -->
             </div>
         </div> <!-- form wrapper -->
         <script>
