@@ -299,6 +299,7 @@ class DT_Streams_Map extends DT_Magic_Url_Base
 
                     map.dragRotate.disable();
                     map.touchZoomRotate.disableRotation();
+                    map.addControl(new mapboxgl.NavigationControl());
 
                     map.on('load', function () {
                         window.build_layers(map, data, jQuery('#year_filter').val())
