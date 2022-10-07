@@ -980,9 +980,10 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                     <button class="button-small button button-filter" style="background-color: green;" id="churches">Churches</button>
                     <button class="button-small button hollow button-filter" id="all">All</button><br>
                     <select style="width:150px;" id="year_filter"></select>
-                    <select style="width:150px;" id="data_streams">
+                    <select style="width:150px;display:none;" id="data_streams">
                         <option value="self"><span id="self_option">Self</span></option>
                         <option value="children"><span id="children_option">Children</span></option>
+                        <option value="all"><span id="all_option">Self + Children</span></option>
                     </select>
                 </div>
             </div>
@@ -1044,29 +1045,27 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                     map.touchZoomRotate.disableRotation();
 
                     window.layers = [
-                        'layer-baptisms-circle-self',
-                        'layer-baptisms-circle-children',
-                        'layer-baptisms-count-self',
-                        'layer-baptisms-count-children',
-                        'layer-disciples-circle-self',
-                        'layer-disciples-circle-children',
-                        'layer-disciples-count-self',
-                        'layer-disciples-count-children',
-                        'layer-churches-circle-self',
-                        'layer-churches-circle-children',
-                        'layer-churches-count-self',
-                        'layer-churches-count-children'
+                        'layer-baptisms-circle',
+                        'layer-baptisms-count',
+                        'layer-disciples-circle',
+                        'layer-disciples-count',
+                        'layer-churches-circle',
+                        'layer-churches-count',
                     ]
 
                     map.on('load', function () {
 
                         window.data_view = jQuery('#data_streams').val()
+                        let data_streams = jQuery('#data_streams')
+                        if ( data.has_children ) {
+                            data_streams.show()
+                        }
 
                         // build layers
                         let d = new Date();
                         let year = d.getFullYear();
-                        window.build_layers( map, data.self, year.toString(), 'self' )
-                        window.build_layers( map, data.children, year.toString(), 'children' )
+
+                        window.build_layers( map, data, year.toString() )
 
                         // listen for year select
                         year_filter.on('change', function(e){
@@ -1079,26 +1078,45 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                                 } else {
                                     layer_var = 'baptisms'
                                 }
-                                map.setFilter(layer_id, [ "all", ['==', layer_var, ['get', 'type'] ], ["==", jQuery(this).val(), ['get', 'year'] ] ]);
+                                if ( 'self' === window.data_view ) {
+                                    map.setFilter( layer_id, [ "all", ['==', layer_var, ['get', 'type'] ], ["==", jQuery(this).val(), ['get', 'year'] ], ["==", 'self', ['get', 'source'] ] ]);
+                                } else if ( 'children' === window.data_view ) {
+                                    map.setFilter( layer_id, [ "all", ['==', layer_var, ['get', 'type'] ], ["==", jQuery(this).val(), ['get', 'year'] ], ["==", 'children', ['get', 'source'] ] ]);
+                                } else {
+                                    map.setFilter( layer_id, [ "all", ['==', layer_var, ['get', 'type'] ], ["==", jQuery(this).val(), ['get', 'year'] ] ]);
+                                }
                             }
+                        })
+
+                        data_streams.on( 'change', function(e){
+                            window.data_view = jQuery(this).val()
+                            let layer_var = 'churches'
+                            for( const layer_id of window.layers) {
+                                if ( layer_id.search('churches') !== -1 ) {
+                                    layer_var = 'churches'
+                                } else if ( layer_id.search('disciples') !== -1 ) {
+                                    layer_var = 'disciples'
+                                } else {
+                                    layer_var = 'baptisms'
+                                }
+                                if ( 'self' === window.data_view ) {
+                                    map.setFilter( layer_id, [ "all", ['==', layer_var, ['get', 'type'] ], ["==", year_filter.val(), ['get', 'year'] ], ["==", 'self', ['get', 'source'] ] ]);
+                                } else if ( 'children' === window.data_view ) {
+                                    map.setFilter( layer_id, [ "all", ['==', layer_var, ['get', 'type'] ], ["==", year_filter.val(), ['get', 'year'] ], ["==", 'children', ['get', 'source'] ] ]);
+                                } else {
+                                    map.setFilter( layer_id, [ "all", ['==', layer_var, ['get', 'type'] ], ["==", year_filter.val(), ['get', 'year'] ] ]);
+                                }
+                            }
+
                         })
 
                         // set boundary
                         var bounds = new mapboxgl.LngLatBounds();
-                        data.self.features.forEach(function(feature) {
-                            bounds.extend(feature.geometry.coordinates);
-                        });
-                        data.children.features.forEach(function(feature) {
+                        data.features.forEach(function(feature) {
                             bounds.extend(feature.geometry.coordinates);
                         });
                         map.fitBounds(bounds, {padding: 100});
                         // end set bounds
-
-                        // start with self view
-                        window.show_all( map, 'self' )
-                        jQuery('#data_streams').on( 'change', function(e){
-                            window.show_all( map, jQuery(this).val() )
-                        })
 
                         // listen for button filters
                         let filter_buttons = jQuery('.button-filter')
@@ -1108,24 +1126,24 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                         baptisms_button.on('click', () => {
                             window.hide_all(map)
                             window.data_view = jQuery('#data_streams').val()
-                            map.setLayoutProperty('layer-baptisms-circle-'+window.data_view, 'visibility', 'visible');
-                            map.setLayoutProperty('layer-baptisms-count-'+window.data_view, 'visibility', 'visible');
+                            map.setLayoutProperty('layer-baptisms-circle', 'visibility', 'visible');
+                            map.setLayoutProperty('layer-baptisms-count', 'visibility', 'visible');
                             filter_buttons.css('opacity', .4)
                             baptisms_button.css('opacity', 1)
                         })
                         disciples_button.on('click', () => {
                             window.hide_all(map)
                             window.data_view = jQuery('#data_streams').val()
-                            map.setLayoutProperty('layer-disciples-circle-'+window.data_view, 'visibility', 'visible');
-                            map.setLayoutProperty('layer-disciples-count-'+window.data_view, 'visibility', 'visible');
+                            map.setLayoutProperty('layer-disciples-circle', 'visibility', 'visible');
+                            map.setLayoutProperty('layer-disciples-count', 'visibility', 'visible');
                             filter_buttons.css('opacity', .4)
                             disciples_button.css('opacity', 1)
                         })
                         churches_button.on('click', () => {
                             window.hide_all(map)
                             window.data_view = jQuery('#data_streams').val()
-                            map.setLayoutProperty('layer-churches-circle-'+window.data_view, 'visibility', 'visible');
-                            map.setLayoutProperty('layer-churches-count-'+window.data_view, 'visibility', 'visible');
+                            map.setLayoutProperty('layer-churches-circle', 'visibility', 'visible');
+                            map.setLayoutProperty('layer-churches-count', 'visibility', 'visible');
                             filter_buttons.css('opacity', .4)
                             churches_button.css('opacity', 1)
                         })
@@ -1137,16 +1155,16 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                     });
                 })
 
-                window.build_layers = ( map, data, year, type ) => {
-                    map.addSource('layer-source-reports-'+type, {
+                window.build_layers = ( map, data, year ) => {
+                    map.addSource('layer-source-reports', {
                         type: 'geojson',
                         data: data,
                     });
 
                     map.addLayer({
-                        id: 'layer-churches-circle-'+type,
+                        id: 'layer-churches-circle',
                         type: 'circle',
-                        source: 'layer-source-reports-'+type,
+                        source: 'layer-source-reports',
                         paint: {
                             'circle-color': 'green',
                             'circle-radius': {
@@ -1155,26 +1173,26 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                             'circle-stroke-width': 0.2,
                             'circle-stroke-color': '#fff'
                         },
-                        filter: [ "all", ['==', 'churches', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                        filter: [ "all", ['==', 'churches', ['get', 'type'] ], ["==", year, ['get', 'year'] ], ["==", 'self', ['get', 'source'] ] ]
                     });
                     map.addLayer({
-                        id: 'layer-churches-count-'+type,
+                        id: 'layer-churches-count',
                         type: 'symbol',
-                        source: 'layer-source-reports-'+type,
+                        source: 'layer-source-reports',
                         layout: {
                             "text-field": ['get', 'value']
                         },
                         paint: {
                             "text-color": "#ffffff"
                         },
-                        filter: [ "all", ['==', 'churches', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                        filter: [ "all", ['==', 'churches', ['get', 'type'] ], ["==", year, ['get', 'year'] ], ["==", 'self', ['get', 'source'] ]  ]
                     });
 
                     /* disciples */
                     map.addLayer({
-                        id: 'layer-disciples-circle-'+type,
+                        id: 'layer-disciples-circle',
                         type: 'circle',
-                        source: 'layer-source-reports-'+type,
+                        source: 'layer-source-reports',
                         paint: {
                             'circle-color': 'orange',
                             'circle-radius': {
@@ -1183,26 +1201,26 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                             'circle-stroke-width': 0.2,
                             'circle-stroke-color': '#fff'
                         },
-                        filter: [ "all", ['==', 'disciples', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                        filter: [ "all", ['==', 'disciples', ['get', 'type'] ], ["==", year, ['get', 'year'] ], ["==", 'self', ['get', 'source'] ]  ]
                     });
                     map.addLayer({
-                        id: 'layer-disciples-count-'+type,
+                        id: 'layer-disciples-count',
                         type: 'symbol',
-                        source: 'layer-source-reports-'+type,
+                        source: 'layer-source-reports',
                         layout: {
                             "text-field": ['get', 'value']
                         },
                         paint: {
                             "text-color": "#ffffff"
                         },
-                        filter: [ "all", ['==', 'disciples', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                        filter: [ "all", ['==', 'disciples', ['get', 'type'] ], ["==", year, ['get', 'year'] ], ["==", 'self', ['get', 'source'] ]  ]
                     });
 
                     /* baptism */
                     map.addLayer({
-                        id: 'layer-baptisms-circle-'+type,
+                        id: 'layer-baptisms-circle',
                         type: 'circle',
-                        source: 'layer-source-reports-'+type,
+                        source: 'layer-source-reports',
                         paint: {
                             'circle-color': 'royalblue',
                             'circle-radius': {
@@ -1211,27 +1229,25 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                             'circle-stroke-width': 0.5,
                             'circle-stroke-color': '#fff'
                         },
-                        filter: [ "all", ['==', 'baptisms', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                        filter: [ "all", ['==', 'baptisms', ['get', 'type'] ], ["==", year, ['get', 'year'] ], ["==", 'self', ['get', 'source'] ]  ]
                     });
                     map.addLayer({
-                        id: 'layer-baptisms-count-'+type,
+                        id: 'layer-baptisms-count',
                         type: 'symbol',
-                        source: 'layer-source-reports-'+type,
+                        source: 'layer-source-reports',
                         layout: {
                             "text-field": ['get', 'value']
                         },
                         paint: {
                             "text-color": "#ffffff"
                         },
-                        filter: [ "all", ['==', 'baptisms', ['get', 'type'] ], ["==", year, ['get', 'year']] ]
+                        filter: [ "all", ['==', 'baptisms', ['get', 'type'] ], ["==", year, ['get', 'year'] ], ["==", 'self', ['get', 'source'] ]  ]
                     });
 
-                    map.setLayoutProperty('layer-baptisms-count-'+type, 'visibility', 'none');
-                    map.setLayoutProperty('layer-disciples-count-'+type, 'visibility', 'none');
-                    map.setLayoutProperty('layer-churches-count-'+type, 'visibility', 'none');
+                    map.setLayoutProperty('layer-baptisms-count', 'visibility', 'none');
+                    map.setLayoutProperty('layer-disciples-count', 'visibility', 'none');
+                    map.setLayoutProperty('layer-churches-count', 'visibility', 'none');
                     spinner.removeClass('active')
-
-
                 }
 
                 window.hide_all = ( map ) => {
@@ -1239,9 +1255,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                         map.setLayoutProperty( layer_id, 'visibility', 'none');
                     }
                 }
-                window.show_all = ( map, type ) => {
+                window.show_all = ( map ) => {
                     window.hide_all( map )
-                    const layers = ['layer-baptisms-circle-'+type, 'layer-disciples-circle-'+type, 'layer-churches-circle-'+type ]
+                    const layers = ['layer-baptisms-circle', 'layer-disciples-circle', 'layer-churches-circle' ]
                     for( const layer_id of layers) {
                         map.setLayoutProperty( layer_id, 'visibility', 'visible');
                     }
@@ -1460,11 +1476,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             case 'get':
                 return $this->retrieve_reports( $post_id );
             case 'geojson':
-                return [
-                    'self' => $this->geojson_reports( $post_id ),
-                    'children' => $this->geojson_reports( $post_id, 'children' ),
-                    'combined' => $this->geojson_reports( $post_id, 'combined' )
-                ];
+                return $this->geojson_reports( $post_id );
             case 'statistics':
                 return [
                     'self' => $this->statistics_reports( $post_id ),
@@ -1792,27 +1804,19 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         return $data;
     }
 
-    public function geojson_reports( $post_id, $query = 'self' ) { // @todo add filter by year.
+    public function geojson_reports( $post_id ) {
         global $wpdb;
+        $has_children = false;
 
-        if ( 'children' === $query ) {
-            $children = $this->_get_children( $post_id );
-            if ( ! $children ) {
-                return $this->_empty_geojson();
-            }
-            $results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->dt_reports WHERE post_id IN ($children) ORDER BY time_end DESC", $post_id ), ARRAY_A ); // @phpcs:ignore
+        // @phpcs:disable
+        $children = $this->_get_children( $post_id );
+        $child_results = $wpdb->get_results( $wpdb->prepare( "SELECT *, 'children' as source FROM $wpdb->dt_reports WHERE post_id IN ($children) ORDER BY time_end DESC", $post_id ), ARRAY_A ); // @phpcs:ignore
+        $self_results = $wpdb->get_results( $wpdb->prepare( "SELECT *, 'self' as source  FROM $wpdb->dt_reports WHERE post_id = %s ORDER BY time_end DESC", $post_id ), ARRAY_A );
+        $results = array_merge( $self_results, $child_results );
+        if ( ! empty( $child_results ) ) {
+            $has_children = true;
         }
-        else if ( 'combined' === $query ) {
-            $children = $this->_get_children( $post_id );
-            if ( ! $children ) {
-                return $this->_empty_geojson();
-            }
-            $child_results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->dt_reports WHERE post_id IN ($children) ORDER BY time_end DESC", $post_id ), ARRAY_A ); // @phpcs:ignore
-            $self_results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->dt_reports WHERE post_id = %s ORDER BY time_end DESC", $post_id ), ARRAY_A );
-            $results = array_merge( $self_results, $child_results );
-        } else {
-            $results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->dt_reports WHERE post_id = %s ORDER BY time_end DESC", $post_id ), ARRAY_A );
-        }
+        // @phpcs:enable
 
         if ( empty( $results ) ) {
             return $this->_empty_geojson();
@@ -1841,6 +1845,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                     'value' => $result['value'],
                     'type' => $result['payload']['type'] ?? '',
                     'year' => $year,
+                    'source' => $result['source'],
                     'label' => $result['label']
                 ),
                 'geometry' => array(
@@ -1856,6 +1861,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
         $geojson = array(
             'type' => 'FeatureCollection',
+            'has_children' => $has_children,
             'features' => $features,
         );
 

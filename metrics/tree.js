@@ -14,9 +14,6 @@ jQuery(document).ready(function() {
     chart.empty().html(`
           <span class="section-header">${window.lodash.escape(translations.title_group_tree)}</span><hr>
            <div class="grid-x grid-padding-x">
-           <div class="cell">
-              
-          </div>
               <div class="cell">
                   <div class="scrolling-wrapper" id="generation_map"><img src="${dtMetricsProject.theme_uri}/dt-assets/images/ajax-loader.gif" width="20px" /></div>
               </div>
