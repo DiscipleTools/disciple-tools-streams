@@ -899,7 +899,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             </div>
         </div> <!-- form wrapper -->
         <script>
-
             jQuery(document).ready(function($){
                 clearInterval(window.fiveMinuteTimer)
 
@@ -908,7 +907,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 let title = $('#title')
                 let content = $('#content')
                 let view = $('#data_streams')
-                view.show()
 
                 /* set title */
                 title.html( jsObject.translations.title )
@@ -917,13 +915,31 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 $('#custom-style').append(`<style>#wrapper { height: inherit !important; }</style>`)
 
                 window.get_statistics().then(function(data){
-                    window.write_summary( data, view.val() )
+                    window.data = data
+                    window.write_summary( data.self )
                     spinner.removeClass('active')
+                    if ( data.has_children ) {
+                        view.show()
+                    }
                 })/* end get_statistics */
 
-                window.write_summary = ( data, data_view ) => {
+                view.on('change', function(e){
+                    let data_view = view.val()
+                    if ( 'self' === data_view ) {
+                        window.write_summary( window.data.self )
+                    } else if ( 'children' === data_view ) {
+                        window.write_summary( window.data.children )
+                    } else {
+                        window.write_summary( window.data.compiled )
+                    }
+                })
+
+                window.write_summary = ( data ) => {
+                    if ( data.length < 1 ) {
+                        return
+                    }
                     content.empty()
-                    $.each(data.self, function(i,v){
+                    $.each(data, function(i,v){
                         content.prepend(`
                         <div class="grid-x">
                             <div class="cell center">
@@ -957,10 +973,8 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                         </div>
                         <hr>
                     `)
-
                     })
                 }
-
             }) /* end .ready */
         </script>
         <?php
@@ -1492,8 +1506,10 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 return $this->geojson_reports( $post_id );
             case 'statistics':
                 return [
-                    'self' => $this->statistics_reports( $post_id ),
-                    'children' => $this->statistics_reports( $post_id, true )
+                    'self' => $this->statistics_reports( $post_id, 'self' ),
+                    'children' => $children = $this->statistics_reports( $post_id, 'children' ),
+                    'compiled' => $this->statistics_reports( $post_id, 'compiled' ),
+                    'has_children' => ! empty( $children )
                 ];
             case 'get_all':
                 $data = [];
@@ -1649,17 +1665,17 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         return $data;
     }
 
-    public function statistics_reports( $post_id, $children = false ) : array {
+    public function statistics_reports( $post_id, $view = 'self' ) : array {
         global $wpdb;
         $data = [];
 
-        if ( $children ) {
+        if ( 'children' === $view || 'compiled' === $view ) {
             $children = $this->_get_children( $post_id );
             if ( ! $children ) {
                 return $data;
             }
             // @phpcs:disable
-            $results = $wpdb->get_results( "
+            $results = $results_children = $wpdb->get_results( "
             SELECT r.*,  lg.level_name, lg.name, lg.admin0_grid_id, lg0.name as country, lg.admin1_grid_id, lg1.name as state, lg.admin2_grid_id, lg2.name as county
             FROM $wpdb->dt_reports as r
             LEFT JOIN $wpdb->dt_location_grid as lg
@@ -1674,8 +1690,10 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             ORDER BY time_end DESC
             ", ARRAY_A );
             // @phpcs:enable
-        } else {
-            $results = $wpdb->get_results( $wpdb->prepare( "
+        }
+
+        if ( 'self' === $view || 'compiled' === $view ) {
+            $results = $results_self = $wpdb->get_results( $wpdb->prepare( "
             SELECT r.*,  lg.level_name, lg.name, lg.admin0_grid_id, lg0.name as country, lg.admin1_grid_id, lg1.name as state, lg.admin2_grid_id, lg2.name as county
             FROM $wpdb->dt_reports as r
             LEFT JOIN $wpdb->dt_location_grid as lg
@@ -1691,6 +1709,10 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             ", $post_id ), ARRAY_A );
         }
 
+        if ( 'compiled' === $view ) {
+            $results = array_merge( $results_self, $results_children );
+        }
+
         if ( empty( $results ) ){
             return [];
         }
@@ -1699,7 +1721,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         $states = [];
         $counties = [];
 
-        foreach ( $results as $index => $result ){
+        foreach ( $results as $result ){
             /*time*/
             $time = $result['time_end'];
             if ( empty( $time ) ) {
@@ -1793,6 +1815,26 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         }
 
         return $data;
+    }
+
+    public function statistics_reports_compiled( $self, $children ) {
+        $data = [];
+        foreach( $self as $item ) {
+
+        }
+        if ( ! isset( $data[$year] ) ) {
+            $data[$year] = [
+                'total_baptisms' => 0,
+                'total_disciples' => 0,
+                'total_churches' => 0,
+                'total_countries' => 0,
+                'total_states' => 0,
+                'total_counties' => 0,
+                'countries' => [],
+                'states' => [],
+                'counties' => []
+            ];
+        }
     }
 
     public function _get_children( $post_id ) {
