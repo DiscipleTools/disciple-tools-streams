@@ -883,6 +883,13 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         <div id="wrapper">
             <div class="grid-x ">
                 <div class="cell center" id="title"></div>
+                <div class="cell center">
+                    <select style="width:150px;display:none;" id="data_streams">
+                        <option value="self"><span id="self_option">Self</span></option>
+                        <option value="children"><span id="children_option">Children</span></option>
+                        <option value="all"><span id="all_option">Self + Children</span></option>
+                    </select>
+                </div>
             </div>
             <hr>
             <div class="grid-x grid-padding-x">
@@ -900,6 +907,8 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 let spinner = $('.loading-spinner')
                 let title = $('#title')
                 let content = $('#content')
+                let view = $('#data_streams')
+                view.show()
 
                 /* set title */
                 title.html( jsObject.translations.title )
@@ -908,7 +917,11 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 $('#custom-style').append(`<style>#wrapper { height: inherit !important; }</style>`)
 
                 window.get_statistics().then(function(data){
-                    console.log(data)
+                    window.write_summary( data, view.val() )
+                    spinner.removeClass('active')
+                })/* end get_statistics */
+
+                window.write_summary = ( data, data_view ) => {
                     content.empty()
                     $.each(data.self, function(i,v){
                         content.prepend(`
@@ -946,10 +959,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                     `)
 
                     })
-
-                    spinner.removeClass('active')
-
-                })/* end get_statistics */
+                }
 
             }) /* end .ready */
         </script>
@@ -1031,6 +1041,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                     </style>`)
 
                 window.get_geojson().then(function (data) {
+                    window.data = data
                     mapboxgl.accessToken = jsObject.map_key;
                     window.map = new mapboxgl.Map({
                         container: 'map',
@@ -1086,6 +1097,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                                     map.setFilter( layer_id, [ "all", ['==', layer_var, ['get', 'type'] ], ["==", jQuery(this).val(), ['get', 'year'] ] ]);
                                 }
                             }
+                            window.set_bounds()
                         })
 
                         data_streams.on( 'change', function(e){
@@ -1107,16 +1119,17 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                                     map.setFilter( layer_id, [ "all", ['==', layer_var, ['get', 'type'] ], ["==", year_filter.val(), ['get', 'year'] ] ]);
                                 }
                             }
-
+                            window.set_bounds()
                         })
 
-                        // set boundary
-                        var bounds = new mapboxgl.LngLatBounds();
-                        data.features.forEach(function(feature) {
-                            bounds.extend(feature.geometry.coordinates);
-                        });
-                        map.fitBounds(bounds, {padding: 100});
-                        // end set bounds
+                        window.set_bounds = () => {
+                            var bounds = new mapboxgl.LngLatBounds();
+                            window.data.features.forEach(function(feature) {
+                                bounds.extend(feature.geometry.coordinates);
+                            });
+                            window.map.fitBounds(bounds, { padding: 100 });
+                        }
+                        window.set_bounds()
 
                         // listen for button filters
                         let filter_buttons = jQuery('.button-filter')
@@ -1716,24 +1729,33 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             }
 
             // set levels
-            if ( ! isset( $countries[$result['admin0_grid_id'] ] ) ) {
-                $countries[ $result['admin0_grid_id'] ] = [
+            if ( ! isset( $countries[$year] ) ) {
+                $countries[$year] = [];
+            }
+            if ( ! isset( $states[$year] ) ) {
+                $states[$year] = [];
+            }
+            if ( ! isset( $counties[$year] ) ) {
+                $counties[$year] = [];
+            }
+            if ( ! isset( $countries[$year][$result['admin0_grid_id'] ] ) ) {
+                $countries[$year][ $result['admin0_grid_id'] ] = [
                     'churches' => 0,
                     'disciples' => 0,
                     'baptisms' => 0,
                     'name' => $result['country']
                 ];
             }
-            if ( ! isset( $states[$result['admin1_grid_id'] ] ) ) {
-                $states[$result['admin1_grid_id'] ] = [
+            if ( ! isset( $states[$year][$result['admin1_grid_id'] ] ) ) {
+                $states[$year][$result['admin1_grid_id'] ] = [
                     'churches' => 0,
                     'disciples' => 0,
                     'baptisms' => 0,
                     'name' => $result['state'] . ', ' . $result['country']
                 ];
             }
-            if ( ! isset( $counties[$result['admin2_grid_id'] ] ) ) {
-                $counties[$result['admin2_grid_id'] ] = [
+            if ( ! isset( $counties[$year][$result['admin2_grid_id'] ] ) ) {
+                $counties[$year][$result['admin2_grid_id'] ] = [
                     'churches' => 0,
                     'disciples' => 0,
                     'baptisms' => 0,
@@ -1744,29 +1766,29 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             // add churches and baptisms
             if ( isset( $result['payload']['type'] ) && $result['payload']['type'] === 'churches' ) {
                 $data[$year]['total_churches'] = $data[$year]['total_churches'] + intval( $result['value'] ); // total
-                $countries[$result['admin0_grid_id']]['churches'] = $countries[$result['admin0_grid_id']]['churches'] + intval( $result['value'] ); // country
-                $states[$result['admin1_grid_id']]['churches'] = $states[$result['admin1_grid_id']]['churches'] + intval( $result['value'] ); // state
-                $counties[$result['admin2_grid_id']]['churches'] = $counties[$result['admin2_grid_id']]['churches'] + intval( $result['value'] ); // counties
+                $countries[$year][$result['admin0_grid_id']]['churches'] = $countries[$year][$result['admin0_grid_id']]['churches'] + intval( $result['value'] ); // country
+                $states[$year][$result['admin1_grid_id']]['churches'] = $states[$year][$result['admin1_grid_id']]['churches'] + intval( $result['value'] ); // state
+                $counties[$year][$result['admin2_grid_id']]['churches'] = $counties[$year][$result['admin2_grid_id']]['churches'] + intval( $result['value'] ); // counties
             }
             else if ( isset( $result['payload']['type'] ) && $result['payload']['type'] === 'baptisms' ) {
                 $data[$year]['total_baptisms'] = $data[$year]['total_baptisms'] + intval( $result['value'] );
-                $countries[$result['admin0_grid_id']]['baptisms'] = $countries[$result['admin0_grid_id']]['baptisms'] + intval( $result['value'] );
-                $states[$result['admin1_grid_id']]['baptisms'] = $states[$result['admin1_grid_id']]['baptisms'] + intval( $result['value'] );
-                $counties[$result['admin2_grid_id']]['baptisms'] = $counties[$result['admin2_grid_id']]['baptisms'] + intval( $result['value'] );
+                $countries[$year][$result['admin0_grid_id']]['baptisms'] = $countries[$year][$result['admin0_grid_id']]['baptisms'] + intval( $result['value'] );
+                $states[$year][$result['admin1_grid_id']]['baptisms'] = $states[$year][$result['admin1_grid_id']]['baptisms'] + intval( $result['value'] );
+                $counties[$year][$result['admin2_grid_id']]['baptisms'] = $counties[$year][$result['admin2_grid_id']]['baptisms'] + intval( $result['value'] );
             } else if ( isset( $result['payload']['type'] ) && $result['payload']['type'] === 'disciples' ) {
                 $data[$year]['total_disciples'] = $data[$year]['total_disciples'] + intval( $result['value'] );
-                $countries[$result['admin0_grid_id']]['disciples'] = $countries[$result['admin0_grid_id']]['disciples'] + intval( $result['value'] );
-                $states[$result['admin1_grid_id']]['disciples'] = $states[$result['admin1_grid_id']]['disciples'] + intval( $result['value'] );
-                $counties[$result['admin2_grid_id']]['disciples'] = $counties[$result['admin2_grid_id']]['disciples'] + intval( $result['value'] );
+                $countries[$year][$result['admin0_grid_id']]['disciples'] = $countries[$year][$result['admin0_grid_id']]['disciples'] + intval( $result['value'] );
+                $states[$year][$result['admin1_grid_id']]['disciples'] = $states[$year][$result['admin1_grid_id']]['disciples'] + intval( $result['value'] );
+                $counties[$year][$result['admin2_grid_id']]['disciples'] = $counties[$year][$result['admin2_grid_id']]['disciples'] + intval( $result['value'] );
             }
 
-            $data[$year]['total_countries'] = count( $countries );
-            $data[$year]['total_states'] = count( $states );
-            $data[$year]['total_counties'] = count( $counties );
+            $data[$year]['total_countries'] = count( $countries[$year] );
+            $data[$year]['total_states'] = count( $states[$year] );
+            $data[$year]['total_counties'] = count( $counties[$year] );
 
-            $data[$year]['countries'] = $countries;
-            $data[$year]['states'] = $states;
-            $data[$year]['counties'] = $counties;
+            $data[$year]['countries'] = $countries[$year];
+            $data[$year]['states'] = $states[$year];
+            $data[$year]['counties'] = $counties[$year];
 
         }
 
