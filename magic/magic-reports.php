@@ -13,6 +13,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
     public $type_name = 'Stream Report';
     private $meta_key = '';
     public $magic_url;
+    public $has_children = false;
     public $show_bulk_send = true;
     public $show_app_tile = true; // show this magic link in the Apps tile on the post record
     public $type_actions = [
@@ -20,6 +21,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         'manage' => 'Add / Edit',
         'stats' => 'Summary',
         'maps' => 'Map',
+        'children' => 'Child Streams',
         'invite' => 'Send Invite',
     ];
 
@@ -58,6 +60,8 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
         $this->magic_url = site_url() . '/' . $this->parts['root'] . '/' . $this->parts['type'] . '/' . $this->parts['public_key'] . '/';
 
+        $this->has_children = $this->_has_children( $this->parts['post_id'] );
+
         // load if valid url
 
         if ( $this->magic->is_valid_key_url( $this->type ) && 'stats' === $this->parts['action'] ) {
@@ -71,6 +75,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         }
         else if ( $this->magic->is_valid_key_url( $this->type ) && 'invite' === $this->parts['action'] ) {
             add_action( 'dt_blank_body', [ $this, 'invite_body' ] );
+        }
+        else if ( $this->magic->is_valid_key_url( $this->type ) && 'children' === $this->parts['action'] ) {
+            add_action( 'dt_blank_body', [ $this, 'children_body' ] );
         }
         else if ( $this->magic->is_valid_key_url( $this->type ) && '' === $this->parts['action'] ) {
             add_action( 'dt_blank_body', [ $this, 'home_body' ] );
@@ -416,6 +423,15 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             .float-right {
                 float:right;
             }
+            .one-em {
+                font-size: 1em;
+            }
+            .two-em {
+                font-size: 2em;
+            }
+            .three-em {
+                font-size: 3em;
+            }
 
             /* size specific style section */
             @media screen and (max-width: 991px) {
@@ -751,6 +767,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
     public function nav() {
         $actions = $this->magic->list_actions( $this->type );
+        $has_children = $this->has_children;
         ?>
         <!-- off canvas menus -->
         <div class="off-canvas-wrapper">
@@ -764,6 +781,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                     <?php
                     foreach ( $actions as $action => $label ) {
                         if ( substr( $action, 0, 1 ) === '_' ) {
+                            continue;
+                        }
+                        if ( 'children' === $action && ! $has_children ) {
                             continue;
                         }
                         ?>
@@ -796,12 +816,14 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             'stats' => 'fi-list-thumbnails',
             'maps' => 'fi-map',
             'invite' => 'fi-at-sign',
+            'children' => 'fi-share'
         ];
         return $icons[$action] ?? '';
     }
 
     public function home_body(){
         $actions = $this->magic->list_actions( $this->type );
+        $has_children = $this->has_children;
 
         if ( empty( $this->post ) ) {
             $this->post_id = $this->parts["post_id"];
@@ -833,6 +855,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                         continue;
                     }
                     if ( substr( $action, 0, 1 ) === '_' ) {
+                        continue;
+                    }
+                    if ( 'children' === $action && ! $has_children ) {
                         continue;
                     }
                     ?>
@@ -1295,6 +1320,88 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         <?php
     }
 
+    public function children_body(){
+        $this->nav();
+        ?>
+        <div id="custom-style"></div>
+        <div id="wrapper">
+            <hr>
+            <div class="grid-x ">
+                <div class="cell center" id="bottom-spinner"><span class="loading-spinner active"></span></div>
+                <div class="cell" id="content"><div class="center">... loading</div></div>
+                <div class="cell grid" id="error"></div>
+            </div>
+        </div> <!-- form wrapper -->
+        <script>
+            jQuery(document).ready(function($){
+
+                /* LOAD */
+                let spinner = $('.loading-spinner')
+                let title = $('#title')
+                let content = $('#content')
+                let view = $('#data_streams')
+
+                /* set title */
+                title.html( jsObject.translations.title )
+
+                /* set vertical size the form column*/
+                $('#custom-style').append(`<style>#wrapper { height: inherit !important; }</style>`)
+
+                window.api_post( 'children' ).then(function(data){
+                    console.log(data)
+                    window.data = data
+                    window.write_summary( data )
+                    spinner.removeClass('active')
+                })/* end get_statistics */
+
+                window.write_summary = ( data ) => {
+                    if ( data.length < 1 ) {
+                        return
+                    }
+                    content.empty()
+                    $.each(data, function(i,v){
+                        content.prepend(`
+                        <div class="grid-x grid-padding-y">
+                            <div class="cell">
+                                <div class="grid-x">
+                                    <div class="cell center">
+                                        <span class="stat-heading">${v.title}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell">
+                                <div class="grid-x">
+                                    <div class="cell small-4 center">
+                                        <span class="">Baptisms</span><br>
+                                        <span class="two-em">${v.stats.total_baptisms}</span>
+                                    </div>
+                                     <div class="cell small-4 center">
+                                        <span class="">Disciples</span><br>
+                                        <span class="two-em">${v.stats.total_disciples}</span>
+                                    </div>
+                                     <div class="cell small-4 center">
+                                        <span class="">Churches</span><br>
+                                        <span class="two-em">${v.stats.total_churches}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell" style="padding-top:1em;">
+                                <div class="grid-x">
+                                     <div class="cell center">
+                                       Totals for ${v.stats.year} | Last Report: ${v.stats.last_report_full}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    `)
+                    })
+                }
+            }) /* end .ready */
+        </script>
+        <?php
+    }
+
     public function invite_body(){
         $this->nav();
         ?>
@@ -1348,33 +1455,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                         </div>
                     </div>
                 </div>
-                <!--
-                <div class="cell">
-                    <h1>New Stream</h1>
-                    <p>Invite someone to start a new independent stream.</p>
-                    <div class="button-group">
-                        <a class="button hollow copy_to_clipboard" id="new_stream_copy" data-value="">Copy Link</a>
-                        <a class="button hollow" style="display:none;" id="new_stream_email">Send Email</a>
-                        <a class="button hollow" style="display:none;" id="new_stream_sms">Send SMS</a>
-                    </div>
-                    <div class="input-group input-field new_stream_email" style="display:none;">
-                        <span class="input-group-label">email</span>
-                        <input class="input-group-field" type="email" placeholder="email address" id="new_stream_email_value">
-                        <div class="input-group-button">
-                            <input type="submit" class="button submit_button new_stream_email_submit" value="Send" data-for="new_stream_email_value" data-type="new_stream">
-                        </div>
-                    </div>
-                    <div class="input-group input-field new_stream_sms" style="display:none;">
-                        <span class="input-group-label">sms</span>
-                        <input class="input-group-field new_stream_text" type="tel" placeholder="phone number" id="new_stream_sms_value">
-                        <div class="input-group-button">
-                            <input type="submit" class="button submit_button new_stream_text_submit" value="Send" data-for="new_stream_sms_value" data-type="new_stream">
-                        </div>
-                    </div>
-                </div>
-                <div class="cell center" id="bottom-spinner"><span class="loading-spinner active"></span></div>
-                <div class="cell grid" id="error"></div>
-                -->
             </div>
         </div> <!-- form wrapper -->
         <script>
@@ -1504,6 +1584,8 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                 return $this->retrieve_reports( $post_id );
             case 'geojson':
                 return $this->geojson_reports( $post_id );
+            case 'children':
+                return $this->children_list( $post_id );
             case 'statistics':
                 return [
                     'self' => $this->statistics_reports( $post_id, 'self' ),
@@ -1512,10 +1594,10 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                     'has_children' => ! empty( $children )
                 ];
             case 'get_all':
-                $data = [];
-                $data['reports'] = $this->retrieve_reports( $post_id );
-                $data['geojson'] = $this->geojson_reports( $post_id );
-                return $data;
+                return [
+                    'reports' => $this->retrieve_reports( $post_id ),
+                    'geojson' => $this->geojson_reports( $post_id ),
+                ];
             default:
                 return new WP_Error( __METHOD__, "Missing valid action", [ 'status' => 400 ] );
         }
@@ -1722,6 +1804,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         $counties = [];
 
         foreach ( $results as $result ){
+
             /*time*/
             $time = $result['time_end'];
             if ( empty( $time ) ) {
@@ -1741,7 +1824,9 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                     'total_counties' => 0,
                     'countries' => [],
                     'states' => [],
-                    'counties' => []
+                    'counties' => [],
+                    'last_report' => 0,
+                    'last_report_full' => ''
                 ];
             }
             $result['payload'] = maybe_unserialize( $result['payload'] );
@@ -1812,29 +1897,15 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             $data[$year]['states'] = $states[$year];
             $data[$year]['counties'] = $counties[$year];
 
+            $data[$year]['year'] = $year;
+
+            if ( $data[$year]['last_report'] < $result['timestamp'] ) {
+                $data[$year]['last_report'] = $result['timestamp'];
+                $data[$year]['last_report_full'] = gmdate( 'M d, Y', $result['timestamp'] );
+            }
         }
 
         return $data;
-    }
-
-    public function statistics_reports_compiled( $self, $children ) {
-        $data = [];
-        foreach( $self as $item ) {
-
-        }
-        if ( ! isset( $data[$year] ) ) {
-            $data[$year] = [
-                'total_baptisms' => 0,
-                'total_disciples' => 0,
-                'total_churches' => 0,
-                'total_countries' => 0,
-                'total_states' => 0,
-                'total_counties' => 0,
-                'countries' => [],
-                'states' => [],
-                'counties' => []
-            ];
-        }
     }
 
     public function _get_children( $post_id ) {
@@ -1848,6 +1919,15 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         } else {
             return '';
         }
+    }
+
+    public function _has_children( $post_id ) : bool {
+        global $wpdb;
+        $count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*)
+                                            FROM $wpdb->p2p
+                                            WHERE p2p_type = 'streams_to_streams' 
+                                              AND p2p_to = %s;", $post_id) );
+        return ! empty( $count );
     }
 
     public function _build_children_list( $parent_id, $list, $children = [] ) {
@@ -1937,6 +2017,41 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             'type' => 'FeatureCollection',
             'features' => array()
         );
+    }
+
+    public function children_list( $post_id ) {
+        global $wpdb;
+        $data = [];
+
+        $list = $wpdb->get_results("SELECT p2p_to as parent_id, p2p_from as child_id
+                                    FROM $wpdb->p2p
+                                    WHERE p2p_type = 'streams_to_streams';", ARRAY_A );
+        if ( empty( $list ) || is_wp_error( $list ) ) {
+            return $data;
+        }
+
+        $children = $this->_build_children_list( $post_id, $list );
+
+        foreach( $children as $child ) {
+            $stats_report = $this->statistics_reports( $child  );
+            $top_year = 0;
+            $stats = [];
+            $last_report = 0;
+            foreach( $stats_report as $year => $sr ) {
+                if ( $year < $top_year ) {
+                    continue;
+                }
+                $top_year = $year;
+                $stats = $sr;
+                $last_report = $sr['last_report'];
+            }
+            $data[$child] = [
+                'title' => get_the_title( $child ),
+                'stats' => $stats,
+            ];
+        }
+
+        return $data;
     }
 
     public function delete_report( $params, $post_id ) {
