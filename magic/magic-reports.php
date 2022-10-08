@@ -1105,6 +1105,11 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
                     map.on('load', function () {
 
+                        if ( data.features.length < 1 ) {
+                            spinner.removeClass('active')
+                            return
+                        }
+
                         window.data_view = jQuery('#data_streams').val()
                         let data_streams = jQuery('#data_streams')
                         if ( data.has_children ) {
@@ -1359,7 +1364,16 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                         return
                     }
                     content.empty()
+
                     $.each(data, function(i,v){
+                        let totals_message = ''
+                        let last_report_message = ''
+                        if ( v.stats.year !== '' ) {
+                            totals_message = 'Totals for ' + v.stats.year + ' | '
+                        }
+                        if ( v.stats.last_report_full !== '' ){
+                            last_report_message = 'Last Report: ' + v.stats.last_report_full
+                        }
                         content.prepend(`
                         <div class="grid-x grid-padding-y">
                             <div class="cell">
@@ -1388,7 +1402,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
                             <div class="cell" style="padding-top:1em;">
                                 <div class="grid-x">
                                      <div class="cell center">
-                                       Totals for ${v.stats.year} | Last Report: ${v.stats.last_report_full}
+                                       ${totals_message} ${last_report_message}
                                     </div>
                                 </div>
                             </div>
@@ -1795,8 +1809,25 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             $results = array_merge( $results_self, $results_children );
         }
 
+        $stats_template = [
+            'total_baptisms' => 0,
+            'total_disciples' => 0,
+            'total_churches' => 0,
+            'total_countries' => 0,
+            'total_states' => 0,
+            'total_counties' => 0,
+            'countries' => [],
+            'states' => [],
+            'counties' => [],
+            'last_report' => 0,
+            'last_report_full' => '',
+            'year' => ''
+        ];
+
         if ( empty( $results ) ){
-            return [];
+            $year = gmdate( 'Y', strtotime( 'Today' ) );
+            $data[$year] = $stats_template;
+            return $data;
         }
 
         $countries = [];
@@ -1815,19 +1846,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             }
             $year = gmdate( 'Y', $time );
             if ( ! isset( $data[$year] ) ) {
-                $data[$year] = [
-                    'total_baptisms' => 0,
-                    'total_disciples' => 0,
-                    'total_churches' => 0,
-                    'total_countries' => 0,
-                    'total_states' => 0,
-                    'total_counties' => 0,
-                    'countries' => [],
-                    'states' => [],
-                    'counties' => [],
-                    'last_report' => 0,
-                    'last_report_full' => ''
-                ];
+                $data[$year] = $stats_template;
             }
             $result['payload'] = maybe_unserialize( $result['payload'] );
 
@@ -1917,7 +1936,7 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
             $children = $this->_build_children_list( $post_id, $list );
             return implode( ',', $children );
         } else {
-            return '';
+            return false;
         }
     }
 
@@ -1954,10 +1973,10 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
         // @phpcs:disable
         $children = $this->_get_children( $post_id );
-        $child_results = $wpdb->get_results( $wpdb->prepare( "SELECT *, 'children' as source FROM $wpdb->dt_reports WHERE post_id IN ($children) ORDER BY time_end DESC", $post_id ), ARRAY_A ); // @phpcs:ignore
-        $self_results = $wpdb->get_results( $wpdb->prepare( "SELECT *, 'self' as source  FROM $wpdb->dt_reports WHERE post_id = %s ORDER BY time_end DESC", $post_id ), ARRAY_A );
-        $results = array_merge( $self_results, $child_results );
-        if ( ! empty( $child_results ) ) {
+        $results = $wpdb->get_results( $wpdb->prepare( "SELECT *, 'self' as source  FROM $wpdb->dt_reports WHERE post_id = %s ORDER BY time_end DESC", $post_id ), ARRAY_A );
+        if ( $children ) {
+            $child_results = $wpdb->get_results( $wpdb->prepare( "SELECT *, 'children' as source FROM $wpdb->dt_reports WHERE post_id IN ($children) ORDER BY time_end DESC", $post_id ), ARRAY_A ); // @phpcs:ignore
+            $results = array_merge( $results, $child_results );
             $has_children = true;
         }
         // @phpcs:enable
@@ -2032,12 +2051,12 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
 
         $children = $this->_build_children_list( $post_id, $list );
 
-        foreach( $children as $child ) {
-            $stats_report = $this->statistics_reports( $child  );
+        foreach ( $children as $child ) {
+            $stats_report = $this->statistics_reports( $child );
             $top_year = 0;
             $stats = [];
             $last_report = 0;
-            foreach( $stats_report as $year => $sr ) {
+            foreach ( $stats_report as $year => $sr ) {
                 if ( $year < $top_year ) {
                     continue;
                 }
