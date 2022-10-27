@@ -76,10 +76,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
     public function register( $parts, $data ) {
 
         if ( ! isset( $data['email'] ) ) {
-            return [
-                'status' => 'FAIL',
-                'error' => new WP_Error( __METHOD__, 'Missing parameter', [ 'status' => 400 ] )
-            ];
+            return new WP_Error( __METHOD__, 'Missing email parameter', [ 'status' => 400 ] );
         }
 
         $name = sanitize_text_field( wp_unslash( $data['name'] ) );
@@ -89,14 +86,15 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
         $identity = $this->build_identity( $email );
 
         $contact_id = $this->_has_contact_id( $identity );
+
         if ( ! $contact_id ) {
             $user = $this->_create_user( $name, $email );
+            if ( is_wp_error( $user ) ) {
+                return $user;
+            }
             $contact_id = $user['corresponds_to_contact'];
             if ( ! $contact_id ) {
-                return [
-                    'status' => 'FAIL',
-                    'error' => new WP_Error( __METHOD__, 'Failed to create a contact_id', [ 'status' => 400 ] )
-                ];
+                return new WP_Error( __METHOD__, 'Failed to create a contact id', [ 'status' => 400 ] );
             }
         }
 
@@ -262,14 +260,27 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
 
     public function _create_user( $name, $email ) {
 
+        $has_capabilities_to_this_site = true;
         $user_id = $this->_query_for_user_id( $email );
-        if ( $user_id ) {
+        dt_write_log( $user_id );
+        if ( is_multisite() ) {
+            $has_capabilities_to_this_site = $this->_test_if_user_is_site_member( $user_id );
+        }
+        if ( $user_id && $has_capabilities_to_this_site ) {
             // @todo create a contact for the user
 
             // check the meta_key for contact_id
             // create a contact_id for the user
             $identity = $this->build_identity( $email );
-            return $identity['contact_ids'][0] ?? false;
+
+            if ( isset( $identity['contact_ids'][0] ) ) {
+                return $identity['contact_ids'][0];
+            } else {
+                $contact_id = Disciple_Tools_Users::create_contact_for_user( $user_id );
+                if ( is_wp_error( $contact_id ) ) {
+                    return $contact_id;
+                }
+            }
         }
 
         $user_name = str_replace( ' ', '_', strtolower( $name ) );
@@ -288,6 +299,16 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
         return $user;
     }
 
+    public function _test_if_user_is_site_member( $user_id ) : bool {
+        global $wpdb;
+        $has_capabilities_to_this_site = get_user_meta( $user_id, $wpdb->prefix . 'capabilities' );
+        if ( $has_capabilities_to_this_site  ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /**
      * @param $email
      * @return false|int
@@ -302,6 +323,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
         if ( is_wp_error( $id ) || empty( $id ) ) {
             return false;
         }
+
         return (int) $id;
     }
 
@@ -665,11 +687,11 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                     }
 
                     console.log(form_data)
+                    let new_panel = jQuery('#new-panel')
                     window.api_sr( 'register', form_data )
                         .done(function(response){
                             console.log(response)
 
-                            let new_panel = jQuery('#new-panel')
                             if ( response.status === 'EMAILED' ) {
                                 new_panel.empty().html(`
                                 Excellent! Check your email for a direct link to your stream portal.<br><br>
@@ -681,15 +703,21 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
                                 <a class="button" href="${response.link}" target="_parent">Open Reporting Portal</a>
                               `)
                             }
-                            else if ( response.status === 'FAIL' ) {
-                                new_panel.empty().html(`
-                                    Oops. Something went wrong. Please, refresh and try again. <a onclick="location.reload();">reload</a>
-                                  `)
-                            }
+                            // else if ( response.status === 'FAIL' ) {
+                            //     new_panel.empty().html(`
+                            //         Oops. Something went wrong. Please, refresh and try again. <a onclick="location.reload();">reload</a>
+                            //       `)
+                            // }
 
                             jQuery('.loading-spinner').removeClass('active')
                             jQuery('.panel-note').empty()
                         })
+                        .fail(function (e) {
+                            new_panel.empty().html(`
+                                    Oops. Something went wrong. Please, refresh and try again. <a onclick="location.reload();">reload</a>
+                                  `)
+                        })
+
                 }
 
                 function retrieve(){
