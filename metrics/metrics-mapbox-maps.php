@@ -27,7 +27,7 @@ class DT_Metrics_Mapbox_Streams_Maps extends DT_Metrics_Chart_Base
         if ( !$this->has_permission() ){
             return;
         }
-        $this->title = __( 'Stream Maps', 'disciple-tools-streams' );
+        $this->title = __( 'Streams Map', 'disciple-tools-streams' );
         $this->base_title = __( 'Streams', 'disciple-tools-streams' );
 
 
@@ -66,8 +66,7 @@ class DT_Metrics_Mapbox_Streams_Maps extends DT_Metrics_Chart_Base
                     'totals_rest_url' => '/get_grid_totals',
                     'list_by_grid_rest_url' => '/get_list_by_grid_id',
                     'points_rest_url' => '/points_geojson',
-
-                    'split_by' => [ "church_status" => $field_settings["church_status"] ],
+                    'split_by' => [ "status" => $field_settings["status"] ],
                 ],
             ]
         );

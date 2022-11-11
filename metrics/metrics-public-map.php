@@ -8,7 +8,7 @@ class DT_Streams_Metrics_Public_Map extends DT_Metrics_Chart_Base
     public $base_slug = 'streams';
     public $base_title = "Streams";
 
-    public $title = 'Public Map';
+    public $title = 'Reports Map';
     public $slug = 'public-map';
 
     public $permissions = [ 'view_any_streams', 'view_project_metrics' ];
