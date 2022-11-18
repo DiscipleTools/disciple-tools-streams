@@ -57,7 +57,7 @@ class DT_Stream_Base extends DT_Module_Base {
         add_action( "dt_comment_created", [ $this, "dt_comment_created" ], 10, 4 );
 
         //list
-        add_filter( "dt_user_list_filters", [ $this, "dt_user_list_filters" ], 10, 2 );
+        add_filter( "dt_user_list_filters", [ $this, "dt_user_list_filters" ], 150, 2 );
         add_filter( "dt_filter_access_permissions", [ $this, "dt_filter_access_permissions" ], 20, 2 );
     }
 
@@ -1016,23 +1016,18 @@ class DT_Stream_Base extends DT_Module_Base {
                         dt_increment( $active_totals[$total["status"]], $total["count"] );
                     }
                 }
-                $filters["tabs"][] = [
-                    "key" => "all",
-                    "label" => _x( "All", 'List Filters', 'disciple-tools-streams' ),
-                    "count" => $total_all,
-                    "order" => 10
-                ];
-                // add assigned to me filters
-                $filters["filters"][] = [
-                    'ID' => 'all',
-                    'tab' => 'all',
-                    'name' => _x( "All", 'List Filters', 'disciple-tools-streams' ),
-                    'query' => [
-                        'sort' => '-post_date',
-                        'status' => [ '-closed' ]
-                    ],
-                    "count" => $total_all
-                ];
+                //add count to default all tab
+                foreach ( $filters['tabs'] as &$filter_tab ){
+                    if ( $filter_tab['key'] === 'all' ){
+                        $filter_tab['count'] = $total_all;
+                    }
+                }
+                //add count to default all filter
+                foreach ( $filters['filters'] as &$filter_item ){
+                    if ( $filter_item['ID'] === 'all' ){
+                        $filter_item['count'] = $total_all;
+                    }
+                }
 
                 foreach ( $fields["status"]["default"] as $status_key => $status_value ){
                     if ( isset( $status_totals[$status_key] ) ){
