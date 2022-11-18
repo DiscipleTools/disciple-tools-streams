@@ -302,7 +302,7 @@ abstract class DT_Magic_Url_Self_Register extends DT_Magic_Url_Base
     public function _test_if_user_is_site_member( $user_id ) : bool {
         global $wpdb;
         $has_capabilities_to_this_site = get_user_meta( $user_id, $wpdb->prefix . 'capabilities' );
-        if ( $has_capabilities_to_this_site  ) {
+        if ( $has_capabilities_to_this_site ) {
             return true;
         } else {
             return false;
