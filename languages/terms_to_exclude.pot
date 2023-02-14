@@ -1,0 +1,11 @@
+#. Plugin Name of the plugin
+msgid "Disciple.Tools - Streams"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/DiscipleTools/disciple-tools-streams"
+msgstr ""
+
+#. Description of the plugin
+msgid "Streams creates collections of work and a generational census reporting magic link system."
+msgstr ""
