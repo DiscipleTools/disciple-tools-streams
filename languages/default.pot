@@ -2,28 +2,20 @@
 # This file is distributed under the same license as the Disciple.Tools - Streams plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Disciple.Tools - Streams 3.1\n"
+"Project-Id-Version: Disciple.Tools - Streams 3.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-streams\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-02-14T14:57:03+00:00\n"
+"POT-Creation-Date: 2023-02-14T15:18:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: disciple-tools-streams\n"
 
-#. Plugin Name of the plugin
-msgid "Disciple.Tools - Streams"
-msgstr ""
-
-#. Plugin URI of the plugin
-msgid "https://github.com/DiscipleTools/disciple-tools-streams"
-msgstr ""
-
-#. Description of the plugin
-msgid "Streams creates collections of work and a generational census reporting magic link system."
+#. Author URI of the plugin
+msgid "https://github.com/DiscipleTools"
 msgstr ""
 
 #: magic/magic-reports.php:121
