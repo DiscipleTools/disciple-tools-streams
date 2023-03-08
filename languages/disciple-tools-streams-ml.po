@@ -1,8 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Disciple Tools Plugins\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-streams\n"
-"POT-Creation-Date: 2023-02-14T14:57:03+00:00\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
+"streams\n"
+"POT-Creation-Date: 2023-02-14T15:18:17+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -12,19 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. Plugin Name of the plugin
-#, fuzzy
-#| msgid "Disciple Tools - Streams"
-msgid "Disciple.Tools - Streams"
-msgstr "ശിഷ്യ ഉപകരണങ്ങൾ - സ്ട്രീമുകൾ"
-
-#. Plugin URI of the plugin
-msgid "https://github.com/DiscipleTools/disciple-tools-streams"
-msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
-
-#. Description of the plugin
-msgid "Streams creates collections of work and a generational census reporting magic link system."
-msgstr ""
+#. Author URI of the plugin
+msgid "https://github.com/DiscipleTools"
+msgstr "https://github.com/DiscipleTools"
 
 #: magic/magic-reports.php:121
 msgid "Reports"
@@ -72,12 +63,12 @@ msgstr "റിപ്പോർട്ട് ചേർക്കുക"
 msgid "Streams Maps"
 msgstr "സ്ട്രീമുകൾ മാപ്പുകൾ"
 
-#: metrics/-metrics-mapbox-personal-maps.php:31 metrics/metrics-mapbox-maps.php:31
-#: post-type/streams-post-type.php:66 post-type/streams-post-type.php:436
-#: post-type/streams-post-type.php:448 post-type/streams-post-type.php:460
-#: post-type/streams-post-type.php:483 post-type/streams-post-type.php:522
-#: post-type/streams-post-type.php:539 post-type/streams-post-type.php:556
-#: post-type/streams-post-type.php:593
+#: metrics/-metrics-mapbox-personal-maps.php:31
+#: metrics/metrics-mapbox-maps.php:31 post-type/streams-post-type.php:66
+#: post-type/streams-post-type.php:436 post-type/streams-post-type.php:448
+#: post-type/streams-post-type.php:460 post-type/streams-post-type.php:483
+#: post-type/streams-post-type.php:522 post-type/streams-post-type.php:539
+#: post-type/streams-post-type.php:556 post-type/streams-post-type.php:593
 msgid "Streams"
 msgstr "സ്ട്രീമുകൾ"
 
@@ -141,7 +132,8 @@ msgstr "മോഡൽ"
 
 #: post-type/streams-post-type.php:149
 msgctxt "Stream Status field description"
-msgid "This stream is being actively coached and is still in the modelling stage."
+msgid ""
+"This stream is being actively coached and is still in the modelling stage."
 msgstr ""
 
 #: post-type/streams-post-type.php:153
@@ -171,7 +163,8 @@ msgstr ""
 
 #: post-type/streams-post-type.php:164
 msgctxt "Stream Status field description"
-msgid "This stream is being actively coached and is still in the leave/launch stage."
+msgid ""
+"This stream is being actively coached and is still in the leave/launch stage."
 msgstr ""
 
 #: post-type/streams-post-type.php:168
@@ -193,7 +186,9 @@ msgstr "താൽക്കാലികമായി നിർത്തി"
 
 #: post-type/streams-post-type.php:174
 msgctxt "Stream Status field description"
-msgid "This contact is currently on hold. It has potential of getting scheduled in the future."
+msgid ""
+"This contact is currently on hold. It has potential of getting scheduled in "
+"the future."
 msgstr "ഈ കോൺ‌ടാക്റ്റ് നിലവിൽ തടഞ്ഞുവച്ചിരിക്കുന്നു. ഭാവിയിൽ ഷെഡ്യൂൾ ചെയ്യാനുള്ള സാധ്യതയുണ്ട്."
 
 #: post-type/streams-post-type.php:178
@@ -221,15 +216,18 @@ msgstr "കോച്ച്"
 #: post-type/streams-post-type.php:196
 msgctxt "Optional Documentation"
 msgid ""
-"The person who planted and/or is coaching this stream. Only one person can be assigned to a "
-"stream while multiple people can be coaches / church planters of this stream."
+"The person who planted and/or is coaching this stream. Only one person can "
+"be assigned to a stream while multiple people can be coaches / church "
+"planters of this stream."
 msgstr ""
-"ഈ സ്ട്രീം നട്ടുപിടിപ്പിച്ച / അല്ലെങ്കിൽ പരിശീലിപ്പിക്കുന്ന വ്യക്തി. ഒരു സ്ട്രീമിലേക്ക് ഒരാളെ മാത്രമേ നിയോഗിക്കാൻ "
-"കഴിയൂ, അതേസമയം ഒന്നിലധികം ആളുകൾക്ക് ഈ സ്ട്രീമിലെ കോച്ചുകൾ / ചർച്ച് പ്ലാന്ററുകൾ ആകാം."
+"ഈ സ്ട്രീം നട്ടുപിടിപ്പിച്ച / അല്ലെങ്കിൽ പരിശീലിപ്പിക്കുന്ന വ്യക്തി. ഒരു സ്ട്രീമിലേക്ക് ഒരാളെ "
+"മാത്രമേ നിയോഗിക്കാൻ കഴിയൂ, അതേസമയം ഒന്നിലധികം ആളുകൾക്ക് ഈ സ്ട്രീമിലെ കോച്ചുകൾ / ചർച്ച് "
+"പ്ലാന്ററുകൾ ആകാം."
 
 #: post-type/streams-post-type.php:207
 #, fuzzy
-#| msgid "Select the main person who is responsible for reporting on this stream."
+#| msgid ""
+#| "Select the main person who is responsible for reporting on this stream."
 msgctxt "Optional Documentation"
 msgid "The person who is the responsible reporter for this stream."
 msgstr "ഈ സ്ട്രീമിൽ റിപ്പോർട്ടുചെയ്യാൻ ഉത്തരവാദിയായ പ്രധാന വ്യക്തിയെ തിരഞ്ഞെടുക്കുക."
@@ -304,11 +302,11 @@ msgstr "പിയർ സ്ട്രീമുകൾ"
 #: post-type/streams-post-type.php:353
 msgctxt "Optional Documentation"
 msgid ""
-"A related stream that isn't a parent/child in relationship. It might indicate streams that "
-"collaborate, are about to merge, recently split, etc."
+"A related stream that isn't a parent/child in relationship. It might "
+"indicate streams that collaborate, are about to merge, recently split, etc."
 msgstr ""
-"ബന്ധത്തിൽ ഒരു രക്ഷകർത്താവ് / കുട്ടി അല്ലാത്ത ഒരു അനുബന്ധ സ്ട്രീം. ഇത് സഹകരിക്കുന്ന, ലയിപ്പിക്കാൻ പോകുന്ന, അടുത്തിടെ "
-"വിഭജിച്ച മുതലായ സ്ട്രീമുകളെ സൂചിപ്പിക്കാം."
+"ബന്ധത്തിൽ ഒരു രക്ഷകർത്താവ് / കുട്ടി അല്ലാത്ത ഒരു അനുബന്ധ സ്ട്രീം. ഇത് സഹകരിക്കുന്ന, ലയിപ്പിക്കാൻ "
+"പോകുന്ന, അടുത്തിടെ വിഭജിച്ച മുതലായ സ്ട്രീമുകളെ സൂചിപ്പിക്കാം."
 
 #: post-type/streams-post-type.php:364
 msgid "Child Streams"
@@ -398,6 +396,14 @@ msgctxt "List Filters"
 msgid "All"
 msgstr "എല്ലാം"
 
+#, fuzzy
+#~| msgid "Disciple Tools - Streams"
+#~ msgid "Disciple.Tools - Streams"
+#~ msgstr "ശിഷ്യ ഉപകരണങ്ങൾ - സ്ട്രീമുകൾ"
+
+#~ msgid "https://github.com/DiscipleTools/disciple-tools-streams"
+#~ msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
+
 #~ msgid "Whoah, partner!"
 #~ msgstr "ഓ, പങ്കാളി!"
 
@@ -418,13 +424,13 @@ msgstr "എല്ലാം"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A useful way to training related items and can help training contacts associated with "
-#~ "noteworthy characteristics. e.g. business owner, sports lover. The contacts can also be "
-#~ "filtered using these tags."
+#~ "A useful way to training related items and can help training contacts "
+#~ "associated with noteworthy characteristics. e.g. business owner, sports "
+#~ "lover. The contacts can also be filtered using these tags."
 #~ msgstr ""
-#~ "അനുബന്ധ ഇനങ്ങൾ‌ പരിശീലിപ്പിക്കുന്നതിനുള്ള ഒരു ഉപയോഗപ്രദമായ മാർ‌ഗ്ഗം കൂടാതെ ശ്രദ്ധേയമായ സവിശേഷതകളുമായി ബന്ധപ്പെട്ട "
-#~ "കോൺ‌ടാക്റ്റുകളെ പരിശീലിപ്പിക്കാൻ സഹായിക്കുന്നു. ഉദാ. ബിസിനസ്സ് ഉടമ, കായിക പ്രേമികൾ. ഈ ടാഗുകൾ ഉപയോഗിച്ച് "
-#~ "കോൺടാക്റ്റുകൾ ഫിൽട്ടർ ചെയ്യാനും കഴിയും."
+#~ "അനുബന്ധ ഇനങ്ങൾ‌ പരിശീലിപ്പിക്കുന്നതിനുള്ള ഒരു ഉപയോഗപ്രദമായ മാർ‌ഗ്ഗം കൂടാതെ ശ്രദ്ധേയമായ "
+#~ "സവിശേഷതകളുമായി ബന്ധപ്പെട്ട കോൺ‌ടാക്റ്റുകളെ പരിശീലിപ്പിക്കാൻ സഹായിക്കുന്നു. ഉദാ. ബിസിനസ്സ് "
+#~ "ഉടമ, കായിക പ്രേമികൾ. ഈ ടാഗുകൾ ഉപയോഗിച്ച് കോൺടാക്റ്റുകൾ ഫിൽട്ടർ ചെയ്യാനും കഴിയും."
 
 #~ msgid "Follow"
 #~ msgstr "പിന്തുടരുക"
@@ -480,7 +486,9 @@ msgstr "എല്ലാം"
 #~ msgstr "താൽക്കാലികമായി നിർത്തി"
 
 #~ msgctxt "Training Status field description"
-#~ msgid "This contact is currently on hold. It has potential of getting scheduled in the future."
+#~ msgid ""
+#~ "This contact is currently on hold. It has potential of getting scheduled "
+#~ "in the future."
 #~ msgstr "ഈ കോൺ‌ടാക്റ്റ് നിലവിൽ തടഞ്ഞുവച്ചിരിക്കുന്നു. ഭാവിയിൽ ഷെഡ്യൂൾ ചെയ്യാനുള്ള സാധ്യതയുണ്ട്."
 
 #~ msgctxt "Training Status label"
@@ -491,19 +499,23 @@ msgstr "എല്ലാം"
 #~ msgid "This training is no longer going to happen."
 #~ msgstr "ഈ പരിശീലനം ഇനി നടക്കില്ല."
 
-#~ msgid "Select the main person who is responsible for reporting on this training."
-#~ msgstr "ഈ പരിശീലനത്തെക്കുറിച്ച് റിപ്പോർട്ടുചെയ്യാൻ ഉത്തരവാദിത്തമുള്ള പ്രധാന വ്യക്തിയെ തിരഞ്ഞെടുക്കുക."
+#~ msgid ""
+#~ "Select the main person who is responsible for reporting on this training."
+#~ msgstr ""
+#~ "ഈ പരിശീലനത്തെക്കുറിച്ച് റിപ്പോർട്ടുചെയ്യാൻ ഉത്തരവാദിത്തമുള്ള പ്രധാന വ്യക്തിയെ തിരഞ്ഞെടുക്കുക."
 
 #~ msgid "Training Coach / Church Planter"
 #~ msgstr "പരിശീലന കോച്ച് / ചർച്ച് പ്ലാന്റർ"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "The person who planted and/or is coaching this training. Only one person can be assigned to a "
-#~ "training while multiple people can be coaches / church planters of this training."
+#~ "The person who planted and/or is coaching this training. Only one person "
+#~ "can be assigned to a training while multiple people can be coaches / "
+#~ "church planters of this training."
 #~ msgstr ""
-#~ "ഈ പരിശീലനം നട്ടുപിടിപ്പിച്ച / അല്ലെങ്കിൽ പരിശീലിപ്പിക്കുന്ന വ്യക്തി. ഒരു പരിശീലനത്തിന് ഒരാളെ മാത്രമേ "
-#~ "നിയോഗിക്കാൻ കഴിയൂ, അതേസമയം ഒന്നിലധികം ആളുകൾക്ക് ഈ പരിശീലനത്തിന്റെ പരിശീലകർ / ചർച്ച് പ്ലാന്ററുകൾ ആകാം."
+#~ "ഈ പരിശീലനം നട്ടുപിടിപ്പിച്ച / അല്ലെങ്കിൽ പരിശീലിപ്പിക്കുന്ന വ്യക്തി. ഒരു പരിശീലനത്തിന് "
+#~ "ഒരാളെ മാത്രമേ നിയോഗിക്കാൻ കഴിയൂ, അതേസമയം ഒന്നിലധികം ആളുകൾക്ക് ഈ പരിശീലനത്തിന്റെ "
+#~ "പരിശീലകർ / ചർച്ച് പ്ലാന്ററുകൾ ആകാം."
 
 #~ msgid "Requires Update"
 #~ msgstr "അപ്‌ഡേറ്റ് ആവശ്യമാണ്"
@@ -537,11 +549,12 @@ msgstr "എല്ലാം"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A related training that isn't a parent/child in relationship. It might indicate trainings "
-#~ "that collaborate, are about to merge, recently split, etc."
+#~ "A related training that isn't a parent/child in relationship. It might "
+#~ "indicate trainings that collaborate, are about to merge, recently split, "
+#~ "etc."
 #~ msgstr ""
-#~ "ബന്ധത്തിൽ ഒരു രക്ഷകർത്താവ് / കുട്ടി അല്ലാത്ത ഒരു അനുബന്ധ പരിശീലനം. ഇത് സഹകരിക്കുന്നതും ലയിപ്പിക്കാൻ പോകുന്നതും "
-#~ "അടുത്തിടെ വിഭജിച്ചതുമായ പരിശീലനങ്ങളെ സൂചിപ്പിക്കാം."
+#~ "ബന്ധത്തിൽ ഒരു രക്ഷകർത്താവ് / കുട്ടി അല്ലാത്ത ഒരു അനുബന്ധ പരിശീലനം. ഇത് സഹകരിക്കുന്നതും "
+#~ "ലയിപ്പിക്കാൻ പോകുന്നതും അടുത്തിടെ വിഭജിച്ചതുമായ പരിശീലനങ്ങളെ സൂചിപ്പിക്കാം."
 
 #~ msgid "Child Training"
 #~ msgstr "ശിശു പരിശീലനം"
@@ -566,13 +579,14 @@ msgstr "എല്ലാം"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "The number of members in this training. It will automatically be updated when new members are "
-#~ "added or removed in the member list. Change this number manually to included people who may "
-#~ "not be in the system but are also members of the training."
+#~ "The number of members in this training. It will automatically be updated "
+#~ "when new members are added or removed in the member list. Change this "
+#~ "number manually to included people who may not be in the system but are "
+#~ "also members of the training."
 #~ msgstr ""
-#~ "ഈ പരിശീലനത്തിലെ അംഗങ്ങളുടെ എണ്ണം. അംഗങ്ങളുടെ പട്ടികയിൽ‌ പുതിയ അംഗങ്ങൾ‌ ചേർ‌ക്കുമ്പോഴോ നീക്കംചെയ്യുമ്പോഴോ ഇത് "
-#~ "സ്വപ്രേരിതമായി അപ്‌ഡേറ്റ് ചെയ്യപ്പെടും. സിസ്റ്റത്തിൽ ഇല്ലാത്തവരും പരിശീലനത്തിലെ അംഗങ്ങളുമായ ആളുകളെ ഈ നമ്പർ "
-#~ "സ്വമേധയാ മാറ്റുക."
+#~ "ഈ പരിശീലനത്തിലെ അംഗങ്ങളുടെ എണ്ണം. അംഗങ്ങളുടെ പട്ടികയിൽ‌ പുതിയ അംഗങ്ങൾ‌ ചേർ‌ക്കുമ്പോഴോ "
+#~ "നീക്കംചെയ്യുമ്പോഴോ ഇത് സ്വപ്രേരിതമായി അപ്‌ഡേറ്റ് ചെയ്യപ്പെടും. സിസ്റ്റത്തിൽ ഇല്ലാത്തവരും "
+#~ "പരിശീലനത്തിലെ അംഗങ്ങളുമായ ആളുകളെ ഈ നമ്പർ സ്വമേധയാ മാറ്റുക."
 
 #~ msgid "Leader Count"
 #~ msgstr "ലീഡർ എണ്ണം"
@@ -606,7 +620,8 @@ msgstr "എല്ലാം"
 #~ msgstr "തിരഞ്ഞെടുക്കുക"
 
 #~ msgid "To add new members, click on 'Create' or 'Select'."
-#~ msgstr "പുതിയ അംഗങ്ങളെ ചേർക്കുന്നതിന്, 'സൃഷ്ടിക്കുക' അല്ലെങ്കിൽ 'തിരഞ്ഞെടുക്കുക' ക്ലിക്കുചെയ്യുക."
+#~ msgstr ""
+#~ "പുതിയ അംഗങ്ങളെ ചേർക്കുന്നതിന്, 'സൃഷ്ടിക്കുക' അല്ലെങ്കിൽ 'തിരഞ്ഞെടുക്കുക' ക്ലിക്കുചെയ്യുക."
 
 #~ msgctxt "Add members modal"
 #~ msgid "Add members from existing contacts"
@@ -614,9 +629,11 @@ msgstr "എല്ലാം"
 
 #~ msgctxt "Add members modal"
 #~ msgid ""
-#~ "In the 'Member List' field, type the name of an existing contact to add them to this training."
+#~ "In the 'Member List' field, type the name of an existing contact to add "
+#~ "them to this training."
 #~ msgstr ""
-#~ "'അംഗ പട്ടിക' ഫീൽഡിൽ, ഈ പരിശീലനത്തിലേക്ക് അവരെ ചേർക്കുന്നതിന് നിലവിലുള്ള ഒരു കോൺടാക്റ്റിന്റെ പേര് ടൈപ്പുചെയ്യുക."
+#~ "'അംഗ പട്ടിക' ഫീൽഡിൽ, ഈ പരിശീലനത്തിലേക്ക് അവരെ ചേർക്കുന്നതിന് നിലവിലുള്ള ഒരു "
+#~ "കോൺടാക്റ്റിന്റെ പേര് ടൈപ്പുചെയ്യുക."
 
 #~ msgid "Close"
 #~ msgstr "അടയ്‌ക്കുക"
@@ -971,13 +988,13 @@ msgstr "എല്ലാം"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A useful way to stream related items and can help stream contacts associated with noteworthy "
-#~ "characteristics. e.g. business owner, sports lover. The contacts can also be filtered using "
-#~ "these tags."
+#~ "A useful way to stream related items and can help stream contacts "
+#~ "associated with noteworthy characteristics. e.g. business owner, sports "
+#~ "lover. The contacts can also be filtered using these tags."
 #~ msgstr ""
-#~ "അനുബന്ധ ഇനങ്ങൾ‌ സ്ട്രീം ചെയ്യുന്നതിനുള്ള ഒരു ഉപയോഗപ്രദമായ മാർ‌ഗ്ഗം കൂടാതെ ശ്രദ്ധേയമായ സവിശേഷതകളുമായി ബന്ധപ്പെട്ട "
-#~ "കോൺ‌ടാക്റ്റുകളെ സ്ട്രീം ചെയ്യാൻ സഹായിക്കുന്നു. ഉദാ. ബിസിനസ്സ് ഉടമ, കായിക പ്രേമികൾ. ഈ ടാഗുകൾ ഉപയോഗിച്ച് "
-#~ "കോൺടാക്റ്റുകൾ ഫിൽട്ടർ ചെയ്യാനും കഴിയും."
+#~ "അനുബന്ധ ഇനങ്ങൾ‌ സ്ട്രീം ചെയ്യുന്നതിനുള്ള ഒരു ഉപയോഗപ്രദമായ മാർ‌ഗ്ഗം കൂടാതെ ശ്രദ്ധേയമായ "
+#~ "സവിശേഷതകളുമായി ബന്ധപ്പെട്ട കോൺ‌ടാക്റ്റുകളെ സ്ട്രീം ചെയ്യാൻ സഹായിക്കുന്നു. ഉദാ. ബിസിനസ്സ് "
+#~ "ഉടമ, കായിക പ്രേമികൾ. ഈ ടാഗുകൾ ഉപയോഗിച്ച് കോൺടാക്റ്റുകൾ ഫിൽട്ടർ ചെയ്യാനും കഴിയും."
 
 #~ msgctxt "Stream Status field description"
 #~ msgid "This stream has been proposed and is in initial conversations"
@@ -1080,28 +1097,26 @@ msgstr "എല്ലാം"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-network-dashboard"
 
 #~ msgid ""
-#~ "Connect this Disciple Tools site to a larger network of sites. Adds security sensitive "
-#~ "totals, mapping, activity logging."
+#~ "Connect this Disciple Tools site to a larger network of sites. Adds "
+#~ "security sensitive totals, mapping, activity logging."
 #~ msgstr ""
-#~ "സൈറ്റുകളുടെ ഒരു വലിയ നെറ്റ്‌വർക്കിലേക്ക് ഈ ശിഷ്യ ഉപകരണ സൈറ്റിനെ ബന്ധിപ്പിക്കുക. സുരക്ഷാ സെൻ‌സിറ്റീവ് ടോട്ടലുകൾ‌, "
-#~ "മാപ്പിംഗ്, ആക്റ്റിവിറ്റി ലോഗിംഗ് എന്നിവ ചേർക്കുന്നു."
-
-#~ msgid "https://github.com/DiscipleTools"
-#~ msgstr "https://github.com/DiscipleTools"
+#~ "സൈറ്റുകളുടെ ഒരു വലിയ നെറ്റ്‌വർക്കിലേക്ക് ഈ ശിഷ്യ ഉപകരണ സൈറ്റിനെ ബന്ധിപ്പിക്കുക. സുരക്ഷാ "
+#~ "സെൻ‌സിറ്റീവ് ടോട്ടലുകൾ‌, മാപ്പിംഗ്, ആക്റ്റിവിറ്റി ലോഗിംഗ് എന്നിവ ചേർക്കുന്നു."
 
 #~ msgid ""
-#~ "Disciple Tools Streams Extension adds recording of streams and cross reference them with "
-#~ "contacts, churches, and locations."
+#~ "Disciple Tools Streams Extension adds recording of streams and cross "
+#~ "reference them with contacts, churches, and locations."
 #~ msgstr ""
-#~ "ശിഷ്യ ഉപകരണ സ്ട്രീമുകൾ വിപുലീകരണം സ്ട്രീമുകളുടെ റെക്കോർഡിംഗും കോൺടാക്റ്റുകൾ, ഗ്രൂപ്പുകൾ, ലൊക്കേഷനുകൾ എന്നിവ "
-#~ "ഉപയോഗിച്ച് ക്രോസ് റഫറൻസും ചേർക്കുന്നു."
+#~ "ശിഷ്യ ഉപകരണ സ്ട്രീമുകൾ വിപുലീകരണം സ്ട്രീമുകളുടെ റെക്കോർഡിംഗും കോൺടാക്റ്റുകൾ, ഗ്രൂപ്പുകൾ, "
+#~ "ലൊക്കേഷനുകൾ എന്നിവ ഉപയോഗിച്ച് ക്രോസ് റഫറൻസും ചേർക്കുന്നു."
 
 #~ msgid ""
-#~ "'Disciple Tools - Training' plugin requires 'Disciple Tools' theme to work. Please activate "
-#~ "'Disciple Tools' theme or make sure it is latest version."
+#~ "'Disciple Tools - Training' plugin requires 'Disciple Tools' theme to "
+#~ "work. Please activate 'Disciple Tools' theme or make sure it is latest "
+#~ "version."
 #~ msgstr ""
-#~ "'ശിഷ്യ ഉപകരണങ്ങൾ - പരിശീലനം' പ്ലഗിൻ പ്രവർത്തിക്കാൻ 'ശിഷ്യ ഉപകരണങ്ങൾ' തീം ആവശ്യമാണ്. 'ശിഷ്യ ഉപകരണങ്ങൾ' തീം "
-#~ "സജീവമാക്കുക അല്ലെങ്കിൽ അത് ഏറ്റവും പുതിയ പതിപ്പാണെന്ന് ഉറപ്പാക്കുക."
+#~ "'ശിഷ്യ ഉപകരണങ്ങൾ - പരിശീലനം' പ്ലഗിൻ പ്രവർത്തിക്കാൻ 'ശിഷ്യ ഉപകരണങ്ങൾ' തീം ആവശ്യമാണ്. "
+#~ "'ശിഷ്യ ഉപകരണങ്ങൾ' തീം സജീവമാക്കുക അല്ലെങ്കിൽ അത് ഏറ്റവും പുതിയ പതിപ്പാണെന്ന് ഉറപ്പാക്കുക."
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
 #~ msgstr "നിലവിലെ ശിഷ്യ ഉപകരണ പതിപ്പ്:% 1 $ s, ആവശ്യമായ പതിപ്പ്:% 2 $ s"
@@ -1110,11 +1125,11 @@ msgstr "എല്ലാം"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
 
 #~ msgid ""
-#~ "Disciple Tools Training Extension adds recording of trainings and cross reference them with "
-#~ "contacts, churches, and locations."
+#~ "Disciple Tools Training Extension adds recording of trainings and cross "
+#~ "reference them with contacts, churches, and locations."
 #~ msgstr ""
-#~ "ശിഷ്യ ഉപകരണ പരിശീലന വിപുലീകരണം പരിശീലനത്തിന്റെ റെക്കോർഡിംഗും കോൺടാക്റ്റുകൾ, ഗ്രൂപ്പുകൾ, ലൊക്കേഷനുകൾ എന്നിവ "
-#~ "ഉപയോഗിച്ച് ക്രോസ് റഫറൻസും ചേർക്കുന്നു."
+#~ "ശിഷ്യ ഉപകരണ പരിശീലന വിപുലീകരണം പരിശീലനത്തിന്റെ റെക്കോർഡിംഗും കോൺടാക്റ്റുകൾ, "
+#~ "ഗ്രൂപ്പുകൾ, ലൊക്കേഷനുകൾ എന്നിവ ഉപയോഗിച്ച് ക്രോസ് റഫറൻസും ചേർക്കുന്നു."
 
 #~ msgid "Duplicates"
 #~ msgstr "തനിപ്പകർപ്പുകൾ"
@@ -1188,8 +1203,12 @@ msgstr "എല്ലാം"
 #~ msgid "Contact Workload"
 #~ msgstr "ജോലിഭാരവുമായി ബന്ധപ്പെടുക"
 
-#~ msgid "Choose an option to let the dispatcher(s) know if you are ready for new contacts"
-#~ msgstr "നിങ്ങൾ പുതിയ കോൺടാക്റ്റുകൾക്ക് തയ്യാറാണോയെന്ന് ഡിസ്പാച്ചറെ (ങ്ങളെ) അറിയിക്കാൻ ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക"
+#~ msgid ""
+#~ "Choose an option to let the dispatcher(s) know if you are ready for new "
+#~ "contacts"
+#~ msgstr ""
+#~ "നിങ്ങൾ പുതിയ കോൺടാക്റ്റുകൾക്ക് തയ്യാറാണോയെന്ന് ഡിസ്പാച്ചറെ (ങ്ങളെ) അറിയിക്കാൻ ഒരു ഓപ്ഷൻ "
+#~ "തിരഞ്ഞെടുക്കുക"
 
 #~ msgid "Set travel or dates unavailable"
 #~ msgstr "യാത്രയോ തീയതിയോ ലഭ്യമല്ല"
@@ -1216,11 +1235,11 @@ msgstr "എല്ലാം"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-dashboard"
 
 #~ msgid ""
-#~ "The multiplier dashboard upgrades the multipliers experience as soon as they log into the "
-#~ "system giving them a landing page with stats."
+#~ "The multiplier dashboard upgrades the multipliers experience as soon as "
+#~ "they log into the system giving them a landing page with stats."
 #~ msgstr ""
-#~ "മൾട്ടിപ്ലയർ ഡാഷ്‌ബോർഡ് സിസ്റ്റത്തിലേക്ക് ലോഗിൻ ചെയ്‌തയുടനെ സ്ഥിതിവിവരക്കണക്കുകളുള്ള ഒരു ലാൻഡിംഗ് പേജ് നൽകിക്കൊണ്ട് "
-#~ "അനുഭവം അപ്‌ഗ്രേഡുചെയ്യുന്നു"
+#~ "മൾട്ടിപ്ലയർ ഡാഷ്‌ബോർഡ് സിസ്റ്റത്തിലേക്ക് ലോഗിൻ ചെയ്‌തയുടനെ സ്ഥിതിവിവരക്കണക്കുകളുള്ള ഒരു "
+#~ "ലാൻഡിംഗ് പേജ് നൽകിക്കൊണ്ട് അനുഭവം അപ്‌ഗ്രേഡുചെയ്യുന്നു"
 
 #~ msgid "Reason Assigned To"
 #~ msgstr "നിയുക്തമാക്കിയ കാരണം"
@@ -1288,5 +1307,9 @@ msgstr "എല്ലാം"
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-advanced-m2m-tiles"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-advanced-m2m-tiles"
 
-#~ msgid "Disciple Tools - Advanced M2M Tiles adds specific supporting tiles for different roles."
-#~ msgstr "ശിഷ്യ ഉപകരണങ്ങൾ - നൂതന M2M ടൈലുകൾ വ്യത്യസ്ത റോളുകൾക്കായി നിർദ്ദിഷ്ട പിന്തുണാ ടൈലുകൾ ചേർക്കുന്നു."
+#~ msgid ""
+#~ "Disciple Tools - Advanced M2M Tiles adds specific supporting tiles for "
+#~ "different roles."
+#~ msgstr ""
+#~ "ശിഷ്യ ഉപകരണങ്ങൾ - നൂതന M2M ടൈലുകൾ വ്യത്യസ്ത റോളുകൾക്കായി നിർദ്ദിഷ്ട പിന്തുണാ ടൈലുകൾ "
+#~ "ചേർക്കുന്നു."

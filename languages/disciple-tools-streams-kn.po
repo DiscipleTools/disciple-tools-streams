@@ -1,8 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Disciple Tools Plugins\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-streams\n"
-"POT-Creation-Date: 2023-02-14T14:57:03+00:00\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
+"streams\n"
+"POT-Creation-Date: 2023-02-14T15:18:17+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -12,20 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. Plugin Name of the plugin
-#, fuzzy
-#| msgid "Disciple Tools - Streams"
-msgid "Disciple.Tools - Streams"
-msgstr "ಶಿಷ್ಯ ಪರಿಕರಗಳು - ಸ್ಟ್ರೀಮ್‌ಗಳು"
-
-#. Plugin URI of the plugin
-msgid "https://github.com/DiscipleTools/disciple-tools-streams"
-msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
-
-#. Description of the plugin
-msgid ""
-"Streams creates collections of work and a generational census reporting magic link system."
-msgstr ""
+#. Author URI of the plugin
+msgid "https://github.com/DiscipleTools"
+msgstr "https://github.com/DiscipleTools"
 
 #: magic/magic-reports.php:121
 msgid "Reports"
@@ -73,12 +63,12 @@ msgstr "ವರದಿ ಸೇರಿಸಿ"
 msgid "Streams Maps"
 msgstr "ಸ್ಟ್ರೀಮ್ಸ್ ನಕ್ಷೆಗಳು"
 
-#: metrics/-metrics-mapbox-personal-maps.php:31 metrics/metrics-mapbox-maps.php:31
-#: post-type/streams-post-type.php:66 post-type/streams-post-type.php:436
-#: post-type/streams-post-type.php:448 post-type/streams-post-type.php:460
-#: post-type/streams-post-type.php:483 post-type/streams-post-type.php:522
-#: post-type/streams-post-type.php:539 post-type/streams-post-type.php:556
-#: post-type/streams-post-type.php:593
+#: metrics/-metrics-mapbox-personal-maps.php:31
+#: metrics/metrics-mapbox-maps.php:31 post-type/streams-post-type.php:66
+#: post-type/streams-post-type.php:436 post-type/streams-post-type.php:448
+#: post-type/streams-post-type.php:460 post-type/streams-post-type.php:483
+#: post-type/streams-post-type.php:522 post-type/streams-post-type.php:539
+#: post-type/streams-post-type.php:556 post-type/streams-post-type.php:593
 msgid "Streams"
 msgstr "ಸ್ಟ್ರೀಮ್‌ಗಳು"
 
@@ -142,7 +132,8 @@ msgstr "ಮಾದರಿ"
 
 #: post-type/streams-post-type.php:149
 msgctxt "Stream Status field description"
-msgid "This stream is being actively coached and is still in the modelling stage."
+msgid ""
+"This stream is being actively coached and is still in the modelling stage."
 msgstr ""
 
 #: post-type/streams-post-type.php:153
@@ -172,7 +163,8 @@ msgstr ""
 
 #: post-type/streams-post-type.php:164
 msgctxt "Stream Status field description"
-msgid "This stream is being actively coached and is still in the leave/launch stage."
+msgid ""
+"This stream is being actively coached and is still in the leave/launch stage."
 msgstr ""
 
 #: post-type/streams-post-type.php:168
@@ -194,8 +186,11 @@ msgstr "ವಿರಾಮಗೊಳಿಸಲಾಗಿದೆ"
 
 #: post-type/streams-post-type.php:174
 msgctxt "Stream Status field description"
-msgid "This contact is currently on hold. It has potential of getting scheduled in the future."
-msgstr "ಈ ಸಂಪರ್ಕವು ಪ್ರಸ್ತುತ ಸ್ಥಗಿತಗೊಂಡಿದೆ. ಇದು ಭವಿಷ್ಯದಲ್ಲಿ ನಿಗದಿತ ಸಾಮರ್ಥ್ಯವನ್ನು ಹೊಂದಿದೆ."
+msgid ""
+"This contact is currently on hold. It has potential of getting scheduled in "
+"the future."
+msgstr ""
+"ಈ ಸಂಪರ್ಕವು ಪ್ರಸ್ತುತ ಸ್ಥಗಿತಗೊಂಡಿದೆ. ಇದು ಭವಿಷ್ಯದಲ್ಲಿ ನಿಗದಿತ ಸಾಮರ್ಥ್ಯವನ್ನು ಹೊಂದಿದೆ."
 
 #: post-type/streams-post-type.php:178
 msgctxt "Stream Status label"
@@ -222,15 +217,17 @@ msgstr "ಕೋಚ್"
 #: post-type/streams-post-type.php:196
 msgctxt "Optional Documentation"
 msgid ""
-"The person who planted and/or is coaching this stream. Only one person can be assigned to a "
-"stream while multiple people can be coaches / church planters of this stream."
+"The person who planted and/or is coaching this stream. Only one person can "
+"be assigned to a stream while multiple people can be coaches / church "
+"planters of this stream."
 msgstr ""
-"ಈ ಸ್ಟ್ರೀಮ್ ಅನ್ನು ನೆಟ್ಟ ಮತ್ತು / ಅಥವಾ ತರಬೇತಿ ನೀಡುವ ವ್ಯಕ್ತಿ. ಒಬ್ಬ ವ್ಯಕ್ತಿಯನ್ನು ಮಾತ್ರ ಸ್ಟ್ರೀಮ್‌ಗೆ ನಿಯೋಜಿಸಬಹುದು "
-"ಆದರೆ ಅನೇಕ ಜನರು ಈ ಸ್ಟ್ರೀಮ್‌ನ ತರಬೇತುದಾರರು / ಚರ್ಚ್ ಪ್ಲಾಂಟರ್‌ಗಳಾಗಿರಬಹುದು."
+"ಈ ಸ್ಟ್ರೀಮ್ ಅನ್ನು ನೆಟ್ಟ ಮತ್ತು / ಅಥವಾ ತರಬೇತಿ ನೀಡುವ ವ್ಯಕ್ತಿ. ಒಬ್ಬ ವ್ಯಕ್ತಿಯನ್ನು ಮಾತ್ರ ಸ್ಟ್ರೀಮ್‌ಗೆ "
+"ನಿಯೋಜಿಸಬಹುದು ಆದರೆ ಅನೇಕ ಜನರು ಈ ಸ್ಟ್ರೀಮ್‌ನ ತರಬೇತುದಾರರು / ಚರ್ಚ್ ಪ್ಲಾಂಟರ್‌ಗಳಾಗಿರಬಹುದು."
 
 #: post-type/streams-post-type.php:207
 #, fuzzy
-#| msgid "Select the main person who is responsible for reporting on this stream."
+#| msgid ""
+#| "Select the main person who is responsible for reporting on this stream."
 msgctxt "Optional Documentation"
 msgid "The person who is the responsible reporter for this stream."
 msgstr "ಈ ಸ್ಟ್ರೀಮ್‌ನಲ್ಲಿ ವರದಿ ಮಾಡುವ ಜವಾಬ್ದಾರಿಯುತ ಮುಖ್ಯ ವ್ಯಕ್ತಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ."
@@ -305,11 +302,11 @@ msgstr "ಪೀರ್ ಸ್ಟ್ರೀಮ್‌ಗಳು"
 #: post-type/streams-post-type.php:353
 msgctxt "Optional Documentation"
 msgid ""
-"A related stream that isn't a parent/child in relationship. It might indicate streams that "
-"collaborate, are about to merge, recently split, etc."
+"A related stream that isn't a parent/child in relationship. It might "
+"indicate streams that collaborate, are about to merge, recently split, etc."
 msgstr ""
-"ಸಂಬಂಧದಲ್ಲಿ ಪೋಷಕರು / ಮಗು ಅಲ್ಲದ ಸಂಬಂಧಿತ ಸ್ಟ್ರೀಮ್. ಇದು ಸಹಕರಿಸುವ, ವಿಲೀನಗೊಳ್ಳಲಿರುವ, ಇತ್ತೀಚೆಗೆ ವಿಭಜನೆಯಾದ "
-"ಸ್ಟ್ರೀಮ್‌ಗಳನ್ನು ಸೂಚಿಸುತ್ತದೆ."
+"ಸಂಬಂಧದಲ್ಲಿ ಪೋಷಕರು / ಮಗು ಅಲ್ಲದ ಸಂಬಂಧಿತ ಸ್ಟ್ರೀಮ್. ಇದು ಸಹಕರಿಸುವ, ವಿಲೀನಗೊಳ್ಳಲಿರುವ, "
+"ಇತ್ತೀಚೆಗೆ ವಿಭಜನೆಯಾದ ಸ್ಟ್ರೀಮ್‌ಗಳನ್ನು ಸೂಚಿಸುತ್ತದೆ."
 
 #: post-type/streams-post-type.php:364
 msgid "Child Streams"
@@ -399,6 +396,14 @@ msgctxt "List Filters"
 msgid "All"
 msgstr "ಎಲ್ಲಾ"
 
+#, fuzzy
+#~| msgid "Disciple Tools - Streams"
+#~ msgid "Disciple.Tools - Streams"
+#~ msgstr "ಶಿಷ್ಯ ಪರಿಕರಗಳು - ಸ್ಟ್ರೀಮ್‌ಗಳು"
+
+#~ msgid "https://github.com/DiscipleTools/disciple-tools-streams"
+#~ msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
+
 #~ msgid "Whoah, partner!"
 #~ msgstr "ಓಹ್, ಪಾಲುದಾರ!"
 
@@ -419,13 +424,14 @@ msgstr "ಎಲ್ಲಾ"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A useful way to training related items and can help training contacts associated with "
-#~ "noteworthy characteristics. e.g. business owner, sports lover. The contacts can also be "
-#~ "filtered using these tags."
+#~ "A useful way to training related items and can help training contacts "
+#~ "associated with noteworthy characteristics. e.g. business owner, sports "
+#~ "lover. The contacts can also be filtered using these tags."
 #~ msgstr ""
-#~ "ಸಂಬಂಧಿತ ವಸ್ತುಗಳನ್ನು ತರಬೇತಿ ಮಾಡಲು ಒಂದು ಉಪಯುಕ್ತ ಮಾರ್ಗ ಮತ್ತು ಗಮನಾರ್ಹ ಗುಣಲಕ್ಷಣಗಳೊಂದಿಗೆ ಸಂಬಂಧಿಸಿದ "
-#~ "ಸಂಪರ್ಕಗಳನ್ನು ತರಬೇತಿ ಮಾಡಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ. ಉದಾ. ವ್ಯಾಪಾರ ಮಾಲೀಕರು, ಕ್ರೀಡಾ ಪ್ರೇಮಿ. ಈ ಟ್ಯಾಗ್‌ಗಳನ್ನು "
-#~ "ಬಳಸಿಕೊಂಡು ಸಂಪರ್ಕಗಳನ್ನು ಸಹ ಫಿಲ್ಟರ್ ಮಾಡಬಹುದು."
+#~ "ಸಂಬಂಧಿತ ವಸ್ತುಗಳನ್ನು ತರಬೇತಿ ಮಾಡಲು ಒಂದು ಉಪಯುಕ್ತ ಮಾರ್ಗ ಮತ್ತು ಗಮನಾರ್ಹ "
+#~ "ಗುಣಲಕ್ಷಣಗಳೊಂದಿಗೆ ಸಂಬಂಧಿಸಿದ ಸಂಪರ್ಕಗಳನ್ನು ತರಬೇತಿ ಮಾಡಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ. ಉದಾ. "
+#~ "ವ್ಯಾಪಾರ ಮಾಲೀಕರು, ಕ್ರೀಡಾ ಪ್ರೇಮಿ. ಈ ಟ್ಯಾಗ್‌ಗಳನ್ನು ಬಳಸಿಕೊಂಡು ಸಂಪರ್ಕಗಳನ್ನು ಸಹ ಫಿಲ್ಟರ್ "
+#~ "ಮಾಡಬಹುದು."
 
 #~ msgid "Follow"
 #~ msgstr "ಅನುಸರಿಸಿ"
@@ -466,7 +472,8 @@ msgstr "ಎಲ್ಲಾ"
 
 #~ msgctxt "Training Status field description"
 #~ msgid "This training is confirmed, on the calendar, or currently active."
-#~ msgstr "ಈ ತರಬೇತಿಯನ್ನು ಕ್ಯಾಲೆಂಡರ್‌ನಲ್ಲಿ ಅಥವಾ ಪ್ರಸ್ತುತ ಸಕ್ರಿಯವಾಗಿ ದೃ confirmed ಪಡಿಸಲಾಗಿದೆ."
+#~ msgstr ""
+#~ "ಈ ತರಬೇತಿಯನ್ನು ಕ್ಯಾಲೆಂಡರ್‌ನಲ್ಲಿ ಅಥವಾ ಪ್ರಸ್ತುತ ಸಕ್ರಿಯವಾಗಿ ದೃ confirmed ಪಡಿಸಲಾಗಿದೆ."
 
 #~ msgctxt "Training Status label"
 #~ msgid "Complete"
@@ -482,8 +489,10 @@ msgstr "ಎಲ್ಲಾ"
 
 #~ msgctxt "Training Status field description"
 #~ msgid ""
-#~ "This contact is currently on hold. It has potential of getting scheduled in the future."
-#~ msgstr "ಈ ಸಂಪರ್ಕವು ಪ್ರಸ್ತುತ ಸ್ಥಗಿತಗೊಂಡಿದೆ. ಇದು ಭವಿಷ್ಯದಲ್ಲಿ ನಿಗದಿತ ಸಾಮರ್ಥ್ಯವನ್ನು ಹೊಂದಿದೆ."
+#~ "This contact is currently on hold. It has potential of getting scheduled "
+#~ "in the future."
+#~ msgstr ""
+#~ "ಈ ಸಂಪರ್ಕವು ಪ್ರಸ್ತುತ ಸ್ಥಗಿತಗೊಂಡಿದೆ. ಇದು ಭವಿಷ್ಯದಲ್ಲಿ ನಿಗದಿತ ಸಾಮರ್ಥ್ಯವನ್ನು ಹೊಂದಿದೆ."
 
 #~ msgctxt "Training Status label"
 #~ msgid "Closed"
@@ -493,7 +502,8 @@ msgstr "ಎಲ್ಲಾ"
 #~ msgid "This training is no longer going to happen."
 #~ msgstr "ಈ ತರಬೇತಿ ಇನ್ನು ಮುಂದೆ ಆಗುವುದಿಲ್ಲ."
 
-#~ msgid "Select the main person who is responsible for reporting on this training."
+#~ msgid ""
+#~ "Select the main person who is responsible for reporting on this training."
 #~ msgstr "ಈ ತರಬೇತಿಯ ಬಗ್ಗೆ ವರದಿ ಮಾಡುವ ಜವಾಬ್ದಾರಿಯುತ ಮುಖ್ಯ ವ್ಯಕ್ತಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ."
 
 #~ msgid "Training Coach / Church Planter"
@@ -501,11 +511,13 @@ msgstr "ಎಲ್ಲಾ"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "The person who planted and/or is coaching this training. Only one person can be assigned "
-#~ "to a training while multiple people can be coaches / church planters of this training."
+#~ "The person who planted and/or is coaching this training. Only one person "
+#~ "can be assigned to a training while multiple people can be coaches / "
+#~ "church planters of this training."
 #~ msgstr ""
-#~ "ಈ ತರಬೇತಿಯನ್ನು ನೆಟ್ಟ ಮತ್ತು / ಅಥವಾ ತರಬೇತಿ ನೀಡುವ ವ್ಯಕ್ತಿ. ಒಬ್ಬ ವ್ಯಕ್ತಿಯನ್ನು ಮಾತ್ರ ತರಬೇತಿಗೆ ನಿಯೋಜಿಸಬಹುದು "
-#~ "ಆದರೆ ಅನೇಕ ಜನರು ಈ ತರಬೇತಿಯ ತರಬೇತುದಾರರು / ಚರ್ಚ್ ಪ್ಲಾಂಟರ್‌ಗಳಾಗಿರಬಹುದು."
+#~ "ಈ ತರಬೇತಿಯನ್ನು ನೆಟ್ಟ ಮತ್ತು / ಅಥವಾ ತರಬೇತಿ ನೀಡುವ ವ್ಯಕ್ತಿ. ಒಬ್ಬ ವ್ಯಕ್ತಿಯನ್ನು ಮಾತ್ರ "
+#~ "ತರಬೇತಿಗೆ ನಿಯೋಜಿಸಬಹುದು ಆದರೆ ಅನೇಕ ಜನರು ಈ ತರಬೇತಿಯ ತರಬೇತುದಾರರು / ಚರ್ಚ್ "
+#~ "ಪ್ಲಾಂಟರ್‌ಗಳಾಗಿರಬಹುದು."
 
 #~ msgid "Requires Update"
 #~ msgstr "ನವೀಕರಣದ ಅಗತ್ಯವಿದೆ"
@@ -539,11 +551,12 @@ msgstr "ಎಲ್ಲಾ"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A related training that isn't a parent/child in relationship. It might indicate trainings "
-#~ "that collaborate, are about to merge, recently split, etc."
+#~ "A related training that isn't a parent/child in relationship. It might "
+#~ "indicate trainings that collaborate, are about to merge, recently split, "
+#~ "etc."
 #~ msgstr ""
-#~ "ಸಂಬಂಧದಲ್ಲಿ ಪೋಷಕರು / ಮಗು ಅಲ್ಲದ ಸಂಬಂಧಿತ ತರಬೇತಿ. ಇದು ಸಹಕರಿಸುವ, ವಿಲೀನಗೊಳ್ಳಲಿರುವ, ಇತ್ತೀಚೆಗೆ "
-#~ "ವಿಭಜನೆಯಾಗುವಂತಹ ತರಬೇತಿಗಳನ್ನು ಸೂಚಿಸುತ್ತದೆ."
+#~ "ಸಂಬಂಧದಲ್ಲಿ ಪೋಷಕರು / ಮಗು ಅಲ್ಲದ ಸಂಬಂಧಿತ ತರಬೇತಿ. ಇದು ಸಹಕರಿಸುವ, ವಿಲೀನಗೊಳ್ಳಲಿರುವ, "
+#~ "ಇತ್ತೀಚೆಗೆ ವಿಭಜನೆಯಾಗುವಂತಹ ತರಬೇತಿಗಳನ್ನು ಸೂಚಿಸುತ್ತದೆ."
 
 #~ msgid "Child Training"
 #~ msgstr "ಮಕ್ಕಳ ತರಬೇತಿ"
@@ -568,13 +581,14 @@ msgstr "ಎಲ್ಲಾ"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "The number of members in this training. It will automatically be updated when new members "
-#~ "are added or removed in the member list. Change this number manually to included people "
-#~ "who may not be in the system but are also members of the training."
+#~ "The number of members in this training. It will automatically be updated "
+#~ "when new members are added or removed in the member list. Change this "
+#~ "number manually to included people who may not be in the system but are "
+#~ "also members of the training."
 #~ msgstr ""
-#~ "ಈ ತರಬೇತಿಯಲ್ಲಿ ಸದಸ್ಯರ ಸಂಖ್ಯೆ. ಸದಸ್ಯರ ಪಟ್ಟಿಯಲ್ಲಿ ಹೊಸ ಸದಸ್ಯರನ್ನು ಸೇರಿಸಿದಾಗ ಅಥವಾ ತೆಗೆದುಹಾಕಿದಾಗ ಅದು "
-#~ "ಸ್ವಯಂಚಾಲಿತವಾಗಿ ನವೀಕರಿಸಲ್ಪಡುತ್ತದೆ. ವ್ಯವಸ್ಥೆಯಲ್ಲಿಲ್ಲದ ಆದರೆ ತರಬೇತಿಯ ಸದಸ್ಯರಾಗಿರುವ ವ್ಯಕ್ತಿಗಳಿಗೆ ಈ "
-#~ "ಸಂಖ್ಯೆಯನ್ನು ಹಸ್ತಚಾಲಿತವಾಗಿ ಬದಲಾಯಿಸಿ."
+#~ "ಈ ತರಬೇತಿಯಲ್ಲಿ ಸದಸ್ಯರ ಸಂಖ್ಯೆ. ಸದಸ್ಯರ ಪಟ್ಟಿಯಲ್ಲಿ ಹೊಸ ಸದಸ್ಯರನ್ನು ಸೇರಿಸಿದಾಗ ಅಥವಾ "
+#~ "ತೆಗೆದುಹಾಕಿದಾಗ ಅದು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ನವೀಕರಿಸಲ್ಪಡುತ್ತದೆ. ವ್ಯವಸ್ಥೆಯಲ್ಲಿಲ್ಲದ ಆದರೆ "
+#~ "ತರಬೇತಿಯ ಸದಸ್ಯರಾಗಿರುವ ವ್ಯಕ್ತಿಗಳಿಗೆ ಈ ಸಂಖ್ಯೆಯನ್ನು ಹಸ್ತಚಾಲಿತವಾಗಿ ಬದಲಾಯಿಸಿ."
 
 #~ msgid "Leader Count"
 #~ msgstr "ಲೀಡರ್ ಎಣಿಕೆ"
@@ -616,10 +630,11 @@ msgstr "ಎಲ್ಲಾ"
 
 #~ msgctxt "Add members modal"
 #~ msgid ""
-#~ "In the 'Member List' field, type the name of an existing contact to add them to this "
-#~ "training."
+#~ "In the 'Member List' field, type the name of an existing contact to add "
+#~ "them to this training."
 #~ msgstr ""
-#~ "'ಸದಸ್ಯರ ಪಟ್ಟಿ' ಕ್ಷೇತ್ರದಲ್ಲಿ, ಈ ತರಬೇತಿಗೆ ಅವರನ್ನು ಸೇರಿಸಲು ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಸಂಪರ್ಕದ ಹೆಸರನ್ನು ಟೈಪ್ ಮಾಡಿ."
+#~ "'ಸದಸ್ಯರ ಪಟ್ಟಿ' ಕ್ಷೇತ್ರದಲ್ಲಿ, ಈ ತರಬೇತಿಗೆ ಅವರನ್ನು ಸೇರಿಸಲು ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಸಂಪರ್ಕದ "
+#~ "ಹೆಸರನ್ನು ಟೈಪ್ ಮಾಡಿ."
 
 #~ msgid "Close"
 #~ msgstr "ಮುಚ್ಚಿ"
@@ -974,13 +989,14 @@ msgstr "ಎಲ್ಲಾ"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A useful way to stream related items and can help stream contacts associated with "
-#~ "noteworthy characteristics. e.g. business owner, sports lover. The contacts can also be "
-#~ "filtered using these tags."
+#~ "A useful way to stream related items and can help stream contacts "
+#~ "associated with noteworthy characteristics. e.g. business owner, sports "
+#~ "lover. The contacts can also be filtered using these tags."
 #~ msgstr ""
-#~ "ಸಂಬಂಧಿತ ವಸ್ತುಗಳನ್ನು ಸ್ಟ್ರೀಮ್ ಮಾಡಲು ಒಂದು ಉಪಯುಕ್ತ ಮಾರ್ಗ ಮತ್ತು ಗಮನಾರ್ಹ ಗುಣಲಕ್ಷಣಗಳೊಂದಿಗೆ ಸಂಬಂಧಿಸಿದ "
-#~ "ಸಂಪರ್ಕಗಳನ್ನು ಸ್ಟ್ರೀಮ್ ಮಾಡಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ. ಉದಾ. ವ್ಯಾಪಾರ ಮಾಲೀಕರು, ಕ್ರೀಡಾ ಪ್ರೇಮಿ. ಈ ಟ್ಯಾಗ್‌ಗಳನ್ನು "
-#~ "ಬಳಸಿಕೊಂಡು ಸಂಪರ್ಕಗಳನ್ನು ಸಹ ಫಿಲ್ಟರ್ ಮಾಡಬಹುದು."
+#~ "ಸಂಬಂಧಿತ ವಸ್ತುಗಳನ್ನು ಸ್ಟ್ರೀಮ್ ಮಾಡಲು ಒಂದು ಉಪಯುಕ್ತ ಮಾರ್ಗ ಮತ್ತು ಗಮನಾರ್ಹ "
+#~ "ಗುಣಲಕ್ಷಣಗಳೊಂದಿಗೆ ಸಂಬಂಧಿಸಿದ ಸಂಪರ್ಕಗಳನ್ನು ಸ್ಟ್ರೀಮ್ ಮಾಡಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ. ಉದಾ. "
+#~ "ವ್ಯಾಪಾರ ಮಾಲೀಕರು, ಕ್ರೀಡಾ ಪ್ರೇಮಿ. ಈ ಟ್ಯಾಗ್‌ಗಳನ್ನು ಬಳಸಿಕೊಂಡು ಸಂಪರ್ಕಗಳನ್ನು ಸಹ ಫಿಲ್ಟರ್ "
+#~ "ಮಾಡಬಹುದು."
 
 #~ msgctxt "Stream Status field description"
 #~ msgid "This stream has been proposed and is in initial conversations"
@@ -992,7 +1008,8 @@ msgstr "ಎಲ್ಲಾ"
 
 #~ msgctxt "Stream Status field description"
 #~ msgid "This stream is confirmed, on the calendar, or currently active."
-#~ msgstr "ಈ ಸ್ಟ್ರೀಮ್ ಅನ್ನು ಕ್ಯಾಲೆಂಡರ್‌ನಲ್ಲಿ ಅಥವಾ ಪ್ರಸ್ತುತ ಸಕ್ರಿಯವಾಗಿ ದೃ confirmed ೀಕರಿಸಲಾಗಿದೆ."
+#~ msgstr ""
+#~ "ಈ ಸ್ಟ್ರೀಮ್ ಅನ್ನು ಕ್ಯಾಲೆಂಡರ್‌ನಲ್ಲಿ ಅಥವಾ ಪ್ರಸ್ತುತ ಸಕ್ರಿಯವಾಗಿ ದೃ confirmed ೀಕರಿಸಲಾಗಿದೆ."
 
 #~ msgctxt "Stream Status label"
 #~ msgid "Leave"
@@ -1083,28 +1100,27 @@ msgstr "ಎಲ್ಲಾ"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-network-dashboard"
 
 #~ msgid ""
-#~ "Connect this Disciple Tools site to a larger network of sites. Adds security sensitive "
-#~ "totals, mapping, activity logging."
+#~ "Connect this Disciple Tools site to a larger network of sites. Adds "
+#~ "security sensitive totals, mapping, activity logging."
 #~ msgstr ""
-#~ "ಈ ಶಿಷ್ಯ ಪರಿಕರಗಳ ಸೈಟ್‌ ಅನ್ನು ಸೈಟ್‌ಗಳ ದೊಡ್ಡ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಪಡಿಸಿ. ಭದ್ರತಾ ಸೂಕ್ಷ್ಮ ಮೊತ್ತಗಳು, ಮ್ಯಾಪಿಂಗ್, "
-#~ "ಚಟುವಟಿಕೆ ಲಾಗಿಂಗ್ ಅನ್ನು ಸೇರಿಸುತ್ತದೆ."
-
-#~ msgid "https://github.com/DiscipleTools"
-#~ msgstr "https://github.com/DiscipleTools"
+#~ "ಈ ಶಿಷ್ಯ ಪರಿಕರಗಳ ಸೈಟ್‌ ಅನ್ನು ಸೈಟ್‌ಗಳ ದೊಡ್ಡ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಪಡಿಸಿ. ಭದ್ರತಾ ಸೂಕ್ಷ್ಮ "
+#~ "ಮೊತ್ತಗಳು, ಮ್ಯಾಪಿಂಗ್, ಚಟುವಟಿಕೆ ಲಾಗಿಂಗ್ ಅನ್ನು ಸೇರಿಸುತ್ತದೆ."
 
 #~ msgid ""
-#~ "Disciple Tools Streams Extension adds recording of streams and cross reference them with "
-#~ "contacts, churches, and locations."
+#~ "Disciple Tools Streams Extension adds recording of streams and cross "
+#~ "reference them with contacts, churches, and locations."
 #~ msgstr ""
-#~ "ಶಿಷ್ಯ ಪರಿಕರಗಳ ಸ್ಟ್ರೀಮ್‌ಗಳ ವಿಸ್ತರಣೆಯು ಸ್ಟ್ರೀಮ್‌ಗಳ ರೆಕಾರ್ಡಿಂಗ್ ಅನ್ನು ಸೇರಿಸುತ್ತದೆ ಮತ್ತು ಅವುಗಳನ್ನು ಸಂಪರ್ಕಗಳು, "
-#~ "ಗುಂಪುಗಳು ಮತ್ತು ಸ್ಥಳಗಳೊಂದಿಗೆ ಅಡ್ಡ ಉಲ್ಲೇಖಿಸುತ್ತದೆ."
+#~ "ಶಿಷ್ಯ ಪರಿಕರಗಳ ಸ್ಟ್ರೀಮ್‌ಗಳ ವಿಸ್ತರಣೆಯು ಸ್ಟ್ರೀಮ್‌ಗಳ ರೆಕಾರ್ಡಿಂಗ್ ಅನ್ನು ಸೇರಿಸುತ್ತದೆ ಮತ್ತು "
+#~ "ಅವುಗಳನ್ನು ಸಂಪರ್ಕಗಳು, ಗುಂಪುಗಳು ಮತ್ತು ಸ್ಥಳಗಳೊಂದಿಗೆ ಅಡ್ಡ ಉಲ್ಲೇಖಿಸುತ್ತದೆ."
 
 #~ msgid ""
-#~ "'Disciple Tools - Training' plugin requires 'Disciple Tools' theme to work. Please "
-#~ "activate 'Disciple Tools' theme or make sure it is latest version."
+#~ "'Disciple Tools - Training' plugin requires 'Disciple Tools' theme to "
+#~ "work. Please activate 'Disciple Tools' theme or make sure it is latest "
+#~ "version."
 #~ msgstr ""
-#~ "'ಶಿಷ್ಯ ಪರಿಕರಗಳು - ತರಬೇತಿ' ಪ್ಲಗಿನ್‌ಗೆ ಕೆಲಸ ಮಾಡಲು 'ಶಿಷ್ಯ ಪರಿಕರಗಳು' ಥೀಮ್ ಅಗತ್ಯವಿದೆ. ದಯವಿಟ್ಟು 'ಶಿಷ್ಯ "
-#~ "ಪರಿಕರಗಳು' ಥೀಮ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ ಅಥವಾ ಅದು ಇತ್ತೀಚಿನ ಆವೃತ್ತಿಯಾಗಿದೆ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ."
+#~ "'ಶಿಷ್ಯ ಪರಿಕರಗಳು - ತರಬೇತಿ' ಪ್ಲಗಿನ್‌ಗೆ ಕೆಲಸ ಮಾಡಲು 'ಶಿಷ್ಯ ಪರಿಕರಗಳು' ಥೀಮ್ ಅಗತ್ಯವಿದೆ. "
+#~ "ದಯವಿಟ್ಟು 'ಶಿಷ್ಯ ಪರಿಕರಗಳು' ಥೀಮ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ ಅಥವಾ ಅದು ಇತ್ತೀಚಿನ "
+#~ "ಆವೃತ್ತಿಯಾಗಿದೆ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ."
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
 #~ msgstr "ಪ್ರಸ್ತುತ ಶಿಷ್ಯ ಪರಿಕರಗಳ ಆವೃತ್ತಿ:% 1 $ s, ಅಗತ್ಯವಿರುವ ಆವೃತ್ತಿ:% 2 $ s"
@@ -1113,11 +1129,11 @@ msgstr "ಎಲ್ಲಾ"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
 
 #~ msgid ""
-#~ "Disciple Tools Training Extension adds recording of trainings and cross reference them "
-#~ "with contacts, churches, and locations."
+#~ "Disciple Tools Training Extension adds recording of trainings and cross "
+#~ "reference them with contacts, churches, and locations."
 #~ msgstr ""
-#~ "ಶಿಷ್ಯ ಪರಿಕರಗಳ ತರಬೇತಿ ವಿಸ್ತರಣೆಯು ತರಬೇತಿಗಳ ರೆಕಾರ್ಡಿಂಗ್ ಅನ್ನು ಸೇರಿಸುತ್ತದೆ ಮತ್ತು ಅವುಗಳನ್ನು ಸಂಪರ್ಕಗಳು, "
-#~ "ಗುಂಪುಗಳು ಮತ್ತು ಸ್ಥಳಗಳೊಂದಿಗೆ ಅಡ್ಡ ಉಲ್ಲೇಖಿಸುತ್ತದೆ."
+#~ "ಶಿಷ್ಯ ಪರಿಕರಗಳ ತರಬೇತಿ ವಿಸ್ತರಣೆಯು ತರಬೇತಿಗಳ ರೆಕಾರ್ಡಿಂಗ್ ಅನ್ನು ಸೇರಿಸುತ್ತದೆ ಮತ್ತು "
+#~ "ಅವುಗಳನ್ನು ಸಂಪರ್ಕಗಳು, ಗುಂಪುಗಳು ಮತ್ತು ಸ್ಥಳಗಳೊಂದಿಗೆ ಅಡ್ಡ ಉಲ್ಲೇಖಿಸುತ್ತದೆ."
 
 #~ msgid "Duplicates"
 #~ msgstr "ನಕಲುಗಳು"
@@ -1191,8 +1207,12 @@ msgstr "ಎಲ್ಲಾ"
 #~ msgid "Contact Workload"
 #~ msgstr "ಕೆಲಸದ ಹೊರೆ ಸಂಪರ್ಕಿಸಿ"
 
-#~ msgid "Choose an option to let the dispatcher(s) know if you are ready for new contacts"
-#~ msgstr "ನೀವು ಹೊಸ ಸಂಪರ್ಕಗಳಿಗೆ ಸಿದ್ಧರಿದ್ದೀರಾ ಎಂದು ರವಾನೆದಾರರಿಗೆ ತಿಳಿಸಲು ಒಂದು ಆಯ್ಕೆಯನ್ನು ಆರಿಸಿ"
+#~ msgid ""
+#~ "Choose an option to let the dispatcher(s) know if you are ready for new "
+#~ "contacts"
+#~ msgstr ""
+#~ "ನೀವು ಹೊಸ ಸಂಪರ್ಕಗಳಿಗೆ ಸಿದ್ಧರಿದ್ದೀರಾ ಎಂದು ರವಾನೆದಾರರಿಗೆ ತಿಳಿಸಲು ಒಂದು ಆಯ್ಕೆಯನ್ನು "
+#~ "ಆರಿಸಿ"
 
 #~ msgid "Set travel or dates unavailable"
 #~ msgstr "ಪ್ರಯಾಣ ಅಥವಾ ದಿನಾಂಕಗಳು ಲಭ್ಯವಿಲ್ಲ ಎಂದು ಹೊಂದಿಸಿ"
@@ -1219,11 +1239,11 @@ msgstr "ಎಲ್ಲಾ"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-dashboard"
 
 #~ msgid ""
-#~ "The multiplier dashboard upgrades the multipliers experience as soon as they log into the "
-#~ "system giving them a landing page with stats."
+#~ "The multiplier dashboard upgrades the multipliers experience as soon as "
+#~ "they log into the system giving them a landing page with stats."
 #~ msgstr ""
-#~ "ಮಲ್ಟಿಪ್ಲೈಯರ್ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ಅವರು ಸಿಸ್ಟಮ್‌ಗೆ ಲಾಗ್ ಆದ ಕೂಡಲೇ ಅಂಕಿಅಂಶಗಳೊಂದಿಗೆ ಲ್ಯಾಂಡಿಂಗ್ ಪುಟವನ್ನು ನೀಡುವ ಮೂಲಕ "
-#~ "ಅನುಭವವನ್ನು ನವೀಕರಿಸುತ್ತದೆ"
+#~ "ಮಲ್ಟಿಪ್ಲೈಯರ್ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ಅವರು ಸಿಸ್ಟಮ್‌ಗೆ ಲಾಗ್ ಆದ ಕೂಡಲೇ ಅಂಕಿಅಂಶಗಳೊಂದಿಗೆ ಲ್ಯಾಂಡಿಂಗ್ "
+#~ "ಪುಟವನ್ನು ನೀಡುವ ಮೂಲಕ ಅನುಭವವನ್ನು ನವೀಕರಿಸುತ್ತದೆ"
 
 #~ msgid "Reason Assigned To"
 #~ msgstr "ಇದಕ್ಕೆ ನಿಯೋಜಿಸಲಾದ ಕಾರಣ"
@@ -1292,6 +1312,8 @@ msgstr "ಎಲ್ಲಾ"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-advanced-m2m-tiles"
 
 #~ msgid ""
-#~ "Disciple Tools - Advanced M2M Tiles adds specific supporting tiles for different roles."
+#~ "Disciple Tools - Advanced M2M Tiles adds specific supporting tiles for "
+#~ "different roles."
 #~ msgstr ""
-#~ "ಶಿಷ್ಯ ಪರಿಕರಗಳು - ಸುಧಾರಿತ ಎಂ 2 ಎಂ ಟೈಲ್ಸ್ ವಿಭಿನ್ನ ಪಾತ್ರಗಳಿಗೆ ನಿರ್ದಿಷ್ಟ ಪೋಷಕ ಅಂಚುಗಳನ್ನು ಸೇರಿಸುತ್ತದೆ."
+#~ "ಶಿಷ್ಯ ಪರಿಕರಗಳು - ಸುಧಾರಿತ ಎಂ 2 ಎಂ ಟೈಲ್ಸ್ ವಿಭಿನ್ನ ಪಾತ್ರಗಳಿಗೆ ನಿರ್ದಿಷ್ಟ ಪೋಷಕ "
+#~ "ಅಂಚುಗಳನ್ನು ಸೇರಿಸುತ್ತದೆ."

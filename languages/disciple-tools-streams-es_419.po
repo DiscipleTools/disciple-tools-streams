@@ -3,57 +3,41 @@ msgstr ""
 "Project-Id-Version: Disciple Tools Plugins\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
 "streams\n"
-"POT-Creation-Date: 2023-02-14T14:57:03+00:00\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2023-02-14T15:18:17+00:00\n"
+"PO-Revision-Date: 2023-02-17 03:22+0000\n"
+"Last-Translator: Mike Allbutt <mikeallbutt@gmail.com>\n"
+"Language-Team: Spanish (Latin America) <https://translate.disciple.tools/"
+"projects/disciple-tools/disciple-tools-stream/es_419/>\n"
 "Language: es_419\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.14.1\n"
 
-#. Plugin Name of the plugin
-#, fuzzy
-#| msgid "Disciple Tools - Streams"
-msgid "Disciple.Tools - Streams"
-msgstr "Herramientas para discípulos: corrientes"
-
-#. Plugin URI of the plugin
-msgid "https://github.com/DiscipleTools/disciple-tools-streams"
-msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
-
-#. Description of the plugin
-msgid ""
-"Streams creates collections of work and a generational census reporting "
-"magic link system."
-msgstr ""
+#. Author URI of the plugin
+msgid "https://github.com/DiscipleTools"
+msgstr "https://github.com/DiscipleTools"
 
 #: magic/magic-reports.php:121
 msgid "Reports"
 msgstr "Informes"
 
 #: magic/magic-reports.php:122
-#, fuzzy
-#| msgid "Site Reports"
 msgid "Child Reports"
-msgstr "Informes del sitio"
+msgstr "Reportes Subsiguientes"
 
 #: magic/magic-reports.php:158 magic/magic-reports.php:211
 msgid "Total Baptisms"
 msgstr "Bautismos totales"
 
 #: magic/magic-reports.php:159 magic/magic-reports.php:212
-#, fuzzy
-#| msgid "Key Disciples"
 msgid "Total Disciples"
-msgstr "Discípulos clave"
+msgstr "Totales de discípulos"
 
 #: magic/magic-reports.php:160 magic/magic-reports.php:213
-#, fuzzy
-#| msgid "Churches"
 msgid "Total Churches"
-msgstr "Congregaciones"
+msgstr "Total de Iglesias"
 
 #: magic/magic-reports.php:161 magic/magic-reports.php:214
 msgid "Countries"
@@ -73,7 +57,7 @@ msgstr "Agregar informe"
 
 #: metrics/-metrics-mapbox-personal-maps.php:30
 msgid "Streams Maps"
-msgstr "Streams Maps"
+msgstr "Mapas de Corrientes"
 
 #: metrics/-metrics-mapbox-personal-maps.php:31
 #: metrics/metrics-mapbox-maps.php:31 post-type/streams-post-type.php:66
@@ -85,27 +69,21 @@ msgid "Streams"
 msgstr "Corrientes"
 
 #: metrics/metrics-mapbox-maps.php:30
-#, fuzzy
-#| msgid "Streams Maps"
 msgid "Streams Map"
-msgstr "Streams Maps"
+msgstr "Mapa de Corrientes"
 
 #: post-type/streams-post-type.php:66 post-type/streams-post-type.php:482
 msgid "Stream"
-msgstr ""
+msgstr "Corrientes"
 
 #: post-type/streams-post-type.php:73
-#, fuzzy
-#| msgid "Streams"
 msgid "Streams Admin"
-msgstr "Corrientes"
+msgstr "Administración de Corrientes"
 
 #: post-type/streams-post-type.php:84 post-type/streams-post-type.php:206
 #: post-type/streams-post-type.php:606 post-type/streams-post-type.php:607
-#, fuzzy
-#| msgid "Reports"
 msgid "Reporter"
-msgstr "Informes"
+msgstr "Reportero"
 
 #: post-type/streams-post-type.php:92
 msgid "Multiplier"
@@ -117,7 +95,7 @@ msgstr "Enviador"
 
 #: post-type/streams-post-type.php:105
 msgid "Disciple.Tools Admin"
-msgstr "Administrador de Disciple.Tools"
+msgstr "Administración de Disciple.Tools"
 
 #: post-type/streams-post-type.php:112
 msgid "Administrator"
@@ -147,6 +125,8 @@ msgctxt "Stream Status field description"
 msgid ""
 "This stream is being actively coached and is still in the modelling stage."
 msgstr ""
+"Esta corriente está siendo entrenada activamente y todavía está en la etapa "
+"de modelado."
 
 #: post-type/streams-post-type.php:153
 msgctxt "Stream Status label"
@@ -157,6 +137,8 @@ msgstr "Ayudar"
 msgctxt "Stream Status field description"
 msgid "This stream is being actively coached and is still in the assist stage."
 msgstr ""
+"Esta transmisión está siendo entrenada activamente y aún se encuentra en la "
+"etapa de asistencia."
 
 #: post-type/streams-post-type.php:158
 msgctxt "Stream Status label"
@@ -167,21 +149,23 @@ msgstr "Reloj"
 msgctxt "Stream Status field description"
 msgid "This stream is being actively coached and is still in the watch stage."
 msgstr ""
+"Esta transmisión se está entrenando activamente y aún se encuentra en la "
+"etapa de observación."
 
 #: post-type/streams-post-type.php:163
 msgctxt "Stream Status label"
 msgid "Leave/Launch"
-msgstr ""
+msgstr "Abandonar/Lanzar"
 
 #: post-type/streams-post-type.php:164
 msgctxt "Stream Status field description"
 msgid ""
 "This stream is being actively coached and is still in the leave/launch stage."
 msgstr ""
+"Esta corriente está siendo asesorada activamente y aún se encuentra en la "
+"etapa de abandono/lanzamiento."
 
 #: post-type/streams-post-type.php:168
-#, fuzzy
-#| msgid "Active"
 msgctxt "Stream Status label"
 msgid "Active"
 msgstr "Activo"
@@ -189,7 +173,7 @@ msgstr "Activo"
 #: post-type/streams-post-type.php:169
 msgctxt "Stream Status field description"
 msgid "This is an active stream in no specific stage."
-msgstr ""
+msgstr "Esta es una corriente activa en ninguna etapa específica."
 
 #: post-type/streams-post-type.php:173
 msgctxt "Stream Status label"
@@ -241,18 +225,13 @@ msgstr ""
 "entrenadores / plantadores de iglesias de esta secuencia."
 
 #: post-type/streams-post-type.php:207
-#, fuzzy
-#| msgid ""
-#| "Select the main person who is responsible for reporting on this stream."
 msgctxt "Optional Documentation"
 msgid "The person who is the responsible reporter for this stream."
-msgstr ""
-"Seleccione la persona principal responsable de informar sobre esta "
-"transmisión."
+msgstr "La persona principal responsable de informar sobre esta corriente."
 
 #: post-type/streams-post-type.php:217
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: post-type/streams-post-type.php:225 post-type/streams-post-type.php:592
 msgid "People Groups"
@@ -278,27 +257,23 @@ msgstr "Dirección"
 
 #: post-type/streams-post-type.php:277
 msgid "Number of Leaders"
-msgstr ""
+msgstr "Número de líderes"
 
 #: post-type/streams-post-type.php:285 post-type/streams-post-type.php:540
 msgid "Leaders"
 msgstr "Líderes"
 
 #: post-type/streams-post-type.php:297
-#, fuzzy
-#| msgid "Key Disciples"
 msgid "Number of Disciples"
-msgstr "Discípulos clave"
+msgstr "Número de Discípulos"
 
 #: post-type/streams-post-type.php:305
 msgid "Key Disciples"
 msgstr "Discípulos clave"
 
 #: post-type/streams-post-type.php:316
-#, fuzzy
-#| msgid "New Groups"
 msgid "Number of Groups"
-msgstr "Grupos nuevos"
+msgstr "Número de grupos"
 
 #: post-type/streams-post-type.php:324 post-type/streams-post-type.php:523
 msgid "Groups"
@@ -363,18 +338,13 @@ msgid "Disciple in a stream."
 msgstr "Discípulo en un arroyo."
 
 #: post-type/streams-post-type.php:423
-#, fuzzy
-#| msgid "Leader in Stream"
 msgid "Reporter in Stream"
-msgstr "Líder en Stream"
+msgstr "Reportero en Corriente"
 
 #: post-type/streams-post-type.php:424
-#, fuzzy
-#| msgctxt "Optional Documentation"
-#| msgid "Leader of a stream"
 msgctxt "Optional Documentation"
 msgid "Reporter for a stream."
-msgstr "Líder de una corriente"
+msgstr "Reportero de una corriente."
 
 #: post-type/streams-post-type.php:505
 msgid "Members"
@@ -414,6 +384,14 @@ msgstr "Asignados a mí"
 msgctxt "List Filters"
 msgid "All"
 msgstr "Todos"
+
+#, fuzzy
+#~| msgid "Disciple Tools - Streams"
+#~ msgid "Disciple.Tools - Streams"
+#~ msgstr "Herramientas para discípulos: corrientes"
+
+#~ msgid "https://github.com/DiscipleTools/disciple-tools-streams"
+#~ msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
 
 #~ msgid "Whoah, partner!"
 #~ msgstr "¡Vaya, socio!"
@@ -1126,9 +1104,6 @@ msgstr "Todos"
 #~ msgstr ""
 #~ "Conecte este sitio de Disciple Tools a una red más grande de sitios. "
 #~ "Agrega totales sensibles a la seguridad, mapeo, registro de actividad."
-
-#~ msgid "https://github.com/DiscipleTools"
-#~ msgstr "https://github.com/DiscipleTools"
 
 #~ msgid ""
 #~ "Disciple Tools Streams Extension adds recording of streams and cross "

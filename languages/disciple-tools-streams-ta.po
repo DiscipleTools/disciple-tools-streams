@@ -1,8 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Disciple Tools Plugins\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-streams\n"
-"POT-Creation-Date: 2023-02-14T14:57:03+00:00\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
+"streams\n"
+"POT-Creation-Date: 2023-02-14T15:18:17+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -12,20 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. Plugin Name of the plugin
-#, fuzzy
-#| msgid "Disciple Tools - Streams"
-msgid "Disciple.Tools - Streams"
-msgstr "சீடர் கருவிகள் - நீரோடைகள்"
-
-#. Plugin URI of the plugin
-msgid "https://github.com/DiscipleTools/disciple-tools-streams"
-msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
-
-#. Description of the plugin
-msgid ""
-"Streams creates collections of work and a generational census reporting magic link system."
-msgstr ""
+#. Author URI of the plugin
+msgid "https://github.com/DiscipleTools"
+msgstr "https://github.com/DiscipleTools"
 
 #: magic/magic-reports.php:121
 msgid "Reports"
@@ -73,12 +63,12 @@ msgstr "அறிக்கையைச் சேர்க்கவும்"
 msgid "Streams Maps"
 msgstr "ஸ்ட்ரீம்கள் வரைபடங்கள்"
 
-#: metrics/-metrics-mapbox-personal-maps.php:31 metrics/metrics-mapbox-maps.php:31
-#: post-type/streams-post-type.php:66 post-type/streams-post-type.php:436
-#: post-type/streams-post-type.php:448 post-type/streams-post-type.php:460
-#: post-type/streams-post-type.php:483 post-type/streams-post-type.php:522
-#: post-type/streams-post-type.php:539 post-type/streams-post-type.php:556
-#: post-type/streams-post-type.php:593
+#: metrics/-metrics-mapbox-personal-maps.php:31
+#: metrics/metrics-mapbox-maps.php:31 post-type/streams-post-type.php:66
+#: post-type/streams-post-type.php:436 post-type/streams-post-type.php:448
+#: post-type/streams-post-type.php:460 post-type/streams-post-type.php:483
+#: post-type/streams-post-type.php:522 post-type/streams-post-type.php:539
+#: post-type/streams-post-type.php:556 post-type/streams-post-type.php:593
 msgid "Streams"
 msgstr "நீரோடைகள்"
 
@@ -142,7 +132,8 @@ msgstr "மாதிரி"
 
 #: post-type/streams-post-type.php:149
 msgctxt "Stream Status field description"
-msgid "This stream is being actively coached and is still in the modelling stage."
+msgid ""
+"This stream is being actively coached and is still in the modelling stage."
 msgstr ""
 
 #: post-type/streams-post-type.php:153
@@ -172,7 +163,8 @@ msgstr ""
 
 #: post-type/streams-post-type.php:164
 msgctxt "Stream Status field description"
-msgid "This stream is being actively coached and is still in the leave/launch stage."
+msgid ""
+"This stream is being actively coached and is still in the leave/launch stage."
 msgstr ""
 
 #: post-type/streams-post-type.php:168
@@ -194,8 +186,12 @@ msgstr "இடைநிறுத்தப்பட்டது"
 
 #: post-type/streams-post-type.php:174
 msgctxt "Stream Status field description"
-msgid "This contact is currently on hold. It has potential of getting scheduled in the future."
-msgstr "இந்த தொடர்பு தற்போது நிறுத்தப்பட்டுள்ளது. இது எதிர்காலத்தில் திட்டமிடப்படும் திறனைக் கொண்டுள்ளது."
+msgid ""
+"This contact is currently on hold. It has potential of getting scheduled in "
+"the future."
+msgstr ""
+"இந்த தொடர்பு தற்போது நிறுத்தப்பட்டுள்ளது. இது எதிர்காலத்தில் திட்டமிடப்படும் திறனைக் "
+"கொண்டுள்ளது."
 
 #: post-type/streams-post-type.php:178
 msgctxt "Stream Status label"
@@ -222,15 +218,18 @@ msgstr "பயிற்சியாளர்"
 #: post-type/streams-post-type.php:196
 msgctxt "Optional Documentation"
 msgid ""
-"The person who planted and/or is coaching this stream. Only one person can be assigned to a "
-"stream while multiple people can be coaches / church planters of this stream."
+"The person who planted and/or is coaching this stream. Only one person can "
+"be assigned to a stream while multiple people can be coaches / church "
+"planters of this stream."
 msgstr ""
-"இந்த ஸ்ட்ரீமை நடவு செய்த மற்றும் / அல்லது பயிற்றுவிக்கும் நபர். ஒரு நபரை மட்டுமே ஒரு நீரோடைக்கு நியமிக்க "
-"முடியும், அதே நேரத்தில் பல மக்கள் இந்த நீரோடையின் பயிற்சியாளர்கள் / தேவாலய தோட்டக்காரர்களாக இருக்க முடியும்."
+"இந்த ஸ்ட்ரீமை நடவு செய்த மற்றும் / அல்லது பயிற்றுவிக்கும் நபர். ஒரு நபரை மட்டுமே ஒரு "
+"நீரோடைக்கு நியமிக்க முடியும், அதே நேரத்தில் பல மக்கள் இந்த நீரோடையின் பயிற்சியாளர்கள் / "
+"தேவாலய தோட்டக்காரர்களாக இருக்க முடியும்."
 
 #: post-type/streams-post-type.php:207
 #, fuzzy
-#| msgid "Select the main person who is responsible for reporting on this stream."
+#| msgid ""
+#| "Select the main person who is responsible for reporting on this stream."
 msgctxt "Optional Documentation"
 msgid "The person who is the responsible reporter for this stream."
 msgstr "இந்த ஸ்ட்ரீமில் புகாரளிக்க முக்கிய நபரைத் தேர்ந்தெடுக்கவும்."
@@ -305,11 +304,11 @@ msgstr "பியர் ஸ்ட்ரீம்கள்"
 #: post-type/streams-post-type.php:353
 msgctxt "Optional Documentation"
 msgid ""
-"A related stream that isn't a parent/child in relationship. It might indicate streams that "
-"collaborate, are about to merge, recently split, etc."
+"A related stream that isn't a parent/child in relationship. It might "
+"indicate streams that collaborate, are about to merge, recently split, etc."
 msgstr ""
-"உறவில் பெற்றோர் / குழந்தை இல்லாத தொடர்புடைய ஸ்ட்ரீம். இது ஒத்துழைக்கும், ஒன்றிணைக்கப் போகும், சமீபத்தில் "
-"பிளவுபடும் ஸ்ட்ரீம்களைக் குறிக்கலாம்."
+"உறவில் பெற்றோர் / குழந்தை இல்லாத தொடர்புடைய ஸ்ட்ரீம். இது ஒத்துழைக்கும், ஒன்றிணைக்கப் போகும், "
+"சமீபத்தில் பிளவுபடும் ஸ்ட்ரீம்களைக் குறிக்கலாம்."
 
 #: post-type/streams-post-type.php:364
 msgid "Child Streams"
@@ -399,6 +398,14 @@ msgctxt "List Filters"
 msgid "All"
 msgstr "அனைத்தும்"
 
+#, fuzzy
+#~| msgid "Disciple Tools - Streams"
+#~ msgid "Disciple.Tools - Streams"
+#~ msgstr "சீடர் கருவிகள் - நீரோடைகள்"
+
+#~ msgid "https://github.com/DiscipleTools/disciple-tools-streams"
+#~ msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
+
 #~ msgid "Whoah, partner!"
 #~ msgstr "ஓ, கூட்டாளர்!"
 
@@ -419,13 +426,14 @@ msgstr "அனைத்தும்"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A useful way to training related items and can help training contacts associated with "
-#~ "noteworthy characteristics. e.g. business owner, sports lover. The contacts can also be "
-#~ "filtered using these tags."
+#~ "A useful way to training related items and can help training contacts "
+#~ "associated with noteworthy characteristics. e.g. business owner, sports "
+#~ "lover. The contacts can also be filtered using these tags."
 #~ msgstr ""
-#~ "தொடர்புடைய உருப்படிகளைப் பயிற்றுவிப்பதற்கான ஒரு பயனுள்ள வழி மற்றும் குறிப்பிடத்தக்க பண்புகளுடன் "
-#~ "தொடர்புடைய தொடர்புகளுக்கு பயிற்சி அளிக்க உதவும். எ.கா. வணிக உரிமையாளர், விளையாட்டு காதலன். இந்த "
-#~ "குறிச்சொற்களைப் பயன்படுத்தி தொடர்புகளையும் வடிகட்டலாம்."
+#~ "தொடர்புடைய உருப்படிகளைப் பயிற்றுவிப்பதற்கான ஒரு பயனுள்ள வழி மற்றும் குறிப்பிடத்தக்க "
+#~ "பண்புகளுடன் தொடர்புடைய தொடர்புகளுக்கு பயிற்சி அளிக்க உதவும். எ.கா. வணிக "
+#~ "உரிமையாளர், விளையாட்டு காதலன். இந்த குறிச்சொற்களைப் பயன்படுத்தி தொடர்புகளையும் "
+#~ "வடிகட்டலாம்."
 
 #~ msgid "Follow"
 #~ msgstr "பின்பற்றுங்கள்"
@@ -466,7 +474,8 @@ msgstr "அனைத்தும்"
 
 #~ msgctxt "Training Status field description"
 #~ msgid "This training is confirmed, on the calendar, or currently active."
-#~ msgstr "இந்த பயிற்சி காலெண்டரில் உறுதிப்படுத்தப்பட்டுள்ளது, அல்லது தற்போது செயலில் உள்ளது."
+#~ msgstr ""
+#~ "இந்த பயிற்சி காலெண்டரில் உறுதிப்படுத்தப்பட்டுள்ளது, அல்லது தற்போது செயலில் உள்ளது."
 
 #~ msgctxt "Training Status label"
 #~ msgid "Complete"
@@ -482,8 +491,11 @@ msgstr "அனைத்தும்"
 
 #~ msgctxt "Training Status field description"
 #~ msgid ""
-#~ "This contact is currently on hold. It has potential of getting scheduled in the future."
-#~ msgstr "இந்த தொடர்பு தற்போது நிறுத்தப்பட்டுள்ளது. இது எதிர்காலத்தில் திட்டமிடப்படும் திறனைக் கொண்டுள்ளது."
+#~ "This contact is currently on hold. It has potential of getting scheduled "
+#~ "in the future."
+#~ msgstr ""
+#~ "இந்த தொடர்பு தற்போது நிறுத்தப்பட்டுள்ளது. இது எதிர்காலத்தில் திட்டமிடப்படும் திறனைக் "
+#~ "கொண்டுள்ளது."
 
 #~ msgctxt "Training Status label"
 #~ msgid "Closed"
@@ -493,7 +505,8 @@ msgstr "அனைத்தும்"
 #~ msgid "This training is no longer going to happen."
 #~ msgstr "இந்த பயிற்சி இனி நடக்கப்போவதில்லை."
 
-#~ msgid "Select the main person who is responsible for reporting on this training."
+#~ msgid ""
+#~ "Select the main person who is responsible for reporting on this training."
 #~ msgstr "இந்த பயிற்சியைப் புகாரளிக்கும் முக்கிய நபரைத் தேர்ந்தெடுக்கவும்."
 
 #~ msgid "Training Coach / Church Planter"
@@ -501,12 +514,13 @@ msgstr "அனைத்தும்"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "The person who planted and/or is coaching this training. Only one person can be assigned "
-#~ "to a training while multiple people can be coaches / church planters of this training."
+#~ "The person who planted and/or is coaching this training. Only one person "
+#~ "can be assigned to a training while multiple people can be coaches / "
+#~ "church planters of this training."
 #~ msgstr ""
-#~ "இந்த பயிற்சியை நடவு செய்தவர் மற்றும் / அல்லது பயிற்றுவிப்பவர். ஒரு நபரை மட்டுமே ஒரு பயிற்சிக்கு நியமிக்க "
-#~ "முடியும், அதே நேரத்தில் பல பேர் இந்த பயிற்சியின் பயிற்சியாளர்கள் / தேவாலய தோட்டக்காரர்களாக இருக்க "
-#~ "முடியும்."
+#~ "இந்த பயிற்சியை நடவு செய்தவர் மற்றும் / அல்லது பயிற்றுவிப்பவர். ஒரு நபரை மட்டுமே ஒரு "
+#~ "பயிற்சிக்கு நியமிக்க முடியும், அதே நேரத்தில் பல பேர் இந்த பயிற்சியின் "
+#~ "பயிற்சியாளர்கள் / தேவாலய தோட்டக்காரர்களாக இருக்க முடியும்."
 
 #~ msgid "Requires Update"
 #~ msgstr "புதுப்பிப்பு தேவை"
@@ -540,11 +554,12 @@ msgstr "அனைத்தும்"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A related training that isn't a parent/child in relationship. It might indicate trainings "
-#~ "that collaborate, are about to merge, recently split, etc."
+#~ "A related training that isn't a parent/child in relationship. It might "
+#~ "indicate trainings that collaborate, are about to merge, recently split, "
+#~ "etc."
 #~ msgstr ""
-#~ "உறவில் பெற்றோர் / குழந்தை இல்லாத தொடர்புடைய பயிற்சி. இது ஒத்துழைக்கும், ஒன்றிணைக்கப் போகும், சமீபத்தில் "
-#~ "பிளவுபடும் பயிற்சிகளைக் குறிக்கலாம்."
+#~ "உறவில் பெற்றோர் / குழந்தை இல்லாத தொடர்புடைய பயிற்சி. இது ஒத்துழைக்கும், ஒன்றிணைக்கப் "
+#~ "போகும், சமீபத்தில் பிளவுபடும் பயிற்சிகளைக் குறிக்கலாம்."
 
 #~ msgid "Child Training"
 #~ msgstr "குழந்தை பயிற்சி"
@@ -569,13 +584,15 @@ msgstr "அனைத்தும்"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "The number of members in this training. It will automatically be updated when new members "
-#~ "are added or removed in the member list. Change this number manually to included people "
-#~ "who may not be in the system but are also members of the training."
+#~ "The number of members in this training. It will automatically be updated "
+#~ "when new members are added or removed in the member list. Change this "
+#~ "number manually to included people who may not be in the system but are "
+#~ "also members of the training."
 #~ msgstr ""
-#~ "இந்த பயிற்சியில் உறுப்பினர்களின் எண்ணிக்கை. உறுப்பினர் பட்டியலில் புதிய உறுப்பினர்கள் சேர்க்கப்படும்போது "
-#~ "அல்லது அகற்றப்படும்போது அது தானாகவே புதுப்பிக்கப்படும். கணினியில் இல்லாத, ஆனால் பயிற்சியின் "
-#~ "உறுப்பினர்களாக உள்ளவர்களுக்கும் இந்த எண்ணை கைமுறையாக மாற்றவும்."
+#~ "இந்த பயிற்சியில் உறுப்பினர்களின் எண்ணிக்கை. உறுப்பினர் பட்டியலில் புதிய உறுப்பினர்கள் "
+#~ "சேர்க்கப்படும்போது அல்லது அகற்றப்படும்போது அது தானாகவே புதுப்பிக்கப்படும். கணினியில் "
+#~ "இல்லாத, ஆனால் பயிற்சியின் உறுப்பினர்களாக உள்ளவர்களுக்கும் இந்த எண்ணை கைமுறையாக "
+#~ "மாற்றவும்."
 
 #~ msgid "Leader Count"
 #~ msgstr "தலைவர் எண்ணிக்கை"
@@ -609,7 +626,8 @@ msgstr "அனைத்தும்"
 #~ msgstr "தேர்ந்தெடு"
 
 #~ msgid "To add new members, click on 'Create' or 'Select'."
-#~ msgstr "புதிய உறுப்பினர்களைச் சேர்க்க, 'உருவாக்கு' அல்லது 'தேர்ந்தெடு' என்பதைக் கிளிக் செய்க."
+#~ msgstr ""
+#~ "புதிய உறுப்பினர்களைச் சேர்க்க, 'உருவாக்கு' அல்லது 'தேர்ந்தெடு' என்பதைக் கிளிக் செய்க."
 
 #~ msgctxt "Add members modal"
 #~ msgid "Add members from existing contacts"
@@ -617,10 +635,11 @@ msgstr "அனைத்தும்"
 
 #~ msgctxt "Add members modal"
 #~ msgid ""
-#~ "In the 'Member List' field, type the name of an existing contact to add them to this "
-#~ "training."
+#~ "In the 'Member List' field, type the name of an existing contact to add "
+#~ "them to this training."
 #~ msgstr ""
-#~ "'உறுப்பினர் பட்டியல்' புலத்தில், இந்த பயிற்சியில் சேர்க்க ஏற்கனவே இருக்கும் தொடர்பின் பெயரைத் தட்டச்சு செய்க."
+#~ "'உறுப்பினர் பட்டியல்' புலத்தில், இந்த பயிற்சியில் சேர்க்க ஏற்கனவே இருக்கும் தொடர்பின் "
+#~ "பெயரைத் தட்டச்சு செய்க."
 
 #~ msgid "Close"
 #~ msgstr "நெருக்கமான"
@@ -975,13 +994,13 @@ msgstr "அனைத்தும்"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A useful way to stream related items and can help stream contacts associated with "
-#~ "noteworthy characteristics. e.g. business owner, sports lover. The contacts can also be "
-#~ "filtered using these tags."
+#~ "A useful way to stream related items and can help stream contacts "
+#~ "associated with noteworthy characteristics. e.g. business owner, sports "
+#~ "lover. The contacts can also be filtered using these tags."
 #~ msgstr ""
-#~ "தொடர்புடைய உருப்படிகளை ஸ்ட்ரீம் செய்வதற்கான ஒரு பயனுள்ள வழி மற்றும் குறிப்பிடத்தக்க பண்புகளுடன் தொடர்புடைய "
-#~ "தொடர்புகளை ஸ்ட்ரீம் செய்ய உதவும். எ.கா. வணிக உரிமையாளர், விளையாட்டு காதலன். இந்த குறிச்சொற்களைப் "
-#~ "பயன்படுத்தி தொடர்புகளையும் வடிகட்டலாம்."
+#~ "தொடர்புடைய உருப்படிகளை ஸ்ட்ரீம் செய்வதற்கான ஒரு பயனுள்ள வழி மற்றும் குறிப்பிடத்தக்க "
+#~ "பண்புகளுடன் தொடர்புடைய தொடர்புகளை ஸ்ட்ரீம் செய்ய உதவும். எ.கா. வணிக உரிமையாளர், "
+#~ "விளையாட்டு காதலன். இந்த குறிச்சொற்களைப் பயன்படுத்தி தொடர்புகளையும் வடிகட்டலாம்."
 
 #~ msgctxt "Stream Status field description"
 #~ msgid "This stream has been proposed and is in initial conversations"
@@ -993,7 +1012,8 @@ msgstr "அனைத்தும்"
 
 #~ msgctxt "Stream Status field description"
 #~ msgid "This stream is confirmed, on the calendar, or currently active."
-#~ msgstr "இந்த ஸ்ட்ரீம் காலெண்டரில் அல்லது தற்போது செயலில் உள்ளது என்பது உறுதிப்படுத்தப்பட்டுள்ளது."
+#~ msgstr ""
+#~ "இந்த ஸ்ட்ரீம் காலெண்டரில் அல்லது தற்போது செயலில் உள்ளது என்பது உறுதிப்படுத்தப்பட்டுள்ளது."
 
 #~ msgctxt "Stream Status label"
 #~ msgid "Leave"
@@ -1084,28 +1104,27 @@ msgstr "அனைத்தும்"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-network-dashboard"
 
 #~ msgid ""
-#~ "Connect this Disciple Tools site to a larger network of sites. Adds security sensitive "
-#~ "totals, mapping, activity logging."
+#~ "Connect this Disciple Tools site to a larger network of sites. Adds "
+#~ "security sensitive totals, mapping, activity logging."
 #~ msgstr ""
-#~ "இந்த சீடர் கருவிகள் தளத்தை ஒரு பெரிய தளங்களுடன் இணைக்கவும். பாதுகாப்பு உணர்திறன் மொத்தம், மேப்பிங், "
-#~ "செயல்பாட்டு பதிவு ஆகியவற்றைச் சேர்க்கிறது."
-
-#~ msgid "https://github.com/DiscipleTools"
-#~ msgstr "https://github.com/DiscipleTools"
+#~ "இந்த சீடர் கருவிகள் தளத்தை ஒரு பெரிய தளங்களுடன் இணைக்கவும். பாதுகாப்பு உணர்திறன் "
+#~ "மொத்தம், மேப்பிங், செயல்பாட்டு பதிவு ஆகியவற்றைச் சேர்க்கிறது."
 
 #~ msgid ""
-#~ "Disciple Tools Streams Extension adds recording of streams and cross reference them with "
-#~ "contacts, churches, and locations."
+#~ "Disciple Tools Streams Extension adds recording of streams and cross "
+#~ "reference them with contacts, churches, and locations."
 #~ msgstr ""
-#~ "சீடர் கருவிகள் நீரோடைகள் நீட்டிப்பு நீரோடைகளைப் பதிவுசெய்து அவற்றை தொடர்புகள், குழுக்கள் மற்றும் "
-#~ "இருப்பிடங்களுடன் குறுக்கு குறிப்பு சேர்க்கிறது."
+#~ "சீடர் கருவிகள் நீரோடைகள் நீட்டிப்பு நீரோடைகளைப் பதிவுசெய்து அவற்றை தொடர்புகள், குழுக்கள் "
+#~ "மற்றும் இருப்பிடங்களுடன் குறுக்கு குறிப்பு சேர்க்கிறது."
 
 #~ msgid ""
-#~ "'Disciple Tools - Training' plugin requires 'Disciple Tools' theme to work. Please "
-#~ "activate 'Disciple Tools' theme or make sure it is latest version."
+#~ "'Disciple Tools - Training' plugin requires 'Disciple Tools' theme to "
+#~ "work. Please activate 'Disciple Tools' theme or make sure it is latest "
+#~ "version."
 #~ msgstr ""
-#~ "'சீடர் கருவிகள் - பயிற்சி' சொருகி வேலை செய்ய 'சீடர் கருவிகள்' தீம் தேவைப்படுகிறது. தயவுசெய்து 'சீடர் "
-#~ "கருவிகள்' தீம் செயல்படுத்தவும் அல்லது இது சமீபத்திய பதிப்பு என்பதை உறுதிப்படுத்தவும்."
+#~ "'சீடர் கருவிகள் - பயிற்சி' சொருகி வேலை செய்ய 'சீடர் கருவிகள்' தீம் தேவைப்படுகிறது. "
+#~ "தயவுசெய்து 'சீடர் கருவிகள்' தீம் செயல்படுத்தவும் அல்லது இது சமீபத்திய பதிப்பு என்பதை "
+#~ "உறுதிப்படுத்தவும்."
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
 #~ msgstr "தற்போதைய சீடர் கருவிகள் பதிப்பு:% 1 $ s, தேவையான பதிப்பு:% 2 $ s"
@@ -1114,11 +1133,11 @@ msgstr "அனைத்தும்"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
 
 #~ msgid ""
-#~ "Disciple Tools Training Extension adds recording of trainings and cross reference them "
-#~ "with contacts, churches, and locations."
+#~ "Disciple Tools Training Extension adds recording of trainings and cross "
+#~ "reference them with contacts, churches, and locations."
 #~ msgstr ""
-#~ "சீடர் கருவிகள் பயிற்சி நீட்டிப்பு பயிற்சிகள் பதிவுசெய்தல் மற்றும் தொடர்புகள், குழுக்கள் மற்றும் இருப்பிடங்களுடன் "
-#~ "குறுக்கு குறிப்பு ஆகியவற்றைச் சேர்க்கிறது."
+#~ "சீடர் கருவிகள் பயிற்சி நீட்டிப்பு பயிற்சிகள் பதிவுசெய்தல் மற்றும் தொடர்புகள், குழுக்கள் "
+#~ "மற்றும் இருப்பிடங்களுடன் குறுக்கு குறிப்பு ஆகியவற்றைச் சேர்க்கிறது."
 
 #~ msgid "Duplicates"
 #~ msgstr "நகல்கள்"
@@ -1192,9 +1211,12 @@ msgstr "அனைத்தும்"
 #~ msgid "Contact Workload"
 #~ msgstr "பணிச்சுமையைத் தொடர்பு கொள்ளுங்கள்"
 
-#~ msgid "Choose an option to let the dispatcher(s) know if you are ready for new contacts"
+#~ msgid ""
+#~ "Choose an option to let the dispatcher(s) know if you are ready for new "
+#~ "contacts"
 #~ msgstr ""
-#~ "புதிய தொடர்புகளுக்கு நீங்கள் தயாரா என்பதை அனுப்புநருக்கு (கள்) தெரியப்படுத்த ஒரு விருப்பத்தைத் தேர்வுசெய்க"
+#~ "புதிய தொடர்புகளுக்கு நீங்கள் தயாரா என்பதை அனுப்புநருக்கு (கள்) தெரியப்படுத்த ஒரு "
+#~ "விருப்பத்தைத் தேர்வுசெய்க"
 
 #~ msgid "Set travel or dates unavailable"
 #~ msgstr "பயணம் அல்லது தேதிகள் கிடைக்கவில்லை"
@@ -1221,9 +1243,11 @@ msgstr "அனைத்தும்"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-dashboard"
 
 #~ msgid ""
-#~ "The multiplier dashboard upgrades the multipliers experience as soon as they log into the "
-#~ "system giving them a landing page with stats."
-#~ msgstr "பெருக்கி டாஷ்போர்டு அவர்கள் கணினியில் உள்நுழைந்தவுடன் பெருக்கிகளின் அனுபவத்தை மேம்படுத்துகிறது"
+#~ "The multiplier dashboard upgrades the multipliers experience as soon as "
+#~ "they log into the system giving them a landing page with stats."
+#~ msgstr ""
+#~ "பெருக்கி டாஷ்போர்டு அவர்கள் கணினியில் உள்நுழைந்தவுடன் பெருக்கிகளின் அனுபவத்தை "
+#~ "மேம்படுத்துகிறது"
 
 #~ msgid "Reason Assigned To"
 #~ msgstr "காரணம் ஒதுக்கப்பட்டுள்ளது"
@@ -1292,6 +1316,8 @@ msgstr "அனைத்தும்"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-advanced-m2m-tiles"
 
 #~ msgid ""
-#~ "Disciple Tools - Advanced M2M Tiles adds specific supporting tiles for different roles."
+#~ "Disciple Tools - Advanced M2M Tiles adds specific supporting tiles for "
+#~ "different roles."
 #~ msgstr ""
-#~ "சீடர் கருவிகள் - மேம்பட்ட எம் 2 எம் ஓடுகள் வெவ்வேறு பாத்திரங்களுக்கு குறிப்பிட்ட துணை ஓடுகளைச் சேர்க்கின்றன."
+#~ "சீடர் கருவிகள் - மேம்பட்ட எம் 2 எம் ஓடுகள் வெவ்வேறு பாத்திரங்களுக்கு குறிப்பிட்ட துணை "
+#~ "ஓடுகளைச் சேர்க்கின்றன."

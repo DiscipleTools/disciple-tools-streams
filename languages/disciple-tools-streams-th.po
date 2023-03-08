@@ -1,8 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Disciple Tools Plugins\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-streams\n"
-"POT-Creation-Date: 2023-02-14T14:57:03+00:00\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
+"streams\n"
+"POT-Creation-Date: 2023-02-14T15:18:17+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -12,19 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. Plugin Name of the plugin
-#, fuzzy
-#| msgid "Disciple Tools - Streams"
-msgid "Disciple.Tools - Streams"
-msgstr "เครื่องมือของสาวก - สตรีม"
-
-#. Plugin URI of the plugin
-msgid "https://github.com/DiscipleTools/disciple-tools-streams"
-msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
-
-#. Description of the plugin
-msgid "Streams creates collections of work and a generational census reporting magic link system."
-msgstr ""
+#. Author URI of the plugin
+msgid "https://github.com/DiscipleTools"
+msgstr "https://github.com/DiscipleTools"
 
 #: magic/magic-reports.php:121
 msgid "Reports"
@@ -72,10 +63,12 @@ msgstr "เพิ่มรายงาน"
 msgid "Streams Maps"
 msgstr "สตรีมแผนที่"
 
-#: metrics/-metrics-mapbox-personal-maps.php:31 metrics/metrics-mapbox-maps.php:31
-#: post-type/streams-post-type.php:66 post-type/streams-post-type.php:436 post-type/streams-post-type.php:448
-#: post-type/streams-post-type.php:460 post-type/streams-post-type.php:483 post-type/streams-post-type.php:522
-#: post-type/streams-post-type.php:539 post-type/streams-post-type.php:556 post-type/streams-post-type.php:593
+#: metrics/-metrics-mapbox-personal-maps.php:31
+#: metrics/metrics-mapbox-maps.php:31 post-type/streams-post-type.php:66
+#: post-type/streams-post-type.php:436 post-type/streams-post-type.php:448
+#: post-type/streams-post-type.php:460 post-type/streams-post-type.php:483
+#: post-type/streams-post-type.php:522 post-type/streams-post-type.php:539
+#: post-type/streams-post-type.php:556 post-type/streams-post-type.php:593
 msgid "Streams"
 msgstr "สตรีม"
 
@@ -95,8 +88,8 @@ msgstr ""
 msgid "Streams Admin"
 msgstr "สตรีม"
 
-#: post-type/streams-post-type.php:84 post-type/streams-post-type.php:206 post-type/streams-post-type.php:606
-#: post-type/streams-post-type.php:607
+#: post-type/streams-post-type.php:84 post-type/streams-post-type.php:206
+#: post-type/streams-post-type.php:606 post-type/streams-post-type.php:607
 #, fuzzy
 #| msgid "Reports"
 msgid "Reporter"
@@ -139,7 +132,8 @@ msgstr "รุ่น"
 
 #: post-type/streams-post-type.php:149
 msgctxt "Stream Status field description"
-msgid "This stream is being actively coached and is still in the modelling stage."
+msgid ""
+"This stream is being actively coached and is still in the modelling stage."
 msgstr ""
 
 #: post-type/streams-post-type.php:153
@@ -169,7 +163,8 @@ msgstr ""
 
 #: post-type/streams-post-type.php:164
 msgctxt "Stream Status field description"
-msgid "This stream is being actively coached and is still in the leave/launch stage."
+msgid ""
+"This stream is being actively coached and is still in the leave/launch stage."
 msgstr ""
 
 #: post-type/streams-post-type.php:168
@@ -191,7 +186,9 @@ msgstr "หยุดชั่วคราว"
 
 #: post-type/streams-post-type.php:174
 msgctxt "Stream Status field description"
-msgid "This contact is currently on hold. It has potential of getting scheduled in the future."
+msgid ""
+"This contact is currently on hold. It has potential of getting scheduled in "
+"the future."
 msgstr "ผู้ติดต่อนี้ถูกระงับอยู่ในขณะนี้ มีศักยภาพในการกำหนดเวลาในอนาคต"
 
 #: post-type/streams-post-type.php:178
@@ -219,14 +216,17 @@ msgstr "โค้ช"
 #: post-type/streams-post-type.php:196
 msgctxt "Optional Documentation"
 msgid ""
-"The person who planted and/or is coaching this stream. Only one person can be assigned to a stream while "
-"multiple people can be coaches / church planters of this stream."
+"The person who planted and/or is coaching this stream. Only one person can "
+"be assigned to a stream while multiple people can be coaches / church "
+"planters of this stream."
 msgstr ""
-"ผู้ที่ปลูกและ / หรือเป็นผู้ฝึกสอนกระแสนี้ สามารถกำหนดให้สตรีมได้เพียงคนเดียวในขณะที่หลายคนสามารถเป็นโค้ช / ผู้สร้างโบสถ์ของสตรีมนี้ได้"
+"ผู้ที่ปลูกและ / หรือเป็นผู้ฝึกสอนกระแสนี้ "
+"สามารถกำหนดให้สตรีมได้เพียงคนเดียวในขณะที่หลายคนสามารถเป็นโค้ช / ผู้สร้างโบสถ์ของสตรีมนี้ได้"
 
 #: post-type/streams-post-type.php:207
 #, fuzzy
-#| msgid "Select the main person who is responsible for reporting on this stream."
+#| msgid ""
+#| "Select the main person who is responsible for reporting on this stream."
 msgctxt "Optional Documentation"
 msgid "The person who is the responsible reporter for this stream."
 msgstr "เลือกบุคคลหลักที่มีหน้าที่รายงานเกี่ยวกับสตรีมนี้"
@@ -301,9 +301,11 @@ msgstr "Peer Streams"
 #: post-type/streams-post-type.php:353
 msgctxt "Optional Documentation"
 msgid ""
-"A related stream that isn't a parent/child in relationship. It might indicate streams that collaborate, are "
-"about to merge, recently split, etc."
-msgstr "สตรีมที่เกี่ยวข้องซึ่งไม่ใช่ผู้ปกครอง / เด็ก อาจบ่งบอกถึงสตรีมที่ทำงานร่วมกันกำลังจะรวมแยกเมื่อเร็ว ๆ นี้ ฯลฯ"
+"A related stream that isn't a parent/child in relationship. It might "
+"indicate streams that collaborate, are about to merge, recently split, etc."
+msgstr ""
+"สตรีมที่เกี่ยวข้องซึ่งไม่ใช่ผู้ปกครอง / เด็ก อาจบ่งบอกถึงสตรีมที่ทำงานร่วมกันกำลังจะรวมแยกเมื่อเร็ว "
+"ๆ นี้ ฯลฯ"
 
 #: post-type/streams-post-type.php:364
 msgid "Child Streams"
@@ -387,10 +389,19 @@ msgctxt "List Filters"
 msgid "Assigned to me"
 msgstr "มอบหมายให้ฉัน"
 
-#: post-type/streams-post-type.php:962 post-type/streams-post-type.php:1021 post-type/streams-post-type.php:1029
+#: post-type/streams-post-type.php:962 post-type/streams-post-type.php:1021
+#: post-type/streams-post-type.php:1029
 msgctxt "List Filters"
 msgid "All"
 msgstr "ทั้งหมด"
+
+#, fuzzy
+#~| msgid "Disciple Tools - Streams"
+#~ msgid "Disciple.Tools - Streams"
+#~ msgstr "เครื่องมือของสาวก - สตรีม"
+
+#~ msgid "https://github.com/DiscipleTools/disciple-tools-streams"
+#~ msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
 
 #~ msgid "Whoah, partner!"
 #~ msgstr "โอ้พันธมิตร!"
@@ -412,11 +423,12 @@ msgstr "ทั้งหมด"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A useful way to training related items and can help training contacts associated with noteworthy "
-#~ "characteristics. e.g. business owner, sports lover. The contacts can also be filtered using these tags."
+#~ "A useful way to training related items and can help training contacts "
+#~ "associated with noteworthy characteristics. e.g. business owner, sports "
+#~ "lover. The contacts can also be filtered using these tags."
 #~ msgstr ""
-#~ "วิธีที่เป็นประโยชน์ในการฝึกอบรมรายการที่เกี่ยวข้องและสามารถช่วยฝึกอบรมผู้ติดต่อที่เกี่ยวข้องกับลักษณะสำคัญ เช่น. เจ้าของธุรกิจคนรักกีฬา "
-#~ "นอกจากนี้ยังสามารถกรองผู้ติดต่อโดยใช้แท็กเหล่านี้"
+#~ "วิธีที่เป็นประโยชน์ในการฝึกอบรมรายการที่เกี่ยวข้องและสามารถช่วยฝึกอบรมผู้ติดต่อที่เกี่ยวข้องกับลักษณะสำคัญ "
+#~ "เช่น. เจ้าของธุรกิจคนรักกีฬา นอกจากนี้ยังสามารถกรองผู้ติดต่อโดยใช้แท็กเหล่านี้"
 
 #~ msgid "Follow"
 #~ msgstr "ติดตาม"
@@ -472,7 +484,9 @@ msgstr "ทั้งหมด"
 #~ msgstr "หยุดชั่วคราว"
 
 #~ msgctxt "Training Status field description"
-#~ msgid "This contact is currently on hold. It has potential of getting scheduled in the future."
+#~ msgid ""
+#~ "This contact is currently on hold. It has potential of getting scheduled "
+#~ "in the future."
 #~ msgstr "ผู้ติดต่อนี้ถูกระงับอยู่ในขณะนี้ มีศักยภาพในการกำหนดเวลาในอนาคต"
 
 #~ msgctxt "Training Status label"
@@ -483,7 +497,8 @@ msgstr "ทั้งหมด"
 #~ msgid "This training is no longer going to happen."
 #~ msgstr "การฝึกอบรมนี้จะไม่เกิดขึ้นอีกต่อไป"
 
-#~ msgid "Select the main person who is responsible for reporting on this training."
+#~ msgid ""
+#~ "Select the main person who is responsible for reporting on this training."
 #~ msgstr "เลือกบุคคลหลักที่รับผิดชอบในการรายงานเกี่ยวกับการฝึกอบรมนี้"
 
 #~ msgid "Training Coach / Church Planter"
@@ -491,10 +506,12 @@ msgstr "ทั้งหมด"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "The person who planted and/or is coaching this training. Only one person can be assigned to a training "
-#~ "while multiple people can be coaches / church planters of this training."
+#~ "The person who planted and/or is coaching this training. Only one person "
+#~ "can be assigned to a training while multiple people can be coaches / "
+#~ "church planters of this training."
 #~ msgstr ""
-#~ "บุคคลที่ปลูกและ / หรือเป็นผู้ฝึกสอนการฝึกอบรมนี้ สามารถมอบหมายให้เข้าร่วมการฝึกอบรมได้เพียงคนเดียวในขณะที่หลายคนสามารถเป็นโค้ช / "
+#~ "บุคคลที่ปลูกและ / หรือเป็นผู้ฝึกสอนการฝึกอบรมนี้ "
+#~ "สามารถมอบหมายให้เข้าร่วมการฝึกอบรมได้เพียงคนเดียวในขณะที่หลายคนสามารถเป็นโค้ช / "
 #~ "ผู้ปลูกในคริสตจักรของการฝึกอบรมนี้ได้"
 
 #~ msgid "Requires Update"
@@ -529,10 +546,12 @@ msgstr "ทั้งหมด"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A related training that isn't a parent/child in relationship. It might indicate trainings that "
-#~ "collaborate, are about to merge, recently split, etc."
+#~ "A related training that isn't a parent/child in relationship. It might "
+#~ "indicate trainings that collaborate, are about to merge, recently split, "
+#~ "etc."
 #~ msgstr ""
-#~ "การฝึกอบรมที่เกี่ยวข้องซึ่งไม่ใช่ความสัมพันธ์ระหว่างพ่อแม่กับลูก อาจบ่งบอกถึงการฝึกอบรมที่ทำงานร่วมกันกำลังจะรวมแยกเมื่อเร็ว ๆ นี้ ฯลฯ"
+#~ "การฝึกอบรมที่เกี่ยวข้องซึ่งไม่ใช่ความสัมพันธ์ระหว่างพ่อแม่กับลูก "
+#~ "อาจบ่งบอกถึงการฝึกอบรมที่ทำงานร่วมกันกำลังจะรวมแยกเมื่อเร็ว ๆ นี้ ฯลฯ"
 
 #~ msgid "Child Training"
 #~ msgstr "การฝึกอบรมเด็ก"
@@ -557,11 +576,13 @@ msgstr "ทั้งหมด"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "The number of members in this training. It will automatically be updated when new members are added or "
-#~ "removed in the member list. Change this number manually to included people who may not be in the system "
-#~ "but are also members of the training."
+#~ "The number of members in this training. It will automatically be updated "
+#~ "when new members are added or removed in the member list. Change this "
+#~ "number manually to included people who may not be in the system but are "
+#~ "also members of the training."
 #~ msgstr ""
-#~ "จำนวนสมาชิกในการฝึกอบรมนี้ ระบบจะอัปเดตโดยอัตโนมัติเมื่อมีการเพิ่มหรือลบสมาชิกใหม่ในรายชื่อสมาชิก "
+#~ "จำนวนสมาชิกในการฝึกอบรมนี้ "
+#~ "ระบบจะอัปเดตโดยอัตโนมัติเมื่อมีการเพิ่มหรือลบสมาชิกใหม่ในรายชื่อสมาชิก "
 #~ "เปลี่ยนหมายเลขนี้ด้วยตนเองเพื่อรวมบุคคลที่อาจไม่ได้อยู่ในระบบ แต่เป็นสมาชิกของการฝึกอบรมด้วย"
 
 #~ msgid "Leader Count"
@@ -603,7 +624,9 @@ msgstr "ทั้งหมด"
 #~ msgstr "เพิ่มสมาชิกจากรายชื่อที่มีอยู่"
 
 #~ msgctxt "Add members modal"
-#~ msgid "In the 'Member List' field, type the name of an existing contact to add them to this training."
+#~ msgid ""
+#~ "In the 'Member List' field, type the name of an existing contact to add "
+#~ "them to this training."
 #~ msgstr "ในฟิลด์ 'รายชื่อสมาชิก' พิมพ์ชื่อผู้ติดต่อที่มีอยู่เพื่อเพิ่มพวกเขาในการฝึกอบรมนี้"
 
 #~ msgid "Close"
@@ -959,11 +982,12 @@ msgstr "ทั้งหมด"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A useful way to stream related items and can help stream contacts associated with noteworthy "
-#~ "characteristics. e.g. business owner, sports lover. The contacts can also be filtered using these tags."
+#~ "A useful way to stream related items and can help stream contacts "
+#~ "associated with noteworthy characteristics. e.g. business owner, sports "
+#~ "lover. The contacts can also be filtered using these tags."
 #~ msgstr ""
-#~ "วิธีที่มีประโยชน์ในการสตรีมรายการที่เกี่ยวข้องและสามารถช่วยสตรีมรายชื่อติดต่อที่เกี่ยวข้องกับลักษณะสำคัญ เช่น. เจ้าของธุรกิจคนรักกีฬา "
-#~ "นอกจากนี้ยังสามารถกรองผู้ติดต่อโดยใช้แท็กเหล่านี้"
+#~ "วิธีที่มีประโยชน์ในการสตรีมรายการที่เกี่ยวข้องและสามารถช่วยสตรีมรายชื่อติดต่อที่เกี่ยวข้องกับลักษณะสำคัญ "
+#~ "เช่น. เจ้าของธุรกิจคนรักกีฬา นอกจากนี้ยังสามารถกรองผู้ติดต่อโดยใช้แท็กเหล่านี้"
 
 #~ msgctxt "Stream Status field description"
 #~ msgid "This stream has been proposed and is in initial conversations"
@@ -1066,24 +1090,26 @@ msgstr "ทั้งหมด"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-network-dashboard"
 
 #~ msgid ""
-#~ "Connect this Disciple Tools site to a larger network of sites. Adds security sensitive totals, mapping, "
-#~ "activity logging."
-#~ msgstr "เชื่อมต่อไซต์ Disciple Tools นี้กับเครือข่ายไซต์ขนาดใหญ่ เพิ่มผลรวมที่ไวต่อความปลอดภัยการแมปการบันทึกกิจกรรม"
-
-#~ msgid "https://github.com/DiscipleTools"
-#~ msgstr "https://github.com/DiscipleTools"
-
-#~ msgid ""
-#~ "Disciple Tools Streams Extension adds recording of streams and cross reference them with contacts, "
-#~ "churches, and locations."
-#~ msgstr "Disciple Tools Streams Extension เพิ่มการบันทึกสตรีมและอ้างอิงข้ามกับผู้ติดต่อกลุ่มและสถานที่"
-
-#~ msgid ""
-#~ "'Disciple Tools - Training' plugin requires 'Disciple Tools' theme to work. Please activate 'Disciple "
-#~ "Tools' theme or make sure it is latest version."
+#~ "Connect this Disciple Tools site to a larger network of sites. Adds "
+#~ "security sensitive totals, mapping, activity logging."
 #~ msgstr ""
-#~ "ปลั๊กอิน 'Disciple Tools - Training' ต้องการธีม 'Disciple Tools' ในการทำงาน กรุณาเปิดใช้งานธีม 'Disciple Tools' "
-#~ "หรือตรวจสอบให้แน่ใจว่าเป็นเวอร์ชันล่าสุด"
+#~ "เชื่อมต่อไซต์ Disciple Tools นี้กับเครือข่ายไซต์ขนาดใหญ่ "
+#~ "เพิ่มผลรวมที่ไวต่อความปลอดภัยการแมปการบันทึกกิจกรรม"
+
+#~ msgid ""
+#~ "Disciple Tools Streams Extension adds recording of streams and cross "
+#~ "reference them with contacts, churches, and locations."
+#~ msgstr ""
+#~ "Disciple Tools Streams Extension "
+#~ "เพิ่มการบันทึกสตรีมและอ้างอิงข้ามกับผู้ติดต่อกลุ่มและสถานที่"
+
+#~ msgid ""
+#~ "'Disciple Tools - Training' plugin requires 'Disciple Tools' theme to "
+#~ "work. Please activate 'Disciple Tools' theme or make sure it is latest "
+#~ "version."
+#~ msgstr ""
+#~ "ปลั๊กอิน 'Disciple Tools - Training' ต้องการธีม 'Disciple Tools' ในการทำงาน "
+#~ "กรุณาเปิดใช้งานธีม 'Disciple Tools' หรือตรวจสอบให้แน่ใจว่าเป็นเวอร์ชันล่าสุด"
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
 #~ msgstr "เวอร์ชันปัจจุบันของ Disciple Tools:% 1 $ s เวอร์ชันที่ต้องการ:% 2 $ s"
@@ -1092,9 +1118,11 @@ msgstr "ทั้งหมด"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
 
 #~ msgid ""
-#~ "Disciple Tools Training Extension adds recording of trainings and cross reference them with contacts, "
-#~ "churches, and locations."
-#~ msgstr "ส่วนขยายการฝึกอบรม Disciple Tools เพิ่มการบันทึกการฝึกอบรมและอ้างอิงโยงกับผู้ติดต่อกลุ่มและสถานที่"
+#~ "Disciple Tools Training Extension adds recording of trainings and cross "
+#~ "reference them with contacts, churches, and locations."
+#~ msgstr ""
+#~ "ส่วนขยายการฝึกอบรม Disciple Tools "
+#~ "เพิ่มการบันทึกการฝึกอบรมและอ้างอิงโยงกับผู้ติดต่อกลุ่มและสถานที่"
 
 #~ msgid "Duplicates"
 #~ msgstr "รายการที่ซ้ำกัน"
@@ -1168,7 +1196,9 @@ msgstr "ทั้งหมด"
 #~ msgid "Contact Workload"
 #~ msgstr "ติดต่อภาระงาน"
 
-#~ msgid "Choose an option to let the dispatcher(s) know if you are ready for new contacts"
+#~ msgid ""
+#~ "Choose an option to let the dispatcher(s) know if you are ready for new "
+#~ "contacts"
 #~ msgstr "เลือกตัวเลือกเพื่อแจ้งให้ผู้มอบหมายงานทราบว่าคุณพร้อมสำหรับผู้ติดต่อรายใหม่หรือไม่"
 
 #~ msgid "Set travel or dates unavailable"
@@ -1196,9 +1226,11 @@ msgstr "ทั้งหมด"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-dashboard"
 
 #~ msgid ""
-#~ "The multiplier dashboard upgrades the multipliers experience as soon as they log into the system giving "
-#~ "them a landing page with stats."
-#~ msgstr "แดชบอร์ดตัวคูณอัพเกรดประสบการณ์ของตัวคูณทันทีที่พวกเขาเข้าสู่ระบบทำให้พวกเขามีหน้า Landing Page พร้อมสถิติ"
+#~ "The multiplier dashboard upgrades the multipliers experience as soon as "
+#~ "they log into the system giving them a landing page with stats."
+#~ msgstr ""
+#~ "แดชบอร์ดตัวคูณอัพเกรดประสบการณ์ของตัวคูณทันทีที่พวกเขาเข้าสู่ระบบทำให้พวกเขามีหน้า Landing "
+#~ "Page พร้อมสถิติ"
 
 #~ msgid "Reason Assigned To"
 #~ msgstr "เหตุผลที่มอบหมายให้"
@@ -1266,5 +1298,7 @@ msgstr "ทั้งหมด"
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-advanced-m2m-tiles"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-advanced-m2m-tiles"
 
-#~ msgid "Disciple Tools - Advanced M2M Tiles adds specific supporting tiles for different roles."
+#~ msgid ""
+#~ "Disciple Tools - Advanced M2M Tiles adds specific supporting tiles for "
+#~ "different roles."
 #~ msgstr "Disciple Tools - Advanced M2M Tiles เพิ่มไทล์รองรับเฉพาะสำหรับบทบาทต่างๆ"
