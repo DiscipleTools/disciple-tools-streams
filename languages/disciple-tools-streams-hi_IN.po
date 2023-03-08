@@ -1,8 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Disciple Tools Plugins\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-streams\n"
-"POT-Creation-Date: 2023-02-14T14:57:03+00:00\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
+"streams\n"
+"POT-Creation-Date: 2023-02-14T15:18:17+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -12,19 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. Plugin Name of the plugin
-#, fuzzy
-#| msgid "Disciple Tools - Streams"
-msgid "Disciple.Tools - Streams"
-msgstr "शिष्य उपकरण - धाराएँ"
-
-#. Plugin URI of the plugin
-msgid "https://github.com/DiscipleTools/disciple-tools-streams"
-msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
-
-#. Description of the plugin
-msgid "Streams creates collections of work and a generational census reporting magic link system."
-msgstr ""
+#. Author URI of the plugin
+msgid "https://github.com/DiscipleTools"
+msgstr "https://github.com/DiscipleTools"
 
 #: magic/magic-reports.php:121
 msgid "Reports"
@@ -72,12 +63,12 @@ msgstr "रिपोर्ट जोड़ें"
 msgid "Streams Maps"
 msgstr "धाराएँ मानचित्र"
 
-#: metrics/-metrics-mapbox-personal-maps.php:31 metrics/metrics-mapbox-maps.php:31
-#: post-type/streams-post-type.php:66 post-type/streams-post-type.php:436
-#: post-type/streams-post-type.php:448 post-type/streams-post-type.php:460
-#: post-type/streams-post-type.php:483 post-type/streams-post-type.php:522
-#: post-type/streams-post-type.php:539 post-type/streams-post-type.php:556
-#: post-type/streams-post-type.php:593
+#: metrics/-metrics-mapbox-personal-maps.php:31
+#: metrics/metrics-mapbox-maps.php:31 post-type/streams-post-type.php:66
+#: post-type/streams-post-type.php:436 post-type/streams-post-type.php:448
+#: post-type/streams-post-type.php:460 post-type/streams-post-type.php:483
+#: post-type/streams-post-type.php:522 post-type/streams-post-type.php:539
+#: post-type/streams-post-type.php:556 post-type/streams-post-type.php:593
 msgid "Streams"
 msgstr "स्ट्रीम"
 
@@ -141,7 +132,8 @@ msgstr "नमूना"
 
 #: post-type/streams-post-type.php:149
 msgctxt "Stream Status field description"
-msgid "This stream is being actively coached and is still in the modelling stage."
+msgid ""
+"This stream is being actively coached and is still in the modelling stage."
 msgstr ""
 
 #: post-type/streams-post-type.php:153
@@ -171,7 +163,8 @@ msgstr ""
 
 #: post-type/streams-post-type.php:164
 msgctxt "Stream Status field description"
-msgid "This stream is being actively coached and is still in the leave/launch stage."
+msgid ""
+"This stream is being actively coached and is still in the leave/launch stage."
 msgstr ""
 
 #: post-type/streams-post-type.php:168
@@ -193,7 +186,9 @@ msgstr "रोके गए"
 
 #: post-type/streams-post-type.php:174
 msgctxt "Stream Status field description"
-msgid "This contact is currently on hold. It has potential of getting scheduled in the future."
+msgid ""
+"This contact is currently on hold. It has potential of getting scheduled in "
+"the future."
 msgstr "यह संपर्क वर्तमान में होल्ड पर है। यह भविष्य में निर्धारित होने की क्षमता रखता है।"
 
 #: post-type/streams-post-type.php:178
@@ -221,15 +216,17 @@ msgstr "कोच"
 #: post-type/streams-post-type.php:196
 msgctxt "Optional Documentation"
 msgid ""
-"The person who planted and/or is coaching this stream. Only one person can be assigned to a "
-"stream while multiple people can be coaches / church planters of this stream."
+"The person who planted and/or is coaching this stream. Only one person can "
+"be assigned to a stream while multiple people can be coaches / church "
+"planters of this stream."
 msgstr ""
-"जिस व्यक्ति ने यह धारा लगाई और / या लगा रहा है। केवल एक व्यक्ति को एक स्ट्रीम सौंपा जा सकता है जबकि कई लोग "
-"इस स्ट्रीम के कोच / चर्च प्लांटर्स हो सकते हैं।"
+"जिस व्यक्ति ने यह धारा लगाई और / या लगा रहा है। केवल एक व्यक्ति को एक स्ट्रीम सौंपा जा "
+"सकता है जबकि कई लोग इस स्ट्रीम के कोच / चर्च प्लांटर्स हो सकते हैं।"
 
 #: post-type/streams-post-type.php:207
 #, fuzzy
-#| msgid "Select the main person who is responsible for reporting on this stream."
+#| msgid ""
+#| "Select the main person who is responsible for reporting on this stream."
 msgctxt "Optional Documentation"
 msgid "The person who is the responsible reporter for this stream."
 msgstr "मुख्य व्यक्ति का चयन करें जो इस धारा पर रिपोर्टिंग के लिए जिम्मेदार है।"
@@ -304,11 +301,11 @@ msgstr "पीयर स्ट्रीम"
 #: post-type/streams-post-type.php:353
 msgctxt "Optional Documentation"
 msgid ""
-"A related stream that isn't a parent/child in relationship. It might indicate streams that "
-"collaborate, are about to merge, recently split, etc."
+"A related stream that isn't a parent/child in relationship. It might "
+"indicate streams that collaborate, are about to merge, recently split, etc."
 msgstr ""
-"एक संबंधित धारा जो रिश्ते में माता-पिता / बच्चे नहीं है। यह उन धाराओं को इंगित कर सकता है जो सहयोग करती हैं, "
-"विलय करने वाली हैं, हाल ही में विभाजित हैं, आदि।"
+"एक संबंधित धारा जो रिश्ते में माता-पिता / बच्चे नहीं है। यह उन धाराओं को इंगित कर सकता है "
+"जो सहयोग करती हैं, विलय करने वाली हैं, हाल ही में विभाजित हैं, आदि।"
 
 #: post-type/streams-post-type.php:364
 msgid "Child Streams"
@@ -398,6 +395,14 @@ msgctxt "List Filters"
 msgid "All"
 msgstr "सब"
 
+#, fuzzy
+#~| msgid "Disciple Tools - Streams"
+#~ msgid "Disciple.Tools - Streams"
+#~ msgstr "शिष्य उपकरण - धाराएँ"
+
+#~ msgid "https://github.com/DiscipleTools/disciple-tools-streams"
+#~ msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
+
 #~ msgid "Whoah, partner!"
 #~ msgstr "वाह, साथी!"
 
@@ -418,12 +423,13 @@ msgstr "सब"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A useful way to training related items and can help training contacts associated with "
-#~ "noteworthy characteristics. e.g. business owner, sports lover. The contacts can also be "
-#~ "filtered using these tags."
+#~ "A useful way to training related items and can help training contacts "
+#~ "associated with noteworthy characteristics. e.g. business owner, sports "
+#~ "lover. The contacts can also be filtered using these tags."
 #~ msgstr ""
-#~ "संबंधित वस्तुओं को प्रशिक्षित करने का एक उपयोगी तरीका और उल्लेखनीय विशेषताओं से जुड़े प्रशिक्षण संपर्कों को मदद कर "
-#~ "सकता है। जैसे व्यापार के मालिक, खेल प्रेमी। इन टैग का उपयोग करके संपर्कों को भी फ़िल्टर किया जा सकता है।"
+#~ "संबंधित वस्तुओं को प्रशिक्षित करने का एक उपयोगी तरीका और उल्लेखनीय विशेषताओं से जुड़े "
+#~ "प्रशिक्षण संपर्कों को मदद कर सकता है। जैसे व्यापार के मालिक, खेल प्रेमी। इन टैग का "
+#~ "उपयोग करके संपर्कों को भी फ़िल्टर किया जा सकता है।"
 
 #~ msgid "Follow"
 #~ msgstr "का पालन करें"
@@ -479,8 +485,11 @@ msgstr "सब"
 #~ msgstr "रोके गए"
 
 #~ msgctxt "Training Status field description"
-#~ msgid "This contact is currently on hold. It has potential of getting scheduled in the future."
-#~ msgstr "यह संपर्क वर्तमान में होल्ड पर है। यह भविष्य में निर्धारित होने की क्षमता रखता है।"
+#~ msgid ""
+#~ "This contact is currently on hold. It has potential of getting scheduled "
+#~ "in the future."
+#~ msgstr ""
+#~ "यह संपर्क वर्तमान में होल्ड पर है। यह भविष्य में निर्धारित होने की क्षमता रखता है।"
 
 #~ msgctxt "Training Status label"
 #~ msgid "Closed"
@@ -490,7 +499,8 @@ msgstr "सब"
 #~ msgid "This training is no longer going to happen."
 #~ msgstr "यह प्रशिक्षण अब नहीं होने जा रहा है।"
 
-#~ msgid "Select the main person who is responsible for reporting on this training."
+#~ msgid ""
+#~ "Select the main person who is responsible for reporting on this training."
 #~ msgstr "मुख्य व्यक्ति का चयन करें जो इस प्रशिक्षण पर रिपोर्टिंग के लिए जिम्मेदार है।"
 
 #~ msgid "Training Coach / Church Planter"
@@ -498,11 +508,12 @@ msgstr "सब"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "The person who planted and/or is coaching this training. Only one person can be assigned to a "
-#~ "training while multiple people can be coaches / church planters of this training."
+#~ "The person who planted and/or is coaching this training. Only one person "
+#~ "can be assigned to a training while multiple people can be coaches / "
+#~ "church planters of this training."
 #~ msgstr ""
-#~ "जिस व्यक्ति ने यह प्रशिक्षण लिया और / या लगाया। केवल एक व्यक्ति को एक प्रशिक्षण सौंपा जा सकता है, जबकि कई "
-#~ "लोग इस प्रशिक्षण के कोच / चर्च प्लांटर्स हो सकते हैं।"
+#~ "जिस व्यक्ति ने यह प्रशिक्षण लिया और / या लगाया। केवल एक व्यक्ति को एक प्रशिक्षण "
+#~ "सौंपा जा सकता है, जबकि कई लोग इस प्रशिक्षण के कोच / चर्च प्लांटर्स हो सकते हैं।"
 
 #~ msgid "Requires Update"
 #~ msgstr "अद्यतन की आवश्यकता है"
@@ -536,11 +547,12 @@ msgstr "सब"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A related training that isn't a parent/child in relationship. It might indicate trainings "
-#~ "that collaborate, are about to merge, recently split, etc."
+#~ "A related training that isn't a parent/child in relationship. It might "
+#~ "indicate trainings that collaborate, are about to merge, recently split, "
+#~ "etc."
 #~ msgstr ""
-#~ "एक संबंधित प्रशिक्षण जो रिश्ते में माता-पिता / बच्चे नहीं है। यह उन प्रशिक्षणों को इंगित कर सकता है जो सहयोग "
-#~ "करते हैं, विलय करने वाले हैं, हाल ही में विभाजित हैं, आदि।"
+#~ "एक संबंधित प्रशिक्षण जो रिश्ते में माता-पिता / बच्चे नहीं है। यह उन प्रशिक्षणों को इंगित "
+#~ "कर सकता है जो सहयोग करते हैं, विलय करने वाले हैं, हाल ही में विभाजित हैं, आदि।"
 
 #~ msgid "Child Training"
 #~ msgstr "बाल प्रशिक्षण"
@@ -565,12 +577,14 @@ msgstr "सब"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "The number of members in this training. It will automatically be updated when new members are "
-#~ "added or removed in the member list. Change this number manually to included people who may "
-#~ "not be in the system but are also members of the training."
+#~ "The number of members in this training. It will automatically be updated "
+#~ "when new members are added or removed in the member list. Change this "
+#~ "number manually to included people who may not be in the system but are "
+#~ "also members of the training."
 #~ msgstr ""
-#~ "इस प्रशिक्षण में सदस्यों की संख्या। सदस्य सूची में नए सदस्य जोड़े या हटाए जाने पर यह स्वचालित रूप से अपडेट हो "
-#~ "जाएगा। इस संख्या को मैन्युअल रूप से उन लोगों में बदलें, जो सिस्टम में नहीं हैं, लेकिन प्रशिक्षण के सदस्य भी हैं।"
+#~ "इस प्रशिक्षण में सदस्यों की संख्या। सदस्य सूची में नए सदस्य जोड़े या हटाए जाने पर यह "
+#~ "स्वचालित रूप से अपडेट हो जाएगा। इस संख्या को मैन्युअल रूप से उन लोगों में बदलें, जो सिस्टम "
+#~ "में नहीं हैं, लेकिन प्रशिक्षण के सदस्य भी हैं।"
 
 #~ msgid "Leader Count"
 #~ msgstr "नेता गणना"
@@ -612,8 +626,10 @@ msgstr "सब"
 
 #~ msgctxt "Add members modal"
 #~ msgid ""
-#~ "In the 'Member List' field, type the name of an existing contact to add them to this training."
-#~ msgstr "'सदस्य सूची' फ़ील्ड में, उन्हें इस प्रशिक्षण में जोड़ने के लिए मौजूदा संपर्क का नाम टाइप करें।"
+#~ "In the 'Member List' field, type the name of an existing contact to add "
+#~ "them to this training."
+#~ msgstr ""
+#~ "'सदस्य सूची' फ़ील्ड में, उन्हें इस प्रशिक्षण में जोड़ने के लिए मौजूदा संपर्क का नाम टाइप करें।"
 
 #~ msgid "Close"
 #~ msgstr "बंद करे"
@@ -968,13 +984,13 @@ msgstr "सब"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A useful way to stream related items and can help stream contacts associated with noteworthy "
-#~ "characteristics. e.g. business owner, sports lover. The contacts can also be filtered using "
-#~ "these tags."
+#~ "A useful way to stream related items and can help stream contacts "
+#~ "associated with noteworthy characteristics. e.g. business owner, sports "
+#~ "lover. The contacts can also be filtered using these tags."
 #~ msgstr ""
-#~ "संबंधित वस्तुओं को स्ट्रीम करने का एक उपयोगी तरीका और उल्लेखनीय विशेषताओं के साथ जुड़े संपर्कों को स्ट्रीम करने में "
-#~ "मदद कर सकता है। जैसे व्यापार के मालिक, खेल प्रेमी। इन टैग का उपयोग करके संपर्कों को भी फ़िल्टर किया जा सकता "
-#~ "है।"
+#~ "संबंधित वस्तुओं को स्ट्रीम करने का एक उपयोगी तरीका और उल्लेखनीय विशेषताओं के साथ जुड़े "
+#~ "संपर्कों को स्ट्रीम करने में मदद कर सकता है। जैसे व्यापार के मालिक, खेल प्रेमी। इन टैग का "
+#~ "उपयोग करके संपर्कों को भी फ़िल्टर किया जा सकता है।"
 
 #~ msgctxt "Stream Status field description"
 #~ msgid "This stream has been proposed and is in initial conversations"
@@ -1077,27 +1093,27 @@ msgstr "सब"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-network-dashboard"
 
 #~ msgid ""
-#~ "Connect this Disciple Tools site to a larger network of sites. Adds security sensitive "
-#~ "totals, mapping, activity logging."
+#~ "Connect this Disciple Tools site to a larger network of sites. Adds "
+#~ "security sensitive totals, mapping, activity logging."
 #~ msgstr ""
-#~ "इस शिष्य उपकरण साइट को साइटों के एक बड़े नेटवर्क से कनेक्ट करें। सुरक्षा संवेदनशील योग, मैपिंग, गतिविधि लॉगिंग "
-#~ "जोड़ता है।"
-
-#~ msgid "https://github.com/DiscipleTools"
-#~ msgstr "https://github.com/DiscipleTools"
+#~ "इस शिष्य उपकरण साइट को साइटों के एक बड़े नेटवर्क से कनेक्ट करें। सुरक्षा संवेदनशील योग, "
+#~ "मैपिंग, गतिविधि लॉगिंग जोड़ता है।"
 
 #~ msgid ""
-#~ "Disciple Tools Streams Extension adds recording of streams and cross reference them with "
-#~ "contacts, churches, and locations."
+#~ "Disciple Tools Streams Extension adds recording of streams and cross "
+#~ "reference them with contacts, churches, and locations."
 #~ msgstr ""
-#~ "शिष्य उपकरण धारा विस्तार धाराओं की रिकॉर्डिंग जोड़ता है और संपर्कों, समूहों और स्थानों के साथ उन्हें पार करता है।"
+#~ "शिष्य उपकरण धारा विस्तार धाराओं की रिकॉर्डिंग जोड़ता है और संपर्कों, समूहों और स्थानों "
+#~ "के साथ उन्हें पार करता है।"
 
 #~ msgid ""
-#~ "'Disciple Tools - Training' plugin requires 'Disciple Tools' theme to work. Please activate "
-#~ "'Disciple Tools' theme or make sure it is latest version."
+#~ "'Disciple Tools - Training' plugin requires 'Disciple Tools' theme to "
+#~ "work. Please activate 'Disciple Tools' theme or make sure it is latest "
+#~ "version."
 #~ msgstr ""
-#~ "'शिष्य उपकरण - प्रशिक्षण ’प्लगइन को काम करने के लिए cip शिष्य उपकरण’ विषय की आवश्यकता होती है। कृपया "
-#~ "'शिष्य उपकरण' विषय को सक्रिय करें या सुनिश्चित करें कि यह नवीनतम संस्करण है।"
+#~ "'शिष्य उपकरण - प्रशिक्षण ’प्लगइन को काम करने के लिए cip शिष्य उपकरण’ विषय की "
+#~ "आवश्यकता होती है। कृपया 'शिष्य उपकरण' विषय को सक्रिय करें या सुनिश्चित करें कि यह "
+#~ "नवीनतम संस्करण है।"
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
 #~ msgstr "वर्तमान शिष्य उपकरण संस्करण:% 1 $ s, आवश्यक संस्करण:% 2 $ s"
@@ -1106,11 +1122,11 @@ msgstr "सब"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
 
 #~ msgid ""
-#~ "Disciple Tools Training Extension adds recording of trainings and cross reference them with "
-#~ "contacts, churches, and locations."
+#~ "Disciple Tools Training Extension adds recording of trainings and cross "
+#~ "reference them with contacts, churches, and locations."
 #~ msgstr ""
-#~ "शिष्य उपकरण प्रशिक्षण विस्तार प्रशिक्षण की रिकॉर्डिंग जोड़ता है और संपर्कों, समूहों और स्थानों के साथ उन्हें पार "
-#~ "करता है।"
+#~ "शिष्य उपकरण प्रशिक्षण विस्तार प्रशिक्षण की रिकॉर्डिंग जोड़ता है और संपर्कों, समूहों और "
+#~ "स्थानों के साथ उन्हें पार करता है।"
 
 #~ msgid "Duplicates"
 #~ msgstr "डुप्लिकेट"
@@ -1184,8 +1200,11 @@ msgstr "सब"
 #~ msgid "Contact Workload"
 #~ msgstr "कार्यभार से संपर्क करें"
 
-#~ msgid "Choose an option to let the dispatcher(s) know if you are ready for new contacts"
-#~ msgstr "यदि आप नए संपर्कों के लिए तैयार हैं, तो डिस्पैचर को पता करने के लिए एक विकल्प चुनें"
+#~ msgid ""
+#~ "Choose an option to let the dispatcher(s) know if you are ready for new "
+#~ "contacts"
+#~ msgstr ""
+#~ "यदि आप नए संपर्कों के लिए तैयार हैं, तो डिस्पैचर को पता करने के लिए एक विकल्प चुनें"
 
 #~ msgid "Set travel or dates unavailable"
 #~ msgstr "यात्रा सेट करें या उपलब्ध न हों"
@@ -1212,11 +1231,11 @@ msgstr "सब"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-dashboard"
 
 #~ msgid ""
-#~ "The multiplier dashboard upgrades the multipliers experience as soon as they log into the "
-#~ "system giving them a landing page with stats."
+#~ "The multiplier dashboard upgrades the multipliers experience as soon as "
+#~ "they log into the system giving them a landing page with stats."
 #~ msgstr ""
-#~ "जैसे ही वे सिस्टम में लॉग इन करते हैं, मल्टीप्लायर डैशबोर्ड मल्टीप्लायरों के अनुभव को अपग्रेड करता है, जो उन्हें आंकड़ों "
-#~ "के साथ लैंडिंग पृष्ठ देता है"
+#~ "जैसे ही वे सिस्टम में लॉग इन करते हैं, मल्टीप्लायर डैशबोर्ड मल्टीप्लायरों के अनुभव को अपग्रेड "
+#~ "करता है, जो उन्हें आंकड़ों के साथ लैंडिंग पृष्ठ देता है"
 
 #~ msgid "Reason Assigned To"
 #~ msgstr "कारण सौंपा गया"
@@ -1284,5 +1303,9 @@ msgstr "सब"
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-advanced-m2m-tiles"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-advanced-m2m-tiles"
 
-#~ msgid "Disciple Tools - Advanced M2M Tiles adds specific supporting tiles for different roles."
-#~ msgstr "शिष्य उपकरण - उन्नत एम 2 एम टाइलें विभिन्न भूमिकाओं के लिए विशिष्ट सहायक टाइल जोड़ती हैं।"
+#~ msgid ""
+#~ "Disciple Tools - Advanced M2M Tiles adds specific supporting tiles for "
+#~ "different roles."
+#~ msgstr ""
+#~ "शिष्य उपकरण - उन्नत एम 2 एम टाइलें विभिन्न भूमिकाओं के लिए विशिष्ट सहायक टाइल "
+#~ "जोड़ती हैं।"

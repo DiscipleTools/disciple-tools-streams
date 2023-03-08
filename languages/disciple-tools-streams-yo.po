@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Disciple Tools Plugins\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
 "streams\n"
-"POT-Creation-Date: 2023-02-14T14:57:03+00:00\n"
+"POT-Creation-Date: 2023-02-14T15:18:17+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -13,21 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. Plugin Name of the plugin
-#, fuzzy
-#| msgid "Disciple Tools - Streams"
-msgid "Disciple.Tools - Streams"
-msgstr "Awọn irinṣẹ Ọmọ-ẹhin - Awọn ṣiṣan"
-
-#. Plugin URI of the plugin
-msgid "https://github.com/DiscipleTools/disciple-tools-streams"
-msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
-
-#. Description of the plugin
-msgid ""
-"Streams creates collections of work and a generational census reporting "
-"magic link system."
-msgstr ""
+#. Author URI of the plugin
+msgid "https://github.com/DiscipleTools"
+msgstr "https://github.com/DiscipleTools"
 
 #: magic/magic-reports.php:121
 msgid "Reports"
@@ -408,6 +396,14 @@ msgstr "Sọtọ si mi"
 msgctxt "List Filters"
 msgid "All"
 msgstr "Gbogbo"
+
+#, fuzzy
+#~| msgid "Disciple Tools - Streams"
+#~ msgid "Disciple.Tools - Streams"
+#~ msgstr "Awọn irinṣẹ Ọmọ-ẹhin - Awọn ṣiṣan"
+
+#~ msgid "https://github.com/DiscipleTools/disciple-tools-streams"
+#~ msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
 
 #~ msgid "Whoah, partner!"
 #~ msgstr "Whoah, alabaṣepọ!"
@@ -1110,9 +1106,6 @@ msgstr "Gbogbo"
 #~ msgstr ""
 #~ "So aaye yii Awọn irinṣẹ Ọmọ-ẹhin pọ si nẹtiwọọki nla ti awọn aaye. Afikun "
 #~ "awọn akopọ ti o ni ifura aabo, aworan agbaye, gedu iṣẹ."
-
-#~ msgid "https://github.com/DiscipleTools"
-#~ msgstr "https://github.com/DiscipleTools"
 
 #~ msgid ""
 #~ "Disciple Tools Streams Extension adds recording of streams and cross "

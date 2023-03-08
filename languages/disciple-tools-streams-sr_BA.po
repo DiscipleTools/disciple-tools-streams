@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Disciple Tools Plugins\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
 "streams\n"
-"POT-Creation-Date: 2023-02-14T14:57:03+00:00\n"
+"POT-Creation-Date: 2023-02-14T15:18:17+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -13,21 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. Plugin Name of the plugin
-#, fuzzy
-#| msgid "Disciple Tools - Streams"
-msgid "Disciple.Tools - Streams"
-msgstr "Алати за ученике - токови"
-
-#. Plugin URI of the plugin
-msgid "https://github.com/DiscipleTools/disciple-tools-streams"
-msgstr "хттпс://гитхуб.цом/ДисциплеТоолс/дисципле-тоолс-стреамс"
-
-#. Description of the plugin
-msgid ""
-"Streams creates collections of work and a generational census reporting "
-"magic link system."
-msgstr ""
+#. Author URI of the plugin
+msgid "https://github.com/DiscipleTools"
+msgstr "хттпс://гитхуб.цом/ДисциплеТоолс"
 
 #: magic/magic-reports.php:121
 msgid "Reports"
@@ -408,6 +396,14 @@ msgstr "Додељен мени"
 msgctxt "List Filters"
 msgid "All"
 msgstr "Све"
+
+#, fuzzy
+#~| msgid "Disciple Tools - Streams"
+#~ msgid "Disciple.Tools - Streams"
+#~ msgstr "Алати за ученике - токови"
+
+#~ msgid "https://github.com/DiscipleTools/disciple-tools-streams"
+#~ msgstr "хттпс://гитхуб.цом/ДисциплеТоолс/дисципле-тоолс-стреамс"
 
 #~ msgid "Whoah, partner!"
 #~ msgstr "Вхоах, партнеру!"
@@ -1110,9 +1106,6 @@ msgstr "Све"
 #~ "Повежите ову веб локацију Дисципле Тоолс са већом мрежом веб локација. "
 #~ "Додаје укупне вредности осетљиве на безбедност, мапирање, евидентирање "
 #~ "активности."
-
-#~ msgid "https://github.com/DiscipleTools"
-#~ msgstr "хттпс://гитхуб.цом/ДисциплеТоолс"
 
 #~ msgid ""
 #~ "Disciple Tools Streams Extension adds recording of streams and cross "

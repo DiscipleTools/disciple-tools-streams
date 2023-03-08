@@ -1,8 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Disciple Tools Plugins\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-streams\n"
-"POT-Creation-Date: 2023-02-14T14:57:03+00:00\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
+"streams\n"
+"POT-Creation-Date: 2023-02-14T15:18:17+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -12,19 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. Plugin Name of the plugin
-#, fuzzy
-#| msgid "Disciple Tools - Streams"
-msgid "Disciple.Tools - Streams"
-msgstr "శిష్యుల ఉపకరణాలు - ప్రవాహాలు"
-
-#. Plugin URI of the plugin
-msgid "https://github.com/DiscipleTools/disciple-tools-streams"
-msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
-
-#. Description of the plugin
-msgid "Streams creates collections of work and a generational census reporting magic link system."
-msgstr ""
+#. Author URI of the plugin
+msgid "https://github.com/DiscipleTools"
+msgstr "https://github.com/DiscipleTools"
 
 #: magic/magic-reports.php:121
 msgid "Reports"
@@ -72,9 +63,11 @@ msgstr "నివేదికను జోడించండి"
 msgid "Streams Maps"
 msgstr "స్ట్రీమ్స్ మ్యాప్స్"
 
-#: metrics/-metrics-mapbox-personal-maps.php:31 metrics/metrics-mapbox-maps.php:31 post-type/streams-post-type.php:66
-#: post-type/streams-post-type.php:436 post-type/streams-post-type.php:448 post-type/streams-post-type.php:460
-#: post-type/streams-post-type.php:483 post-type/streams-post-type.php:522 post-type/streams-post-type.php:539
+#: metrics/-metrics-mapbox-personal-maps.php:31
+#: metrics/metrics-mapbox-maps.php:31 post-type/streams-post-type.php:66
+#: post-type/streams-post-type.php:436 post-type/streams-post-type.php:448
+#: post-type/streams-post-type.php:460 post-type/streams-post-type.php:483
+#: post-type/streams-post-type.php:522 post-type/streams-post-type.php:539
 #: post-type/streams-post-type.php:556 post-type/streams-post-type.php:593
 msgid "Streams"
 msgstr "ప్రవాహాలు"
@@ -95,8 +88,8 @@ msgstr ""
 msgid "Streams Admin"
 msgstr "ప్రవాహాలు"
 
-#: post-type/streams-post-type.php:84 post-type/streams-post-type.php:206 post-type/streams-post-type.php:606
-#: post-type/streams-post-type.php:607
+#: post-type/streams-post-type.php:84 post-type/streams-post-type.php:206
+#: post-type/streams-post-type.php:606 post-type/streams-post-type.php:607
 #, fuzzy
 #| msgid "Reports"
 msgid "Reporter"
@@ -139,7 +132,8 @@ msgstr "మోడల్"
 
 #: post-type/streams-post-type.php:149
 msgctxt "Stream Status field description"
-msgid "This stream is being actively coached and is still in the modelling stage."
+msgid ""
+"This stream is being actively coached and is still in the modelling stage."
 msgstr ""
 
 #: post-type/streams-post-type.php:153
@@ -169,7 +163,8 @@ msgstr ""
 
 #: post-type/streams-post-type.php:164
 msgctxt "Stream Status field description"
-msgid "This stream is being actively coached and is still in the leave/launch stage."
+msgid ""
+"This stream is being actively coached and is still in the leave/launch stage."
 msgstr ""
 
 #: post-type/streams-post-type.php:168
@@ -191,7 +186,9 @@ msgstr "పాజ్ చేయబడింది"
 
 #: post-type/streams-post-type.php:174
 msgctxt "Stream Status field description"
-msgid "This contact is currently on hold. It has potential of getting scheduled in the future."
+msgid ""
+"This contact is currently on hold. It has potential of getting scheduled in "
+"the future."
 msgstr "ఈ పరిచయం ప్రస్తుతం నిలిపివేయబడింది. ఇది భవిష్యత్తులో షెడ్యూల్ పొందే అవకాశం ఉంది."
 
 #: post-type/streams-post-type.php:178
@@ -219,15 +216,17 @@ msgstr "రైలు పెట్టె"
 #: post-type/streams-post-type.php:196
 msgctxt "Optional Documentation"
 msgid ""
-"The person who planted and/or is coaching this stream. Only one person can be assigned to a stream while multiple "
-"people can be coaches / church planters of this stream."
+"The person who planted and/or is coaching this stream. Only one person can "
+"be assigned to a stream while multiple people can be coaches / church "
+"planters of this stream."
 msgstr ""
-"ఈ స్ట్రీమ్‌కు నాటిన మరియు / లేదా కోచింగ్ ఇచ్చిన వ్యక్తి. ఒక స్ట్రీమ్‌కు ఒక వ్యక్తిని మాత్రమే కేటాయించవచ్చు, అయితే ఈ స్ట్రీమ్‌కు బహుళ మంది కోచ్‌లు / చర్చి ప్లాంటర్లు "
-"కావచ్చు."
+"ఈ స్ట్రీమ్‌కు నాటిన మరియు / లేదా కోచింగ్ ఇచ్చిన వ్యక్తి. ఒక స్ట్రీమ్‌కు ఒక వ్యక్తిని మాత్రమే కేటాయించవచ్చు, "
+"అయితే ఈ స్ట్రీమ్‌కు బహుళ మంది కోచ్‌లు / చర్చి ప్లాంటర్లు కావచ్చు."
 
 #: post-type/streams-post-type.php:207
 #, fuzzy
-#| msgid "Select the main person who is responsible for reporting on this stream."
+#| msgid ""
+#| "Select the main person who is responsible for reporting on this stream."
 msgctxt "Optional Documentation"
 msgid "The person who is the responsible reporter for this stream."
 msgstr "ఈ స్ట్రీమ్‌లో నివేదించడానికి బాధ్యత వహించే ప్రధాన వ్యక్తిని ఎంచుకోండి."
@@ -302,9 +301,11 @@ msgstr "పీర్ స్ట్రీమ్స్"
 #: post-type/streams-post-type.php:353
 msgctxt "Optional Documentation"
 msgid ""
-"A related stream that isn't a parent/child in relationship. It might indicate streams that collaborate, are about to "
-"merge, recently split, etc."
-msgstr "సంబంధంలో తల్లిదండ్రులు / పిల్లలు లేని సంబంధిత స్ట్రీమ్. ఇది సహకరించే, విలీనం కానున్న, ఇటీవల విడిపోయిన మొదలైన ప్రవాహాలను సూచిస్తుంది."
+"A related stream that isn't a parent/child in relationship. It might "
+"indicate streams that collaborate, are about to merge, recently split, etc."
+msgstr ""
+"సంబంధంలో తల్లిదండ్రులు / పిల్లలు లేని సంబంధిత స్ట్రీమ్. ఇది సహకరించే, విలీనం కానున్న, ఇటీవల విడిపోయిన "
+"మొదలైన ప్రవాహాలను సూచిస్తుంది."
 
 #: post-type/streams-post-type.php:364
 msgid "Child Streams"
@@ -388,10 +389,19 @@ msgctxt "List Filters"
 msgid "Assigned to me"
 msgstr "నాకు కేటాయించబడింది"
 
-#: post-type/streams-post-type.php:962 post-type/streams-post-type.php:1021 post-type/streams-post-type.php:1029
+#: post-type/streams-post-type.php:962 post-type/streams-post-type.php:1021
+#: post-type/streams-post-type.php:1029
 msgctxt "List Filters"
 msgid "All"
 msgstr "అన్నీ"
+
+#, fuzzy
+#~| msgid "Disciple Tools - Streams"
+#~ msgid "Disciple.Tools - Streams"
+#~ msgstr "శిష్యుల ఉపకరణాలు - ప్రవాహాలు"
+
+#~ msgid "https://github.com/DiscipleTools/disciple-tools-streams"
+#~ msgstr "https://github.com/DiscipleTools/disciple-tools-streams"
 
 #~ msgid "Whoah, partner!"
 #~ msgstr "అయ్యో, భాగస్వామి!"
@@ -413,11 +423,13 @@ msgstr "అన్నీ"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A useful way to training related items and can help training contacts associated with noteworthy characteristics. e."
-#~ "g. business owner, sports lover. The contacts can also be filtered using these tags."
+#~ "A useful way to training related items and can help training contacts "
+#~ "associated with noteworthy characteristics. e.g. business owner, sports "
+#~ "lover. The contacts can also be filtered using these tags."
 #~ msgstr ""
-#~ "సంబంధిత అంశాలకు శిక్షణ ఇవ్వడానికి ఉపయోగకరమైన మార్గం మరియు గుర్తించదగిన లక్షణాలతో సంబంధం ఉన్న పరిచయాలకు శిక్షణ ఇవ్వడానికి సహాయపడుతుంది. ఉదా. వ్యాపార "
-#~ "యజమాని, క్రీడా ప్రేమికుడు. ఈ ట్యాగ్‌లను ఉపయోగించి పరిచయాలను కూడా ఫిల్టర్ చేయవచ్చు."
+#~ "సంబంధిత అంశాలకు శిక్షణ ఇవ్వడానికి ఉపయోగకరమైన మార్గం మరియు గుర్తించదగిన లక్షణాలతో సంబంధం ఉన్న "
+#~ "పరిచయాలకు శిక్షణ ఇవ్వడానికి సహాయపడుతుంది. ఉదా. వ్యాపార యజమాని, క్రీడా ప్రేమికుడు. ఈ ట్యాగ్‌లను "
+#~ "ఉపయోగించి పరిచయాలను కూడా ఫిల్టర్ చేయవచ్చు."
 
 #~ msgid "Follow"
 #~ msgstr "అనుసరించండి"
@@ -473,7 +485,9 @@ msgstr "అన్నీ"
 #~ msgstr "పాజ్ చేయబడింది"
 
 #~ msgctxt "Training Status field description"
-#~ msgid "This contact is currently on hold. It has potential of getting scheduled in the future."
+#~ msgid ""
+#~ "This contact is currently on hold. It has potential of getting scheduled "
+#~ "in the future."
 #~ msgstr "ఈ పరిచయం ప్రస్తుతం నిలిపివేయబడింది. ఇది భవిష్యత్తులో షెడ్యూల్ పొందే అవకాశం ఉంది."
 
 #~ msgctxt "Training Status label"
@@ -484,7 +498,8 @@ msgstr "అన్నీ"
 #~ msgid "This training is no longer going to happen."
 #~ msgstr "ఈ శిక్షణ ఇకపై జరగదు."
 
-#~ msgid "Select the main person who is responsible for reporting on this training."
+#~ msgid ""
+#~ "Select the main person who is responsible for reporting on this training."
 #~ msgstr "ఈ శిక్షణపై నివేదించడానికి బాధ్యత వహించే ప్రధాన వ్యక్తిని ఎంచుకోండి."
 
 #~ msgid "Training Coach / Church Planter"
@@ -492,11 +507,12 @@ msgstr "అన్నీ"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "The person who planted and/or is coaching this training. Only one person can be assigned to a training while "
-#~ "multiple people can be coaches / church planters of this training."
+#~ "The person who planted and/or is coaching this training. Only one person "
+#~ "can be assigned to a training while multiple people can be coaches / "
+#~ "church planters of this training."
 #~ msgstr ""
-#~ "ఈ శిక్షణకు నాటిన మరియు / లేదా కోచింగ్ ఇచ్చిన వ్యక్తి. ఈ శిక్షణకు ఒక వ్యక్తిని మాత్రమే శిక్షణకు కేటాయించవచ్చు, అయితే బహుళ మంది కోచ్‌లు / చర్చి మొక్కల "
-#~ "పెంపకందారులు కావచ్చు."
+#~ "ఈ శిక్షణకు నాటిన మరియు / లేదా కోచింగ్ ఇచ్చిన వ్యక్తి. ఈ శిక్షణకు ఒక వ్యక్తిని మాత్రమే శిక్షణకు "
+#~ "కేటాయించవచ్చు, అయితే బహుళ మంది కోచ్‌లు / చర్చి మొక్కల పెంపకందారులు కావచ్చు."
 
 #~ msgid "Requires Update"
 #~ msgstr "నవీకరణ అవసరం"
@@ -530,9 +546,12 @@ msgstr "అన్నీ"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A related training that isn't a parent/child in relationship. It might indicate trainings that collaborate, are "
-#~ "about to merge, recently split, etc."
-#~ msgstr "సంబంధంలో తల్లిదండ్రులు / పిల్లలు లేని సంబంధిత శిక్షణ. ఇది సహకరించే, విలీనం కానున్న, ఇటీవల విడిపోయిన శిక్షణలను సూచిస్తుంది."
+#~ "A related training that isn't a parent/child in relationship. It might "
+#~ "indicate trainings that collaborate, are about to merge, recently split, "
+#~ "etc."
+#~ msgstr ""
+#~ "సంబంధంలో తల్లిదండ్రులు / పిల్లలు లేని సంబంధిత శిక్షణ. ఇది సహకరించే, విలీనం కానున్న, ఇటీవల "
+#~ "విడిపోయిన శిక్షణలను సూచిస్తుంది."
 
 #~ msgid "Child Training"
 #~ msgstr "పిల్లల శిక్షణ"
@@ -557,12 +576,14 @@ msgstr "అన్నీ"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "The number of members in this training. It will automatically be updated when new members are added or removed in "
-#~ "the member list. Change this number manually to included people who may not be in the system but are also members "
-#~ "of the training."
+#~ "The number of members in this training. It will automatically be updated "
+#~ "when new members are added or removed in the member list. Change this "
+#~ "number manually to included people who may not be in the system but are "
+#~ "also members of the training."
 #~ msgstr ""
-#~ "ఈ శిక్షణలో సభ్యుల సంఖ్య. సభ్యుల జాబితాలో క్రొత్త సభ్యులను చేర్చినప్పుడు లేదా తీసివేసినప్పుడు ఇది స్వయంచాలకంగా నవీకరించబడుతుంది. వ్యవస్థలో ఉండకపోవచ్చు కాని "
-#~ "శిక్షణలో సభ్యులుగా ఉన్న వ్యక్తులకు ఈ సంఖ్యను మానవీయంగా మార్చండి."
+#~ "ఈ శిక్షణలో సభ్యుల సంఖ్య. సభ్యుల జాబితాలో క్రొత్త సభ్యులను చేర్చినప్పుడు లేదా తీసివేసినప్పుడు ఇది "
+#~ "స్వయంచాలకంగా నవీకరించబడుతుంది. వ్యవస్థలో ఉండకపోవచ్చు కాని శిక్షణలో సభ్యులుగా ఉన్న వ్యక్తులకు ఈ "
+#~ "సంఖ్యను మానవీయంగా మార్చండి."
 
 #~ msgid "Leader Count"
 #~ msgstr "లీడర్ కౌంట్"
@@ -603,8 +624,11 @@ msgstr "అన్నీ"
 #~ msgstr "ఇప్పటికే ఉన్న పరిచయాల నుండి సభ్యులను జోడించండి"
 
 #~ msgctxt "Add members modal"
-#~ msgid "In the 'Member List' field, type the name of an existing contact to add them to this training."
-#~ msgstr "'సభ్యుల జాబితా' ఫీల్డ్‌లో, ఈ శిక్షణకు వారిని చేర్చడానికి ఇప్పటికే ఉన్న పరిచయం పేరును టైప్ చేయండి."
+#~ msgid ""
+#~ "In the 'Member List' field, type the name of an existing contact to add "
+#~ "them to this training."
+#~ msgstr ""
+#~ "'సభ్యుల జాబితా' ఫీల్డ్‌లో, ఈ శిక్షణకు వారిని చేర్చడానికి ఇప్పటికే ఉన్న పరిచయం పేరును టైప్ చేయండి."
 
 #~ msgid "Close"
 #~ msgstr "దగ్గరగా"
@@ -959,11 +983,13 @@ msgstr "అన్నీ"
 
 #~ msgctxt "Optional Documentation"
 #~ msgid ""
-#~ "A useful way to stream related items and can help stream contacts associated with noteworthy characteristics. e.g. "
-#~ "business owner, sports lover. The contacts can also be filtered using these tags."
+#~ "A useful way to stream related items and can help stream contacts "
+#~ "associated with noteworthy characteristics. e.g. business owner, sports "
+#~ "lover. The contacts can also be filtered using these tags."
 #~ msgstr ""
-#~ "సంబంధిత అంశాలను ప్రసారం చేయడానికి ఉపయోగకరమైన మార్గం మరియు గుర్తించదగిన లక్షణాలతో అనుబంధించబడిన పరిచయాలను ప్రసారం చేయడానికి సహాయపడుతుంది. ఉదా. వ్యాపార "
-#~ "యజమాని, క్రీడా ప్రేమికుడు. ఈ ట్యాగ్‌లను ఉపయోగించి పరిచయాలను కూడా ఫిల్టర్ చేయవచ్చు."
+#~ "సంబంధిత అంశాలను ప్రసారం చేయడానికి ఉపయోగకరమైన మార్గం మరియు గుర్తించదగిన లక్షణాలతో అనుబంధించబడిన "
+#~ "పరిచయాలను ప్రసారం చేయడానికి సహాయపడుతుంది. ఉదా. వ్యాపార యజమాని, క్రీడా ప్రేమికుడు. ఈ ట్యాగ్‌లను "
+#~ "ఉపయోగించి పరిచయాలను కూడా ఫిల్టర్ చేయవచ్చు."
 
 #~ msgctxt "Stream Status field description"
 #~ msgid "This stream has been proposed and is in initial conversations"
@@ -1066,24 +1092,26 @@ msgstr "అన్నీ"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-network-dashboard"
 
 #~ msgid ""
-#~ "Connect this Disciple Tools site to a larger network of sites. Adds security sensitive totals, mapping, activity "
-#~ "logging."
-#~ msgstr "ఈ శిష్యుల సాధనాల సైట్‌ను సైట్‌ల పెద్ద నెట్‌వర్క్‌కు కనెక్ట్ చేయండి. భద్రతా సున్నితమైన మొత్తాలు, మ్యాపింగ్, కార్యాచరణ లాగింగ్‌ను జోడిస్తుంది."
-
-#~ msgid "https://github.com/DiscipleTools"
-#~ msgstr "https://github.com/DiscipleTools"
-
-#~ msgid ""
-#~ "Disciple Tools Streams Extension adds recording of streams and cross reference them with contacts, churches, and "
-#~ "locations."
-#~ msgstr "శిష్యుల సాధనాలు స్ట్రీమ్స్ పొడిగింపు స్ట్రీమ్‌ల రికార్డింగ్‌ను జోడిస్తుంది మరియు వాటిని పరిచయాలు, సమూహాలు మరియు స్థానాలతో క్రాస్ రిఫరెన్స్ చేస్తుంది."
-
-#~ msgid ""
-#~ "'Disciple Tools - Training' plugin requires 'Disciple Tools' theme to work. Please activate 'Disciple Tools' theme "
-#~ "or make sure it is latest version."
+#~ "Connect this Disciple Tools site to a larger network of sites. Adds "
+#~ "security sensitive totals, mapping, activity logging."
 #~ msgstr ""
-#~ "'శిష్యుల సాధనాలు - శిక్షణ' ప్లగిన్‌కు పని చేయడానికి 'శిష్యుల సాధనాలు' థీమ్ అవసరం. దయచేసి 'శిష్యుల సాధనాలు' థీమ్‌ను సక్రియం చేయండి లేదా ఇది తాజా వెర్షన్ అని "
-#~ "నిర్ధారించుకోండి."
+#~ "ఈ శిష్యుల సాధనాల సైట్‌ను సైట్‌ల పెద్ద నెట్‌వర్క్‌కు కనెక్ట్ చేయండి. భద్రతా సున్నితమైన మొత్తాలు, మ్యాపింగ్, "
+#~ "కార్యాచరణ లాగింగ్‌ను జోడిస్తుంది."
+
+#~ msgid ""
+#~ "Disciple Tools Streams Extension adds recording of streams and cross "
+#~ "reference them with contacts, churches, and locations."
+#~ msgstr ""
+#~ "శిష్యుల సాధనాలు స్ట్రీమ్స్ పొడిగింపు స్ట్రీమ్‌ల రికార్డింగ్‌ను జోడిస్తుంది మరియు వాటిని పరిచయాలు, సమూహాలు "
+#~ "మరియు స్థానాలతో క్రాస్ రిఫరెన్స్ చేస్తుంది."
+
+#~ msgid ""
+#~ "'Disciple Tools - Training' plugin requires 'Disciple Tools' theme to "
+#~ "work. Please activate 'Disciple Tools' theme or make sure it is latest "
+#~ "version."
+#~ msgstr ""
+#~ "'శిష్యుల సాధనాలు - శిక్షణ' ప్లగిన్‌కు పని చేయడానికి 'శిష్యుల సాధనాలు' థీమ్ అవసరం. దయచేసి 'శిష్యుల "
+#~ "సాధనాలు' థీమ్‌ను సక్రియం చేయండి లేదా ఇది తాజా వెర్షన్ అని నిర్ధారించుకోండి."
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
 #~ msgstr "ప్రస్తుత శిష్యుల సాధనాల సంస్కరణ:% 1 $ s, అవసరమైన సంస్కరణ:% 2 $ s"
@@ -1092,9 +1120,11 @@ msgstr "అన్నీ"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
 
 #~ msgid ""
-#~ "Disciple Tools Training Extension adds recording of trainings and cross reference them with contacts, churches, and "
-#~ "locations."
-#~ msgstr "శిష్యుల సాధనాల శిక్షణ పొడిగింపు శిక్షణల రికార్డింగ్‌ను జోడిస్తుంది మరియు వాటిని పరిచయాలు, సమూహాలు మరియు స్థానాలతో క్రాస్ రిఫరెన్స్ చేస్తుంది."
+#~ "Disciple Tools Training Extension adds recording of trainings and cross "
+#~ "reference them with contacts, churches, and locations."
+#~ msgstr ""
+#~ "శిష్యుల సాధనాల శిక్షణ పొడిగింపు శిక్షణల రికార్డింగ్‌ను జోడిస్తుంది మరియు వాటిని పరిచయాలు, సమూహాలు "
+#~ "మరియు స్థానాలతో క్రాస్ రిఫరెన్స్ చేస్తుంది."
 
 #~ msgid "Duplicates"
 #~ msgstr "నకిలీలు"
@@ -1168,7 +1198,9 @@ msgstr "అన్నీ"
 #~ msgid "Contact Workload"
 #~ msgstr "పనిభారాన్ని సంప్రదించండి"
 
-#~ msgid "Choose an option to let the dispatcher(s) know if you are ready for new contacts"
+#~ msgid ""
+#~ "Choose an option to let the dispatcher(s) know if you are ready for new "
+#~ "contacts"
 #~ msgstr "మీరు క్రొత్త పరిచయాలకు సిద్ధంగా ఉన్నారా అని పంపినవారికి తెలియజేయడానికి ఒక ఎంపికను ఎంచుకోండి"
 
 #~ msgid "Set travel or dates unavailable"
@@ -1196,9 +1228,11 @@ msgstr "అన్నీ"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-dashboard"
 
 #~ msgid ""
-#~ "The multiplier dashboard upgrades the multipliers experience as soon as they log into the system giving them a "
-#~ "landing page with stats."
-#~ msgstr "మల్టిప్లైయర్ డాష్‌బోర్డ్ మల్టిప్లైయర్స్ అనుభవాన్ని వారు సిస్టమ్‌లోకి లాగిన్ అయిన వెంటనే వారికి గణాంకాలతో ల్యాండింగ్ పేజీని ఇస్తుంది"
+#~ "The multiplier dashboard upgrades the multipliers experience as soon as "
+#~ "they log into the system giving them a landing page with stats."
+#~ msgstr ""
+#~ "మల్టిప్లైయర్ డాష్‌బోర్డ్ మల్టిప్లైయర్స్ అనుభవాన్ని వారు సిస్టమ్‌లోకి లాగిన్ అయిన వెంటనే వారికి గణాంకాలతో ల్యాండింగ్ "
+#~ "పేజీని ఇస్తుంది"
 
 #~ msgid "Reason Assigned To"
 #~ msgstr "దీనికి కేటాయించిన కారణం"
@@ -1266,5 +1300,8 @@ msgstr "అన్నీ"
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-advanced-m2m-tiles"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-advanced-m2m-tiles"
 
-#~ msgid "Disciple Tools - Advanced M2M Tiles adds specific supporting tiles for different roles."
-#~ msgstr "శిష్యుల ఉపకరణాలు - అధునాతన M2M టైల్స్ వేర్వేరు పాత్రల కోసం నిర్దిష్ట సహాయక పలకలను జతచేస్తాయి."
+#~ msgid ""
+#~ "Disciple Tools - Advanced M2M Tiles adds specific supporting tiles for "
+#~ "different roles."
+#~ msgstr ""
+#~ "శిష్యుల ఉపకరణాలు - అధునాతన M2M టైల్స్ వేర్వేరు పాత్రల కోసం నిర్దిష్ట సహాయక పలకలను జతచేస్తాయి."
