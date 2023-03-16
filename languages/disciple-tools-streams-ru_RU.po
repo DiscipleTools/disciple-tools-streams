@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
 "streams\n"
 "POT-Creation-Date: 2023-02-14T15:18:17+00:00\n"
-"PO-Revision-Date: 2023-03-08 05:13+0000\n"
+"PO-Revision-Date: 2023-03-16 07:13+0000\n"
 "Last-Translator: Dmitry <dmitry_cherednikov@wycliffe.ru>\n"
 "Language-Team: Russian <https://translate.disciple.tools/projects/"
 "disciple-tools/disciple-tools-stream/ru_RU/>\n"
@@ -25,26 +25,20 @@ msgid "Reports"
 msgstr "Отчеты"
 
 #: magic/magic-reports.php:122
-#, fuzzy
-#| msgid "Site Reports"
 msgid "Child Reports"
-msgstr "Отчеты по сайту"
+msgstr "Отчеты от детях"
 
 #: magic/magic-reports.php:158 magic/magic-reports.php:211
 msgid "Total Baptisms"
 msgstr "Полное крещение"
 
 #: magic/magic-reports.php:159 magic/magic-reports.php:212
-#, fuzzy
-#| msgid "Key Disciples"
 msgid "Total Disciples"
-msgstr "Ключевые ученики"
+msgstr "Всего учеников"
 
 #: magic/magic-reports.php:160 magic/magic-reports.php:213
-#, fuzzy
-#| msgid "Churches"
 msgid "Total Churches"
-msgstr "Церкви"
+msgstr "Всего церквей"
 
 #: magic/magic-reports.php:161 magic/magic-reports.php:214
 msgid "Countries"
@@ -76,27 +70,21 @@ msgid "Streams"
 msgstr "Потоки"
 
 #: metrics/metrics-mapbox-maps.php:30
-#, fuzzy
-#| msgid "Streams Maps"
 msgid "Streams Map"
-msgstr "Карты потоков"
+msgstr "Карта потоков"
 
 #: post-type/streams-post-type.php:66 post-type/streams-post-type.php:482
 msgid "Stream"
-msgstr ""
+msgstr "Поток"
 
 #: post-type/streams-post-type.php:73
-#, fuzzy
-#| msgid "Streams"
 msgid "Streams Admin"
-msgstr "Потоки"
+msgstr "Администратор потока"
 
 #: post-type/streams-post-type.php:84 post-type/streams-post-type.php:206
 #: post-type/streams-post-type.php:606 post-type/streams-post-type.php:607
-#, fuzzy
-#| msgid "Reports"
 msgid "Reporter"
-msgstr "Отчеты"
+msgstr "Репортер"
 
 #: post-type/streams-post-type.php:92
 msgid "Multiplier"
@@ -138,6 +126,8 @@ msgctxt "Stream Status field description"
 msgid ""
 "This stream is being actively coached and is still in the modelling stage."
 msgstr ""
+"Этот поток в активном наставничестве и пока находится на стадии "
+"моделирования."
 
 #: post-type/streams-post-type.php:153
 msgctxt "Stream Status label"
@@ -147,7 +137,7 @@ msgstr "Помощь"
 #: post-type/streams-post-type.php:154
 msgctxt "Stream Status field description"
 msgid "This stream is being actively coached and is still in the assist stage."
-msgstr ""
+msgstr "Этот поток в активном наставничестве и пока находится в стадии помощи."
 
 #: post-type/streams-post-type.php:158
 msgctxt "Stream Status label"
@@ -158,21 +148,22 @@ msgstr "Часы"
 msgctxt "Stream Status field description"
 msgid "This stream is being actively coached and is still in the watch stage."
 msgstr ""
+"Этот поток в активном наставничестве и пока находится в стадии наблюдения."
 
 #: post-type/streams-post-type.php:163
 msgctxt "Stream Status label"
 msgid "Leave/Launch"
-msgstr ""
+msgstr "Покинуть/Запустить"
 
 #: post-type/streams-post-type.php:164
 msgctxt "Stream Status field description"
 msgid ""
 "This stream is being actively coached and is still in the leave/launch stage."
 msgstr ""
+"Этот поток в активном наставничестве и пока находится в стадии "
+"закрытия/запуска."
 
 #: post-type/streams-post-type.php:168
-#, fuzzy
-#| msgid "Active"
 msgctxt "Stream Status label"
 msgid "Active"
 msgstr "Активный"
@@ -180,7 +171,7 @@ msgstr "Активный"
 #: post-type/streams-post-type.php:169
 msgctxt "Stream Status field description"
 msgid "This is an active stream in no specific stage."
-msgstr ""
+msgstr "Это активный поток без определенного этапа."
 
 #: post-type/streams-post-type.php:173
 msgctxt "Stream Status label"
@@ -230,16 +221,13 @@ msgstr ""
 "тренерами / организаторами церквей этого потока."
 
 #: post-type/streams-post-type.php:207
-#, fuzzy
-#| msgid ""
-#| "Select the main person who is responsible for reporting on this stream."
 msgctxt "Optional Documentation"
 msgid "The person who is the responsible reporter for this stream."
-msgstr "Выберите главного человека, ответственного за отчетность в этой ленте."
+msgstr "Человек, являющийся репортером для этого потока."
 
 #: post-type/streams-post-type.php:217
 msgid "Description"
-msgstr ""
+msgstr "Описание"
 
 #: post-type/streams-post-type.php:225 post-type/streams-post-type.php:592
 msgid "People Groups"
@@ -265,27 +253,23 @@ msgstr "Адрес"
 
 #: post-type/streams-post-type.php:277
 msgid "Number of Leaders"
-msgstr ""
+msgstr "Количество лидеров"
 
 #: post-type/streams-post-type.php:285 post-type/streams-post-type.php:540
 msgid "Leaders"
 msgstr "Лидеры"
 
 #: post-type/streams-post-type.php:297
-#, fuzzy
-#| msgid "Key Disciples"
 msgid "Number of Disciples"
-msgstr "Ключевые ученики"
+msgstr "Количество учеников"
 
 #: post-type/streams-post-type.php:305
 msgid "Key Disciples"
 msgstr "Ключевые ученики"
 
 #: post-type/streams-post-type.php:316
-#, fuzzy
-#| msgid "New Groups"
 msgid "Number of Groups"
-msgstr "Новые группы"
+msgstr "Количество групп"
 
 #: post-type/streams-post-type.php:324 post-type/streams-post-type.php:523
 msgid "Groups"
@@ -350,18 +334,13 @@ msgid "Disciple in a stream."
 msgstr "Ученик в потоке."
 
 #: post-type/streams-post-type.php:423
-#, fuzzy
-#| msgid "Leader in Stream"
 msgid "Reporter in Stream"
-msgstr "Лидер в потоке"
+msgstr "Репортер в потоке"
 
 #: post-type/streams-post-type.php:424
-#, fuzzy
-#| msgctxt "Optional Documentation"
-#| msgid "Leader of a stream"
 msgctxt "Optional Documentation"
 msgid "Reporter for a stream."
-msgstr "Лидер потока"
+msgstr "Репортер потока."
 
 #: post-type/streams-post-type.php:505
 msgid "Members"
