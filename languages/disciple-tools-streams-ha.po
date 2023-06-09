@@ -621,7 +621,7 @@ msgstr "Duk"
 
 #~ msgctxt "Search 'something'"
 #~ msgid "Search %s"
-#~ msgstr "Binciko% s"
+#~ msgstr "Bincik %s"
 
 #~ msgid "Create"
 #~ msgstr "Createirƙira"
@@ -648,13 +648,13 @@ msgstr "Duk"
 #~ msgstr "Kusa"
 
 #~ msgid "Removed %1$s: %2$s"
-#~ msgstr "An cire% 1 $ s:% 2 $ s"
+#~ msgstr "An cire %1$s: %2$s"
 
 #~ msgid "Added %1$s: %2$s"
-#~ msgstr "An ƙara% 1 $ s:% 2 $ s"
+#~ msgstr "An ƙara %1$s: %2$s"
 
 #~ msgid "Updated %1$s: %2$s to %3$s"
-#~ msgstr "An sabunta% 1 $ s:% 2 $ s zuwa% 3 $ s"
+#~ msgstr "An sabunta %1$s: %2$s zuwa %3$s"
 
 #~ msgid "Total Groups"
 #~ msgstr "Jimlar sungiyoyi"
@@ -1039,18 +1039,18 @@ msgstr "Duk"
 #~ msgstr "Geneungiyoyin Teamungiyoyi"
 
 #~ msgid "%s is reporting a new pre-church generation."
-#~ msgstr "% s yana bayar da rahoton sabon ƙarni-ƙarni."
+#~ msgstr "%s yana bayar da rahoton sabon ƙarni-ƙarni."
 
 #, fuzzy
 #~ msgid "%s is reporting a new church generation."
 #~ msgstr ""
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "% s yana bayar da rahoton sabon ƙarni na rukuni.\n"
+#~ "%s yana bayar da rahoton sabon ƙarni na rukuni.\n"
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "% s yana bayar da rahoton sabon ƙarni na coci."
+#~ "%s yana bayar da rahoton sabon ƙarni na coci."
 
 #~ msgid "%s is reporting a new leadership team generation."
-#~ msgstr "% s yana bayar da rahoton sabon ƙarni na ƙungiyar jagoranci."
+#~ msgstr "%s yana bayar da rahoton sabon ƙarni na ƙungiyar jagoranci."
 
 #~ msgid "New Contact"
 #~ msgstr "Sabuwar Saduwa"
@@ -1074,25 +1074,25 @@ msgstr "Duk"
 #~ msgstr "Sabon Koyawa"
 
 #~ msgid "%s is reporting a new contact."
-#~ msgstr "% s yana bayar da rahoton sabuwar lamba."
+#~ msgstr "%s yana bayar da rahoton sabuwar lamba."
 
 #~ msgid "%s is reporting a new pre-church formed."
-#~ msgstr "% s yana bayar da rahoton sabon rukuni da aka kafa."
+#~ msgstr "%s yana bayar da rahoton sabon rukuni da aka kafa."
 
 #~ msgid "%s is reporting a new church formed."
-#~ msgstr "% s yana bayar da rahoton sabon rukuni da aka kafa."
+#~ msgstr "%s yana bayar da rahoton sabon rukuni da aka kafa."
 
 #~ msgid "%s is reporting a new church."
-#~ msgstr "% s yana bayar da rahoton sabon coci."
+#~ msgstr "%s yana bayar da rahoton sabon coci."
 
 #~ msgid "%s is reporting a new leadership team formed."
-#~ msgstr "% s yana bayar da rahoton sabuwar ƙungiyar jagoranci da aka kafa."
+#~ msgstr "%s yana bayar da rahoton sabuwar ƙungiyar jagoranci da aka kafa."
 
 #~ msgid "%s is reporting a new baptism."
-#~ msgstr "% s yana ba da rahoton sabon baftisma."
+#~ msgstr "%s yana ba da rahoton sabon baftisma."
 
 #~ msgid "%s is reporting an coaching relationship."
-#~ msgstr "% s yana bayar da rahoton dangantakar koyawa."
+#~ msgstr "%s yana bayar da rahoton dangantakar koyawa."
 
 #~ msgid "Paused"
 #~ msgstr "Dakata"
@@ -1130,7 +1130,7 @@ msgstr "Duk"
 #~ "sabon salo ne."
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
-#~ msgstr "Sigar Kayan Almajirai Na Yanzu:% 1 $ s, sigar da ake buƙata:% 2 $ s"
+#~ msgstr "Sigar Kayan Almajirai Na Yanzu: %1$s, sigar da ake buƙata: %2$s"
 
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-training"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
@@ -1161,7 +1161,7 @@ msgstr "Duk"
 #~ msgstr "Dashboard"
 
 #~ msgid "%s days since last update"
-#~ msgstr "Kwanaki% s tun ɗaukakawa ta ƙarshe"
+#~ msgstr "Kwanak %s tun ɗaukakawa ta ƙarshe"
 
 #~ msgid "Accept"
 #~ msgstr "Yarda"

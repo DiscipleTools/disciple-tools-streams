@@ -608,7 +608,7 @@ msgstr "అన్నీ"
 
 #~ msgctxt "Search 'something'"
 #~ msgid "Search %s"
-#~ msgstr "% S శోధించండి"
+#~ msgstr "%s శోధించండి"
 
 #~ msgid "Create"
 #~ msgstr "సృష్టించండి"
@@ -634,13 +634,13 @@ msgstr "అన్నీ"
 #~ msgstr "దగ్గరగా"
 
 #~ msgid "Removed %1$s: %2$s"
-#~ msgstr "% 1 $ s తొలగించబడింది:% 2 $ s"
+#~ msgstr "%1$s తొలగించబడింది: %2$s"
 
 #~ msgid "Added %1$s: %2$s"
-#~ msgstr "% 1 $ s జోడించబడింది:% 2 $ s"
+#~ msgstr "%1$s జోడించబడింది: %2$s"
 
 #~ msgid "Updated %1$s: %2$s to %3$s"
-#~ msgstr "% 1 $ s:% 2 $ s నుండి% 3 $ s వరకు నవీకరించబడింది"
+#~ msgstr "%1$s: %2$s నుండి %3$s వరకు నవీకరించబడింది"
 
 #~ msgid "Total Groups"
 #~ msgstr "మొత్తం గుంపులు"
@@ -1024,18 +1024,18 @@ msgstr "అన్నీ"
 #~ msgstr "జట్టు తరాలు"
 
 #~ msgid "%s is reporting a new pre-church generation."
-#~ msgstr "% s క్రొత్త సమూహ పూర్వ తరాన్ని నివేదిస్తోంది."
+#~ msgstr "%s క్రొత్త సమూహ పూర్వ తరాన్ని నివేదిస్తోంది."
 
 #, fuzzy
 #~ msgid "%s is reporting a new church generation."
 #~ msgstr ""
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "% s క్రొత్త సమూహ తరాన్ని నివేదిస్తోంది.\n"
+#~ "%s క్రొత్త సమూహ తరాన్ని నివేదిస్తోంది.\n"
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "% s కొత్త చర్చి తరాన్ని నివేదిస్తోంది."
+#~ "%s కొత్త చర్చి తరాన్ని నివేదిస్తోంది."
 
 #~ msgid "%s is reporting a new leadership team generation."
-#~ msgstr "% s కొత్త నాయకత్వ బృందాన్ని నివేదిస్తోంది."
+#~ msgstr "%s కొత్త నాయకత్వ బృందాన్ని నివేదిస్తోంది."
 
 #~ msgid "New Contact"
 #~ msgstr "క్రొత్త పరిచయం"
@@ -1059,25 +1059,25 @@ msgstr "అన్నీ"
 #~ msgstr "కొత్త కోచింగ్"
 
 #~ msgid "%s is reporting a new contact."
-#~ msgstr "% s క్రొత్త పరిచయాన్ని నివేదిస్తోంది."
+#~ msgstr "%s క్రొత్త పరిచయాన్ని నివేదిస్తోంది."
 
 #~ msgid "%s is reporting a new pre-church formed."
-#~ msgstr "% s క్రొత్త సమూహాన్ని ఏర్పాటు చేసినట్లు నివేదిస్తోంది."
+#~ msgstr "%s క్రొత్త సమూహాన్ని ఏర్పాటు చేసినట్లు నివేదిస్తోంది."
 
 #~ msgid "%s is reporting a new church formed."
-#~ msgstr "% s క్రొత్త సమూహాన్ని ఏర్పాటు చేస్తున్నట్లు నివేదిస్తోంది."
+#~ msgstr "%s క్రొత్త సమూహాన్ని ఏర్పాటు చేస్తున్నట్లు నివేదిస్తోంది."
 
 #~ msgid "%s is reporting a new church."
-#~ msgstr "% s క్రొత్త చర్చిని నివేదిస్తోంది."
+#~ msgstr "%s క్రొత్త చర్చిని నివేదిస్తోంది."
 
 #~ msgid "%s is reporting a new leadership team formed."
-#~ msgstr "% s కొత్త నాయకత్వ బృందాన్ని ఏర్పాటు చేసినట్లు నివేదిస్తోంది."
+#~ msgstr "%s కొత్త నాయకత్వ బృందాన్ని ఏర్పాటు చేసినట్లు నివేదిస్తోంది."
 
 #~ msgid "%s is reporting a new baptism."
-#~ msgstr "% s క్రొత్త బాప్టిజం నివేదిస్తోంది."
+#~ msgstr "%s క్రొత్త బాప్టిజం నివేదిస్తోంది."
 
 #~ msgid "%s is reporting an coaching relationship."
-#~ msgstr "% s కోచింగ్ సంబంధాన్ని నివేదిస్తోంది."
+#~ msgstr "%s కోచింగ్ సంబంధాన్ని నివేదిస్తోంది."
 
 #~ msgid "Paused"
 #~ msgstr "పాజ్ చేయబడింది"
@@ -1114,7 +1114,7 @@ msgstr "అన్నీ"
 #~ "సాధనాలు' థీమ్‌ను సక్రియం చేయండి లేదా ఇది తాజా వెర్షన్ అని నిర్ధారించుకోండి."
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
-#~ msgstr "ప్రస్తుత శిష్యుల సాధనాల సంస్కరణ:% 1 $ s, అవసరమైన సంస్కరణ:% 2 $ s"
+#~ msgstr "ప్రస్తుత శిష్యుల సాధనాల సంస్కరణ: %1$s, అవసరమైన సంస్కరణ: %2$s"
 
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-training"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
@@ -1145,7 +1145,7 @@ msgstr "అన్నీ"
 #~ msgstr "డాష్బోర్డ్"
 
 #~ msgid "%s days since last update"
-#~ msgstr "చివరి నవీకరణ నుండి% s రోజులు"
+#~ msgstr "చివరి నవీకరణ నుండి%s రోజులు"
 
 #~ msgid "Accept"
 #~ msgstr "అంగీకరించు"

@@ -623,7 +623,7 @@ msgstr "Lahat"
 
 #~ msgctxt "Search 'something'"
 #~ msgid "Search %s"
-#~ msgstr "Maghanap sa% s"
+#~ msgstr "Maghanap s %s"
 
 #~ msgid "Create"
 #~ msgstr "Lumikha"
@@ -651,13 +651,13 @@ msgstr "Lahat"
 #~ msgstr "Isara"
 
 #~ msgid "Removed %1$s: %2$s"
-#~ msgstr "Inalis ang% 1 $ s:% 2 $ s"
+#~ msgstr "Inalis ang %1$s: %2$s"
 
 #~ msgid "Added %1$s: %2$s"
-#~ msgstr "Nagdagdag ng% 1 $ s:% 2 $ s"
+#~ msgstr "Nagdagdag ng %1$s: %2$s"
 
 #~ msgid "Updated %1$s: %2$s to %3$s"
-#~ msgstr "Nai-update na% 1 $ s:% 2 $ s hanggang% 3 $ s"
+#~ msgstr "Nai-update na %1$s: %2$s hanggang %3$s"
 
 #~ msgid "Total Groups"
 #~ msgstr "Kabuuang Mga Grupo"
@@ -1043,18 +1043,18 @@ msgstr "Lahat"
 #~ msgstr "Mga Henerasyon ng Koponan"
 
 #~ msgid "%s is reporting a new pre-church generation."
-#~ msgstr "Nag-uulat si% s ng isang bagong henerasyong bago ang pangkat."
+#~ msgstr "Nag-uulat s %s ng isang bagong henerasyong bago ang pangkat."
 
 #, fuzzy
 #~ msgid "%s is reporting a new church generation."
 #~ msgstr ""
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "% s ay nag-uulat ng isang bagong henerasyon ng pangkat.\n"
+#~ "%s ay nag-uulat ng isang bagong henerasyon ng pangkat.\n"
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "% s ay nag-uulat ng isang bagong henerasyon ng simbahan."
+#~ "%s ay nag-uulat ng isang bagong henerasyon ng simbahan."
 
 #~ msgid "%s is reporting a new leadership team generation."
-#~ msgstr "% s ay nag-uulat ng isang bagong henerasyon ng pangkat ng pamumuno."
+#~ msgstr "%s ay nag-uulat ng isang bagong henerasyon ng pangkat ng pamumuno."
 
 #~ msgid "New Contact"
 #~ msgstr "Bagong kontak"
@@ -1078,25 +1078,25 @@ msgstr "Lahat"
 #~ msgstr "Bagong Pagtuturo"
 
 #~ msgid "%s is reporting a new contact."
-#~ msgstr "% s ay nag-uulat ng isang bagong contact."
+#~ msgstr "%s ay nag-uulat ng isang bagong contact."
 
 #~ msgid "%s is reporting a new pre-church formed."
-#~ msgstr "% s ay nag-uulat ng isang bagong pre-church na nabuo."
+#~ msgstr "%s ay nag-uulat ng isang bagong pre-church na nabuo."
 
 #~ msgid "%s is reporting a new church formed."
-#~ msgstr "% s ay nag-uulat ng isang bagong pangkat na nabuo."
+#~ msgstr "%s ay nag-uulat ng isang bagong pangkat na nabuo."
 
 #~ msgid "%s is reporting a new church."
-#~ msgstr "% s ay nag-uulat ng isang bagong simbahan."
+#~ msgstr "%s ay nag-uulat ng isang bagong simbahan."
 
 #~ msgid "%s is reporting a new leadership team formed."
-#~ msgstr "% s ay nag-uulat ng isang bagong koponan ng pamumuno nabuo."
+#~ msgstr "%s ay nag-uulat ng isang bagong koponan ng pamumuno nabuo."
 
 #~ msgid "%s is reporting a new baptism."
-#~ msgstr "% s ay nag-uulat ng isang bagong bautismo."
+#~ msgstr "%s ay nag-uulat ng isang bagong bautismo."
 
 #~ msgid "%s is reporting an coaching relationship."
-#~ msgstr "% s ay nag-uulat ng isang relasyon sa coaching."
+#~ msgstr "%s ay nag-uulat ng isang relasyon sa coaching."
 
 #~ msgid "Paused"
 #~ msgstr "Naka-pause"
@@ -1136,8 +1136,8 @@ msgstr "Lahat"
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
 #~ msgstr ""
-#~ "Kasalukuyang bersyon ng Mga Tool ng Disipulo:% 1 $ s, kinakailangang "
-#~ "bersyon:% 2 $ s"
+#~ "Kasalukuyang bersyon ng Mga Tool ng Disipulo: %1$s, kinakailangang "
+#~ "bersyon: %2$s"
 
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-training"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
@@ -1169,7 +1169,7 @@ msgstr "Lahat"
 #~ msgstr "Dashboard"
 
 #~ msgid "%s days since last update"
-#~ msgstr "% s araw mula noong huling pag-update"
+#~ msgstr "%s araw mula noong huling pag-update"
 
 #~ msgid "Accept"
 #~ msgstr "Tanggapin"

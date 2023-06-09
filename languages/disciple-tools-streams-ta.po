@@ -617,7 +617,7 @@ msgstr "அனைத்தும்"
 
 #~ msgctxt "Search 'something'"
 #~ msgid "Search %s"
-#~ msgstr "% S ஐத் தேடுங்கள்"
+#~ msgstr "%s ஐத் தேடுங்கள்"
 
 #~ msgid "Create"
 #~ msgstr "உருவாக்கு"
@@ -645,13 +645,13 @@ msgstr "அனைத்தும்"
 #~ msgstr "நெருக்கமான"
 
 #~ msgid "Removed %1$s: %2$s"
-#~ msgstr "% 1 $ s:% 2 $ s அகற்றப்பட்டது"
+#~ msgstr "%1$s: %2$s அகற்றப்பட்டது"
 
 #~ msgid "Added %1$s: %2$s"
-#~ msgstr "% 1 $ s:% 2 $ s சேர்க்கப்பட்டது"
+#~ msgstr "%1$s: %2$s சேர்க்கப்பட்டது"
 
 #~ msgid "Updated %1$s: %2$s to %3$s"
-#~ msgstr "% 1 $ s:% 2 $ s முதல்% 3 $ s வரை புதுப்பிக்கப்பட்டது"
+#~ msgstr "%1$s: %2$s முதல் %3$s வரை புதுப்பிக்கப்பட்டது"
 
 #~ msgid "Total Groups"
 #~ msgstr "மொத்த குழுக்கள்"
@@ -1036,18 +1036,18 @@ msgstr "அனைத்தும்"
 #~ msgstr "குழு தலைமுறைகள்"
 
 #~ msgid "%s is reporting a new pre-church generation."
-#~ msgstr "% s ஒரு புதிய குழுக்கு முந்தைய தலைமுறையைப் புகாரளிக்கிறது."
+#~ msgstr "%s ஒரு புதிய குழுக்கு முந்தைய தலைமுறையைப் புகாரளிக்கிறது."
 
 #, fuzzy
 #~ msgid "%s is reporting a new church generation."
 #~ msgstr ""
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "% s ஒரு புதிய குழு தலைமுறையைப் புகாரளிக்கிறது.\n"
+#~ "%s ஒரு புதிய குழு தலைமுறையைப் புகாரளிக்கிறது.\n"
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "% s ஒரு புதிய தேவாலய தலைமுறையை அறிக்கை செய்கிறது."
+#~ "%s ஒரு புதிய தேவாலய தலைமுறையை அறிக்கை செய்கிறது."
 
 #~ msgid "%s is reporting a new leadership team generation."
-#~ msgstr "% s ஒரு புதிய தலைமைக் குழு தலைமுறையைப் புகாரளிக்கிறது."
+#~ msgstr "%s ஒரு புதிய தலைமைக் குழு தலைமுறையைப் புகாரளிக்கிறது."
 
 #~ msgid "New Contact"
 #~ msgstr "புதிய தொடர்பு"
@@ -1071,25 +1071,25 @@ msgstr "அனைத்தும்"
 #~ msgstr "புதிய பயிற்சி"
 
 #~ msgid "%s is reporting a new contact."
-#~ msgstr "% s ஒரு புதிய தொடர்பைப் புகாரளிக்கிறது."
+#~ msgstr "%s ஒரு புதிய தொடர்பைப் புகாரளிக்கிறது."
 
 #~ msgid "%s is reporting a new pre-church formed."
-#~ msgstr "% s ஒரு புதிய முன் குழுவை உருவாக்கியது."
+#~ msgstr "%s ஒரு புதிய முன் குழுவை உருவாக்கியது."
 
 #~ msgid "%s is reporting a new church formed."
-#~ msgstr "% s ஒரு புதிய குழுவை உருவாக்கியது."
+#~ msgstr "%s ஒரு புதிய குழுவை உருவாக்கியது."
 
 #~ msgid "%s is reporting a new church."
-#~ msgstr "% s ஒரு புதிய தேவாலயத்தைப் புகாரளிக்கிறது."
+#~ msgstr "%s ஒரு புதிய தேவாலயத்தைப் புகாரளிக்கிறது."
 
 #~ msgid "%s is reporting a new leadership team formed."
-#~ msgstr "% s ஒரு புதிய தலைமைக் குழு அமைக்கப்பட்டதாக அறிக்கை செய்கிறது."
+#~ msgstr "%s ஒரு புதிய தலைமைக் குழு அமைக்கப்பட்டதாக அறிக்கை செய்கிறது."
 
 #~ msgid "%s is reporting a new baptism."
-#~ msgstr "% s ஒரு புதிய ஞானஸ்நானத்தைப் புகாரளிக்கிறது."
+#~ msgstr "%s ஒரு புதிய ஞானஸ்நானத்தைப் புகாரளிக்கிறது."
 
 #~ msgid "%s is reporting an coaching relationship."
-#~ msgstr "% s ஒரு பயிற்சி உறவைப் புகாரளிக்கிறது."
+#~ msgstr "%s ஒரு பயிற்சி உறவைப் புகாரளிக்கிறது."
 
 #~ msgid "Paused"
 #~ msgstr "இடைநிறுத்தப்பட்டது"
@@ -1127,7 +1127,7 @@ msgstr "அனைத்தும்"
 #~ "உறுதிப்படுத்தவும்."
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
-#~ msgstr "தற்போதைய சீடர் கருவிகள் பதிப்பு:% 1 $ s, தேவையான பதிப்பு:% 2 $ s"
+#~ msgstr "தற்போதைய சீடர் கருவிகள் பதிப்பு: %1$s, தேவையான பதிப்பு: %2$s"
 
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-training"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
@@ -1158,7 +1158,7 @@ msgstr "அனைத்தும்"
 #~ msgstr "டாஷ்போர்டு"
 
 #~ msgid "%s days since last update"
-#~ msgstr "கடைசி புதுப்பிப்பிலிருந்து% s நாட்கள்"
+#~ msgstr "கடைசி புதுப்பிப்பிலிருந்து%s நாட்கள்"
 
 #~ msgid "Accept"
 #~ msgstr "ஏற்றுக்கொள்"
