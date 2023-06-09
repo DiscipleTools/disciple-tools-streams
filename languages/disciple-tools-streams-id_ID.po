@@ -619,7 +619,7 @@ msgstr "Semua"
 
 #~ msgctxt "Search 'something'"
 #~ msgid "Search %s"
-#~ msgstr "Telusuri% s"
+#~ msgstr "Telusur %s"
 
 #~ msgid "Create"
 #~ msgstr "Membuat"
@@ -646,13 +646,13 @@ msgstr "Semua"
 #~ msgstr "Menutup"
 
 #~ msgid "Removed %1$s: %2$s"
-#~ msgstr "% 1 $ s:% 2 $ s dihapus"
+#~ msgstr "%1$s: %2$s dihapus"
 
 #~ msgid "Added %1$s: %2$s"
-#~ msgstr "Menambahkan% 1 $ s:% 2 $ s"
+#~ msgstr "Menambahkan %1$s: %2$s"
 
 #~ msgid "Updated %1$s: %2$s to %3$s"
-#~ msgstr "Diperbarui% 1 $ s:% 2 $ s menjadi% 3 $ s"
+#~ msgstr "Diperbarui %1$s: %2$s menjadi %3$s"
 
 #~ msgid "Total Groups"
 #~ msgstr "Total Grup"
@@ -1037,18 +1037,18 @@ msgstr "Semua"
 #~ msgstr "Generasi Tim"
 
 #~ msgid "%s is reporting a new pre-church generation."
-#~ msgstr "% s melaporkan generasi pra-grup baru."
+#~ msgstr "%s melaporkan generasi pra-grup baru."
 
 #, fuzzy
 #~ msgid "%s is reporting a new church generation."
 #~ msgstr ""
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "% s melaporkan pembuatan grup baru.\n"
+#~ "%s melaporkan pembuatan grup baru.\n"
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "% s melaporkan generasi gereja baru."
+#~ "%s melaporkan generasi gereja baru."
 
 #~ msgid "%s is reporting a new leadership team generation."
-#~ msgstr "% s melaporkan generasi tim kepemimpinan baru."
+#~ msgstr "%s melaporkan generasi tim kepemimpinan baru."
 
 #~ msgid "New Contact"
 #~ msgstr "Kontak baru"
@@ -1072,25 +1072,25 @@ msgstr "Semua"
 #~ msgstr "Pelatihan Baru"
 
 #~ msgid "%s is reporting a new contact."
-#~ msgstr "% s melaporkan kontak baru."
+#~ msgstr "%s melaporkan kontak baru."
 
 #~ msgid "%s is reporting a new pre-church formed."
-#~ msgstr "% s melaporkan kelompok baru yang dibentuk."
+#~ msgstr "%s melaporkan kelompok baru yang dibentuk."
 
 #~ msgid "%s is reporting a new church formed."
-#~ msgstr "% s melaporkan pembentukan grup baru."
+#~ msgstr "%s melaporkan pembentukan grup baru."
 
 #~ msgid "%s is reporting a new church."
-#~ msgstr "% s melaporkan gereja baru."
+#~ msgstr "%s melaporkan gereja baru."
 
 #~ msgid "%s is reporting a new leadership team formed."
-#~ msgstr "% s melaporkan pembentukan tim kepemimpinan baru."
+#~ msgstr "%s melaporkan pembentukan tim kepemimpinan baru."
 
 #~ msgid "%s is reporting a new baptism."
-#~ msgstr "% s melaporkan pembaptisan baru."
+#~ msgstr "%s melaporkan pembaptisan baru."
 
 #~ msgid "%s is reporting an coaching relationship."
-#~ msgstr "% s melaporkan hubungan pembinaan."
+#~ msgstr "%s melaporkan hubungan pembinaan."
 
 #~ msgid "Paused"
 #~ msgstr "Dijeda"
@@ -1129,7 +1129,7 @@ msgstr "Semua"
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
 #~ msgstr ""
-#~ "Versi Alat Pemuridan saat ini:% 1 $ s, versi yang diperlukan:% 2 $ s"
+#~ "Versi Alat Pemuridan saat ini: %1$s, versi yang diperlukan: %2$s"
 
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-training"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
@@ -1160,7 +1160,7 @@ msgstr "Semua"
 #~ msgstr "Dasbor"
 
 #~ msgid "%s days since last update"
-#~ msgstr "% s hari sejak pembaruan terakhir"
+#~ msgstr "%s hari sejak pembaruan terakhir"
 
 #~ msgid "Accept"
 #~ msgstr "Menerima"

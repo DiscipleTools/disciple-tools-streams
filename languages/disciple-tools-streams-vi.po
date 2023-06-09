@@ -617,7 +617,7 @@ msgstr "Tất cả"
 
 #~ msgctxt "Search 'something'"
 #~ msgid "Search %s"
-#~ msgstr "Tìm kiếm% s"
+#~ msgstr "Tìm kiế %s"
 
 #~ msgid "Create"
 #~ msgstr "Tạo nên"
@@ -644,13 +644,13 @@ msgstr "Tất cả"
 #~ msgstr "Đóng"
 
 #~ msgid "Removed %1$s: %2$s"
-#~ msgstr "Đã xóa% 1 $ s:% 2 $ s"
+#~ msgstr "Đã xóa %1$s: %2$s"
 
 #~ msgid "Added %1$s: %2$s"
-#~ msgstr "Đã thêm% 1 $ s:% 2 $ s"
+#~ msgstr "Đã thêm %1$s: %2$s"
 
 #~ msgid "Updated %1$s: %2$s to %3$s"
-#~ msgstr "Đã cập nhật% 1 $ s:% 2 $ s thành% 3 $ s"
+#~ msgstr "Đã cập nhật %1$s: %2$s thành %3$s"
 
 #~ msgid "Total Groups"
 #~ msgstr "Tổng số nhóm"
@@ -1035,18 +1035,18 @@ msgstr "Tất cả"
 #~ msgstr "Thế hệ nhóm"
 
 #~ msgid "%s is reporting a new pre-church generation."
-#~ msgstr "% s đang báo cáo tạo trước nhóm mới."
+#~ msgstr "%s đang báo cáo tạo trước nhóm mới."
 
 #, fuzzy
 #~ msgid "%s is reporting a new church generation."
 #~ msgstr ""
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "% s đang báo cáo tạo nhóm mới.\n"
+#~ "%s đang báo cáo tạo nhóm mới.\n"
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "% s đang báo cáo một thế hệ nhà thờ mới."
+#~ "%s đang báo cáo một thế hệ nhà thờ mới."
 
 #~ msgid "%s is reporting a new leadership team generation."
-#~ msgstr "% s đang báo cáo một thế hệ nhóm lãnh đạo mới."
+#~ msgstr "%s đang báo cáo một thế hệ nhóm lãnh đạo mới."
 
 #~ msgid "New Contact"
 #~ msgstr "Địa chỉ liên lạc mới"
@@ -1070,25 +1070,25 @@ msgstr "Tất cả"
 #~ msgstr "Huấn luyện mới"
 
 #~ msgid "%s is reporting a new contact."
-#~ msgstr "% s đang báo cáo một địa chỉ liên hệ mới."
+#~ msgstr "%s đang báo cáo một địa chỉ liên hệ mới."
 
 #~ msgid "%s is reporting a new pre-church formed."
-#~ msgstr "% s đang báo cáo một nhóm trước mới được thành lập."
+#~ msgstr "%s đang báo cáo một nhóm trước mới được thành lập."
 
 #~ msgid "%s is reporting a new church formed."
-#~ msgstr "% s đang báo cáo một nhóm mới được thành lập."
+#~ msgstr "%s đang báo cáo một nhóm mới được thành lập."
 
 #~ msgid "%s is reporting a new church."
-#~ msgstr "% s đang báo cáo một nhà thờ mới."
+#~ msgstr "%s đang báo cáo một nhà thờ mới."
 
 #~ msgid "%s is reporting a new leadership team formed."
-#~ msgstr "% s đang báo cáo một nhóm lãnh đạo mới được thành lập."
+#~ msgstr "%s đang báo cáo một nhóm lãnh đạo mới được thành lập."
 
 #~ msgid "%s is reporting a new baptism."
-#~ msgstr "% s đang báo cáo một lễ rửa tội mới."
+#~ msgstr "%s đang báo cáo một lễ rửa tội mới."
 
 #~ msgid "%s is reporting an coaching relationship."
-#~ msgstr "% s đang báo cáo mối quan hệ huấn luyện."
+#~ msgstr "%s đang báo cáo mối quan hệ huấn luyện."
 
 #~ msgid "Paused"
 #~ msgstr "Tạm dừng"
@@ -1127,7 +1127,7 @@ msgstr "Tất cả"
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
 #~ msgstr ""
-#~ "Phiên bản Công cụ Đệ tử Hiện tại:% 1 $ s, phiên bản bắt buộc:% 2 $ s"
+#~ "Phiên bản Công cụ Đệ tử Hiện tại: %1$s, phiên bản bắt buộc: %2$s"
 
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-training"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
@@ -1158,7 +1158,7 @@ msgstr "Tất cả"
 #~ msgstr "bảng điều khiển"
 
 #~ msgid "%s days since last update"
-#~ msgstr "% s ngày kể từ lần cập nhật cuối cùng"
+#~ msgstr "%s ngày kể từ lần cập nhật cuối cùng"
 
 #~ msgid "Accept"
 #~ msgstr "Chấp nhận"

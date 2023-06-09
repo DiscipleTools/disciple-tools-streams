@@ -607,7 +607,7 @@ msgstr "Tutti"
 
 #~ msgctxt "Search 'something'"
 #~ msgid "Search %s"
-#~ msgstr "Cerca% s"
+#~ msgstr "Cerc %s"
 
 #~ msgid "Create"
 #~ msgstr "Creare"
@@ -634,13 +634,13 @@ msgstr "Tutti"
 #~ msgstr "Vicino"
 
 #~ msgid "Removed %1$s: %2$s"
-#~ msgstr "Rimosso% 1 $ s:% 2 $ s"
+#~ msgstr "Rimosso %1$s: %2$s"
 
 #~ msgid "Added %1$s: %2$s"
-#~ msgstr "% 1 $ s aggiunto:% 2 $ s"
+#~ msgstr "%1$s aggiunto: %2$s"
 
 #~ msgid "Updated %1$s: %2$s to %3$s"
-#~ msgstr "Aggiornato% 1 $ s: da% 2 $ s a% 3 $ s"
+#~ msgstr "Aggiornato %1$s: da %2$s a %3$s"
 
 #~ msgid "Total Groups"
 #~ msgstr "Gruppi totali"
@@ -1026,18 +1026,18 @@ msgstr "Tutti"
 #~ msgstr "Generazioni di squadra"
 
 #~ msgid "%s is reporting a new pre-church generation."
-#~ msgstr "% s sta segnalando una nuova generazione di pre-gruppo."
+#~ msgstr "%s sta segnalando una nuova generazione di pre-gruppo."
 
 #, fuzzy
 #~ msgid "%s is reporting a new church generation."
 #~ msgstr ""
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "% s sta segnalando una nuova generazione di gruppo.\n"
+#~ "%s sta segnalando una nuova generazione di gruppo.\n"
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "% s sta segnalando una nuova generazione di chiese."
+#~ "%s sta segnalando una nuova generazione di chiese."
 
 #~ msgid "%s is reporting a new leadership team generation."
-#~ msgstr "% s sta segnalando una nuova generazione di team di leadership."
+#~ msgstr "%s sta segnalando una nuova generazione di team di leadership."
 
 #~ msgid "New Contact"
 #~ msgstr "Nuovo contatto"
@@ -1061,25 +1061,25 @@ msgstr "Tutti"
 #~ msgstr "Nuovo coaching"
 
 #~ msgid "%s is reporting a new contact."
-#~ msgstr "% s sta segnalando un nuovo contatto."
+#~ msgstr "%s sta segnalando un nuovo contatto."
 
 #~ msgid "%s is reporting a new pre-church formed."
-#~ msgstr "% s sta segnalando la formazione di un nuovo pre-gruppo."
+#~ msgstr "%s sta segnalando la formazione di un nuovo pre-gruppo."
 
 #~ msgid "%s is reporting a new church formed."
-#~ msgstr "% s sta segnalando la formazione di un nuovo gruppo."
+#~ msgstr "%s sta segnalando la formazione di un nuovo gruppo."
 
 #~ msgid "%s is reporting a new church."
-#~ msgstr "% s sta segnalando una nuova chiesa."
+#~ msgstr "%s sta segnalando una nuova chiesa."
 
 #~ msgid "%s is reporting a new leadership team formed."
-#~ msgstr "% s sta segnalando la formazione di un nuovo team di leadership."
+#~ msgstr "%s sta segnalando la formazione di un nuovo team di leadership."
 
 #~ msgid "%s is reporting a new baptism."
-#~ msgstr "% s sta segnalando un nuovo battesimo."
+#~ msgstr "%s sta segnalando un nuovo battesimo."
 
 #~ msgid "%s is reporting an coaching relationship."
-#~ msgstr "% s sta segnalando una relazione di coaching."
+#~ msgstr "%s sta segnalando una relazione di coaching."
 
 #~ msgid "Paused"
 #~ msgstr "In pausa"
@@ -1119,7 +1119,7 @@ msgstr "Tutti"
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
 #~ msgstr ""
-#~ "Versione corrente di Disciple Tools:% 1 $ s, versione richiesta:% 2 $ s"
+#~ "Versione corrente di Disciple Tools: %1$s, versione richiesta: %2$s"
 
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-training"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
@@ -1151,7 +1151,7 @@ msgstr "Tutti"
 #~ msgstr "Pannello di controllo"
 
 #~ msgid "%s days since last update"
-#~ msgstr "% s giorni dall'ultimo aggiornamento"
+#~ msgstr "%s giorni dall'ultimo aggiornamento"
 
 #~ msgid "Accept"
 #~ msgstr "Accettare"

@@ -609,7 +609,7 @@ msgstr "सब"
 
 #~ msgctxt "Search 'something'"
 #~ msgid "Search %s"
-#~ msgstr "% S खोजें"
+#~ msgstr "%s खोजें"
 
 #~ msgid "Create"
 #~ msgstr "सृजन करना"
@@ -635,13 +635,13 @@ msgstr "सब"
 #~ msgstr "बंद करे"
 
 #~ msgid "Removed %1$s: %2$s"
-#~ msgstr "% 1 $ s:% 2 $ s को निकाला गया"
+#~ msgstr "%1$s: %2$s को निकाला गया"
 
 #~ msgid "Added %1$s: %2$s"
-#~ msgstr "% 1 $ s:% 2 $ s जोड़ा गया"
+#~ msgstr "%1$s: %2$s जोड़ा गया"
 
 #~ msgid "Updated %1$s: %2$s to %3$s"
-#~ msgstr "% 1 $ s:% 2 $ s से% 3 $ s अपडेट किया गया"
+#~ msgstr "%1$s: %2$s से %3$s अपडेट किया गया"
 
 #~ msgid "Total Groups"
 #~ msgstr "कुल समूह"
@@ -1025,18 +1025,18 @@ msgstr "सब"
 #~ msgstr "टीम जनरेशन"
 
 #~ msgid "%s is reporting a new pre-church generation."
-#~ msgstr "% s एक नई पूर्व-समूह पीढ़ी की रिपोर्ट कर रहा है।"
+#~ msgstr "%s एक नई पूर्व-समूह पीढ़ी की रिपोर्ट कर रहा है।"
 
 #, fuzzy
 #~ msgid "%s is reporting a new church generation."
 #~ msgstr ""
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "% s एक नई समूह पीढ़ी की रिपोर्ट कर रहा है।\n"
+#~ "%s एक नई समूह पीढ़ी की रिपोर्ट कर रहा है।\n"
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "% s एक नई चर्च पीढ़ी की रिपोर्ट कर रहा है।"
+#~ "%s एक नई चर्च पीढ़ी की रिपोर्ट कर रहा है।"
 
 #~ msgid "%s is reporting a new leadership team generation."
-#~ msgstr "% s एक नई नेतृत्व टीम पीढ़ी की रिपोर्ट कर रहा है।"
+#~ msgstr "%s एक नई नेतृत्व टीम पीढ़ी की रिपोर्ट कर रहा है।"
 
 #~ msgid "New Contact"
 #~ msgstr "नया कॉन्ट्रैक्ट"
@@ -1060,25 +1060,25 @@ msgstr "सब"
 #~ msgstr "नई कोचिंग"
 
 #~ msgid "%s is reporting a new contact."
-#~ msgstr "% s एक नए संपर्क की रिपोर्ट कर रहा है।"
+#~ msgstr "%s एक नए संपर्क की रिपोर्ट कर रहा है।"
 
 #~ msgid "%s is reporting a new pre-church formed."
-#~ msgstr "% s एक नए पूर्व-समूह की रिपोर्ट कर रहा है।"
+#~ msgstr "%s एक नए पूर्व-समूह की रिपोर्ट कर रहा है।"
 
 #~ msgid "%s is reporting a new church formed."
-#~ msgstr "% s एक नए समूह के गठन की रिपोर्ट कर रहा है।"
+#~ msgstr "%s एक नए समूह के गठन की रिपोर्ट कर रहा है।"
 
 #~ msgid "%s is reporting a new church."
-#~ msgstr "% s एक नए चर्च की रिपोर्ट कर रहा है।"
+#~ msgstr "%s एक नए चर्च की रिपोर्ट कर रहा है।"
 
 #~ msgid "%s is reporting a new leadership team formed."
-#~ msgstr "% s एक नई नेतृत्व टीम गठित करने की रिपोर्ट कर रहा है।"
+#~ msgstr "%s एक नई नेतृत्व टीम गठित करने की रिपोर्ट कर रहा है।"
 
 #~ msgid "%s is reporting a new baptism."
-#~ msgstr "% s एक नए बपतिस्मा की रिपोर्ट कर रहा है।"
+#~ msgstr "%s एक नए बपतिस्मा की रिपोर्ट कर रहा है।"
 
 #~ msgid "%s is reporting an coaching relationship."
-#~ msgstr "% s एक कोचिंग संबंध की सूचना दे रहा है।"
+#~ msgstr "%s एक कोचिंग संबंध की सूचना दे रहा है।"
 
 #~ msgid "Paused"
 #~ msgstr "रोके गए"
@@ -1116,7 +1116,7 @@ msgstr "सब"
 #~ "नवीनतम संस्करण है।"
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
-#~ msgstr "वर्तमान शिष्य उपकरण संस्करण:% 1 $ s, आवश्यक संस्करण:% 2 $ s"
+#~ msgstr "वर्तमान शिष्य उपकरण संस्करण: %1$s, आवश्यक संस्करण: %2$s"
 
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-training"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
@@ -1147,7 +1147,7 @@ msgstr "सब"
 #~ msgstr "डैशबोर्ड"
 
 #~ msgid "%s days since last update"
-#~ msgstr "अंतिम अपडेट के बाद से% s दिन"
+#~ msgstr "अंतिम अपडेट के बाद से%s दिन"
 
 #~ msgid "Accept"
 #~ msgstr "स्वीकार करना"
