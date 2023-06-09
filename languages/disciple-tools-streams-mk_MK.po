@@ -620,7 +620,7 @@ msgstr "Сите"
 
 #~ msgctxt "Search 'something'"
 #~ msgid "Search %s"
-#~ msgstr "Пребарувајте%s"
+#~ msgstr "Пребарувајте% s"
 
 #~ msgid "Create"
 #~ msgstr "Креирај"
@@ -647,13 +647,13 @@ msgstr "Сите"
 #~ msgstr "Затвори"
 
 #~ msgid "Removed %1$s: %2$s"
-#~ msgstr "Отстранети %1$s: %2$s"
+#~ msgstr "Отстранети% 1 $ s:% 2 $ s"
 
 #~ msgid "Added %1$s: %2$s"
-#~ msgstr "Додадено е %1$s: %2$s"
+#~ msgstr "Додадено е% 1 $ s:% 2 $ s"
 
 #~ msgid "Updated %1$s: %2$s to %3$s"
-#~ msgstr "Ажурирано %1$s: %2$s до %3$s"
+#~ msgstr "Ажурирано% 1 $ s:% 2 $ s до% 3 $ s"
 
 #~ msgid "Total Groups"
 #~ msgstr "Вкупно групи"
@@ -1038,18 +1038,18 @@ msgstr "Сите"
 #~ msgstr "Генерации на тимот"
 
 #~ msgid "%s is reporting a new pre-church generation."
-#~ msgstr "%s известува за нова генерација пред-група."
+#~ msgstr "% s известува за нова генерација пред-група."
 
 #, fuzzy
 #~ msgid "%s is reporting a new church generation."
 #~ msgstr ""
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "%s известува за нова групна генерација.\n"
+#~ "% s известува за нова групна генерација.\n"
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "%s известува за нова црковна генерација."
+#~ "% s известува за нова црковна генерација."
 
 #~ msgid "%s is reporting a new leadership team generation."
-#~ msgstr "%s известува за нова генерација на лидерски тим."
+#~ msgstr "% s известува за нова генерација на лидерски тим."
 
 #~ msgid "New Contact"
 #~ msgstr "Нов контакт"
@@ -1073,25 +1073,25 @@ msgstr "Сите"
 #~ msgstr "Нов тренер"
 
 #~ msgid "%s is reporting a new contact."
-#~ msgstr "%s пријавува нов контакт."
+#~ msgstr "% s пријавува нов контакт."
 
 #~ msgid "%s is reporting a new pre-church formed."
-#~ msgstr "%s известува за формирана нова пред-група."
+#~ msgstr "% s известува за формирана нова пред-група."
 
 #~ msgid "%s is reporting a new church formed."
-#~ msgstr "%s известува за формирана нова група."
+#~ msgstr "% s известува за формирана нова група."
 
 #~ msgid "%s is reporting a new church."
-#~ msgstr "%s известува за нова црква."
+#~ msgstr "% s известува за нова црква."
 
 #~ msgid "%s is reporting a new leadership team formed."
-#~ msgstr "%s известува за формиран нов лидерски тим."
+#~ msgstr "% s известува за формиран нов лидерски тим."
 
 #~ msgid "%s is reporting a new baptism."
-#~ msgstr "%s известува за ново крштевање."
+#~ msgstr "% s известува за ново крштевање."
 
 #~ msgid "%s is reporting an coaching relationship."
-#~ msgstr "%s известува за тренерска врска."
+#~ msgstr "% s известува за тренерска врска."
 
 #~ msgid "Paused"
 #~ msgstr "Паузиран"
@@ -1131,7 +1131,7 @@ msgstr "Сите"
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
 #~ msgstr ""
-#~ "Тековна верзија на Алатки за ученици: %1$s, потребна верзија: %2$s"
+#~ "Тековна верзија на Алатки за ученици:% 1 $ s, потребна верзија:% 2 $ s"
 
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-training"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
@@ -1162,7 +1162,7 @@ msgstr "Сите"
 #~ msgstr "Табла"
 
 #~ msgid "%s days since last update"
-#~ msgstr "%s дена од последното ажурирање"
+#~ msgstr "% s дена од последното ажурирање"
 
 #~ msgid "Accept"
 #~ msgstr "Прифати"

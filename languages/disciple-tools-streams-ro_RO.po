@@ -625,7 +625,7 @@ msgstr "Toate"
 
 #~ msgctxt "Search 'something'"
 #~ msgid "Search %s"
-#~ msgstr "Căutaț %s"
+#~ msgstr "Căutați% s"
 
 #~ msgid "Create"
 #~ msgstr "Crea"
@@ -653,13 +653,13 @@ msgstr "Toate"
 #~ msgstr "Închide"
 
 #~ msgid "Removed %1$s: %2$s"
-#~ msgstr "Eliminat %1$s: %2$s"
+#~ msgstr "Eliminat% 1 $ s:% 2 $ s"
 
 #~ msgid "Added %1$s: %2$s"
-#~ msgstr "S-a adăugat %1$s: %2$s"
+#~ msgstr "S-a adăugat% 1 $ s:% 2 $ s"
 
 #~ msgid "Updated %1$s: %2$s to %3$s"
-#~ msgstr "Actualizat %1$s: %2$s până la %3$s"
+#~ msgstr "Actualizat% 1 $ s:% 2 $ s până la% 3 $ s"
 
 #~ msgid "Total Groups"
 #~ msgstr "Total grupuri"
@@ -1044,18 +1044,18 @@ msgstr "Toate"
 #~ msgstr "Generatii de echipa"
 
 #~ msgid "%s is reporting a new pre-church generation."
-#~ msgstr "%s raportează o nouă generație pre-grup."
+#~ msgstr "% s raportează o nouă generație pre-grup."
 
 #, fuzzy
 #~ msgid "%s is reporting a new church generation."
 #~ msgstr ""
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "%s raportează o nouă generație de grup.\n"
+#~ "% s raportează o nouă generație de grup.\n"
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "%s raportează o nouă generație bisericească."
+#~ "% s raportează o nouă generație bisericească."
 
 #~ msgid "%s is reporting a new leadership team generation."
-#~ msgstr "%s raportează o nouă generație de echipe de conducere."
+#~ msgstr "% s raportează o nouă generație de echipe de conducere."
 
 #~ msgid "New Contact"
 #~ msgstr "Contact nou"
@@ -1079,25 +1079,25 @@ msgstr "Toate"
 #~ msgstr "Nou antrenor"
 
 #~ msgid "%s is reporting a new contact."
-#~ msgstr "%s raportează un contact nou."
+#~ msgstr "% s raportează un contact nou."
 
 #~ msgid "%s is reporting a new pre-church formed."
-#~ msgstr "%s raportează un nou pre-grup format."
+#~ msgstr "% s raportează un nou pre-grup format."
 
 #~ msgid "%s is reporting a new church formed."
-#~ msgstr "%s raportează un nou grup format."
+#~ msgstr "% s raportează un nou grup format."
 
 #~ msgid "%s is reporting a new church."
-#~ msgstr "%s raportează o nouă biserică."
+#~ msgstr "% s raportează o nouă biserică."
 
 #~ msgid "%s is reporting a new leadership team formed."
-#~ msgstr "%s raportează o nouă echipă de conducere formată."
+#~ msgstr "% s raportează o nouă echipă de conducere formată."
 
 #~ msgid "%s is reporting a new baptism."
-#~ msgstr "%s raportează un nou botez."
+#~ msgstr "% s raportează un nou botez."
 
 #~ msgid "%s is reporting an coaching relationship."
-#~ msgstr "%s raportează o relație de coaching."
+#~ msgstr "% s raportează o relație de coaching."
 
 #~ msgid "Paused"
 #~ msgstr "Întrerupt"
@@ -1137,7 +1137,7 @@ msgstr "Toate"
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
 #~ msgstr ""
-#~ "Versiunea actuală a Disciple Tools: %1$s, versiunea necesară: %2$s"
+#~ "Versiunea actuală a Disciple Tools:% 1 $ s, versiunea necesară:% 2 $ s"
 
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-training"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
@@ -1168,7 +1168,7 @@ msgstr "Toate"
 #~ msgstr "Bord"
 
 #~ msgid "%s days since last update"
-#~ msgstr "%s zile de la ultima actualizare"
+#~ msgstr "% s zile de la ultima actualizare"
 
 #~ msgid "Accept"
 #~ msgstr "Accept"

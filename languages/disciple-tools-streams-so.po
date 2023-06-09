@@ -619,7 +619,7 @@ msgstr "Dhammaan"
 
 #~ msgctxt "Search 'something'"
 #~ msgid "Search %s"
-#~ msgstr "Raad %s"
+#~ msgstr "Raadi% s"
 
 #~ msgid "Create"
 #~ msgstr "Abuur"
@@ -646,13 +646,13 @@ msgstr "Dhammaan"
 #~ msgstr "Xidh"
 
 #~ msgid "Removed %1$s: %2$s"
-#~ msgstr "Laga saaray %1$s: %2$s"
+#~ msgstr "Laga saaray% 1 $ s:% 2 $ s"
 
 #~ msgid "Added %1$s: %2$s"
-#~ msgstr "Lagu daray %1$s: %2$s"
+#~ msgstr "Lagu daray% 1 $ s:% 2 $ s"
 
 #~ msgid "Updated %1$s: %2$s to %3$s"
-#~ msgstr "La cusbooneysiiyay %1$s: %2$s ilaa %3$s"
+#~ msgstr "La cusbooneysiiyay% 1 $ s:% 2 $ s ilaa% 3 $ s"
 
 #~ msgid "Total Groups"
 #~ msgstr "Wadarta Kooxaha"
@@ -1040,18 +1040,18 @@ msgstr "Dhammaan"
 #~ msgstr "Jiilka Kooxda"
 
 #~ msgid "%s is reporting a new pre-church generation."
-#~ msgstr "%s waxay ka warbixineysaa jiil cusub oo koox-koox ah."
+#~ msgstr "% s waxay ka warbixineysaa jiil cusub oo koox-koox ah."
 
 #, fuzzy
 #~ msgid "%s is reporting a new church generation."
 #~ msgstr ""
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "%s waxay ka warbixineysaa jiil cusub oo koox ah.\n"
+#~ "% s waxay ka warbixineysaa jiil cusub oo koox ah.\n"
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "%s waxay tabinaysaa jiil kaniisad cusub."
+#~ "% s waxay tabinaysaa jiil kaniisad cusub."
 
 #~ msgid "%s is reporting a new leadership team generation."
-#~ msgstr "%s waxay ka warbixineysaa jiil cusub oo kooxda hogaaminta ah."
+#~ msgstr "% s waxay ka warbixineysaa jiil cusub oo kooxda hogaaminta ah."
 
 #~ msgid "New Contact"
 #~ msgstr "Xiriir Cusub"
@@ -1075,25 +1075,25 @@ msgstr "Dhammaan"
 #~ msgstr "Tababar cusub"
 
 #~ msgid "%s is reporting a new contact."
-#~ msgstr "%s waxay ka warbixineysaa xiriir cusub."
+#~ msgstr "% s waxay ka warbixineysaa xiriir cusub."
 
 #~ msgid "%s is reporting a new pre-church formed."
-#~ msgstr "%s waxay tabinaysaa koox cusub oo hore loo sameeyay."
+#~ msgstr "% s waxay tabinaysaa koox cusub oo hore loo sameeyay."
 
 #~ msgid "%s is reporting a new church formed."
-#~ msgstr "%s waxay tabinaysaa koox cusub oo la sameeyay."
+#~ msgstr "% s waxay tabinaysaa koox cusub oo la sameeyay."
 
 #~ msgid "%s is reporting a new church."
-#~ msgstr "%s waxay tabinaysaa kaniisad cusub."
+#~ msgstr "% s waxay tabinaysaa kaniisad cusub."
 
 #~ msgid "%s is reporting a new leadership team formed."
-#~ msgstr "%s waxay tabinaysaa koox hogaamineed oo cusub oo la sameeyay."
+#~ msgstr "% s waxay tabinaysaa koox hogaamineed oo cusub oo la sameeyay."
 
 #~ msgid "%s is reporting a new baptism."
-#~ msgstr "%s waxay tabineysaa baabtiis cusub."
+#~ msgstr "% s waxay tabineysaa baabtiis cusub."
 
 #~ msgid "%s is reporting an coaching relationship."
-#~ msgstr "%s waxay tabinaysaa xiriir tababarenimo."
+#~ msgstr "% s waxay tabinaysaa xiriir tababarenimo."
 
 #~ msgid "Paused"
 #~ msgstr "Hakad galay"
@@ -1134,7 +1134,7 @@ msgstr "Dhammaan"
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
 #~ msgstr ""
-#~ "Nooca Qalabka Xerta ee Hadda: %1$s, nooca loo baahan yahay: %2$s"
+#~ "Nooca Qalabka Xerta ee Hadda:% 1 $ s, nooca loo baahan yahay:% 2 $ s"
 
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-training"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
@@ -1165,7 +1165,7 @@ msgstr "Dhammaan"
 #~ msgstr "Dashboard"
 
 #~ msgid "%s days since last update"
-#~ msgstr "%s maalmood ilaa cusboonaysiintii ugu dambaysay"
+#~ msgstr "% s maalmood ilaa cusboonaysiintii ugu dambaysay"
 
 #~ msgid "Accept"
 #~ msgstr "Aqbal"

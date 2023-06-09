@@ -612,7 +612,7 @@ msgstr "Herşey"
 
 #~ msgctxt "Search 'something'"
 #~ msgid "Search %s"
-#~ msgstr "%s ara"
+#~ msgstr "% S ara"
 
 #~ msgid "Create"
 #~ msgstr "Oluşturmak"
@@ -639,13 +639,13 @@ msgstr "Herşey"
 #~ msgstr "Kapat"
 
 #~ msgid "Removed %1$s: %2$s"
-#~ msgstr "%1$s kaldırıldı: %2$s"
+#~ msgstr "% 1 $ s kaldırıldı:% 2 $ s"
 
 #~ msgid "Added %1$s: %2$s"
-#~ msgstr "%1$s eklendi: %2$s"
+#~ msgstr "% 1 $ s eklendi:% 2 $ s"
 
 #~ msgid "Updated %1$s: %2$s to %3$s"
-#~ msgstr "%1$s güncellendi: %2$s, %3$s olarak"
+#~ msgstr "% 1 $ s güncellendi:% 2 $ s,% 3 $ s olarak"
 
 #~ msgid "Total Groups"
 #~ msgstr "Toplam Gruplar"
@@ -1029,18 +1029,18 @@ msgstr "Herşey"
 #~ msgstr "Takım Nesilleri"
 
 #~ msgid "%s is reporting a new pre-church generation."
-#~ msgstr "%s, yeni bir ön grup nesli bildiriyor."
+#~ msgstr "% s, yeni bir ön grup nesli bildiriyor."
 
 #, fuzzy
 #~ msgid "%s is reporting a new church generation."
 #~ msgstr ""
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "%s yeni bir grup nesli bildiriyor.\n"
+#~ "% s yeni bir grup nesli bildiriyor.\n"
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "%s, yeni bir kilise nesli bildiriyor."
+#~ "% s, yeni bir kilise nesli bildiriyor."
 
 #~ msgid "%s is reporting a new leadership team generation."
-#~ msgstr "%s, yeni bir liderlik ekibi nesli bildiriyor."
+#~ msgstr "% s, yeni bir liderlik ekibi nesli bildiriyor."
 
 #~ msgid "New Contact"
 #~ msgstr "Yeni bağlantı"
@@ -1064,25 +1064,25 @@ msgstr "Herşey"
 #~ msgstr "Yeni Koçluk"
 
 #~ msgid "%s is reporting a new contact."
-#~ msgstr "%s yeni bir kişi bildiriyor."
+#~ msgstr "% s yeni bir kişi bildiriyor."
 
 #~ msgid "%s is reporting a new pre-church formed."
-#~ msgstr "%s yeni bir ön grup oluşturduğunu bildiriyor."
+#~ msgstr "% s yeni bir ön grup oluşturduğunu bildiriyor."
 
 #~ msgid "%s is reporting a new church formed."
-#~ msgstr "%s yeni bir grup oluştuğunu bildiriyor."
+#~ msgstr "% s yeni bir grup oluştuğunu bildiriyor."
 
 #~ msgid "%s is reporting a new church."
-#~ msgstr "%s yeni bir kilise bildiriyor."
+#~ msgstr "% s yeni bir kilise bildiriyor."
 
 #~ msgid "%s is reporting a new leadership team formed."
-#~ msgstr "%s, yeni bir liderlik ekibinin kurulduğunu bildiriyor."
+#~ msgstr "% s, yeni bir liderlik ekibinin kurulduğunu bildiriyor."
 
 #~ msgid "%s is reporting a new baptism."
-#~ msgstr "%s yeni bir vaftiz bildiriyor."
+#~ msgstr "% s yeni bir vaftiz bildiriyor."
 
 #~ msgid "%s is reporting an coaching relationship."
-#~ msgstr "%s bir koçluk ilişkisi bildiriyor."
+#~ msgstr "% s bir koçluk ilişkisi bildiriyor."
 
 #~ msgid "Paused"
 #~ msgstr "Duraklatıldı"
@@ -1120,7 +1120,7 @@ msgstr "Herşey"
 #~ "son sürüm olduğundan emin olun."
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
-#~ msgstr "Mevcut Öğrenci Araçları sürümü: %1$s, gerekli sürüm: %2$s"
+#~ msgstr "Mevcut Öğrenci Araçları sürümü:% 1 $ s, gerekli sürüm:% 2 $ s"
 
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-training"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
@@ -1151,7 +1151,7 @@ msgstr "Herşey"
 #~ msgstr "Gösterge Paneli"
 
 #~ msgid "%s days since last update"
-#~ msgstr "Son güncellemeden bu yan %s gün"
+#~ msgstr "Son güncellemeden bu yana% s gün"
 
 #~ msgid "Accept"
 #~ msgstr "Kabul etmek"

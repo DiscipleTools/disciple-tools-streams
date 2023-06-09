@@ -615,7 +615,7 @@ msgstr "Gbogbo"
 
 #~ msgctxt "Search 'something'"
 #~ msgid "Search %s"
-#~ msgstr "W %s"
+#~ msgstr "Wa% s"
 
 #~ msgid "Create"
 #~ msgstr "Ṣẹda"
@@ -642,13 +642,13 @@ msgstr "Gbogbo"
 #~ msgstr "Pade"
 
 #~ msgid "Removed %1$s: %2$s"
-#~ msgstr "Ti yọ %1$s kuro: %2$s"
+#~ msgstr "Ti yọ% 1 $ s kuro:% 2 $ s"
 
 #~ msgid "Added %1$s: %2$s"
-#~ msgstr "Ṣafikun %1$s: %2$s"
+#~ msgstr "Ṣafikun% 1 $ s:% 2 $ s"
 
 #~ msgid "Updated %1$s: %2$s to %3$s"
-#~ msgstr "Imudojuiwọn %1$s: %2$s si %3$s"
+#~ msgstr "Imudojuiwọn% 1 $ s:% 2 $ s si% 3 $ s"
 
 #~ msgid "Total Groups"
 #~ msgstr "Lapapọ Awọn ẹgbẹ"
@@ -1033,18 +1033,18 @@ msgstr "Gbogbo"
 #~ msgstr "Awọn iran Ẹgbẹ"
 
 #~ msgid "%s is reporting a new pre-church generation."
-#~ msgstr "%s n ṣe ijabọ iran-ẹgbẹ tuntun kan."
+#~ msgstr "% s n ṣe ijabọ iran-ẹgbẹ tuntun kan."
 
 #, fuzzy
 #~ msgid "%s is reporting a new church generation."
 #~ msgstr ""
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "%s n ṣe ijabọ iran ẹgbẹ tuntun kan.\n"
+#~ "% s n ṣe ijabọ iran ẹgbẹ tuntun kan.\n"
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "%s n ṣe ijabọ iran ijo tuntun kan."
+#~ "% s n ṣe ijabọ iran ijo tuntun kan."
 
 #~ msgid "%s is reporting a new leadership team generation."
-#~ msgstr "%s n ṣe ijabọ iran ẹgbẹ olori tuntun kan."
+#~ msgstr "% s n ṣe ijabọ iran ẹgbẹ olori tuntun kan."
 
 #~ msgid "New Contact"
 #~ msgstr "Olubasọrọ Tuntun"
@@ -1068,25 +1068,25 @@ msgstr "Gbogbo"
 #~ msgstr "Ẹkọ Titun"
 
 #~ msgid "%s is reporting a new contact."
-#~ msgstr "%s n ṣe ijabọ olubasoro tuntun kan."
+#~ msgstr "% s n ṣe ijabọ olubasoro tuntun kan."
 
 #~ msgid "%s is reporting a new pre-church formed."
-#~ msgstr "%s n ṣe ijabọ ẹgbẹ tuntun ti o ṣẹda."
+#~ msgstr "% s n ṣe ijabọ ẹgbẹ tuntun ti o ṣẹda."
 
 #~ msgid "%s is reporting a new church formed."
-#~ msgstr "%s n ṣe ijabọ ẹgbẹ tuntun ti a ṣẹda."
+#~ msgstr "% s n ṣe ijabọ ẹgbẹ tuntun ti a ṣẹda."
 
 #~ msgid "%s is reporting a new church."
-#~ msgstr "%s n ṣe ijabọ ijo tuntun kan."
+#~ msgstr "% s n ṣe ijabọ ijo tuntun kan."
 
 #~ msgid "%s is reporting a new leadership team formed."
-#~ msgstr "%s n ṣe ijabọ ẹgbẹ oludari tuntun ti a ṣe."
+#~ msgstr "% s n ṣe ijabọ ẹgbẹ oludari tuntun ti a ṣe."
 
 #~ msgid "%s is reporting a new baptism."
-#~ msgstr "%s n ṣe ijabọ iribomi kan."
+#~ msgstr "% s n ṣe ijabọ iribomi kan."
 
 #~ msgid "%s is reporting an coaching relationship."
-#~ msgstr "%s n ṣe ijabọ ibasepọ olukọni."
+#~ msgstr "% s n ṣe ijabọ ibasepọ olukọni."
 
 #~ msgid "Paused"
 #~ msgstr "Da duro"
@@ -1124,7 +1124,7 @@ msgstr "Gbogbo"
 #~ "pe o jẹ ẹya tuntun."
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
-#~ msgstr "Ẹya Awọn irinṣẹ Ọmọ-ẹgbẹ lọwọlọwọ: %1$s, ẹya ti a beere: %2$s"
+#~ msgstr "Ẹya Awọn irinṣẹ Ọmọ-ẹgbẹ lọwọlọwọ:% 1 $ s, ẹya ti a beere:% 2 $ s"
 
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-training"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
@@ -1155,7 +1155,7 @@ msgstr "Gbogbo"
 #~ msgstr "Dasibodu"
 
 #~ msgid "%s days since last update"
-#~ msgstr "%s ọjọ lati igba ti o kẹhin"
+#~ msgstr "% s ọjọ lati igba ti o kẹhin"
 
 #~ msgid "Accept"
 #~ msgstr "Gba"

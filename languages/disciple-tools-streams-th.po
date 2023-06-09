@@ -608,7 +608,7 @@ msgstr "ทั้งหมด"
 
 #~ msgctxt "Search 'something'"
 #~ msgid "Search %s"
-#~ msgstr "ค้นหา%s"
+#~ msgstr "ค้นหา% s"
 
 #~ msgid "Create"
 #~ msgstr "สร้าง"
@@ -633,13 +633,13 @@ msgstr "ทั้งหมด"
 #~ msgstr "ปิด"
 
 #~ msgid "Removed %1$s: %2$s"
-#~ msgstr "ลบ %1$s: %2$s"
+#~ msgstr "ลบ% 1 $ s:% 2 $ s"
 
 #~ msgid "Added %1$s: %2$s"
-#~ msgstr "เพิ่ม %1$s: %2$s"
+#~ msgstr "เพิ่ม% 1 $ s:% 2 $ s"
 
 #~ msgid "Updated %1$s: %2$s to %3$s"
-#~ msgstr "อัปเดต %1$s: %2$s เป็น %3$s"
+#~ msgstr "อัปเดต% 1 $ s:% 2 $ s เป็น% 3 $ s"
 
 #~ msgid "Total Groups"
 #~ msgstr "กลุ่มทั้งหมด"
@@ -1022,18 +1022,18 @@ msgstr "ทั้งหมด"
 #~ msgstr "รุ่นของทีม"
 
 #~ msgid "%s is reporting a new pre-church generation."
-#~ msgstr "%s กำลังรายงานการสร้างกลุ่มล่วงหน้าใหม่"
+#~ msgstr "% s กำลังรายงานการสร้างกลุ่มล่วงหน้าใหม่"
 
 #, fuzzy
 #~ msgid "%s is reporting a new church generation."
 #~ msgstr ""
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "%s กำลังรายงานการสร้างกลุ่มใหม่\n"
+#~ "% s กำลังรายงานการสร้างกลุ่มใหม่\n"
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "%s กำลังรายงานคริสตจักรรุ่นใหม่"
+#~ "% s กำลังรายงานคริสตจักรรุ่นใหม่"
 
 #~ msgid "%s is reporting a new leadership team generation."
-#~ msgstr "%s กำลังรายงานการสร้างทีมผู้นำใหม่"
+#~ msgstr "% s กำลังรายงานการสร้างทีมผู้นำใหม่"
 
 #~ msgid "New Contact"
 #~ msgstr "รายชื่อติดต่อใหม่"
@@ -1057,25 +1057,25 @@ msgstr "ทั้งหมด"
 #~ msgstr "การฝึกสอนใหม่"
 
 #~ msgid "%s is reporting a new contact."
-#~ msgstr "%s กำลังรายงานผู้ติดต่อใหม่"
+#~ msgstr "% s กำลังรายงานผู้ติดต่อใหม่"
 
 #~ msgid "%s is reporting a new pre-church formed."
-#~ msgstr "%s กำลังรายงานการจัดตั้งกลุ่มล่วงหน้าใหม่"
+#~ msgstr "% s กำลังรายงานการจัดตั้งกลุ่มล่วงหน้าใหม่"
 
 #~ msgid "%s is reporting a new church formed."
-#~ msgstr "%s กำลังรายงานกลุ่มใหม่ที่ก่อตั้งขึ้น"
+#~ msgstr "% s กำลังรายงานกลุ่มใหม่ที่ก่อตั้งขึ้น"
 
 #~ msgid "%s is reporting a new church."
-#~ msgstr "%s กำลังรายงานเรื่องคริสตจักรใหม่"
+#~ msgstr "% s กำลังรายงานเรื่องคริสตจักรใหม่"
 
 #~ msgid "%s is reporting a new leadership team formed."
-#~ msgstr "%s กำลังรายงานว่ามีการจัดตั้งทีมผู้นำใหม่"
+#~ msgstr "% s กำลังรายงานว่ามีการจัดตั้งทีมผู้นำใหม่"
 
 #~ msgid "%s is reporting a new baptism."
-#~ msgstr "%s กำลังรายงานการรับบัพติศมาใหม่"
+#~ msgstr "% s กำลังรายงานการรับบัพติศมาใหม่"
 
 #~ msgid "%s is reporting an coaching relationship."
-#~ msgstr "%s กำลังรายงานความสัมพันธ์ในการฝึกสอน"
+#~ msgstr "% s กำลังรายงานความสัมพันธ์ในการฝึกสอน"
 
 #~ msgid "Paused"
 #~ msgstr "หยุดชั่วคราว"
@@ -1112,7 +1112,7 @@ msgstr "ทั้งหมด"
 #~ "กรุณาเปิดใช้งานธีม 'Disciple Tools' หรือตรวจสอบให้แน่ใจว่าเป็นเวอร์ชันล่าสุด"
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
-#~ msgstr "เวอร์ชันปัจจุบันของ Disciple Tools: %1$s เวอร์ชันที่ต้องการ: %2$s"
+#~ msgstr "เวอร์ชันปัจจุบันของ Disciple Tools:% 1 $ s เวอร์ชันที่ต้องการ:% 2 $ s"
 
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-training"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
@@ -1143,7 +1143,7 @@ msgstr "ทั้งหมด"
 #~ msgstr "แผงควบคุม"
 
 #~ msgid "%s days since last update"
-#~ msgstr "%s วันนับตั้งแต่การอัปเดตครั้งล่าสุด"
+#~ msgstr "% s วันนับตั้งแต่การอัปเดตครั้งล่าสุด"
 
 #~ msgid "Accept"
 #~ msgstr "ยอมรับ"

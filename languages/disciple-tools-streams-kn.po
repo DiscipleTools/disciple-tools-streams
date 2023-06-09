@@ -613,7 +613,7 @@ msgstr "ಎಲ್ಲಾ"
 
 #~ msgctxt "Search 'something'"
 #~ msgid "Search %s"
-#~ msgstr "%s ಹುಡುಕಿ"
+#~ msgstr "% S ಹುಡುಕಿ"
 
 #~ msgid "Create"
 #~ msgstr "ರಚಿಸಿ"
@@ -640,13 +640,13 @@ msgstr "ಎಲ್ಲಾ"
 #~ msgstr "ಮುಚ್ಚಿ"
 
 #~ msgid "Removed %1$s: %2$s"
-#~ msgstr "%1$s ತೆಗೆದುಹಾಕಲಾಗಿದೆ: %2$s"
+#~ msgstr "% 1 $ s ತೆಗೆದುಹಾಕಲಾಗಿದೆ:% 2 $ s"
 
 #~ msgid "Added %1$s: %2$s"
-#~ msgstr "%1$s ಸೇರಿಸಲಾಗಿದೆ: %2$s"
+#~ msgstr "% 1 $ s ಸೇರಿಸಲಾಗಿದೆ:% 2 $ s"
 
 #~ msgid "Updated %1$s: %2$s to %3$s"
-#~ msgstr "%1$s: %2$s ನಿಂದ %3$s ಗೆ ನವೀಕರಿಸಲಾಗಿದೆ"
+#~ msgstr "% 1 $ s:% 2 $ s ನಿಂದ% 3 $ s ಗೆ ನವೀಕರಿಸಲಾಗಿದೆ"
 
 #~ msgid "Total Groups"
 #~ msgstr "ಒಟ್ಟು ಗುಂಪುಗಳು"
@@ -1032,18 +1032,18 @@ msgstr "ಎಲ್ಲಾ"
 #~ msgstr "ತಂಡದ ಪೀಳಿಗೆಗಳು"
 
 #~ msgid "%s is reporting a new pre-church generation."
-#~ msgstr "%s ಹೊಸ ಗುಂಪು ಪೂರ್ವ ಪೀಳಿಗೆಯನ್ನು ವರದಿ ಮಾಡುತ್ತಿದೆ."
+#~ msgstr "% s ಹೊಸ ಗುಂಪು ಪೂರ್ವ ಪೀಳಿಗೆಯನ್ನು ವರದಿ ಮಾಡುತ್ತಿದೆ."
 
 #, fuzzy
 #~ msgid "%s is reporting a new church generation."
 #~ msgstr ""
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "%s ಹೊಸ ಗುಂಪು ಪೀಳಿಗೆಯನ್ನು ವರದಿ ಮಾಡುತ್ತಿದೆ.\n"
+#~ "% s ಹೊಸ ಗುಂಪು ಪೀಳಿಗೆಯನ್ನು ವರದಿ ಮಾಡುತ್ತಿದೆ.\n"
 #~ "#-#-#-#-#  catalog.po (Disciple Tools Plugins)  #-#-#-#-#\n"
-#~ "%s ಹೊಸ ಚರ್ಚ್ ಪೀಳಿಗೆಯನ್ನು ವರದಿ ಮಾಡುತ್ತಿದೆ."
+#~ "% s ಹೊಸ ಚರ್ಚ್ ಪೀಳಿಗೆಯನ್ನು ವರದಿ ಮಾಡುತ್ತಿದೆ."
 
 #~ msgid "%s is reporting a new leadership team generation."
-#~ msgstr "%s ಹೊಸ ನಾಯಕತ್ವದ ತಂಡದ ಪೀಳಿಗೆಯನ್ನು ವರದಿ ಮಾಡುತ್ತಿದೆ."
+#~ msgstr "% s ಹೊಸ ನಾಯಕತ್ವದ ತಂಡದ ಪೀಳಿಗೆಯನ್ನು ವರದಿ ಮಾಡುತ್ತಿದೆ."
 
 #~ msgid "New Contact"
 #~ msgstr "ಹೊಸ ಸಂಪರ್ಕ"
@@ -1067,25 +1067,25 @@ msgstr "ಎಲ್ಲಾ"
 #~ msgstr "ಹೊಸ ತರಬೇತಿ"
 
 #~ msgid "%s is reporting a new contact."
-#~ msgstr "%s ಹೊಸ ಸಂಪರ್ಕವನ್ನು ವರದಿ ಮಾಡುತ್ತಿದೆ."
+#~ msgstr "% s ಹೊಸ ಸಂಪರ್ಕವನ್ನು ವರದಿ ಮಾಡುತ್ತಿದೆ."
 
 #~ msgid "%s is reporting a new pre-church formed."
-#~ msgstr "%s ಹೊಸ ಪೂರ್ವ ಗುಂಪನ್ನು ರಚಿಸುತ್ತಿದೆ ಎಂದು ವರದಿ ಮಾಡುತ್ತಿದೆ."
+#~ msgstr "% s ಹೊಸ ಪೂರ್ವ ಗುಂಪನ್ನು ರಚಿಸುತ್ತಿದೆ ಎಂದು ವರದಿ ಮಾಡುತ್ತಿದೆ."
 
 #~ msgid "%s is reporting a new church formed."
-#~ msgstr "%s ಹೊಸ ಗುಂಪನ್ನು ರಚಿಸುತ್ತಿದೆ ಎಂದು ವರದಿ ಮಾಡುತ್ತಿದೆ."
+#~ msgstr "% s ಹೊಸ ಗುಂಪನ್ನು ರಚಿಸುತ್ತಿದೆ ಎಂದು ವರದಿ ಮಾಡುತ್ತಿದೆ."
 
 #~ msgid "%s is reporting a new church."
-#~ msgstr "%s ಹೊಸ ಚರ್ಚ್ ಅನ್ನು ವರದಿ ಮಾಡುತ್ತಿದೆ."
+#~ msgstr "% s ಹೊಸ ಚರ್ಚ್ ಅನ್ನು ವರದಿ ಮಾಡುತ್ತಿದೆ."
 
 #~ msgid "%s is reporting a new leadership team formed."
-#~ msgstr "%s ಹೊಸ ನಾಯಕತ್ವದ ತಂಡವನ್ನು ರಚಿಸುತ್ತಿದೆ ಎಂದು ವರದಿ ಮಾಡುತ್ತಿದೆ."
+#~ msgstr "% s ಹೊಸ ನಾಯಕತ್ವದ ತಂಡವನ್ನು ರಚಿಸುತ್ತಿದೆ ಎಂದು ವರದಿ ಮಾಡುತ್ತಿದೆ."
 
 #~ msgid "%s is reporting a new baptism."
-#~ msgstr "%s ಹೊಸ ಬ್ಯಾಪ್ಟಿಸಮ್ ಅನ್ನು ವರದಿ ಮಾಡುತ್ತಿದೆ."
+#~ msgstr "% s ಹೊಸ ಬ್ಯಾಪ್ಟಿಸಮ್ ಅನ್ನು ವರದಿ ಮಾಡುತ್ತಿದೆ."
 
 #~ msgid "%s is reporting an coaching relationship."
-#~ msgstr "%s ಕೋಚಿಂಗ್ ಸಂಬಂಧವನ್ನು ವರದಿ ಮಾಡುತ್ತಿದೆ."
+#~ msgstr "% s ಕೋಚಿಂಗ್ ಸಂಬಂಧವನ್ನು ವರದಿ ಮಾಡುತ್ತಿದೆ."
 
 #~ msgid "Paused"
 #~ msgstr "ವಿರಾಮಗೊಳಿಸಲಾಗಿದೆ"
@@ -1123,7 +1123,7 @@ msgstr "ಎಲ್ಲಾ"
 #~ "ಆವೃತ್ತಿಯಾಗಿದೆ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ."
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
-#~ msgstr "ಪ್ರಸ್ತುತ ಶಿಷ್ಯ ಪರಿಕರಗಳ ಆವೃತ್ತಿ: %1$s, ಅಗತ್ಯವಿರುವ ಆವೃತ್ತಿ: %2$s"
+#~ msgstr "ಪ್ರಸ್ತುತ ಶಿಷ್ಯ ಪರಿಕರಗಳ ಆವೃತ್ತಿ:% 1 $ s, ಅಗತ್ಯವಿರುವ ಆವೃತ್ತಿ:% 2 $ s"
 
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-training"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"
@@ -1154,7 +1154,7 @@ msgstr "ಎಲ್ಲಾ"
 #~ msgstr "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್"
 
 #~ msgid "%s days since last update"
-#~ msgstr "ಕೊನೆಯ ನವೀಕರಣದ ನಂತರ%s ದಿನಗಳು"
+#~ msgstr "ಕೊನೆಯ ನವೀಕರಣದ ನಂತರ% s ದಿನಗಳು"
 
 #~ msgid "Accept"
 #~ msgstr "ಒಪ್ಪಿಕೊಳ್ಳಿ"
