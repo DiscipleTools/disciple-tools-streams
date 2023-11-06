@@ -1,0 +1,380 @@
+# Copyright (C) 2023 
+# This file is distributed under the same license as the Disciple.Tools - Streams plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Disciple.Tools - Streams 3.1.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
+"streams\n"
+"POT-Creation-Date: 2023-03-16T07:40:31+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: disciple-tools-streams\n"
+
+#. Author URI of the plugin
+msgid "https://github.com/DiscipleTools"
+msgstr ""
+
+#: magic/magic-reports.php:121
+msgid "Reports"
+msgstr ""
+
+#: magic/magic-reports.php:122
+msgid "Child Reports"
+msgstr ""
+
+#: magic/magic-reports.php:158
+#: magic/magic-reports.php:211
+msgid "Total Baptisms"
+msgstr ""
+
+#: magic/magic-reports.php:159
+#: magic/magic-reports.php:212
+msgid "Total Disciples"
+msgstr ""
+
+#: magic/magic-reports.php:160
+#: magic/magic-reports.php:213
+msgid "Total Churches"
+msgstr ""
+
+#: magic/magic-reports.php:161
+#: magic/magic-reports.php:214
+msgid "Countries"
+msgstr ""
+
+#: magic/magic-reports.php:162
+#: magic/magic-reports.php:215
+msgid "States"
+msgstr ""
+
+#: magic/magic-reports.php:163
+#: magic/magic-reports.php:216
+msgid "Counties"
+msgstr ""
+
+#: magic/magic-reports.php:484
+msgid "Add Report"
+msgstr ""
+
+#: metrics/-metrics-mapbox-personal-maps.php:30
+msgid "Streams Maps"
+msgstr ""
+
+#: metrics/-metrics-mapbox-personal-maps.php:31
+#: metrics/metrics-mapbox-maps.php:31
+#: post-type/streams-post-type.php:66
+#: post-type/streams-post-type.php:436
+#: post-type/streams-post-type.php:448
+#: post-type/streams-post-type.php:460
+#: post-type/streams-post-type.php:483
+#: post-type/streams-post-type.php:522
+#: post-type/streams-post-type.php:539
+#: post-type/streams-post-type.php:556
+#: post-type/streams-post-type.php:593
+msgid "Streams"
+msgstr ""
+
+#: metrics/metrics-mapbox-maps.php:30
+msgid "Streams Map"
+msgstr ""
+
+#: post-type/streams-post-type.php:66
+#: post-type/streams-post-type.php:482
+msgid "Stream"
+msgstr ""
+
+#: post-type/streams-post-type.php:73
+msgid "Streams Admin"
+msgstr ""
+
+#: post-type/streams-post-type.php:84
+#: post-type/streams-post-type.php:206
+#: post-type/streams-post-type.php:606
+#: post-type/streams-post-type.php:607
+msgid "Reporter"
+msgstr ""
+
+#: post-type/streams-post-type.php:92
+msgid "Multiplier"
+msgstr ""
+
+#: post-type/streams-post-type.php:98
+msgid "Dispatcher"
+msgstr ""
+
+#: post-type/streams-post-type.php:105
+msgid "Disciple.Tools Admin"
+msgstr ""
+
+#: post-type/streams-post-type.php:112
+msgid "Administrator"
+msgstr ""
+
+#: post-type/streams-post-type.php:138
+msgid "Status"
+msgstr ""
+
+#: post-type/streams-post-type.php:143
+msgctxt "Stream Status label"
+msgid "New"
+msgstr ""
+
+#: post-type/streams-post-type.php:144
+msgctxt "Stream Status field description"
+msgid "New stream added to the system"
+msgstr ""
+
+#: post-type/streams-post-type.php:148
+msgctxt "Stream Status label"
+msgid "Model"
+msgstr ""
+
+#: post-type/streams-post-type.php:149
+msgctxt "Stream Status field description"
+msgid "This stream is being actively coached and is still in the modelling stage."
+msgstr ""
+
+#: post-type/streams-post-type.php:153
+msgctxt "Stream Status label"
+msgid "Assist"
+msgstr ""
+
+#: post-type/streams-post-type.php:154
+msgctxt "Stream Status field description"
+msgid "This stream is being actively coached and is still in the assist stage."
+msgstr ""
+
+#: post-type/streams-post-type.php:158
+msgctxt "Stream Status label"
+msgid "Watch"
+msgstr ""
+
+#: post-type/streams-post-type.php:159
+msgctxt "Stream Status field description"
+msgid "This stream is being actively coached and is still in the watch stage."
+msgstr ""
+
+#: post-type/streams-post-type.php:163
+msgctxt "Stream Status label"
+msgid "Leave/Launch"
+msgstr ""
+
+#: post-type/streams-post-type.php:164
+msgctxt "Stream Status field description"
+msgid "This stream is being actively coached and is still in the leave/launch stage."
+msgstr ""
+
+#: post-type/streams-post-type.php:168
+msgctxt "Stream Status label"
+msgid "Active"
+msgstr ""
+
+#: post-type/streams-post-type.php:169
+msgctxt "Stream Status field description"
+msgid "This is an active stream in no specific stage."
+msgstr ""
+
+#: post-type/streams-post-type.php:173
+msgctxt "Stream Status label"
+msgid "Paused"
+msgstr ""
+
+#: post-type/streams-post-type.php:174
+msgctxt "Stream Status field description"
+msgid "This contact is currently on hold. It has potential of getting scheduled in the future."
+msgstr ""
+
+#: post-type/streams-post-type.php:178
+msgctxt "Stream Status label"
+msgid "Closed"
+msgstr ""
+
+#: post-type/streams-post-type.php:179
+msgctxt "Stream Status field description"
+msgid "This stream is no longer going to happen."
+msgstr ""
+
+#: post-type/streams-post-type.php:187
+msgid "Assigned To"
+msgstr ""
+
+#: post-type/streams-post-type.php:188
+msgid "Select the main person who is responsible for reporting on this stream."
+msgstr ""
+
+#: post-type/streams-post-type.php:195
+msgid "Coach"
+msgstr ""
+
+#: post-type/streams-post-type.php:196
+msgctxt "Optional Documentation"
+msgid "The person who planted and/or is coaching this stream. Only one person can be assigned to a stream while multiple people can be coaches / church planters of this stream."
+msgstr ""
+
+#: post-type/streams-post-type.php:207
+msgctxt "Optional Documentation"
+msgid "The person who is the responsible reporter for this stream."
+msgstr ""
+
+#: post-type/streams-post-type.php:217
+msgid "Description"
+msgstr ""
+
+#: post-type/streams-post-type.php:225
+#: post-type/streams-post-type.php:592
+msgid "People Groups"
+msgstr ""
+
+#: post-type/streams-post-type.php:226
+msgctxt "Optional Documentation"
+msgid "The people streams represented by this stream."
+msgstr ""
+
+#: post-type/streams-post-type.php:239
+#: post-type/streams-post-type.php:248
+msgid "Locations"
+msgstr ""
+
+#: post-type/streams-post-type.php:240
+#: post-type/streams-post-type.php:249
+msgctxt "Optional Documentation"
+msgid "The general location where this contact is located."
+msgstr ""
+
+#: post-type/streams-post-type.php:257
+msgid "Address"
+msgstr ""
+
+#: post-type/streams-post-type.php:277
+msgid "Number of Leaders"
+msgstr ""
+
+#: post-type/streams-post-type.php:285
+#: post-type/streams-post-type.php:540
+msgid "Leaders"
+msgstr ""
+
+#: post-type/streams-post-type.php:297
+msgid "Number of Disciples"
+msgstr ""
+
+#: post-type/streams-post-type.php:305
+msgid "Key Disciples"
+msgstr ""
+
+#: post-type/streams-post-type.php:316
+msgid "Number of Groups"
+msgstr ""
+
+#: post-type/streams-post-type.php:324
+#: post-type/streams-post-type.php:523
+msgid "Groups"
+msgstr ""
+
+#: post-type/streams-post-type.php:340
+msgid "Parent Stream"
+msgstr ""
+
+#: post-type/streams-post-type.php:341
+msgctxt "Optional Documentation"
+msgid "A stream that launched this stream."
+msgstr ""
+
+#: post-type/streams-post-type.php:352
+msgid "Peer Streams"
+msgstr ""
+
+#: post-type/streams-post-type.php:353
+msgctxt "Optional Documentation"
+msgid "A related stream that isn't a parent/child in relationship. It might indicate streams that collaborate, are about to merge, recently split, etc."
+msgstr ""
+
+#: post-type/streams-post-type.php:364
+msgid "Child Streams"
+msgstr ""
+
+#: post-type/streams-post-type.php:365
+msgctxt "Optional Documentation"
+msgid "A stream that has been birthed out of this stream."
+msgstr ""
+
+#: post-type/streams-post-type.php:379
+msgid "Trainings Total"
+msgstr ""
+
+#: post-type/streams-post-type.php:386
+msgid "Trainings"
+msgstr ""
+
+#: post-type/streams-post-type.php:401
+msgid "Leader in Stream"
+msgstr ""
+
+#: post-type/streams-post-type.php:402
+msgctxt "Optional Documentation"
+msgid "Leader of a stream"
+msgstr ""
+
+#: post-type/streams-post-type.php:412
+msgid "Key Disciple in Stream"
+msgstr ""
+
+#: post-type/streams-post-type.php:413
+msgctxt "Optional Documentation"
+msgid "Disciple in a stream."
+msgstr ""
+
+#: post-type/streams-post-type.php:423
+msgid "Reporter in Stream"
+msgstr ""
+
+#: post-type/streams-post-type.php:424
+msgctxt "Optional Documentation"
+msgid "Reporter for a stream."
+msgstr ""
+
+#: post-type/streams-post-type.php:505
+msgid "Members"
+msgstr ""
+
+#: post-type/streams-post-type.php:506
+msgid "Contacts"
+msgstr ""
+
+#: post-type/streams-post-type.php:557
+msgid "Coaches"
+msgstr ""
+
+#: post-type/streams-post-type.php:570
+msgid "Planted by"
+msgstr ""
+
+#: post-type/streams-post-type.php:571
+msgid "Planting"
+msgstr ""
+
+#: post-type/streams-post-type.php:624
+msgid "Connections"
+msgstr ""
+
+#: post-type/streams-post-type.php:625
+msgid "Other"
+msgstr ""
+
+#: post-type/streams-post-type.php:954
+msgctxt "List Filters"
+msgid "Assigned to me"
+msgstr ""
+
+#: post-type/streams-post-type.php:962
+#: post-type/streams-post-type.php:1021
+#: post-type/streams-post-type.php:1029
+msgctxt "List Filters"
+msgid "All"
+msgstr ""

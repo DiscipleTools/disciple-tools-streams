@@ -4,14 +4,17 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
 "streams\n"
 "POT-Creation-Date: 2023-03-16T07:40:31+00:00\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2023-08-17 15:48+0000\n"
+"Last-Translator: nesrine <nesrine0325@gmail.com>\n"
+"Language-Team: Arabic <https://translate.disciple.tools/projects/"
+"disciple-tools/disciple-tools-stream/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2.2\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. Author URI of the plugin
 msgid "https://github.com/DiscipleTools"
@@ -32,16 +35,12 @@ msgid "Total Baptisms"
 msgstr "مجموع المعموديات"
 
 #: magic/magic-reports.php:159 magic/magic-reports.php:212
-#, fuzzy
-#| msgid "Key Disciples"
 msgid "Total Disciples"
-msgstr "التلاميذ الرئيسيون"
+msgstr "مجموع التلاميذ"
 
 #: magic/magic-reports.php:160 magic/magic-reports.php:213
-#, fuzzy
-#| msgid "Churches"
 msgid "Total Churches"
-msgstr "الكنائس"
+msgstr "مجموع الكنائس"
 
 #: magic/magic-reports.php:161 magic/magic-reports.php:214
 msgid "Countries"
@@ -61,7 +60,7 @@ msgstr "إضافة تقرير"
 
 #: metrics/-metrics-mapbox-personal-maps.php:30
 msgid "Streams Maps"
-msgstr "خرائط تيارات"
+msgstr "تيارات الخرائط"
 
 #: metrics/-metrics-mapbox-personal-maps.php:31
 #: metrics/metrics-mapbox-maps.php:31 post-type/streams-post-type.php:66
@@ -73,31 +72,25 @@ msgid "Streams"
 msgstr "تيارات"
 
 #: metrics/metrics-mapbox-maps.php:30
-#, fuzzy
-#| msgid "Streams Maps"
 msgid "Streams Map"
-msgstr "خرائط تيارات"
+msgstr "خريطة تيارات"
 
 #: post-type/streams-post-type.php:66 post-type/streams-post-type.php:482
 msgid "Stream"
-msgstr ""
+msgstr "تيار"
 
 #: post-type/streams-post-type.php:73
-#, fuzzy
-#| msgid "Streams"
 msgid "Streams Admin"
-msgstr "تيارات"
+msgstr "تيارات الادارية"
 
 #: post-type/streams-post-type.php:84 post-type/streams-post-type.php:206
 #: post-type/streams-post-type.php:606 post-type/streams-post-type.php:607
-#, fuzzy
-#| msgid "Reports"
 msgid "Reporter"
-msgstr "التقارير"
+msgstr "مراسل"
 
 #: post-type/streams-post-type.php:92
 msgid "Multiplier"
-msgstr "مضاعف"
+msgstr "المضاعف"
 
 #: post-type/streams-post-type.php:98
 msgid "Dispatcher"
@@ -109,7 +102,7 @@ msgstr "مشرف Disciple.Tools"
 
 #: post-type/streams-post-type.php:112
 msgid "Administrator"
-msgstr "مدير"
+msgstr "إداري"
 
 #: post-type/streams-post-type.php:138
 msgid "Status"
@@ -123,7 +116,7 @@ msgstr "جديد"
 #: post-type/streams-post-type.php:144
 msgctxt "Stream Status field description"
 msgid "New stream added to the system"
-msgstr "دفق جديد يضاف إلى النظام"
+msgstr "تمت إضافة تيار جديد إلى النظام"
 
 #: post-type/streams-post-type.php:148
 msgctxt "Stream Status label"
@@ -134,7 +127,7 @@ msgstr "نموذج"
 msgctxt "Stream Status field description"
 msgid ""
 "This stream is being actively coached and is still in the modelling stage."
-msgstr ""
+msgstr "يتم تدريب هذا التيار بنشاط ولا يزال في مرحلة النمذجة."
 
 #: post-type/streams-post-type.php:153
 msgctxt "Stream Status label"
@@ -144,40 +137,38 @@ msgstr "مساعدة"
 #: post-type/streams-post-type.php:154
 msgctxt "Stream Status field description"
 msgid "This stream is being actively coached and is still in the assist stage."
-msgstr ""
+msgstr "يتم تدريب هذاالتيار بنشاط ولا يزال في مرحلة المساعدة."
 
 #: post-type/streams-post-type.php:158
 msgctxt "Stream Status label"
 msgid "Watch"
-msgstr "راقب"
+msgstr "يشاهد"
 
 #: post-type/streams-post-type.php:159
 msgctxt "Stream Status field description"
 msgid "This stream is being actively coached and is still in the watch stage."
-msgstr ""
+msgstr "يجري تدريب هذا التياربنشاط ولا يزال في مرحلة المشاهدة."
 
 #: post-type/streams-post-type.php:163
 msgctxt "Stream Status label"
 msgid "Leave/Launch"
-msgstr ""
+msgstr "مغادرة / إطلاق"
 
 #: post-type/streams-post-type.php:164
 msgctxt "Stream Status field description"
 msgid ""
 "This stream is being actively coached and is still in the leave/launch stage."
-msgstr ""
+msgstr "يتم تدريب هذا التيار بنشاط ولا يزال في مرحلة المغادرة / الإطلاق."
 
 #: post-type/streams-post-type.php:168
-#, fuzzy
-#| msgid "Active"
 msgctxt "Stream Status label"
 msgid "Active"
-msgstr "ناشط"
+msgstr "نشيط"
 
 #: post-type/streams-post-type.php:169
 msgctxt "Stream Status field description"
 msgid "This is an active stream in no specific stage."
-msgstr ""
+msgstr "هذا تيارنشيط في أي مرحلة معينة."
 
 #: post-type/streams-post-type.php:173
 msgctxt "Stream Status label"
@@ -190,8 +181,7 @@ msgid ""
 "This contact is currently on hold. It has potential of getting scheduled in "
 "the future."
 msgstr ""
-"جهة الاتصال هذه قيد الانتظار حاليًا. لديها إمكانية الحصول على جدول زمني في "
-"المستقبل."
+"جهة الاتصال هذه معلقة حاليا. من المحتمل أن يتم تحديد موعد لها في المستقبل."
 
 #: post-type/streams-post-type.php:178
 msgctxt "Stream Status label"
@@ -201,15 +191,15 @@ msgstr "مغلق"
 #: post-type/streams-post-type.php:179
 msgctxt "Stream Status field description"
 msgid "This stream is no longer going to happen."
-msgstr "لن يحدث هذا التدفق بعد الآن."
+msgstr "لن يحدث هذا هذا التيار بعد الآن."
 
 #: post-type/streams-post-type.php:187
 msgid "Assigned To"
-msgstr "المعينة لي"
+msgstr "مخصص ل"
 
 #: post-type/streams-post-type.php:188
 msgid "Select the main person who is responsible for reporting on this stream."
-msgstr "حدد الشخص الرئيسي المسؤول عن الإبلاغ عن هذا البث."
+msgstr "حدد الشخص الرئيسي المسؤول عن الإبلاغ عن هذاهذا التيار.."
 
 #: post-type/streams-post-type.php:195
 msgid "Coach"
@@ -222,20 +212,17 @@ msgid ""
 "be assigned to a stream while multiple people can be coaches / church "
 "planters of this stream."
 msgstr ""
-"الشخص الذي زرع و / أو يوجه هذا التيار. يمكن تعيين شخص واحد فقط لتيار بينما "
-"يمكن لعدة أشخاص أن يكونوا مدربين / مزارعي الكنيسة لهذا التيار."
+"الشخص الذي زرع و / أو يقوم بتدريب هذا التدفق. يمكن تعيين شخص واحد فقط لتيار "
+"بينما يمكن لعدة أشخاص أن يكونوا مدربين / مزارعي الكنيسة لهذا التيار."
 
 #: post-type/streams-post-type.php:207
-#, fuzzy
-#| msgid ""
-#| "Select the main person who is responsible for reporting on this stream."
 msgctxt "Optional Documentation"
 msgid "The person who is the responsible reporter for this stream."
-msgstr "حدد الشخص الرئيسي المسؤول عن الإبلاغ عن هذا البث."
+msgstr "الشخص المسؤول عن هذا التيار."
 
 #: post-type/streams-post-type.php:217
 msgid "Description"
-msgstr ""
+msgstr "وصف"
 
 #: post-type/streams-post-type.php:225 post-type/streams-post-type.php:592
 msgid "People Groups"
@@ -244,7 +231,7 @@ msgstr "مجموعات بشرية"
 #: post-type/streams-post-type.php:226
 msgctxt "Optional Documentation"
 msgid "The people streams represented by this stream."
-msgstr "تدفقات الأشخاص التي يمثلها هذا الدفق."
+msgstr "تدفقات الناس التي يمثلها هذا التيار."
 
 #: post-type/streams-post-type.php:239 post-type/streams-post-type.php:248
 msgid "Locations"
@@ -253,7 +240,7 @@ msgstr "المواقع"
 #: post-type/streams-post-type.php:240 post-type/streams-post-type.php:249
 msgctxt "Optional Documentation"
 msgid "The general location where this contact is located."
-msgstr "من فضلك محاولة الاتصال مرة اخرى"
+msgstr "الموقع العام الذي توجد فيه جهة الاتصال هذه."
 
 #: post-type/streams-post-type.php:257
 msgid "Address"
@@ -261,27 +248,23 @@ msgstr "العنوان"
 
 #: post-type/streams-post-type.php:277
 msgid "Number of Leaders"
-msgstr ""
+msgstr "عدد القادة"
 
 #: post-type/streams-post-type.php:285 post-type/streams-post-type.php:540
 msgid "Leaders"
 msgstr "القادة"
 
 #: post-type/streams-post-type.php:297
-#, fuzzy
-#| msgid "Key Disciples"
 msgid "Number of Disciples"
-msgstr "التلاميذ الرئيسيون"
+msgstr "عدد التلاميذ"
 
 #: post-type/streams-post-type.php:305
 msgid "Key Disciples"
 msgstr "التلاميذ الرئيسيون"
 
 #: post-type/streams-post-type.php:316
-#, fuzzy
-#| msgid "New Groups"
 msgid "Number of Groups"
-msgstr "مجموعات جديدة"
+msgstr "عدد المجموعات"
 
 #: post-type/streams-post-type.php:324 post-type/streams-post-type.php:523
 msgid "Groups"
@@ -294,7 +277,7 @@ msgstr "تيار الوالدين"
 #: post-type/streams-post-type.php:341
 msgctxt "Optional Documentation"
 msgid "A stream that launched this stream."
-msgstr "تيار أطلق هذا الدفق."
+msgstr "التيار الذي أطلق هذا التدفق."
 
 #: post-type/streams-post-type.php:352
 msgid "Peer Streams"
@@ -306,8 +289,8 @@ msgid ""
 "A related stream that isn't a parent/child in relationship. It might "
 "indicate streams that collaborate, are about to merge, recently split, etc."
 msgstr ""
-"تيار ذي صلة ليس أحد الوالدين / الطفل في علاقة. قد يشير إلى التدفقات التي "
-"تتعاون ، أو على وشك الدمج ، أو الانقسام مؤخرًا ، إلخ."
+"تيار ليس ذو صلة بالوالدين / في علاقةمع الطفل. قد يشير ذلك إلى التدفقات التي "
+"تتعاون ، أو على وشك الدمج ، أو الانقسام مؤخرًا ، إلخ"
 
 #: post-type/streams-post-type.php:364
 msgid "Child Streams"
@@ -320,43 +303,38 @@ msgstr "تيار تم ولادته من هذا التيار."
 
 #: post-type/streams-post-type.php:379
 msgid "Trainings Total"
-msgstr "إجمالي التدريبات"
+msgstr "إجمالي الدورات التدريبية"
 
 #: post-type/streams-post-type.php:386
 msgid "Trainings"
-msgstr "التدريبات"
+msgstr "الدورات التدريبية"
 
 #: post-type/streams-post-type.php:401
 msgid "Leader in Stream"
-msgstr "زعيم في تيار"
+msgstr "قائد في التيار"
 
 #: post-type/streams-post-type.php:402
 msgctxt "Optional Documentation"
 msgid "Leader of a stream"
-msgstr "زعيم تيار"
+msgstr "قائد التيار"
 
 #: post-type/streams-post-type.php:412
 msgid "Key Disciple in Stream"
-msgstr "تلميذ رئيسي في الدفق"
+msgstr "تلميذ رئيسي فيفي التيار"
 
 #: post-type/streams-post-type.php:413
 msgctxt "Optional Documentation"
 msgid "Disciple in a stream."
-msgstr "تلميذ في مجرى مائي."
+msgstr "تلميذ في التيار."
 
 #: post-type/streams-post-type.php:423
-#, fuzzy
-#| msgid "Leader in Stream"
 msgid "Reporter in Stream"
-msgstr "زعيم في تيار"
+msgstr "المراسل في التيار"
 
 #: post-type/streams-post-type.php:424
-#, fuzzy
-#| msgctxt "Optional Documentation"
-#| msgid "Leader of a stream"
 msgctxt "Optional Documentation"
 msgid "Reporter for a stream."
-msgstr "زعيم تيار"
+msgstr "مراسل لتيار."
 
 #: post-type/streams-post-type.php:505
 msgid "Members"
@@ -364,7 +342,7 @@ msgstr "الأعضاء"
 
 #: post-type/streams-post-type.php:506
 msgid "Contacts"
-msgstr "جهات الاتصالل"
+msgstr "الإتصالات"
 
 #: post-type/streams-post-type.php:557
 msgid "Coaches"
