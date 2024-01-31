@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
 "streams\n"
 "POT-Creation-Date: 2023-03-16T07:40:31+00:00\n"
-"PO-Revision-Date: 2023-02-17 03:22+0000\n"
+"PO-Revision-Date: 2024-01-29 23:21+0000\n"
 "Last-Translator: Mike Allbutt <mikeallbutt@gmail.com>\n"
 "Language-Team: Spanish (Latin America) <https://translate.disciple.tools/"
 "projects/disciple-tools/disciple-tools-stream/es_419/>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 5.3.1\n"
 
 #. Author URI of the plugin
 msgid "https://github.com/DiscipleTools"
@@ -356,7 +356,7 @@ msgstr "Contactos"
 
 #: post-type/streams-post-type.php:557
 msgid "Coaches"
-msgstr "Entrenadores"
+msgstr "Discipuladores"
 
 #: post-type/streams-post-type.php:570
 msgid "Planted by"
