@@ -3,15 +3,18 @@ msgstr ""
 "Project-Id-Version: Disciple Tools Plugins\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
 "streams\n"
-"POT-Creation-Date: 2023-03-16T07:40:31+00:00\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2024-02-01T07:47:42+00:00\n"
+"PO-Revision-Date: 2024-06-20 19:59+0000\n"
+"Last-Translator: Zlatko Celik <zlatko.celik@gmail.com>\n"
+"Language-Team: Croatian <https://translate.disciple.tools/projects/"
+"disciple-tools/disciple-tools-stream/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2.2\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.6\n"
 
 #. Author URI of the plugin
 msgid "https://github.com/DiscipleTools"
@@ -22,26 +25,20 @@ msgid "Reports"
 msgstr "Izvještaji"
 
 #: magic/magic-reports.php:122
-#, fuzzy
-#| msgid "Site Reports"
 msgid "Child Reports"
-msgstr "Izvješća o web mjestu"
+msgstr "Izvještaji"
 
 #: magic/magic-reports.php:158 magic/magic-reports.php:211
 msgid "Total Baptisms"
 msgstr "Ukupna krštenja"
 
 #: magic/magic-reports.php:159 magic/magic-reports.php:212
-#, fuzzy
-#| msgid "Key Disciples"
 msgid "Total Disciples"
-msgstr "Ključni učenici"
+msgstr "Ukupno učenika"
 
 #: magic/magic-reports.php:160 magic/magic-reports.php:213
-#, fuzzy
-#| msgid "Churches"
 msgid "Total Churches"
-msgstr "Crkve"
+msgstr "Ukupno crkava"
 
 #: magic/magic-reports.php:161 magic/magic-reports.php:214
 msgid "Countries"
@@ -73,27 +70,21 @@ msgid "Streams"
 msgstr "Potoci"
 
 #: metrics/metrics-mapbox-maps.php:30
-#, fuzzy
-#| msgid "Streams Maps"
 msgid "Streams Map"
-msgstr "Karte prijenosa"
+msgstr "Karta prijenosa"
 
 #: post-type/streams-post-type.php:66 post-type/streams-post-type.php:482
 msgid "Stream"
-msgstr ""
+msgstr "Strimajte"
 
 #: post-type/streams-post-type.php:73
-#, fuzzy
-#| msgid "Streams"
 msgid "Streams Admin"
-msgstr "Potoci"
+msgstr "Admin za striming"
 
 #: post-type/streams-post-type.php:84 post-type/streams-post-type.php:206
 #: post-type/streams-post-type.php:606 post-type/streams-post-type.php:607
-#, fuzzy
-#| msgid "Reports"
 msgid "Reporter"
-msgstr "Izvještaji"
+msgstr "Izvjestitelj"
 
 #: post-type/streams-post-type.php:92
 msgid "Multiplier"
@@ -105,7 +96,7 @@ msgstr "Dispečer"
 
 #: post-type/streams-post-type.php:105
 msgid "Disciple.Tools Admin"
-msgstr "Učenik.Alat Admin"
+msgstr "Disciple.Tools admin"
 
 #: post-type/streams-post-type.php:112
 msgid "Administrator"
@@ -134,7 +125,7 @@ msgstr "Model"
 msgctxt "Stream Status field description"
 msgid ""
 "This stream is being actively coached and is still in the modelling stage."
-msgstr ""
+msgstr "Ovaj prijenos je aktivni trening i još je u fazi uređivanja."
 
 #: post-type/streams-post-type.php:153
 msgctxt "Stream Status label"
@@ -144,7 +135,7 @@ msgstr "Pomoći"
 #: post-type/streams-post-type.php:154
 msgctxt "Stream Status field description"
 msgid "This stream is being actively coached and is still in the assist stage."
-msgstr ""
+msgstr "Ovaj se prijenos aktivno trenira i još uvijek je u fazi asistencije."
 
 #: post-type/streams-post-type.php:158
 msgctxt "Stream Status label"
@@ -154,22 +145,22 @@ msgstr "Gledati"
 #: post-type/streams-post-type.php:159
 msgctxt "Stream Status field description"
 msgid "This stream is being actively coached and is still in the watch stage."
-msgstr ""
+msgstr "Ovaj se prijenos aktivno trenira i još je u fazi nadgledanja."
 
 #: post-type/streams-post-type.php:163
 msgctxt "Stream Status label"
 msgid "Leave/Launch"
-msgstr ""
+msgstr "Ostavi/Pokreni"
 
 #: post-type/streams-post-type.php:164
 msgctxt "Stream Status field description"
 msgid ""
 "This stream is being actively coached and is still in the leave/launch stage."
 msgstr ""
+"Ovaj prijenos se aktivno trenira i još uvijek je u fazi ostavljanja/"
+"pokretanja."
 
 #: post-type/streams-post-type.php:168
-#, fuzzy
-#| msgid "Active"
 msgctxt "Stream Status label"
 msgid "Active"
 msgstr "Aktivan"
@@ -177,7 +168,7 @@ msgstr "Aktivan"
 #: post-type/streams-post-type.php:169
 msgctxt "Stream Status field description"
 msgid "This is an active stream in no specific stage."
-msgstr ""
+msgstr "Ovo je aktivni prijenos u nijednoj određenoj fazi."
 
 #: post-type/streams-post-type.php:173
 msgctxt "Stream Status label"
@@ -205,7 +196,7 @@ msgstr "Ovaj se tok više neće dogoditi."
 
 #: post-type/streams-post-type.php:187
 msgid "Assigned To"
-msgstr "Dodijeljena"
+msgstr "Dodijeljen"
 
 #: post-type/streams-post-type.php:188
 msgid "Select the main person who is responsible for reporting on this stream."
@@ -227,16 +218,13 @@ msgstr ""
 "potoka."
 
 #: post-type/streams-post-type.php:207
-#, fuzzy
-#| msgid ""
-#| "Select the main person who is responsible for reporting on this stream."
 msgctxt "Optional Documentation"
 msgid "The person who is the responsible reporter for this stream."
-msgstr "Odaberite glavnu osobu koja je odgovorna za izvještavanje o ovom toku."
+msgstr "Osoba koja je odgovorni izvjestitelj za ovaj prijenos."
 
 #: post-type/streams-post-type.php:217
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 #: post-type/streams-post-type.php:225 post-type/streams-post-type.php:592
 msgid "People Groups"
@@ -262,27 +250,23 @@ msgstr "Adresa"
 
 #: post-type/streams-post-type.php:277
 msgid "Number of Leaders"
-msgstr ""
+msgstr "Broj voditelja"
 
 #: post-type/streams-post-type.php:285 post-type/streams-post-type.php:540
 msgid "Leaders"
-msgstr "Vođe"
+msgstr "Voditelji"
 
 #: post-type/streams-post-type.php:297
-#, fuzzy
-#| msgid "Key Disciples"
 msgid "Number of Disciples"
-msgstr "Ključni učenici"
+msgstr "Broj učenika"
 
 #: post-type/streams-post-type.php:305
 msgid "Key Disciples"
 msgstr "Ključni učenici"
 
 #: post-type/streams-post-type.php:316
-#, fuzzy
-#| msgid "New Groups"
 msgid "Number of Groups"
-msgstr "Nove grupe"
+msgstr "Broj grupa"
 
 #: post-type/streams-post-type.php:324 post-type/streams-post-type.php:523
 msgid "Groups"
@@ -346,18 +330,13 @@ msgid "Disciple in a stream."
 msgstr "Učenik u potoku."
 
 #: post-type/streams-post-type.php:423
-#, fuzzy
-#| msgid "Leader in Stream"
 msgid "Reporter in Stream"
-msgstr "Vođa u streamu"
+msgstr "Izvjestitelj u prijenosu"
 
 #: post-type/streams-post-type.php:424
-#, fuzzy
-#| msgctxt "Optional Documentation"
-#| msgid "Leader of a stream"
 msgctxt "Optional Documentation"
 msgid "Reporter for a stream."
-msgstr "Vođa potoka"
+msgstr "Izvjestitelj za prijenos."
 
 #: post-type/streams-post-type.php:505
 msgid "Members"
