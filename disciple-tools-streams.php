@@ -5,7 +5,7 @@
  * Description: Streams creates collections of work and a generational census reporting magic link system.
  * Text Domain: disciple-tools-streams
  * Domain Path: /languages
- * Version:  3.1.5
+ * Version:  3.1.6
  * Author URI: https://github.com/DiscipleTools
  * GitHub Plugin URI: https://github.com/DiscipleTools/disciple-tools-streams
  * Requires at least: 4.7.0
