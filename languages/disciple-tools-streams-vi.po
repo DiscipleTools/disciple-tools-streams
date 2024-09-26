@@ -3,15 +3,17 @@ msgstr ""
 "Project-Id-Version: Disciple Tools Plugins\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
 "streams\n"
-"POT-Creation-Date: 2023-03-16T07:40:31+00:00\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2024-02-01T07:47:42+00:00\n"
+"PO-Revision-Date: 2024-07-20 06:59+0000\n"
+"Last-Translator: Charlie Ritchie <ritchiecharlie@gmail.com>\n"
+"Language-Team: Vietnamese <https://translate.disciple.tools/projects/"
+"disciple-tools/disciple-tools-stream/vi/>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2.2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. Author URI of the plugin
 msgid "https://github.com/DiscipleTools"
@@ -22,26 +24,20 @@ msgid "Reports"
 msgstr "Báo cáo"
 
 #: magic/magic-reports.php:122
-#, fuzzy
-#| msgid "Site Reports"
 msgid "Child Reports"
-msgstr "Báo cáo trang web"
+msgstr "Báo cáo trẻ em"
 
 #: magic/magic-reports.php:158 magic/magic-reports.php:211
 msgid "Total Baptisms"
-msgstr "Tổng số phép rửa tội"
+msgstr "Tổng số phép báp-têm"
 
 #: magic/magic-reports.php:159 magic/magic-reports.php:212
-#, fuzzy
-#| msgid "Key Disciples"
 msgid "Total Disciples"
-msgstr "Môn đồ chính"
+msgstr "Tổng Số Môn đồ"
 
 #: magic/magic-reports.php:160 magic/magic-reports.php:213
-#, fuzzy
-#| msgid "Churches"
 msgid "Total Churches"
-msgstr "Nhà thờ"
+msgstr "Tổng Điểm Nhốm"
 
 #: magic/magic-reports.php:161 magic/magic-reports.php:214
 msgid "Countries"
@@ -49,11 +45,11 @@ msgstr "Quốc gia"
 
 #: magic/magic-reports.php:162 magic/magic-reports.php:215
 msgid "States"
-msgstr "Những trạng thái"
+msgstr "Tỉnh"
 
 #: magic/magic-reports.php:163 magic/magic-reports.php:216
 msgid "Counties"
-msgstr "Hạt"
+msgstr "Huyện"
 
 #: magic/magic-reports.php:484
 msgid "Add Report"
@@ -73,27 +69,21 @@ msgid "Streams"
 msgstr "Dòng"
 
 #: metrics/metrics-mapbox-maps.php:30
-#, fuzzy
-#| msgid "Streams Maps"
 msgid "Streams Map"
-msgstr "Bản đồ luồng"
+msgstr "Bản đồ nội dung"
 
 #: post-type/streams-post-type.php:66 post-type/streams-post-type.php:482
 msgid "Stream"
-msgstr ""
+msgstr "Nội dung"
 
 #: post-type/streams-post-type.php:73
-#, fuzzy
-#| msgid "Streams"
 msgid "Streams Admin"
-msgstr "Dòng"
+msgstr "Quản trị viên luồng"
 
 #: post-type/streams-post-type.php:84 post-type/streams-post-type.php:206
 #: post-type/streams-post-type.php:606 post-type/streams-post-type.php:607
-#, fuzzy
-#| msgid "Reports"
 msgid "Reporter"
-msgstr "Báo cáo"
+msgstr "Người báo cáo"
 
 #: post-type/streams-post-type.php:92
 msgid "Multiplier"
@@ -109,7 +99,7 @@ msgstr "Quản trị viên công cụ"
 
 #: post-type/streams-post-type.php:112
 msgid "Administrator"
-msgstr "Người quản lý"
+msgstr "Quản trị viên"
 
 #: post-type/streams-post-type.php:138
 msgid "Status"
@@ -123,7 +113,7 @@ msgstr "Mới"
 #: post-type/streams-post-type.php:144
 msgctxt "Stream Status field description"
 msgid "New stream added to the system"
-msgstr "Luồng mới được thêm vào hệ thống"
+msgstr "Nội dung mới được thêm vào hệ thống"
 
 #: post-type/streams-post-type.php:148
 msgctxt "Stream Status label"
@@ -135,6 +125,8 @@ msgctxt "Stream Status field description"
 msgid ""
 "This stream is being actively coached and is still in the modelling stage."
 msgstr ""
+"Nội dung này đang được huấn luyện tích cực và vẫn đang trong giai đoạn mô "
+"hình hóa."
 
 #: post-type/streams-post-type.php:153
 msgctxt "Stream Status label"
@@ -145,31 +137,34 @@ msgstr "Hỗ trợ"
 msgctxt "Stream Status field description"
 msgid "This stream is being actively coached and is still in the assist stage."
 msgstr ""
+"Nội dung này đang được huấn luyện tích cực và vẫn đang trong giai đoạn hỗ "
+"trợ."
 
 #: post-type/streams-post-type.php:158
 msgctxt "Stream Status label"
 msgid "Watch"
-msgstr "Đồng hồ đeo tay"
+msgstr "Đồng hồ"
 
 #: post-type/streams-post-type.php:159
 msgctxt "Stream Status field description"
 msgid "This stream is being actively coached and is still in the watch stage."
 msgstr ""
+"Nội dung này đang được huấn luyện tích cực và vẫn đang trong giai đoạn xem."
 
 #: post-type/streams-post-type.php:163
 msgctxt "Stream Status label"
 msgid "Leave/Launch"
-msgstr ""
+msgstr "Rời khỏi/Khởi động"
 
 #: post-type/streams-post-type.php:164
 msgctxt "Stream Status field description"
 msgid ""
 "This stream is being actively coached and is still in the leave/launch stage."
 msgstr ""
+"Nội dung này đang được huấn luyện tích cực và vẫn đang trong giai đoạn chuẩn "
+"bị/ra mắt."
 
 #: post-type/streams-post-type.php:168
-#, fuzzy
-#| msgid "Active"
 msgctxt "Stream Status label"
 msgid "Active"
 msgstr "Hoạt động"
@@ -177,7 +172,7 @@ msgstr "Hoạt động"
 #: post-type/streams-post-type.php:169
 msgctxt "Stream Status field description"
 msgid "This is an active stream in no specific stage."
-msgstr ""
+msgstr "Đây là nội dung đang hoạt động không có giai đoạn cụ thể."
 
 #: post-type/streams-post-type.php:173
 msgctxt "Stream Status label"
@@ -189,26 +184,25 @@ msgctxt "Stream Status field description"
 msgid ""
 "This contact is currently on hold. It has potential of getting scheduled in "
 "the future."
-msgstr ""
-"Liên hệ này hiện đang bị giữ. Nó có tiềm năng được lên lịch trong tương lai."
+msgstr "Liên hệ này hiện đang bị treo. Nó có thể được lên lịch trong tương lai."
 
 #: post-type/streams-post-type.php:178
 msgctxt "Stream Status label"
 msgid "Closed"
-msgstr "Đóng cửa"
+msgstr "Đã đóng"
 
 #: post-type/streams-post-type.php:179
 msgctxt "Stream Status field description"
 msgid "This stream is no longer going to happen."
-msgstr "Luồng này sẽ không còn xảy ra nữa."
+msgstr "Nội dung này sẽ không còn nữa."
 
 #: post-type/streams-post-type.php:187
 msgid "Assigned To"
-msgstr "Phân công"
+msgstr "Phân công cho"
 
 #: post-type/streams-post-type.php:188
 msgid "Select the main person who is responsible for reporting on this stream."
-msgstr "Chọn người chịu trách nhiệm báo cáo chính về luồng này."
+msgstr "Chọn người chịu trách nhiệm báo cáo chính về nội dung này."
 
 #: post-type/streams-post-type.php:195
 msgid "Coach"
@@ -221,21 +215,18 @@ msgid ""
 "be assigned to a stream while multiple people can be coaches / church "
 "planters of this stream."
 msgstr ""
-"Người đã trồng và / hoặc đang huấn luyện dòng này. Chỉ một người có thể được "
-"chỉ định cho một dòng trong khi nhiều người có thể là huấn luyện viên / "
-"người trồng nhà thờ của dòng này."
+"Người đã thiết lập và/ hoặc đang huấn luyện nội dung này. Chỉ một người có "
+"thể được chỉ định cho một nội dung trong khi nhiều người có thể là huấn "
+"luyện viên / người thiết lập của nội dung này."
 
 #: post-type/streams-post-type.php:207
-#, fuzzy
-#| msgid ""
-#| "Select the main person who is responsible for reporting on this stream."
 msgctxt "Optional Documentation"
 msgid "The person who is the responsible reporter for this stream."
-msgstr "Chọn người chịu trách nhiệm báo cáo chính về luồng này."
+msgstr "Chọn người chịu trách nhiệm báo cáo chính về nội dung này."
 
 #: post-type/streams-post-type.php:217
 msgid "Description"
-msgstr ""
+msgstr "Mô tả"
 
 #: post-type/streams-post-type.php:225 post-type/streams-post-type.php:592
 msgid "People Groups"
@@ -244,7 +235,7 @@ msgstr "Nhóm người"
 #: post-type/streams-post-type.php:226
 msgctxt "Optional Documentation"
 msgid "The people streams represented by this stream."
-msgstr "Các luồng người được đại diện bởi luồng này."
+msgstr "Các nhóm người được thể hiện trong nội dung này."
 
 #: post-type/streams-post-type.php:239 post-type/streams-post-type.php:248
 msgid "Locations"
@@ -253,7 +244,7 @@ msgstr "Địa điểm"
 #: post-type/streams-post-type.php:240 post-type/streams-post-type.php:249
 msgctxt "Optional Documentation"
 msgid "The general location where this contact is located."
-msgstr "Vị trí chung nơi liên hệ này được đặt."
+msgstr "Vị trí nơi liên hệ này được đặt."
 
 #: post-type/streams-post-type.php:257
 msgid "Address"
@@ -261,27 +252,23 @@ msgstr "Địa chỉ"
 
 #: post-type/streams-post-type.php:277
 msgid "Number of Leaders"
-msgstr ""
+msgstr "Số người lãnh đạo"
 
 #: post-type/streams-post-type.php:285 post-type/streams-post-type.php:540
 msgid "Leaders"
-msgstr "Các nhà lãnh đạo"
+msgstr "Lãnh đạo"
 
 #: post-type/streams-post-type.php:297
-#, fuzzy
-#| msgid "Key Disciples"
 msgid "Number of Disciples"
-msgstr "Môn đồ chính"
+msgstr "Số lượng Môn đồ"
 
 #: post-type/streams-post-type.php:305
 msgid "Key Disciples"
 msgstr "Môn đồ chính"
 
 #: post-type/streams-post-type.php:316
-#, fuzzy
-#| msgid "New Groups"
 msgid "Number of Groups"
-msgstr "Nhóm mới"
+msgstr "Số lượng nhóm"
 
 #: post-type/streams-post-type.php:324 post-type/streams-post-type.php:523
 msgid "Groups"
@@ -289,16 +276,16 @@ msgstr "Các nhóm"
 
 #: post-type/streams-post-type.php:340
 msgid "Parent Stream"
-msgstr "Luồng chính"
+msgstr "Nội dung chính"
 
 #: post-type/streams-post-type.php:341
 msgctxt "Optional Documentation"
 msgid "A stream that launched this stream."
-msgstr "Luồng đã khởi chạy luồng này."
+msgstr "Nội dung đã khởi tạo nội dung này."
 
 #: post-type/streams-post-type.php:352
 msgid "Peer Streams"
-msgstr "Luồng ngang hàng"
+msgstr "Nội dung ngang hàng"
 
 #: post-type/streams-post-type.php:353
 msgctxt "Optional Documentation"
@@ -306,17 +293,17 @@ msgid ""
 "A related stream that isn't a parent/child in relationship. It might "
 "indicate streams that collaborate, are about to merge, recently split, etc."
 msgstr ""
-"Luồng có liên quan không phải là cha / con trong mối quan hệ. Nó có thể cho "
-"biết các luồng đang cộng tác, sắp hợp nhất, chia tách gần đây, v.v."
+"Nội dung có liên quan không phải là cha / con trong mối quan hệ. Nó có thể "
+"cho biết các nội dung đang cộng tác, sắp hợp nhất, chia tách gần đây, v.v."
 
 #: post-type/streams-post-type.php:364
 msgid "Child Streams"
-msgstr "Luồng con"
+msgstr "Nội dung con"
 
 #: post-type/streams-post-type.php:365
 msgctxt "Optional Documentation"
 msgid "A stream that has been birthed out of this stream."
-msgstr "Luồng đã được sinh ra từ luồng này."
+msgstr "Nội dung khác đã được sinh ra từ nội dung này."
 
 #: post-type/streams-post-type.php:379
 msgid "Trainings Total"
@@ -324,39 +311,34 @@ msgstr "Tổng số đào tạo"
 
 #: post-type/streams-post-type.php:386
 msgid "Trainings"
-msgstr "Đào tạo"
+msgstr "Các khoá Đào tạo"
 
 #: post-type/streams-post-type.php:401
 msgid "Leader in Stream"
-msgstr "Dẫn đầu trong luồng"
+msgstr "Dẫn đầu trong nội dung"
 
 #: post-type/streams-post-type.php:402
 msgctxt "Optional Documentation"
 msgid "Leader of a stream"
-msgstr "Người dẫn đầu một luồng"
+msgstr "Người dẫn đầu một nội dung"
 
 #: post-type/streams-post-type.php:412
 msgid "Key Disciple in Stream"
-msgstr "Đệ tử chính trong luồng"
+msgstr "Môn đồ chính trong nội dung"
 
 #: post-type/streams-post-type.php:413
 msgctxt "Optional Documentation"
 msgid "Disciple in a stream."
-msgstr "Đệ tử trong một luồng."
+msgstr "Môn đồ trong một luồng."
 
 #: post-type/streams-post-type.php:423
-#, fuzzy
-#| msgid "Leader in Stream"
 msgid "Reporter in Stream"
-msgstr "Dẫn đầu trong luồng"
+msgstr "Báo cáo về nội dung"
 
 #: post-type/streams-post-type.php:424
-#, fuzzy
-#| msgctxt "Optional Documentation"
-#| msgid "Leader of a stream"
 msgctxt "Optional Documentation"
 msgid "Reporter for a stream."
-msgstr "Người dẫn đầu một luồng"
+msgstr "Người dẫn đầu một nội dung."
 
 #: post-type/streams-post-type.php:505
 msgid "Members"
@@ -372,11 +354,11 @@ msgstr "Huấn luyện viên"
 
 #: post-type/streams-post-type.php:570
 msgid "Planted by"
-msgstr "Trồng bởi"
+msgstr "Thiết lập bởi"
 
 #: post-type/streams-post-type.php:571
 msgid "Planting"
-msgstr "Trồng cây"
+msgstr "Đang thiết lập"
 
 #: post-type/streams-post-type.php:624
 msgid "Connections"
@@ -389,7 +371,7 @@ msgstr "Khác"
 #: post-type/streams-post-type.php:954
 msgctxt "List Filters"
 msgid "Assigned to me"
-msgstr "Giao cho tôi"
+msgstr "Phân công cho tôi"
 
 #: post-type/streams-post-type.php:962 post-type/streams-post-type.php:1021
 #: post-type/streams-post-type.php:1029
@@ -1126,8 +1108,7 @@ msgstr "Tất cả"
 #~ "bản mới nhất."
 
 #~ msgid "Current Disciple Tools version: %1$s, required version: %2$s"
-#~ msgstr ""
-#~ "Phiên bản Công cụ Đệ tử Hiện tại: %1$s, phiên bản bắt buộc: %2$s"
+#~ msgstr "Phiên bản Công cụ Đệ tử Hiện tại: %1$s, phiên bản bắt buộc: %2$s"
 
 #~ msgid "https://github.com/DiscipleTools/disciple-tools-training"
 #~ msgstr "https://github.com/DiscipleTools/disciple-tools-training"

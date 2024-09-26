@@ -3,17 +3,17 @@ msgstr ""
 "Project-Id-Version: Disciple Tools Plugins\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
 "streams\n"
-"POT-Creation-Date: 2023-03-16T07:40:31+00:00\n"
-"PO-Revision-Date: 2023-02-21 11:22+0000\n"
-"Last-Translator: Corsacca <corsacca@gmail.com>\n"
-"Language-Team: French <https://translate.disciple.tools/projects/disciple-"
-"tools/disciple-tools-stream/fr_FR/>\n"
+"POT-Creation-Date: 2024-02-01T07:47:42+00:00\n"
+"PO-Revision-Date: 2024-09-25 17:59+0000\n"
+"Last-Translator: Sarah <s.colpart@gmail.com>\n"
+"Language-Team: French <https://translate.disciple.tools/projects/"
+"disciple-tools/disciple-tools-stream/fr_FR/>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 5.7.2\n"
 
 #. Author URI of the plugin
 msgid "https://github.com/DiscipleTools"
@@ -34,20 +34,16 @@ msgid "Total Baptisms"
 msgstr "Baptêmes totaux"
 
 #: magic/magic-reports.php:159 magic/magic-reports.php:212
-#, fuzzy
-#| msgid "Key Disciples"
 msgid "Total Disciples"
-msgstr "Disciples clés"
+msgstr "Total des disciples"
 
 #: magic/magic-reports.php:160 magic/magic-reports.php:213
-#, fuzzy
-#| msgid "Churches"
 msgid "Total Churches"
-msgstr "Des églises"
+msgstr "Total des églises"
 
 #: magic/magic-reports.php:161 magic/magic-reports.php:214
 msgid "Countries"
-msgstr "Des pays"
+msgstr "Pays"
 
 #: magic/magic-reports.php:162 magic/magic-reports.php:215
 msgid "States"
@@ -92,10 +88,8 @@ msgstr "Ruisseaux"
 
 #: post-type/streams-post-type.php:84 post-type/streams-post-type.php:206
 #: post-type/streams-post-type.php:606 post-type/streams-post-type.php:607
-#, fuzzy
-#| msgid "Reports"
 msgid "Reporter"
-msgstr "Rapports"
+msgstr "Rapporter"
 
 #: post-type/streams-post-type.php:92
 msgid "Multiplier"
@@ -170,11 +164,9 @@ msgid ""
 msgstr ""
 
 #: post-type/streams-post-type.php:168
-#, fuzzy
-#| msgid "Active"
 msgctxt "Stream Status label"
 msgid "Active"
-msgstr "actif"
+msgstr "Actif"
 
 #: post-type/streams-post-type.php:169
 msgctxt "Stream Status field description"
@@ -226,23 +218,19 @@ msgid ""
 "be assigned to a stream while multiple people can be coaches / church "
 "planters of this stream."
 msgstr ""
-"La personne qui a planté et / ou qui encadre ce flux. Une seule personne "
+"La personne qui a implanté et / ou qui encadre ce flux. Une seule personne "
 "peut être affectée à un flux tandis que plusieurs personnes peuvent être "
 "entraîneurs / implanteurs d'églises de ce flux."
 
 #: post-type/streams-post-type.php:207
-#, fuzzy
-#| msgid ""
-#| "Select the main person who is responsible for reporting on this stream."
 msgctxt "Optional Documentation"
 msgid "The person who is the responsible reporter for this stream."
 msgstr ""
-"Sélectionnez la personne principale responsable de la création de rapports "
-"sur ce flux."
+"La personne principale responsable de la création de rapports sur ce flux."
 
 #: post-type/streams-post-type.php:217
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: post-type/streams-post-type.php:225 post-type/streams-post-type.php:592
 msgid "People Groups"
@@ -268,27 +256,23 @@ msgstr "Adresse"
 
 #: post-type/streams-post-type.php:277
 msgid "Number of Leaders"
-msgstr ""
+msgstr "Nombre de responsables"
 
 #: post-type/streams-post-type.php:285 post-type/streams-post-type.php:540
 msgid "Leaders"
 msgstr "Dirigeants"
 
 #: post-type/streams-post-type.php:297
-#, fuzzy
-#| msgid "Key Disciples"
 msgid "Number of Disciples"
-msgstr "Disciples clés"
+msgstr "Nombre de disciples"
 
 #: post-type/streams-post-type.php:305
 msgid "Key Disciples"
 msgstr "Disciples clés"
 
 #: post-type/streams-post-type.php:316
-#, fuzzy
-#| msgid "New Groups"
 msgid "Number of Groups"
-msgstr "Nouveaux churches"
+msgstr "Nombre de groupes"
 
 #: post-type/streams-post-type.php:324 post-type/streams-post-type.php:523
 msgid "Groups"
@@ -313,13 +297,13 @@ msgid ""
 "A related stream that isn't a parent/child in relationship. It might "
 "indicate streams that collaborate, are about to merge, recently split, etc."
 msgstr ""
-"Un flux associé qui n'est pas un parent / enfant en relation. Cela peut "
+"Un flux associé qui n'est pas une relation parent / enfant. Cela peut "
 "indiquer des flux qui collaborent, sont sur le point de fusionner, récemment "
 "divisés, etc."
 
 #: post-type/streams-post-type.php:364
 msgid "Child Streams"
-msgstr "Flux enfants"
+msgstr "Flux enfant"
 
 #: post-type/streams-post-type.php:365
 msgctxt "Optional Documentation"
