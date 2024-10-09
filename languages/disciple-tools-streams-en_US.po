@@ -1,19 +1,19 @@
-# Copyright (C) 2023 
+# Copyright (C) 2024 
 # This file is distributed under the same license as the Disciple.Tools - Streams plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Disciple.Tools - Streams 3.1.2\n"
+"Project-Id-Version: Disciple.Tools - Streams 3.1.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
 "streams\n"
 "POT-Creation-Date: 2024-09-26T12:27:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: el\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: WP-CLI 2.7.1\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: disciple-tools-streams\n"
 
 #. Author URI of the plugin
@@ -29,27 +29,33 @@ msgstr ""
 msgid "Child Reports"
 msgstr ""
 
-#: magic/magic-reports.php:158 magic/magic-reports.php:211
+#: magic/magic-reports.php:158
+#: magic/magic-reports.php:211
 msgid "Total Baptisms"
 msgstr ""
 
-#: magic/magic-reports.php:159 magic/magic-reports.php:212
+#: magic/magic-reports.php:159
+#: magic/magic-reports.php:212
 msgid "Total Disciples"
 msgstr ""
 
-#: magic/magic-reports.php:160 magic/magic-reports.php:213
+#: magic/magic-reports.php:160
+#: magic/magic-reports.php:213
 msgid "Total Churches"
 msgstr ""
 
-#: magic/magic-reports.php:161 magic/magic-reports.php:214
+#: magic/magic-reports.php:161
+#: magic/magic-reports.php:214
 msgid "Countries"
 msgstr ""
 
-#: magic/magic-reports.php:162 magic/magic-reports.php:215
+#: magic/magic-reports.php:162
+#: magic/magic-reports.php:215
 msgid "States"
 msgstr ""
 
-#: magic/magic-reports.php:163 magic/magic-reports.php:216
+#: magic/magic-reports.php:163
+#: magic/magic-reports.php:216
 msgid "Counties"
 msgstr ""
 
@@ -62,11 +68,16 @@ msgid "Streams Maps"
 msgstr ""
 
 #: metrics/-metrics-mapbox-personal-maps.php:31
-#: metrics/metrics-mapbox-maps.php:31 post-type/streams-post-type.php:66
-#: post-type/streams-post-type.php:436 post-type/streams-post-type.php:448
-#: post-type/streams-post-type.php:460 post-type/streams-post-type.php:483
-#: post-type/streams-post-type.php:522 post-type/streams-post-type.php:539
-#: post-type/streams-post-type.php:556 post-type/streams-post-type.php:593
+#: metrics/metrics-mapbox-maps.php:31
+#: post-type/streams-post-type.php:66
+#: post-type/streams-post-type.php:436
+#: post-type/streams-post-type.php:448
+#: post-type/streams-post-type.php:460
+#: post-type/streams-post-type.php:483
+#: post-type/streams-post-type.php:522
+#: post-type/streams-post-type.php:539
+#: post-type/streams-post-type.php:556
+#: post-type/streams-post-type.php:593
 msgid "Streams"
 msgstr ""
 
@@ -74,7 +85,8 @@ msgstr ""
 msgid "Streams Map"
 msgstr ""
 
-#: post-type/streams-post-type.php:66 post-type/streams-post-type.php:482
+#: post-type/streams-post-type.php:66
+#: post-type/streams-post-type.php:482
 msgid "Stream"
 msgstr ""
 
@@ -82,8 +94,10 @@ msgstr ""
 msgid "Streams Admin"
 msgstr ""
 
-#: post-type/streams-post-type.php:84 post-type/streams-post-type.php:206
-#: post-type/streams-post-type.php:606 post-type/streams-post-type.php:607
+#: post-type/streams-post-type.php:84
+#: post-type/streams-post-type.php:206
+#: post-type/streams-post-type.php:606
+#: post-type/streams-post-type.php:607
 msgid "Reporter"
 msgstr ""
 
@@ -124,8 +138,7 @@ msgstr ""
 
 #: post-type/streams-post-type.php:149
 msgctxt "Stream Status field description"
-msgid ""
-"This stream is being actively coached and is still in the modelling stage."
+msgid "This stream is being actively coached and is still in the modelling stage."
 msgstr ""
 
 #: post-type/streams-post-type.php:153
@@ -155,8 +168,7 @@ msgstr ""
 
 #: post-type/streams-post-type.php:164
 msgctxt "Stream Status field description"
-msgid ""
-"This stream is being actively coached and is still in the leave/launch stage."
+msgid "This stream is being actively coached and is still in the leave/launch stage."
 msgstr ""
 
 #: post-type/streams-post-type.php:168
@@ -176,9 +188,7 @@ msgstr ""
 
 #: post-type/streams-post-type.php:174
 msgctxt "Stream Status field description"
-msgid ""
-"This contact is currently on hold. It has potential of getting scheduled in "
-"the future."
+msgid "This contact is currently on hold. It has potential of getting scheduled in the future."
 msgstr ""
 
 #: post-type/streams-post-type.php:178
@@ -205,10 +215,7 @@ msgstr ""
 
 #: post-type/streams-post-type.php:196
 msgctxt "Optional Documentation"
-msgid ""
-"The person who planted and/or is coaching this stream. Only one person can "
-"be assigned to a stream while multiple people can be coaches / church "
-"planters of this stream."
+msgid "The person who planted and/or is coaching this stream. Only one person can be assigned to a stream while multiple people can be coaches / church planters of this stream."
 msgstr ""
 
 #: post-type/streams-post-type.php:207
@@ -220,7 +227,8 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: post-type/streams-post-type.php:225 post-type/streams-post-type.php:592
+#: post-type/streams-post-type.php:225
+#: post-type/streams-post-type.php:592
 msgid "People Groups"
 msgstr ""
 
@@ -229,11 +237,13 @@ msgctxt "Optional Documentation"
 msgid "The people streams represented by this stream."
 msgstr ""
 
-#: post-type/streams-post-type.php:239 post-type/streams-post-type.php:248
+#: post-type/streams-post-type.php:239
+#: post-type/streams-post-type.php:248
 msgid "Locations"
 msgstr ""
 
-#: post-type/streams-post-type.php:240 post-type/streams-post-type.php:249
+#: post-type/streams-post-type.php:240
+#: post-type/streams-post-type.php:249
 msgctxt "Optional Documentation"
 msgid "The general location where this contact is located."
 msgstr ""
@@ -246,7 +256,8 @@ msgstr ""
 msgid "Number of Leaders"
 msgstr ""
 
-#: post-type/streams-post-type.php:285 post-type/streams-post-type.php:540
+#: post-type/streams-post-type.php:285
+#: post-type/streams-post-type.php:540
 msgid "Leaders"
 msgstr ""
 
@@ -262,7 +273,8 @@ msgstr ""
 msgid "Number of Groups"
 msgstr ""
 
-#: post-type/streams-post-type.php:324 post-type/streams-post-type.php:523
+#: post-type/streams-post-type.php:324
+#: post-type/streams-post-type.php:523
 msgid "Groups"
 msgstr ""
 
@@ -281,9 +293,7 @@ msgstr ""
 
 #: post-type/streams-post-type.php:353
 msgctxt "Optional Documentation"
-msgid ""
-"A related stream that isn't a parent/child in relationship. It might "
-"indicate streams that collaborate, are about to merge, recently split, etc."
+msgid "A related stream that isn't a parent/child in relationship. It might indicate streams that collaborate, are about to merge, recently split, etc."
 msgstr ""
 
 #: post-type/streams-post-type.php:364
@@ -363,7 +373,8 @@ msgctxt "List Filters"
 msgid "Assigned to me"
 msgstr ""
 
-#: post-type/streams-post-type.php:962 post-type/streams-post-type.php:1021
+#: post-type/streams-post-type.php:962
+#: post-type/streams-post-type.php:1021
 #: post-type/streams-post-type.php:1029
 msgctxt "List Filters"
 msgid "All"
