@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Disciple.Tools - Streams 3.1.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
 "streams\n"
-"POT-Creation-Date: 2024-02-01T07:47:42+00:00\n"
+"POT-Creation-Date: 2024-09-26T12:27:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,6 +17,7 @@ msgstr ""
 "X-Domain: disciple-tools-streams\n"
 
 #. Author URI of the plugin
+#: disciple-tools-streams.php
 msgid "https://github.com/DiscipleTools"
 msgstr ""
 
