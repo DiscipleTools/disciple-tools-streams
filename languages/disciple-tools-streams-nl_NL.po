@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Disciple Tools Plugins\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
 "streams\n"
-"POT-Creation-Date: 2024-02-01T07:47:42+00:00\n"
+"POT-Creation-Date: 2024-09-26T12:27:28+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -14,6 +14,7 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. Author URI of the plugin
+#: disciple-tools-streams.php
 msgid "https://github.com/DiscipleTools"
 msgstr "https://github.com/DiscipleTools"
 

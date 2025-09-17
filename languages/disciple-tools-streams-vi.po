@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Disciple Tools Plugins\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
 "streams\n"
-"POT-Creation-Date: 2024-02-01T07:47:42+00:00\n"
+"POT-Creation-Date: 2024-09-26T12:27:28+00:00\n"
 "PO-Revision-Date: 2024-07-20 06:59+0000\n"
 "Last-Translator: Charlie Ritchie <ritchiecharlie@gmail.com>\n"
 "Language-Team: Vietnamese <https://translate.disciple.tools/projects/"
@@ -16,6 +16,7 @@ msgstr ""
 "X-Generator: Weblate 5.6.2\n"
 
 #. Author URI of the plugin
+#: disciple-tools-streams.php
 msgid "https://github.com/DiscipleTools"
 msgstr "https://github.com/DiscipleTools"
 
@@ -184,7 +185,8 @@ msgctxt "Stream Status field description"
 msgid ""
 "This contact is currently on hold. It has potential of getting scheduled in "
 "the future."
-msgstr "Liên hệ này hiện đang bị treo. Nó có thể được lên lịch trong tương lai."
+msgstr ""
+"Liên hệ này hiện đang bị treo. Nó có thể được lên lịch trong tương lai."
 
 #: post-type/streams-post-type.php:178
 msgctxt "Stream Status label"
