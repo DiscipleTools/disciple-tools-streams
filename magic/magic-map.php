@@ -584,8 +584,5 @@ class DT_Streams_Map extends DT_Magic_Url_Base
         dt_write_log( $today );
         return $years;
     }
-
-
-
 }
 DT_Streams_Map::instance();

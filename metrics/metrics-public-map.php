@@ -98,6 +98,5 @@ class DT_Streams_Metrics_Public_Map extends DT_Metrics_Chart_Base
         </script>
         <?php
     }
-
 }
 DT_Streams_Metrics_Public_Map::instance();

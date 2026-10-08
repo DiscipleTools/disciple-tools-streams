@@ -628,7 +628,6 @@ class DT_Stream_Base extends DT_Module_Base {
     }
 
     public function dt_details_additional_section( $section, $post_type ){
-
     }
 
     //action when a post connection is added during create or update

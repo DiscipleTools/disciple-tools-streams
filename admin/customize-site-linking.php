@@ -20,4 +20,3 @@ function dt_streams_site_link_capabilities( $args ) {
     }
     return $args;
 }
-

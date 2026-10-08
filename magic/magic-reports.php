@@ -1712,7 +1712,6 @@ class DT_Stream_Reports extends DT_Magic_Url_Base
         update_post_meta( $post_id, 'report_last_modified', time() );
 
         return $this->retrieve_reports( $post_id );
-
     }
 
     public function retrieve_reports( $post_id, $children = false ) {
