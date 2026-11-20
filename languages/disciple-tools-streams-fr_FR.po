@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: Disciple Tools Plugins\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/disciple-tools-"
 "streams\n"
-"POT-Creation-Date: 2024-02-01T07:47:42+00:00\n"
-"PO-Revision-Date: 2024-09-25 17:59+0000\n"
-"Last-Translator: Sarah <s.colpart@gmail.com>\n"
+"POT-Creation-Date: 2024-09-26T12:27:28+00:00\n"
+"PO-Revision-Date: 2025-09-17 12:03+0000\n"
+"Last-Translator: Corsacca <translator@disciple.tools>\n"
 "Language-Team: French <https://translate.disciple.tools/projects/"
 "disciple-tools/disciple-tools-stream/fr_FR/>\n"
 "Language: fr_FR\n"
@@ -13,9 +13,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.7.2\n"
+"X-Generator: Weblate 5.13.3\n"
 
 #. Author URI of the plugin
+#: disciple-tools-streams.php
 msgid "https://github.com/DiscipleTools"
 msgstr "https://github.com/DiscipleTools"
 
@@ -24,10 +25,8 @@ msgid "Reports"
 msgstr "Rapports"
 
 #: magic/magic-reports.php:122
-#, fuzzy
-#| msgid "Site Reports"
 msgid "Child Reports"
-msgstr "Rapports de site"
+msgstr "Rapports sur les enfants"
 
 #: magic/magic-reports.php:158 magic/magic-reports.php:211
 msgid "Total Baptisms"
@@ -234,7 +233,7 @@ msgstr "Description"
 
 #: post-type/streams-post-type.php:225 post-type/streams-post-type.php:592
 msgid "People Groups"
-msgstr "Groupes de personnes"
+msgstr "Groupes ethniques"
 
 #: post-type/streams-post-type.php:226
 msgctxt "Optional Documentation"
@@ -376,7 +375,7 @@ msgstr "Connexions"
 
 #: post-type/streams-post-type.php:625
 msgid "Other"
-msgstr "Autre"
+msgstr "Autres"
 
 #: post-type/streams-post-type.php:954
 msgctxt "List Filters"
